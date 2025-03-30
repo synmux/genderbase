@@ -31,12 +31,14 @@ This document outlines the API implementation for the Genderbase project, replac
 - **Description**: Authenticates a responder and returns a JWT token
 - **Request Body**:
 
-  ````json
+  ```json
   {
     "email": "responder@example.com",
     "password": "securepassword"
   }
-    - **Response**:
+  ```
+
+  - **Response**:
 
   ```json
   {
@@ -48,7 +50,7 @@ This document outlines the API implementation for the Genderbase project, replac
       "role": "responder"
     }
   }
-  ````
+  ```
 
   - **Status Codes**:
 
