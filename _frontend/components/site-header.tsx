@@ -1,8 +1,8 @@
-import Link from "next/link"
+import Link from "next/link";
 
-import { MainNav } from "@/components/main-nav"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { buttonVariants } from "@/components/ui/button"
+import { MainNav } from "@/components/main-nav";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { buttonVariants } from "@/components/ui/button";
 
 export function SiteHeader() {
   return (
@@ -11,7 +11,10 @@ export function SiteHeader() {
         <MainNav />
         <div className="flex flex-1 items-center justify-end space-x-4">
           <nav className="flex items-center space-x-2">
-            <Link href="/ask" className={buttonVariants({ variant: "default" })}>
+            <Link
+              href="/ask"
+              className={buttonVariants({ variant: "default" })}
+            >
               Ask a Question
             </Link>
             <ThemeToggle />
@@ -19,6 +22,5 @@ export function SiteHeader() {
         </div>
       </div>
     </header>
-  )
+  );
 }
-

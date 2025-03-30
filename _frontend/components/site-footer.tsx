@@ -1,5 +1,5 @@
-import Link from "next/link"
-import { Heart } from "lucide-react"
+import Link from "next/link";
+import { Heart } from "lucide-react";
 
 export function SiteFooter() {
   return (
@@ -12,13 +12,22 @@ export function SiteFooter() {
           </p>
         </div>
         <div className="flex gap-4">
-          <Link href="/about" className="text-sm font-medium underline underline-offset-4">
+          <Link
+            href="/about"
+            className="text-sm font-medium underline underline-offset-4"
+          >
             About
           </Link>
-          <Link href="/volunteer" className="text-sm font-medium underline underline-offset-4">
+          <Link
+            href="/volunteer"
+            className="text-sm font-medium underline underline-offset-4"
+          >
             Volunteer
           </Link>
-          <Link href="/privacy" className="text-sm font-medium underline underline-offset-4">
+          <Link
+            href="/privacy"
+            className="text-sm font-medium underline underline-offset-4"
+          >
             Privacy
           </Link>
           <Link
@@ -31,6 +40,5 @@ export function SiteFooter() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
-

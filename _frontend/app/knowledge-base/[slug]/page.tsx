@@ -1,8 +1,8 @@
-import Link from "next/link"
-import { ArrowLeft, Calendar, User } from "lucide-react"
+import Link from "next/link";
+import { ArrowLeft, Calendar, User } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 // This would typically come from a database or CMS
 const articles = {
@@ -48,17 +48,19 @@ const articles = {
       </ul>
     `,
   },
-}
+};
 
 export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = articles[params.slug as keyof typeof articles]
+  const article = articles[params.slug as keyof typeof articles];
 
   if (!article) {
     return (
       <main className="flex-1">
         <div className="container px-4 py-12 md:px-6">
           <h1 className="text-3xl font-bold">Article not found</h1>
-          <p className="mt-4">The article you're looking for doesn't exist or has been moved.</p>
+          <p className="mt-4">
+            The article you're looking for doesn't exist or has been moved.
+          </p>
           <Link href="/knowledge-base">
             <Button className="mt-6">
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -67,7 +69,7 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           </Link>
         </div>
       </main>
-    )
+    );
   }
 
   return (
@@ -80,7 +82,9 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           </Button>
         </Link>
 
-        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{article.title}</h1>
+        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+          {article.title}
+        </h1>
 
         <div className="mt-4 flex items-center space-x-4 text-sm text-muted-foreground">
           <div className="flex items-center">
@@ -95,9 +99,11 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
 
         <Separator className="my-6" />
 
-        <div className="prose dark:prose-invert max-w-none" dangerouslySetInnerHTML={{ __html: article.content }} />
+        <div
+          className="prose dark:prose-invert max-w-none"
+          dangerouslySetInnerHTML={{ __html: article.content }}
+        />
       </article>
     </main>
-  )
+  );
 }
-

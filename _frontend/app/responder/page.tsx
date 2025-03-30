@@ -1,14 +1,27 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import Link from "next/link"
-import { MessageSquare, CheckCircle, Clock, AlertCircle, LogOut } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import {
+  MessageSquare,
+  CheckCircle,
+  Clock,
+  AlertCircle,
+  LogOut,
+} from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 
 // This would come from an API in a real application
 const pendingQuestions = [
@@ -33,7 +46,7 @@ const pendingQuestions = [
       "I'm organizing an event and want to make it inclusive for people of all genders. What's the best way to ask about pronouns...",
     timestamp: "2023-06-13T16:20:00Z",
   },
-]
+];
 
 const activeConversations = [
   {
@@ -52,7 +65,7 @@ const activeConversations = [
     lastUpdated: "2023-06-15T15:45:00Z",
     messageCount: 6,
   },
-]
+];
 
 const pendingSummaries = [
   {
@@ -69,27 +82,33 @@ const pendingSummaries = [
     messageCount: 5,
     closedAt: "2023-06-09T09:15:00Z",
   },
-]
+];
 
 export default function ResponderDashboardPage() {
-  const [activeTab, setActiveTab] = useState("pending")
+  const [activeTab, setActiveTab] = useState("pending");
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleString()
-  }
+    const date = new Date(dateString);
+    return date.toLocaleString();
+  };
 
   return (
     <main className="flex-1">
       <div className="container px-4 py-8 md:px-6">
         <div className="flex items-center justify-between">
-          <h1 className="text-3xl font-bold tracking-tighter">Responder Dashboard</h1>
+          <h1 className="text-3xl font-bold tracking-tighter">
+            Responder Dashboard
+          </h1>
           <div className="flex items-center gap-4">
             <Badge variant="outline" className="px-3 py-1">
               Responder: WiseOwl
             </Badge>
             <Link href="/">
-              <Button variant="outline" size="sm" className="flex items-center gap-1">
+              <Button
+                variant="outline"
+                size="sm"
+                className="flex items-center gap-1"
+              >
                 <LogOut className="h-4 w-4" />
                 Sign Out
               </Button>
@@ -118,7 +137,9 @@ export default function ResponderDashboardPage() {
               <Card>
                 <CardContent className="flex flex-col items-center justify-center py-12">
                   <AlertCircle className="h-12 w-12 text-muted-foreground" />
-                  <p className="mt-4 text-center text-muted-foreground">No pending questions at the moment.</p>
+                  <p className="mt-4 text-center text-muted-foreground">
+                    No pending questions at the moment.
+                  </p>
                 </CardContent>
               </Card>
             ) : (
@@ -128,18 +149,27 @@ export default function ResponderDashboardPage() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <Avatar className="mr-2 h-8 w-8">
-                          <AvatarFallback>{question.userPseudonym.charAt(0)}</AvatarFallback>
+                          <AvatarFallback>
+                            {question.userPseudonym.charAt(0)}
+                          </AvatarFallback>
                         </Avatar>
-                        <CardTitle className="text-lg">{question.userPseudonym}</CardTitle>
+                        <CardTitle className="text-lg">
+                          {question.userPseudonym}
+                        </CardTitle>
                       </div>
-                      <CardDescription>{formatDate(question.timestamp)}</CardDescription>
+                      <CardDescription>
+                        {formatDate(question.timestamp)}
+                      </CardDescription>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <p className="line-clamp-2">{question.preview}</p>
                   </CardContent>
                   <CardFooter>
-                    <Link href={`/responder/question/${question.id}`} className="w-full">
+                    <Link
+                      href={`/responder/question/${question.id}`}
+                      className="w-full"
+                    >
                       <Button className="w-full">Respond to Question</Button>
                     </Link>
                   </CardFooter>
@@ -153,7 +183,9 @@ export default function ResponderDashboardPage() {
               <Card>
                 <CardContent className="flex flex-col items-center justify-center py-12">
                   <AlertCircle className="h-12 w-12 text-muted-foreground" />
-                  <p className="mt-4 text-center text-muted-foreground">No active conversations at the moment.</p>
+                  <p className="mt-4 text-center text-muted-foreground">
+                    No active conversations at the moment.
+                  </p>
                 </CardContent>
               </Card>
             ) : (
@@ -163,15 +195,21 @@ export default function ResponderDashboardPage() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <Avatar className="mr-2 h-8 w-8">
-                          <AvatarFallback>{conversation.userPseudonym.charAt(0)}</AvatarFallback>
+                          <AvatarFallback>
+                            {conversation.userPseudonym.charAt(0)}
+                          </AvatarFallback>
                         </Avatar>
-                        <CardTitle className="text-lg">{conversation.userPseudonym}</CardTitle>
+                        <CardTitle className="text-lg">
+                          {conversation.userPseudonym}
+                        </CardTitle>
                       </div>
                       <div className="flex items-center">
                         <Badge variant="outline" className="mr-2">
                           {conversation.messageCount} messages
                         </Badge>
-                        <CardDescription>{formatDate(conversation.lastUpdated)}</CardDescription>
+                        <CardDescription>
+                          {formatDate(conversation.lastUpdated)}
+                        </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
@@ -179,7 +217,10 @@ export default function ResponderDashboardPage() {
                     <p className="line-clamp-2">{conversation.preview}</p>
                   </CardContent>
                   <CardFooter>
-                    <Link href={`/responder/conversation/${conversation.id}`} className="w-full">
+                    <Link
+                      href={`/responder/conversation/${conversation.id}`}
+                      className="w-full"
+                    >
                       <Button className="w-full">Continue Conversation</Button>
                     </Link>
                   </CardFooter>
@@ -193,7 +234,9 @@ export default function ResponderDashboardPage() {
               <Card>
                 <CardContent className="flex flex-col items-center justify-center py-12">
                   <AlertCircle className="h-12 w-12 text-muted-foreground" />
-                  <p className="mt-4 text-center text-muted-foreground">No conversations pending summarization.</p>
+                  <p className="mt-4 text-center text-muted-foreground">
+                    No conversations pending summarization.
+                  </p>
                 </CardContent>
               </Card>
             ) : (
@@ -203,25 +246,35 @@ export default function ResponderDashboardPage() {
                     <div className="flex items-center justify-between">
                       <div className="flex items-center">
                         <Avatar className="mr-2 h-8 w-8">
-                          <AvatarFallback>{summary.userPseudonym.charAt(0)}</AvatarFallback>
+                          <AvatarFallback>
+                            {summary.userPseudonym.charAt(0)}
+                          </AvatarFallback>
                         </Avatar>
-                        <CardTitle className="text-lg">{summary.topic}</CardTitle>
+                        <CardTitle className="text-lg">
+                          {summary.topic}
+                        </CardTitle>
                       </div>
                       <div className="flex items-center">
                         <Badge variant="outline" className="mr-2">
                           {summary.messageCount} messages
                         </Badge>
-                        <CardDescription>Closed: {formatDate(summary.closedAt)}</CardDescription>
+                        <CardDescription>
+                          Closed: {formatDate(summary.closedAt)}
+                        </CardDescription>
                       </div>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-muted-foreground">
-                      This conversation with {summary.userPseudonym} needs to be summarized for the knowledge base.
+                      This conversation with {summary.userPseudonym} needs to be
+                      summarized for the knowledge base.
                     </p>
                   </CardContent>
                   <CardFooter>
-                    <Link href={`/responder/summarize/${summary.id}`} className="w-full">
+                    <Link
+                      href={`/responder/summarize/${summary.id}`}
+                      className="w-full"
+                    >
                       <Button className="w-full">Create Summary</Button>
                     </Link>
                   </CardFooter>
@@ -232,6 +285,5 @@ export default function ResponderDashboardPage() {
         </Tabs>
       </div>
     </main>
-  )
+  );
 }
-

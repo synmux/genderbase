@@ -13,24 +13,27 @@ This document summarizes the conversion of the Genderbase application from Next.
 
 ### Directory Structure Changes
 
-| Original (Next.js) | New (Static) | Description |
-|-----------------|-----------|-------------|
-| `app/`          | `views/pages/` | Page templates |
-| `components/`   | `views/partials/` | UI components |
-| `app/layout.tsx` | `views/layouts/application.html` | Layout template |
-| `app/globals.css` | `assets/css/tailwind.css` | Global CSS |
+| Original (Next.js) | New (Static)                     | Description     |
+| ------------------ | -------------------------------- | --------------- |
+| `app/`             | `views/pages/`                   | Page templates  |
+| `components/`      | `views/partials/`                | UI components   |
+| `app/layout.tsx`   | `views/layouts/application.html` | Layout template |
+| `app/globals.css`  | `assets/css/tailwind.css`        | Global CSS      |
 
 ### Framework-specific Changes
 
 1. **Client-side Navigation**
+
    - Before: Next.js Link components and router
    - After: Standard HTML anchor tags
 
 2. **State Management**
+
    - Before: React hooks and context
    - After: Stimulus controllers with targets and actions
 
 3. **Component Structure**
+
    - Before: React components with props
    - After: HTML elements with data attributes for Stimulus
 

@@ -1,16 +1,23 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import Link from "next/link"
-import { ArrowLeft, Send } from "lucide-react"
+import { useState } from "react";
+import Link from "next/link";
+import { ArrowLeft, Send } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Textarea } from "@/components/ui/textarea"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 // This would come from an API in a real application
 const sampleConversation = {
@@ -48,19 +55,23 @@ const sampleConversation = {
       timestamp: "2023-06-16T10:15:00Z",
     },
   ],
-}
+};
 
-export default function ConversationPage({ params }: { params: { id: string } }) {
-  const [newMessage, setNewMessage] = useState("")
-  const [conversation, setConversation] = useState(sampleConversation)
-  const [isSubmitting, setIsSubmitting] = useState(false)
+export default function ConversationPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const [newMessage, setNewMessage] = useState("");
+  const [conversation, setConversation] = useState(sampleConversation);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    if (!newMessage.trim()) return
+    if (!newMessage.trim()) return;
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     // In a real application, this would be an API call
     // await fetch(`/api/conversations/${params.id}/messages`, {
@@ -70,7 +81,7 @@ export default function ConversationPage({ params }: { params: { id: string } })
     // })
 
     // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 500))
+    await new Promise((resolve) => setTimeout(resolve, 500));
 
     // Add the new message to the conversation
     const updatedConversation = {
@@ -84,17 +95,17 @@ export default function ConversationPage({ params }: { params: { id: string } })
           timestamp: new Date().toISOString(),
         },
       ],
-    }
+    };
 
-    setConversation(updatedConversation)
-    setNewMessage("")
-    setIsSubmitting(false)
-  }
+    setConversation(updatedConversation);
+    setNewMessage("");
+    setIsSubmitting(false);
+  };
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleString()
-  }
+    const date = new Date(dateString);
+    return date.toLocaleString();
+  };
 
   return (
     <main className="flex-1">
@@ -115,16 +126,23 @@ export default function ConversationPage({ params }: { params: { id: string } })
               </span>
             </CardTitle>
             <CardDescription>
-              This conversation is anonymous. Neither you nor the responder can see each other's identifying
-              information.
+              This conversation is anonymous. Neither you nor the responder can
+              see each other's identifying information.
             </CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
               {conversation.messages.map((message) => (
-                <div key={message.id} className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}>
-                  <div className={`flex max-w-[80%] ${message.sender === "user" ? "flex-row-reverse" : "flex-row"}`}>
-                    <Avatar className={message.sender === "user" ? "ml-2" : "mr-2"}>
+                <div
+                  key={message.id}
+                  className={`flex ${message.sender === "user" ? "justify-end" : "justify-start"}`}
+                >
+                  <div
+                    className={`flex max-w-[80%] ${message.sender === "user" ? "flex-row-reverse" : "flex-row"}`}
+                  >
+                    <Avatar
+                      className={message.sender === "user" ? "ml-2" : "mr-2"}
+                    >
                       <AvatarFallback>
                         {message.sender === "user"
                           ? conversation.userPseudonym.charAt(0)
@@ -134,14 +152,18 @@ export default function ConversationPage({ params }: { params: { id: string } })
                     <div>
                       <div
                         className={`rounded-lg p-4 ${
-                          message.sender === "user" ? "bg-primary text-primary-foreground" : "bg-muted"
+                          message.sender === "user"
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-muted"
                         }`}
                       >
                         <p className="text-sm">{message.content}</p>
                       </div>
                       <p className="mt-1 text-xs text-muted-foreground">
-                        {message.sender === "user" ? conversation.userPseudonym : conversation.responderPseudonym} •{" "}
-                        {formatDate(message.timestamp)}
+                        {message.sender === "user"
+                          ? conversation.userPseudonym
+                          : conversation.responderPseudonym}{" "}
+                        • {formatDate(message.timestamp)}
                       </p>
                     </div>
                   </div>
@@ -153,8 +175,8 @@ export default function ConversationPage({ params }: { params: { id: string } })
               <Alert className="mt-6">
                 <AlertTitle>This conversation has been closed</AlertTitle>
                 <AlertDescription>
-                  You can no longer send messages in this conversation. If you have more questions, please start a new
-                  conversation.
+                  You can no longer send messages in this conversation. If you
+                  have more questions, please start a new conversation.
                 </AlertDescription>
               </Alert>
             )}
@@ -169,7 +191,11 @@ export default function ConversationPage({ params }: { params: { id: string } })
                     onChange={(e) => setNewMessage(e.target.value)}
                     className="flex-1"
                   />
-                  <Button type="submit" size="icon" disabled={isSubmitting || !newMessage.trim()}>
+                  <Button
+                    type="submit"
+                    size="icon"
+                    disabled={isSubmitting || !newMessage.trim()}
+                  >
                     <Send className="h-4 w-4" />
                     <span className="sr-only">Send</span>
                   </Button>
@@ -180,6 +206,5 @@ export default function ConversationPage({ params }: { params: { id: string } })
         </Card>
       </div>
     </main>
-  )
+  );
 }
-

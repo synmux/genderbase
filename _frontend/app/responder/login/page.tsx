@@ -1,37 +1,44 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { ArrowLeft, Eye, EyeOff, AlertTriangle } from "lucide-react"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { ArrowLeft, Eye, EyeOff, AlertTriangle } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Separator } from "@/components/ui/separator";
 
 export default function ResponderLoginPage() {
-  const router = useRouter()
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
+  const router = useRouter();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setError(null)
+    e.preventDefault();
+    setError(null);
 
     if (!email.trim() || !password.trim()) {
-      setError("Please enter both email and password")
-      return
+      setError("Please enter both email and password");
+      return;
     }
 
-    setIsLoading(true)
+    setIsLoading(true);
 
     try {
       // This would be an API call in a real application
@@ -46,27 +53,27 @@ export default function ResponderLoginPage() {
       // }
 
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // For demo purposes, we'll just check if the email contains "responder"
       if (!email.includes("responder")) {
-        throw new Error("Invalid credentials")
+        throw new Error("Invalid credentials");
       }
 
       // Redirect to the responder dashboard
-      router.push("/responder")
+      router.push("/responder");
     } catch (err) {
-      setError("Invalid email or password")
-      setIsLoading(false)
+      setError("Invalid email or password");
+      setIsLoading(false);
     }
-  }
+  };
 
   const handleDevModeLogin = () => {
     // In development mode, we'll skip authentication
     // This would typically check for a development environment flag
     // For demo purposes, we'll just redirect to the responder dashboard
-    router.push("/responder")
-  }
+    router.push("/responder");
+  };
 
   return (
     <main className="flex-1">
@@ -82,7 +89,9 @@ export default function ResponderLoginPage() {
               </Link>
               <div>
                 <CardTitle>Responder Login</CardTitle>
-                <CardDescription>Sign in to access the responder dashboard</CardDescription>
+                <CardDescription>
+                  Sign in to access the responder dashboard
+                </CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -124,8 +133,14 @@ export default function ResponderLoginPage() {
                     className="absolute right-0 top-0"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                    <span className="sr-only">{showPassword ? "Hide password" : "Show password"}</span>
+                    {showPassword ? (
+                      <EyeOff className="h-4 w-4" />
+                    ) : (
+                      <Eye className="h-4 w-4" />
+                    )}
+                    <span className="sr-only">
+                      {showPassword ? "Hide password" : "Show password"}
+                    </span>
                   </Button>
                 </div>
               </div>
@@ -140,10 +155,13 @@ export default function ResponderLoginPage() {
                 <div className="rounded-md border border-amber-200 bg-amber-50 p-3 dark:border-amber-800 dark:bg-amber-950/50">
                   <div className="flex items-center space-x-2">
                     <AlertTriangle className="h-4 w-4 text-amber-600 dark:text-amber-400" />
-                    <p className="text-xs font-medium text-amber-800 dark:text-amber-200">Development Mode Only</p>
+                    <p className="text-xs font-medium text-amber-800 dark:text-amber-200">
+                      Development Mode Only
+                    </p>
                   </div>
                   <p className="mt-1 text-xs text-amber-700 dark:text-amber-300">
-                    This button bypasses authentication for development purposes. Remove before production deployment.
+                    This button bypasses authentication for development
+                    purposes. Remove before production deployment.
                   </p>
                   <Button
                     type="button"
@@ -160,6 +178,5 @@ export default function ResponderLoginPage() {
         </Card>
       </div>
     </main>
-  )
+  );
 }
-

@@ -1,88 +1,90 @@
 // Form controller
-import { Controller } from "stimulus"
+import { Controller } from "stimulus";
 
 export default class extends Controller {
-  static targets = ["submit", "form", "successMessage"]
+  static targets = ["submit", "form", "successMessage"];
 
   connect() {
     // Initialize form handling
-    this.element.addEventListener('submit', this.submit.bind(this))
+    this.element.addEventListener("submit", this.submit.bind(this));
   }
 
   disconnect() {
-    this.element.removeEventListener('submit', this.submit.bind(this))
+    this.element.removeEventListener("submit", this.submit.bind(this));
   }
 
   submit(event) {
-    event.preventDefault()
+    event.preventDefault();
 
     // Validate form fields
     if (!this.validateForm()) {
-      return
+      return;
     }
 
     // Get form data
-    const form = this.element
-    const formData = new FormData(form)
+    const form = this.element;
+    const formData = new FormData(form);
 
     // Show loading state
-    const submitButton = this.hasSubmitTarget ? this.submitTarget : form.querySelector('[type="submit"]')
-    submitButton.disabled = true
-    submitButton.textContent = 'Submitting...'
+    const submitButton = this.hasSubmitTarget
+      ? this.submitTarget
+      : form.querySelector('[type="submit"]');
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
 
     // In a real app, we would send this to the server
     // For demonstration, we'll fake a server response
     setTimeout(() => {
-      this.showSuccessMessage(form)
-    }, 1000)
+      this.showSuccessMessage(form);
+    }, 1000);
   }
 
   validateForm() {
     // Basic validation
-    const form = this.element
-    const requiredFields = form.querySelectorAll('[required]')
+    const form = this.element;
+    const requiredFields = form.querySelectorAll("[required]");
 
-    let isValid = true
+    let isValid = true;
 
-    requiredFields.forEach(field => {
+    requiredFields.forEach((field) => {
       if (!field.value.trim()) {
-        isValid = false
-        this.showError(field, 'This field is required')
+        isValid = false;
+        this.showError(field, "This field is required");
       } else {
-        this.clearError(field)
+        this.clearError(field);
       }
-    })
+    });
 
-    return isValid
+    return isValid;
   }
 
   showError(field, message) {
     // Remove any existing error message
-    this.clearError(field)
+    this.clearError(field);
 
     // Add error class to field
-    field.classList.add('border-red-500')
+    field.classList.add("border-red-500");
 
     // Create error message
-    const errorMessage = document.createElement('p')
-    errorMessage.className = 'text-red-500 text-xs mt-1'
-    errorMessage.textContent = message
-    errorMessage.dataset.errorMessage = true
+    const errorMessage = document.createElement("p");
+    errorMessage.className = "text-red-500 text-xs mt-1";
+    errorMessage.textContent = message;
+    errorMessage.dataset.errorMessage = true;
 
     // Insert error message after field
-    field.parentNode.appendChild(errorMessage)
+    field.parentNode.appendChild(errorMessage);
   }
 
   clearError(field) {
     // Remove error class
-    field.classList.remove('border-red-500')
+    field.classList.remove("border-red-500");
 
     // Remove error message
-    const container = field.parentNode
-    const errorMessage = container.querySelector('[data-error-message]')
+    const container = field.parentNode;
+    const errorMessage = container.querySelector("[data-error-message]");
 
     if (errorMessage) {
-      container.removeChild(errorMessage)
+      container.removeChild(errorMessage);
     }
   }
 
@@ -101,6 +103,6 @@ export default class extends Controller {
           </a>
         </div>
       </div>
-    `
+    `;
   }
 }

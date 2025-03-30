@@ -35,7 +35,7 @@ To start a local web server:
 npm start
 ```
 
-This will start a local server using the `serve` package. By default, the site will be available at http://localhost:3000.
+This will start a local server using the `serve` package. By default, the site will be available at [localhost:3000](http://localhost:3000).
 
 ## Development
 

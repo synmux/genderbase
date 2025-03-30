@@ -38,7 +38,7 @@ rails tailwindcss:install
 
 Ensure your Rails app has the following directory structure:
 
-```
+```plaintext
 app/
 ├── assets/
 │   ├── images/
@@ -67,20 +67,20 @@ cp /path/to/static/tailwind.config.ts config/tailwind.config.js
 // config/tailwind.config.js
 module.exports = {
   content: [
-    './app/views/**/*.{erb,haml,html,slim}',
-    './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/assets/stylesheets/**/*.css',
+    "./app/views/**/*.{erb,haml,html,slim}",
+    "./app/helpers/**/*.rb",
+    "./app/javascript/**/*.js",
+    "./app/assets/stylesheets/**/*.css",
   ],
   theme: {
     // Copy theme configuration from static site's tailwind.config.ts
   },
   plugins: [
-    require('@tailwindcss/typography'),
-    require('tailwindcss-animate')
+    require("@tailwindcss/typography"),
+    require("tailwindcss-animate"),
     // Add other plugins as needed
   ],
-}
+};
 ```
 
 ## Step 4: Set Up Stimulus Controllers
@@ -101,29 +101,31 @@ Example for the theme controller:
 
 ```js
 // app/javascript/controllers/theme_controller.js
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["toggle"]
+  static targets = ["toggle"];
 
   connect() {
-    const theme = localStorage.getItem("theme") || "light"
-    this.updateTheme(theme)
+    const theme = localStorage.getItem("theme") || "light";
+    this.updateTheme(theme);
   }
 
   toggle() {
-    const currentTheme = document.documentElement.classList.contains("dark") ? "dark" : "light"
-    const newTheme = currentTheme === "dark" ? "light" : "dark"
-    this.updateTheme(newTheme)
+    const currentTheme = document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
+    const newTheme = currentTheme === "dark" ? "light" : "dark";
+    this.updateTheme(newTheme);
   }
 
   updateTheme(theme) {
     if (theme === "dark") {
-      document.documentElement.classList.add("dark")
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove("dark")
+      document.documentElement.classList.remove("dark");
     }
-    localStorage.setItem("theme", theme)
+    localStorage.setItem("theme", theme);
   }
 }
 ```
@@ -400,7 +402,7 @@ end
 rails server
 ```
 
-2. Visit http://localhost:3000 to test your application
+2. Visit [localhost:3000](http://localhost:3000) to test your application
 
 3. Deploy your Rails application to your preferred hosting platform following their specific deployment instructions.
 

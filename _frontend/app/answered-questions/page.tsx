@@ -1,11 +1,18 @@
-import Link from "next/link"
-import { Search } from "lucide-react"
+import Link from "next/link";
+import { Search } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // This would typically come from a database or CMS
 const answeredQuestions = [
@@ -15,7 +22,13 @@ const answeredQuestions = [
     preview:
       "Advice on how to be supportive of a transgender partner throughout their transition journey, including emotional support, practical help, and resources.",
     category: "Relationships",
-    tags: ["transgender", "partner support", "transition", "emotional support", "resources"],
+    tags: [
+      "transgender",
+      "partner support",
+      "transition",
+      "emotional support",
+      "resources",
+    ],
     date: "June 10, 2023",
   },
   {
@@ -24,7 +37,13 @@ const answeredQuestions = [
     preview:
       "Guidance on how to come out as non-binary in a professional setting, including preparation, conversations with HR, and handling various reactions from colleagues.",
     category: "Workplace",
-    tags: ["non-binary", "coming out", "workplace", "professional", "colleagues"],
+    tags: [
+      "non-binary",
+      "coming out",
+      "workplace",
+      "professional",
+      "colleagues",
+    ],
     date: "June 5, 2023",
   },
   {
@@ -33,7 +52,13 @@ const answeredQuestions = [
     preview:
       "Age-appropriate ways to discuss gender identity and diversity with children, with specific language suggestions and recommended resources.",
     category: "Parenting",
-    tags: ["children", "education", "gender identity", "parenting", "age-appropriate"],
+    tags: [
+      "children",
+      "education",
+      "gender identity",
+      "parenting",
+      "age-appropriate",
+    ],
     date: "May 28, 2023",
   },
   {
@@ -42,7 +67,13 @@ const answeredQuestions = [
     preview:
       "Information about accessing gender-affirming healthcare, including finding supportive providers, understanding insurance coverage, and preparing for appointments.",
     category: "Healthcare",
-    tags: ["healthcare", "medical", "insurance", "providers", "gender-affirming care"],
+    tags: [
+      "healthcare",
+      "medical",
+      "insurance",
+      "providers",
+      "gender-affirming care",
+    ],
     date: "May 20, 2023",
   },
   {
@@ -63,9 +94,16 @@ const answeredQuestions = [
     tags: ["pronouns", "they/them", "language", "inclusion", "respect"],
     date: "May 8, 2023",
   },
-]
+];
 
-const categories = ["All", "Relationships", "Workplace", "Parenting", "Healthcare", "Communication"]
+const categories = [
+  "All",
+  "Relationships",
+  "Workplace",
+  "Parenting",
+  "Healthcare",
+  "Communication",
+];
 
 export default function AnsweredQuestionsPage() {
   return (
@@ -74,9 +112,12 @@ export default function AnsweredQuestionsPage() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Answered Questions</h1>
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                Answered Questions
+              </h1>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Browse through previously answered questions to find information that might help you.
+                Browse through previously answered questions to find information
+                that might help you.
               </p>
             </div>
           </div>
@@ -100,16 +141,24 @@ export default function AnsweredQuestionsPage() {
               </TabsList>
 
               {categories.map((category) => (
-                <TabsContent key={category} value={category} className="mt-6 space-y-6">
+                <TabsContent
+                  key={category}
+                  value={category}
+                  className="mt-6 space-y-6"
+                >
                   {answeredQuestions
-                    .filter((q) => category === "All" || q.category === category)
+                    .filter(
+                      (q) => category === "All" || q.category === category,
+                    )
                     .map((question) => (
                       <Card key={question.id}>
                         <CardHeader>
                           <CardTitle>{question.title}</CardTitle>
                           <CardDescription>
                             <div className="flex flex-wrap gap-2 mt-2">
-                              <Badge variant="secondary">{question.category}</Badge>
+                              <Badge variant="secondary">
+                                {question.category}
+                              </Badge>
                               {question.tags.map((tag) => (
                                 <Badge key={tag} variant="outline">
                                   {tag}
@@ -122,7 +171,9 @@ export default function AnsweredQuestionsPage() {
                           <p>{question.preview}</p>
                         </CardContent>
                         <CardFooter className="flex justify-between">
-                          <span className="text-sm text-muted-foreground">{question.date}</span>
+                          <span className="text-sm text-muted-foreground">
+                            {question.date}
+                          </span>
                           <Link href={`/answered-questions/${question.id}`}>
                             <Button variant="outline">Read More</Button>
                           </Link>
@@ -136,6 +187,5 @@ export default function AnsweredQuestionsPage() {
         </div>
       </section>
     </main>
-  )
+  );
 }
-

@@ -1,21 +1,28 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { useRouter } from "next/navigation"
-import Link from "next/link"
-import { ArrowLeft, Sparkles } from "lucide-react"
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { ArrowLeft, Sparkles } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Textarea } from "@/components/ui/textarea"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Badge } from "@/components/ui/badge"
-import { Avatar, AvatarFallback } from "@/components/ui/avatar"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Separator } from "@/components/ui/separator";
 
 // This would come from an API in a real application
 const sampleConversation = {
@@ -82,38 +89,40 @@ const sampleConversation = {
     },
   ],
   closedAt: "2023-06-10T14:30:00Z",
-}
+};
 
 export default function SummarizePage({ params }: { params: { id: string } }) {
-  const router = useRouter()
-  const [conversation] = useState(sampleConversation)
-  const [summary, setSummary] = useState("")
-  const [category, setCategory] = useState("")
-  const [tags, setTags] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [activeTab, setActiveTab] = useState("conversation")
+  const router = useRouter();
+  const [conversation] = useState(sampleConversation);
+  const [summary, setSummary] = useState("");
+  const [category, setCategory] = useState("");
+  const [tags, setTags] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [activeTab, setActiveTab] = useState("conversation");
 
   const handleGenerateAI = (type: "summary" | "category" | "tags") => {
     // In a real application, this would call an AI service
     if (type === "summary") {
       setSummary(
         "This conversation covers how to support a transgender partner during their transition. Key points include: actively listening without judgment, educating yourself independently, respecting their transition pace, using correct name and pronouns, offering practical support like accompanying them to appointments, helping them prepare for coming out at work, providing emotional support without being overbearing, and exploring resources together. The advice emphasizes the importance of validating both confident and overwhelmed feelings, offering specific help rather than general statements, and celebrating transition milestones.",
-      )
+      );
     } else if (type === "category") {
-      setCategory("Relationships")
+      setCategory("Relationships");
     } else if (type === "tags") {
-      setTags("transgender, partner support, transition, emotional support, workplace, resources")
+      setTags(
+        "transgender, partner support, transition, emotional support, workplace, resources",
+      );
     }
-  }
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!summary.trim() || !category.trim() || !tags.trim()) {
-      return
+      return;
     }
 
-    setIsSubmitting(true)
+    setIsSubmitting(true);
 
     try {
       // This would be an API call in a real application
@@ -124,19 +133,19 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
       // })
 
       // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Redirect to the responder dashboard
-      router.push("/responder?tab=summaries")
+      router.push("/responder?tab=summaries");
     } catch (err) {
-      setIsSubmitting(false)
+      setIsSubmitting(false);
     }
-  }
+  };
 
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString)
-    return date.toLocaleString()
-  }
+    const date = new Date(dateString);
+    return date.toLocaleString();
+  };
 
   return (
     <main className="flex-1">
@@ -149,7 +158,9 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
         </Link>
 
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold tracking-tighter">Summarize Conversation</h1>
+          <h1 className="text-2xl font-bold tracking-tighter">
+            Summarize Conversation
+          </h1>
           <Badge variant="outline" className="px-3 py-1">
             Closed: {formatDate(conversation.closedAt)}
           </Badge>
@@ -166,7 +177,9 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
               <CardHeader>
                 <CardTitle className="flex items-center justify-between">
                   <span>Conversation with {conversation.userPseudonym}</span>
-                  <span className="text-sm font-normal text-muted-foreground">Topic: {conversation.topic}</span>
+                  <span className="text-sm font-normal text-muted-foreground">
+                    Topic: {conversation.topic}
+                  </span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -178,10 +191,16 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
                     >
                       <div
                         className={`flex max-w-[80%] ${
-                          message.sender === "responder" ? "flex-row-reverse" : "flex-row"
+                          message.sender === "responder"
+                            ? "flex-row-reverse"
+                            : "flex-row"
                         }`}
                       >
-                        <Avatar className={message.sender === "responder" ? "ml-2" : "mr-2"}>
+                        <Avatar
+                          className={
+                            message.sender === "responder" ? "ml-2" : "mr-2"
+                          }
+                        >
                           <AvatarFallback>
                             {message.sender === "responder"
                               ? conversation.responderPseudonym.charAt(0)
@@ -191,10 +210,14 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
                         <div>
                           <div
                             className={`rounded-lg p-4 ${
-                              message.sender === "responder" ? "bg-primary text-primary-foreground" : "bg-muted"
+                              message.sender === "responder"
+                                ? "bg-primary text-primary-foreground"
+                                : "bg-muted"
                             }`}
                           >
-                            <p className="whitespace-pre-line text-sm">{message.content}</p>
+                            <p className="whitespace-pre-line text-sm">
+                              {message.content}
+                            </p>
                           </div>
                           <p className="mt-1 text-xs text-muted-foreground">
                             {message.sender === "responder"
@@ -217,15 +240,20 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
                 <CardHeader>
                   <CardTitle>Create Summary</CardTitle>
                   <CardDescription>
-                    Summarize this conversation for the knowledge base. The summary should be helpful for others with
-                    similar questions.
+                    Summarize this conversation for the knowledge base. The
+                    summary should be helpful for others with similar questions.
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <Label htmlFor="summary">Summary (Markdown format)</Label>
-                      <Button type="button" variant="outline" size="sm" onClick={() => handleGenerateAI("summary")}>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => handleGenerateAI("summary")}
+                      >
                         <Sparkles className="mr-2 h-4 w-4" />
                         Generate with AI
                       </Button>
@@ -243,7 +271,12 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <Label htmlFor="category">Category</Label>
-                        <Button type="button" variant="outline" size="sm" onClick={() => handleGenerateAI("category")}>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleGenerateAI("category")}
+                        >
                           <Sparkles className="mr-2 h-4 w-4" />
                           AI
                         </Button>
@@ -259,7 +292,12 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
                     <div className="space-y-2">
                       <div className="flex items-center justify-between">
                         <Label htmlFor="tags">Tags (comma separated)</Label>
-                        <Button type="button" variant="outline" size="sm" onClick={() => handleGenerateAI("tags")}>
+                        <Button
+                          type="button"
+                          variant="outline"
+                          size="sm"
+                          onClick={() => handleGenerateAI("tags")}
+                        >
                           <Sparkles className="mr-2 h-4 w-4" />
                           AI
                         </Button>
@@ -281,7 +319,9 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
                         <p>{summary}</p>
                       </div>
                     ) : (
-                      <p className="text-sm text-muted-foreground">Your summary will appear here...</p>
+                      <p className="text-sm text-muted-foreground">
+                        Your summary will appear here...
+                      </p>
                     )}
                   </div>
                 </CardContent>
@@ -289,7 +329,12 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
                   <Button
                     type="submit"
                     className="w-full"
-                    disabled={isSubmitting || !summary.trim() || !category.trim() || !tags.trim()}
+                    disabled={
+                      isSubmitting ||
+                      !summary.trim() ||
+                      !category.trim() ||
+                      !tags.trim()
+                    }
                   >
                     {isSubmitting ? "Submitting..." : "Submit for Approval"}
                   </Button>
@@ -300,6 +345,5 @@ export default function SummarizePage({ params }: { params: { id: string } }) {
         </Tabs>
       </div>
     </main>
-  )
+  );
 }
-

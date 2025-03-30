@@ -1,9 +1,16 @@
-import Link from "next/link"
-import { ArrowRight } from "lucide-react"
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 // This would typically come from a database or CMS
 const articles = [
@@ -32,24 +39,27 @@ const articles = [
     id: "gender-expression-vs-identity",
     category: "basics",
     title: "Gender Expression vs. Gender Identity",
-    description: "Understanding the difference between how people express their gender and how they identify.",
+    description:
+      "Understanding the difference between how people express their gender and how they identify.",
     author: "Dr. Taylor Williams",
   },
   {
     id: "workplace-inclusion",
     category: "workplace",
     title: "Gender Inclusion in the Workplace",
-    description: "Best practices for creating inclusive workplace environments.",
+    description:
+      "Best practices for creating inclusive workplace environments.",
     author: "Jordan Lee",
   },
   {
     id: "parenting-gender-diverse-children",
     category: "parenting",
     title: "Parenting Gender-Diverse Children",
-    description: "Guidance for parents of gender-diverse and transgender children.",
+    description:
+      "Guidance for parents of gender-diverse and transgender children.",
     author: "Dr. Morgan Chen",
   },
-]
+];
 
 export default function KnowledgeBasePage() {
   return (
@@ -58,10 +68,12 @@ export default function KnowledgeBasePage() {
         <div className="container px-4 md:px-6">
           <div className="flex flex-col items-center space-y-4 text-center">
             <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Knowledge Base</h1>
+              <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                Knowledge Base
+              </h1>
               <p className="mx-auto max-w-[700px] text-gray-500 md:text-xl dark:text-gray-400">
-                Educational resources about gender topics that you can share with partners, friends, parents, or
-                coworkers.
+                Educational resources about gender topics that you can share
+                with partners, friends, parents, or coworkers.
               </p>
             </div>
           </div>
@@ -81,15 +93,23 @@ export default function KnowledgeBasePage() {
                   {articles.map((article) => (
                     <Card key={article.id}>
                       <CardHeader className="pb-2">
-                        <CardTitle className="text-xl">{article.title}</CardTitle>
+                        <CardTitle className="text-xl">
+                          {article.title}
+                        </CardTitle>
                         <CardDescription>{article.description}</CardDescription>
                       </CardHeader>
                       <CardContent>
-                        <p className="text-sm text-muted-foreground">By {article.author}</p>
+                        <p className="text-sm text-muted-foreground">
+                          By {article.author}
+                        </p>
                       </CardContent>
                       <CardFooter>
                         <Link href={`/knowledge-base/${article.id}`}>
-                          <Button variant="outline" size="sm" className="w-full">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="w-full"
+                          >
                             Read Article <ArrowRight className="ml-1 h-4 w-4" />
                           </Button>
                         </Link>
@@ -98,7 +118,13 @@ export default function KnowledgeBasePage() {
                   ))}
                 </div>
               </TabsContent>
-              {["basics", "support", "communication", "workplace", "parenting"].map((category) => (
+              {[
+                "basics",
+                "support",
+                "communication",
+                "workplace",
+                "parenting",
+              ].map((category) => (
                 <TabsContent key={category} value={category} className="mt-6">
                   <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
                     {articles
@@ -106,16 +132,27 @@ export default function KnowledgeBasePage() {
                       .map((article) => (
                         <Card key={article.id}>
                           <CardHeader className="pb-2">
-                            <CardTitle className="text-xl">{article.title}</CardTitle>
-                            <CardDescription>{article.description}</CardDescription>
+                            <CardTitle className="text-xl">
+                              {article.title}
+                            </CardTitle>
+                            <CardDescription>
+                              {article.description}
+                            </CardDescription>
                           </CardHeader>
                           <CardContent>
-                            <p className="text-sm text-muted-foreground">By {article.author}</p>
+                            <p className="text-sm text-muted-foreground">
+                              By {article.author}
+                            </p>
                           </CardContent>
                           <CardFooter>
                             <Link href={`/knowledge-base/${article.id}`}>
-                              <Button variant="outline" size="sm" className="w-full">
-                                Read Article <ArrowRight className="ml-1 h-4 w-4" />
+                              <Button
+                                variant="outline"
+                                size="sm"
+                                className="w-full"
+                              >
+                                Read Article{" "}
+                                <ArrowRight className="ml-1 h-4 w-4" />
                               </Button>
                             </Link>
                           </CardFooter>
@@ -129,6 +166,5 @@ export default function KnowledgeBasePage() {
         </div>
       </section>
     </main>
-  )
+  );
 }
-

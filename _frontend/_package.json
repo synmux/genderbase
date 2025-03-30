@@ -9,13 +9,7 @@
     "build": "npm run build:css",
     "start": "npx serve ."
   },
-  "keywords": [
-    "gender",
-    "education",
-    "static",
-    "html",
-    "stimulus"
-  ],
+  "keywords": ["gender", "education", "static", "html", "stimulus"],
   "author": "",
   "license": "MIT",
   "dependencies": {

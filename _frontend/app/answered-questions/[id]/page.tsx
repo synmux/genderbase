@@ -1,16 +1,22 @@
-import Link from "next/link"
-import { ArrowLeft, Calendar } from "lucide-react"
+import Link from "next/link";
+import { ArrowLeft, Calendar } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Separator } from "@/components/ui/separator"
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
 
 // This would typically come from a database or CMS
 const answeredQuestions = {
   aq1: {
     title: "Supporting a Partner During Transition",
     category: "Relationships",
-    tags: ["transgender", "partner support", "transition", "emotional support", "resources"],
+    tags: [
+      "transgender",
+      "partner support",
+      "transition",
+      "emotional support",
+      "resources",
+    ],
     date: "June 10, 2023",
     content: `
       ## Supporting a Partner During Transition
@@ -51,17 +57,24 @@ const answeredQuestions = {
       Remember that every transition journey is unique, and the best support comes from understanding your specific partner's needs and preferences. Regular check-ins about how you can best support each other will strengthen your relationship throughout this significant life change.
     `,
   },
-}
+};
 
-export default function AnsweredQuestionPage({ params }: { params: { id: string } }) {
-  const question = answeredQuestions[params.id as keyof typeof answeredQuestions]
+export default function AnsweredQuestionPage({
+  params,
+}: {
+  params: { id: string };
+}) {
+  const question =
+    answeredQuestions[params.id as keyof typeof answeredQuestions];
 
   if (!question) {
     return (
       <main className="flex-1">
         <div className="container px-4 py-12 md:px-6">
           <h1 className="text-3xl font-bold">Question not found</h1>
-          <p className="mt-4">The question you're looking for doesn't exist or has been moved.</p>
+          <p className="mt-4">
+            The question you're looking for doesn't exist or has been moved.
+          </p>
           <Link href="/answered-questions">
             <Button className="mt-6">
               <ArrowLeft className="mr-2 h-4 w-4" />
@@ -70,7 +83,7 @@ export default function AnsweredQuestionPage({ params }: { params: { id: string 
           </Link>
         </div>
       </main>
-    )
+    );
   }
 
   return (
@@ -83,7 +96,9 @@ export default function AnsweredQuestionPage({ params }: { params: { id: string 
           </Button>
         </Link>
 
-        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">{question.title}</h1>
+        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+          {question.title}
+        </h1>
 
         <div className="mt-4 flex flex-wrap items-center gap-2">
           <Badge variant="secondary">{question.category}</Badge>
@@ -102,13 +117,16 @@ export default function AnsweredQuestionPage({ params }: { params: { id: string 
 
         <div
           className="prose dark:prose-invert max-w-none"
-          dangerouslySetInnerHTML={{ __html: question.content.replace(/\n/g, "<br>") }}
+          dangerouslySetInnerHTML={{
+            __html: question.content.replace(/\n/g, "<br>"),
+          }}
         />
 
         <div className="mt-12 rounded-lg border p-4">
           <h3 className="text-lg font-medium">Was this helpful?</h3>
           <p className="mt-2 text-sm text-muted-foreground">
-            If you have more questions about this topic, you can always ask a new question.
+            If you have more questions about this topic, you can always ask a
+            new question.
           </p>
           <div className="mt-4 flex gap-4">
             <Link href="/ask">
@@ -121,6 +139,5 @@ export default function AnsweredQuestionPage({ params }: { params: { id: string 
         </div>
       </article>
     </main>
-  )
+  );
 }
-

@@ -6,7 +6,7 @@ This repository contains the static HTML/CSS version of Genderbase with Stimulus
 
 The codebase has been converted from a Next.js application to a static HTML/CSS site with Stimulus controllers for dynamic functionality. The structure is as follows:
 
-```
+```plaintext
 genderbase/
 ├── assets/
 │   ├── css/
@@ -50,10 +50,12 @@ rails webpacker:install:stimulus
 ### 2. Copy Assets
 
 1. Copy the CSS files to your Rails app:
+
    - Copy `assets/css/tailwind.css` to `app/assets/stylesheets/tailwind.css`
    - Copy `assets/css/application.css` to `app/assets/stylesheets/application.css`
 
 2. Configure Tailwind CSS in your Rails app:
+
    - Install Tailwind CSS in your Rails app following the [official documentation](https://tailwindcss.com/docs/guides/ruby-on-rails)
 
 3. Copy JavaScript controllers:
@@ -63,10 +65,12 @@ rails webpacker:install:stimulus
 ### 3. Convert HTML to ERB Templates
 
 1. Convert layout files:
+
    - Copy `views/layouts/application.html` to `app/views/layouts/application.html.erb`
    - Update with Rails-specific tags like <%= yield %>, <%= csrf_meta_tags %>, etc.
 
 2. Convert partials:
+
    - Copy `views/partials/_header.html` to `app/views/shared/_header.html.erb`
    - Copy `views/partials/_footer.html` to `app/views/shared/_footer.html.erb`
    - Update with Rails helpers for links, etc.
