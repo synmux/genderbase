@@ -40,15 +40,25 @@ jobs:
     #      - 6379:6379
     #    options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
-      - name: deps
+      - name: apt
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libyaml-dev node-gyp pkg-config python-is-python3 google-chrome-stable
       - name: checkout
         uses: actions/checkout@v4
-      - name: setup
+      - name: ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - name: node
+        uses: actions/setup-node@v4
+        with:
+          node-version: .node-version
+          cache: pnpm
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.7.0
+
       - name: test
         env:
           RAILS_ENV: test
