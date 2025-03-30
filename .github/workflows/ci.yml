@@ -49,16 +49,15 @@ jobs:
         with:
           ruby-version: .ruby-version
           bundler-cache: true
+      - name: pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10.7.0
       - name: node
         uses: actions/setup-node@v4
         with:
           node-version-file: .node-version
           cache: pnpm
-      - name: pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 10.7.0
-
       - name: test
         env:
           RAILS_ENV: test
