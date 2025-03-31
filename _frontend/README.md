@@ -9,26 +9,26 @@ The codebase has been converted from a Next.js application to a static HTML/CSS 
 ```plaintext
 genderbase/
 ├── assets/
-│   ├── css/
-│   │   ├── tailwind.css        # Main CSS file with Tailwind styles
-│   │   └── application.css     # Additional custom styles
-│   ├── js/
-│   │   ├── controllers/        # Stimulus controllers
-│   │   └── application.js      # Main JavaScript file
-│   └── images/                 # Image assets
-├── views/                      # HTML views
-│   ├── layouts/
-│   │   └── application.html    # Main layout template
-│   ├── partials/
-│   │   ├── _header.html        # Header partial
-│   │   ├── _footer.html        # Footer partial
-│   │   └── ...                 # Other partials
-│   ├── pages/
-│   │   ├── index.html          # Homepage
-│   │   ├── knowledge-base.html # Knowledge base page
-│   │   └── ...                 # Other pages
-├── README.md                   # This file
-└── rails-integration.md        # Rails integration guide
+│  ├── css/
+│  │  ├── tailwind.css      # Main CSS file with Tailwind styles
+│  │  └── application.css    # Additional custom styles
+│  ├── js/
+│  │  ├── controllers/      # Stimulus controllers
+│  │  └── application.js    # Main JavaScript file
+│  └── images/            # Image assets
+├── views/               # HTML views
+│  ├── layouts/
+│  │  └── application.html   # Main layout template
+│  ├── partials/
+│  │  ├── _header.html      # Header partial
+│  │  ├── _footer.html      # Footer partial
+│  │  └── ...            # Other partials
+│  ├── pages/
+│  │  ├── index.html       # Homepage
+│  │  ├── knowledge-base.html # Knowledge base page
+│  │  └── ...            # Other pages
+├── README.md             # This file
+└── rails-integration.md      # Rails integration guide
 ```
 
 ## Merging into Rails
@@ -51,34 +51,36 @@ rails webpacker:install:stimulus
 
 1. Copy the CSS files to your Rails app:
 
-   - Copy `assets/css/tailwind.css` to `app/assets/stylesheets/tailwind.css`
-   - Copy `assets/css/application.css` to `app/assets/stylesheets/application.css`
+- Copy `assets/css/tailwind.css` to `app/assets/stylesheets/tailwind.css`
+- Copy `assets/css/application.css` to `app/assets/stylesheets/application.css`
 
 2. Configure Tailwind CSS in your Rails app:
 
-   - Install Tailwind CSS in your Rails app following the [official documentation](https://tailwindcss.com/docs/guides/ruby-on-rails)
+- Install Tailwind CSS in your Rails app following the [official documentation](https://tailwindcss.com/docs/guides/ruby-on-rails)
 
 3. Copy JavaScript controllers:
-   - Copy `assets/js/controllers/` to `app/javascript/controllers/`
-   - Update your `app/javascript/controllers/index.js` to register these controllers
+
+- Copy `assets/js/controllers/` to `app/javascript/controllers/`
+- Update your `app/javascript/controllers/index.js` to register these controllers
 
 ### 3. Convert HTML to ERB Templates
 
 1. Convert layout files:
 
-   - Copy `views/layouts/application.html` to `app/views/layouts/application.html.erb`
-   - Update with Rails-specific tags like <%= yield %>, <%= csrf_meta_tags %>, etc.
+- Copy `views/layouts/application.html` to `app/views/layouts/application.html.erb`
+- Update with Rails-specific tags like <%= yield %>, <%= csrf_meta_tags %>, etc.
 
 2. Convert partials:
 
-   - Copy `views/partials/_header.html` to `app/views/shared/_header.html.erb`
-   - Copy `views/partials/_footer.html` to `app/views/shared/_footer.html.erb`
-   - Update with Rails helpers for links, etc.
+- Copy `views/partials/_header.html` to `app/views/shared/_header.html.erb`
+- Copy `views/partials/_footer.html` to `app/views/shared/_footer.html.erb`
+- Update with Rails helpers for links, etc.
 
 3. Convert page templates:
-   - Create appropriate controllers in Rails
-   - Copy HTML content from `views/pages/` to corresponding `app/views/` directories
-   - Convert to ERB format and use Rails helpers for links, forms, etc.
+
+- Create appropriate controllers in Rails
+- Copy HTML content from `views/pages/` to corresponding `app/views/` directories
+- Convert to ERB format and use Rails helpers for links, forms, etc.
 
 ### 4. Set Up Routes
 
