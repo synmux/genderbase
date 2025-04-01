@@ -1,0 +1,9 @@
+[env]
+GENDERBASE_MISE_ACTIVE = 'true'
+
+[settings]
+env_file = '.env'
+
+[tools]
+node = '23.11.0'
+pnpm = "10.7.1"

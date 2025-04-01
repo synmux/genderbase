@@ -24,7 +24,7 @@
     "esbuild": "^0.25.2"
   },
   "name": "genderbase",
-  "packageManager": "pnpm@10.7.0",
+  "packageManager": "pnpm@10.7.1",
   "private": true,
   "scripts": {
     "build": "pnpx esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
