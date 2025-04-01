@@ -4,6 +4,9 @@
     "name": "Dave Williams",
     "url": "https://github.com/daveio"
   },
+  "engines": {
+    "node": "~23.11.0"
+  },
   "license": "MIT",
   "licenses": [
     {
@@ -19,9 +22,6 @@
   },
   "devDependencies": {
     "esbuild": "^0.25.2"
-  },
-  "engines": {
-    "node": ">=22"
   },
   "name": "genderbase",
   "packageManager": "pnpm@10.7.0",
