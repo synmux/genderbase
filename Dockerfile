@@ -16,7 +16,7 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl=7.88.1-10+deb12u5 libjemalloc2=5.3.0-2 libvips=8.13.3-1+b2 sqlite3=3.40.1-2 && \
+    apt-get install --no-install-recommends -y curl=7.88.1-10+deb12u12 libjemalloc2=5.3.0-1 libvips42=8.14.1-3+deb12u1 sqlite3=3.40.1-2+deb12u1 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
@@ -33,7 +33,7 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential=12.9 git=1:2.39.2-1.1 libyaml-dev=0.2.5-1 node-gyp=9.3.1+ds1-1 pkg-config=1.8.1-1 python-is-python3=3.11.2-3 && \
+    apt-get install --no-install-recommends -y build-essential=12.9 git=1:2.39.5-0+deb12u2 libyaml-dev=0.2.5-1 node-gyp=9.3.0-2 pkg-config=1.8.1-1 python-is-python3=3.11.2-1+deb12u1 && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install JavaScript dependencies
