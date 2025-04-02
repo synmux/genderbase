@@ -12,7 +12,7 @@ ruby = { version = '3.4.2' }
 
 [tasks]
 dev = 'foreman start -f Procfile.dev'
-"prepare-ci" = 'gem install bundler; bundle install; bundle binstubs --all; pnpm install --verify-store-integrity'
+prepare-ci = 'gem install bundler; bundle install; bundle binstubs --all; pnpm install --verify-store-integrity'
 'ci:brakeman' = { run = 'bin/brakeman --no-pager' }
 'ci:rubocop' = { run = 'bin/rubocop -f github' }
 'ci:test' = { env = { RAILS_ENV = 'test' }, run = 'bin/rails db:test:prepare test test:system' }
