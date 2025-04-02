@@ -1,24 +1,25 @@
-# README
+# Genderbase
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Dependencies
 
-Things you may want to cover:
+Recommended tools:
 
-- Ruby version
+- [`jdx/mise`](https://github.com/jdx/mise): Dependency manager and task runner; `asdf`, but better
 
-- System dependencies
+This will be installed automatically by `bin/mise` which will bootstrap `mise` if needed, and run it if it's already installed.
 
-- Configuration
+`mise` is also used in the GitHub Actions workflow to run the CI tests.
 
-- Database creation
+Required tools:
 
-- Database initialization
+See `mise.toml` for recommended versions. Install them all with `bin/mise install`.
 
-- How to run the test suite
+- [`foreman`](https://github.com/ddollar/foreman): Process manager
+- [`node`](https://nodejs.org/): JavaScript runtime
+- [`pnpm`](https://pnpm.io/): JavaScript package manager
+- [`redis`](https://redis.io/): Fast in-memory key-value store
+- [`ruby`](https://www.ruby-lang.org/): Ruby runtime
 
-- Services (job queues, cache servers, search engines, etc.)
+## Development
 
-- Deployment instructions
-
-- ...
+Start the development server with `bin/mise dev`.

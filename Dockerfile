@@ -16,54 +16,51 @@ WORKDIR /rails
 
 # Install base packages
 RUN apt-get update -qq && \
-  apt-get install --no-install-recommends -y curl libjemalloc2 libvips sqlite3 && \
-  rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y curl=7.88.1-10+deb12u5 libjemalloc2=5.3.0-2 libvips=8.13.3-1+b2 sqlite3=3.40.1-2 && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Set production environment
 ENV RAILS_ENV="production" \
-  BUNDLE_DEPLOYMENT="1" \
-  BUNDLE_PATH="/usr/local/bundle" \
-  BUNDLE_WITHOUT="development"
+    BUNDLE_DEPLOYMENT="1" \
+    BUNDLE_PATH="/usr/local/bundle" \
+    BUNDLE_WITHOUT="development"
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build
 
+# Set shell options
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 # Install packages needed to build gems and node modules
 RUN apt-get update -qq && \
-  apt-get install --no-install-recommends -y build-essential git libyaml-dev node-gyp pkg-config python-is-python3 && \
-  rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y build-essential=12.9 git=1:2.39.2-1.1 libyaml-dev=0.2.5-1 node-gyp=9.3.1+ds1-1 pkg-config=1.8.1-1 python-is-python3=3.11.2-3 && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=23.10.0
 ARG PNPM_VERSION=10.7.0
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
-  /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
-  rm -rf /tmp/node-build-master
-RUN corepack enable && pnpm set version $PNPM_VERSION
+    /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
+    rm -rf /tmp/node-build-master && \
+    corepack enable && \
+    pnpm set version $PNPM_VERSION
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
-RUN bundle install && \
-  rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
-  bundle exec bootsnap precompile --gemfile
-
-# Install node modules
 COPY package.json pnpm-lock.yaml ./
-RUN pnpm install --frozen-lockfile
+
+RUN bundle install && \
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    bundle exec bootsnap precompile --gemfile && \
+    pnpm install --frozen-lockfile
 
 # Copy application code
 COPY . .
 
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
-
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
-
-
-RUN rm -rf node_modules
-
+RUN bundle exec bootsnap precompile app/ lib/ && \
+    SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && \
+    rm -rf node_modules
 
 # Final stage for app image
 FROM base
@@ -74,8 +71,8 @@ COPY --from=build /rails /rails
 
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
-  useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
-  chown -R rails:rails db log storage tmp
+    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
+    chown -R rails:rails db log storage tmp
 USER 1000:1000
 
 # Entrypoint prepares the database.
@@ -83,4 +80,6 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start server via Thruster by default, this can be overwritten at runtime
 EXPOSE 80
+# Add health check for the Rails server
+HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 CMD curl -f http://localhost:80/up || exit 1
 CMD ["./bin/thrust", "./bin/rails", "server"]

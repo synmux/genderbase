@@ -17,8 +17,8 @@
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.13",
-    "@tailwindcss/cli": "^4.0.17",
-    "tailwindcss": "^4.0.17"
+    "@tailwindcss/cli": "^4.1.1",
+    "tailwindcss": "^4.1.1"
   },
   "devDependencies": {
     "esbuild": "^0.25.2"
@@ -27,7 +27,8 @@
   "packageManager": "pnpm@10.7.1",
   "private": true,
   "scripts": {
-    "build": "pnpx esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
+    "build": "pnpm run build:js && pnpm run build:css",
+    "build:js": "pnpx esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets",
     "build:css": "pnpx @tailwindcss/cli -i ./app/assets/stylesheets/application.tailwind.css -o ./app/assets/builds/application.css --minify"
   },
   "type": "module"
