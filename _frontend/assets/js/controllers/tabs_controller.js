@@ -8,9 +8,7 @@ export default class extends Controller {
     // Set default tab on load
     if (this.triggerTargets.length > 0) {
       const defaultTab =
-        this.triggerTargets.find(
-          (el) => el.getAttribute("data-default") === "true",
-        ) || this.triggerTargets[0];
+        this.triggerTargets.find((el) => el.getAttribute("data-default") === "true") || this.triggerTargets[0];
       this.select({ currentTarget: defaultTab });
     }
   }

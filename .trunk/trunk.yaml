@@ -2,7 +2,7 @@
 # To learn more about the format of this file, see https://docs.trunk.io/reference/trunk-yaml
 version: 0.1
 cli:
-  version: 1.22.11
+  version: 1.22.12
 # Trunk provides extensibility via plugins. (https://docs.trunk.io/plugins)
 plugins:
   sources:
@@ -11,13 +11,18 @@ plugins:
       uri: https://github.com/trunk-io/plugins
 # Many linters and tools depend on runtimes - configure them here. (https://docs.trunk.io/runtimes)
 runtimes:
-  enabled: []
+  enabled:
+    - go@1.21.0
+    - node@18.20.5
+    - python@3.10.8
+    - ruby@3.1.4
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
   enabled:
+    - taplo@0.9.3
     - actionlint@1.7.7
     - brakeman@5.4.0
-    - checkov@3.2.394
+    - checkov@3.2.396
     - git-diff-check
     - hadolint@2.12.1-beta
     - markdownlint@0.44.0

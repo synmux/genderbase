@@ -4,10 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ask a Question - Genderbase</title>
-    <meta
-      name="description"
-      content="Submit your questions about gender topics"
-    />
+    <meta name="description" content="Submit your questions about gender topics" />
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="/assets/css/tailwind.css" />
@@ -36,24 +33,14 @@
         <div class="container max-w-3xl px-4 py-12 md:py-16 lg:py-24">
           <div class="space-y-6">
             <div class="space-y-2 text-center">
-              <h1
-                class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl"
-              >
-                Ask a Question
-              </h1>
+              <h1 class="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">Ask a Question</h1>
               <p class="text-gray-500 md:text-lg dark:text-gray-400">
-                Submit your question and get a thoughtful, respectful answer
-                from our team of volunteers.
+                Submit your question and get a thoughtful, respectful answer from our team of volunteers.
               </p>
             </div>
 
             <div class="mx-auto max-w-lg">
-              <form
-                data-controller="form"
-                action="/api/questions"
-                method="POST"
-                class="space-y-6"
-              >
+              <form data-controller="form" action="/api/questions" method="POST" class="space-y-6">
                 <div class="space-y-2">
                   <label
                     for="title"
@@ -85,8 +72,7 @@
                     class="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   ></textarea>
                   <p class="text-xs text-muted-foreground">
-                    Please be specific and include any context that would help
-                    our responders provide a helpful answer.
+                    Please be specific and include any context that would help our responders provide a helpful answer.
                   </p>
                 </div>
 
@@ -120,8 +106,7 @@
                     class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                   />
                   <p class="text-xs text-muted-foreground">
-                    We'll never share your email with anyone else or use it for
-                    marketing purposes.
+                    We'll never share your email with anyone else or use it for marketing purposes.
                   </p>
                 </div>
 
@@ -136,13 +121,9 @@
 
                 <p class="text-center text-sm text-muted-foreground">
                   By submitting a question, you agree to our
-                  <a href="/terms" class="underline underline-offset-4"
-                    >Terms of Service</a
-                  >
+                  <a href="/terms" class="underline underline-offset-4">Terms of Service</a>
                   and
-                  <a href="/privacy" class="underline underline-offset-4"
-                    >Privacy Policy</a
-                  >.
+                  <a href="/privacy" class="underline underline-offset-4">Privacy Policy</a>.
                 </p>
               </form>
             </div>

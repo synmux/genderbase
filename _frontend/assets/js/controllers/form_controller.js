@@ -26,9 +26,7 @@ export default class extends Controller {
     const formData = new FormData(form);
 
     // Show loading state
-    const submitButton = this.hasSubmitTarget
-      ? this.submitTarget
-      : form.querySelector('[type="submit"]');
+    const submitButton = this.hasSubmitTarget ? this.submitTarget : form.querySelector('[type="submit"]');
     submitButton.disabled = true;
     submitButton.textContent = "Submitting...";
 

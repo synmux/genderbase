@@ -1,9 +1,12 @@
 /** @type {import('tailwindcss').Config} */
-import typography from "@tailwindcss/typography";
-
-export default {
+module.exports = {
   darkMode: "class",
-  content: ["./views/**/*.{html,js}", "./assets/js/**/*.js"],
+  content: [
+    "./app/views/**/*.{erb,haml,html,slim}",
+    "./app/helpers/**/*.rb",
+    "./app/javascript/**/*.js",
+    "./app/assets/stylesheets/**/*.css",
+  ],
   theme: {
     container: {
       center: true,
@@ -58,5 +61,9 @@ export default {
       },
     },
   },
-  plugins: [typography],
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("tailwindcss-animate"),
+    // Add other plugins as needed
+  ],
 };
