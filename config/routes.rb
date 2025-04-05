@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get "terminology/index"
+  get "knowledge/index"
+  get "knowledge/show"
+  resources :answers
+  resources :articles
+  resources :questions
+  resource :session
+  resources :passwords, param: :token
   get "/.well-known", controller: :well_known, action: :index, as: :well_known_index
   get "/.well-known/security", controller: :well_known, action: :security, as: :well_known_security
   get "/.well-known/webfinger", controller: :well_known, action: :webfinger, as: :well_known_webfinger
