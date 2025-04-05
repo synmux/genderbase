@@ -1,34 +1,53 @@
 <!DOCTYPE html>
-<html lang="en" class="<%= h(['dark', 'light'].include?(cookies[:theme]) ? cookies[:theme] : 'light') %>">
+<html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title><%= content_for(:title) || "Genderbase" %></title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="description" content="Educational resources about topics of gender">
+  <title><%= content_for(:title) || "Genderbase" %></title>
+  <%# Includes all stylesheet files in app/assets/stylesheets %>
+  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+  <meta charset="utf-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-mobile-web-app-title" content="Genderbase" />
+  <meta name="application-name" content="Genderbase" />
+  <meta name="author" content="Genderbase" />
+  <meta name="color-scheme" content="dark light" />
+  <meta name="description" content="Educational resources about topics of gender. Contains a knowledge base and a way to ask questions of vetted experts." />
+  <meta name="format-detection" content="telephone=yes" />
+  <meta name="keywords" content="gender, education, resources, genderbase" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="og:description" content="Educational resources about topics of gender. Contains a knowledge base and a way to ask questions of vetted experts." />
+  <meta name="og:image:alt" content="Genderbase" />
+  <meta name="og:image:height" content="2000" />
+  <meta name="og:image:type" content="image/png" />
+  <meta name="og:image:width" content="2000" />
+  <meta name="og:image" content="<%= image_url("genderbase-logo.png") %>" />
+  <meta name="og:locale" content="en_GB" />
+  <meta name="og:site_name" content="Genderbase" />
+  <meta name="og:title" content="Genderbase" />
+  <meta name="og:type" content="website" />
+  <meta name="og:url" content="<%= canonical_url %>" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#000000">
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag :app, "tailwind", "inter-font", "data-turbo-track": "reload" %>
-  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-  <link rel="icon" href="/icon.png" type="image/png">
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/icon.png">
-  <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-  <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+
   <%= yield :head %>
+
+  <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+  <link rel="canonical" href="<%= canonical_url %>" />
+  <link rel="icon" href="<%= image_url("genderbase-logo.png") %>" type="image/png" />
+  <link rel="icon" href="<%= image_url("genderbase-logo.svg") %>" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="<%= image_url("genderbase-logo.png") %>" />
+
 </head>
 
-<body class="min-h-screen bg-background font-sans antialiased">
-  <div class="relative flex min-h-screen flex-col" data-controller="theme">
-    <%= render 'shared/header' %>
-    <div class="flex-1">
-      <%= yield %>
-    </div>
-    <%= render 'shared/footer' %>
-  </div>
+<body>
+  <%= yield %>
 </body>
 
 </html>

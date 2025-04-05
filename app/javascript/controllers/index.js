@@ -6,9 +6,3 @@ import { application } from "./application";
 
 import HelloController from "./hello_controller";
 application.register("hello", HelloController);
-
-import TabsController from "./tabs_controller";
-application.register("tabs", TabsController);
-
-import ThemeController from "./theme_controller";
-application.register("theme", ThemeController);
