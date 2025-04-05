@@ -311,7 +311,7 @@ GEM
       logger
     rubyzip (2.4.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.30.1)
+    selenium-webdriver (4.31.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -415,19 +415,19 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  bcrypt (~> 3.1.7)
+  bcrypt
   bootsnap
   brakeman
   capybara
   cssbundling-rails
   debug
   foreman
-  image_processing (~> 1.2)
+  image_processing
   jbuilder
   jsbundling-rails
   kamal
   propshaft
-  puma (>= 5.0)
+  puma
   rails (~> 8.0.2)
   rubocop
   rubocop-rails-omakase
@@ -436,7 +436,7 @@ DEPENDENCIES
   solid_cable
   solid_cache
   solid_queue
-  sqlite3 (>= 2.1)
+  sqlite3
   stimulus-rails
   thruster
   turbo-rails
