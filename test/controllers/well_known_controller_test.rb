@@ -12,12 +12,12 @@ class WellKnownControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get ai.txt" do
-    get well_known_ai_url
+    get ai_url
     assert_response :success
   end
 
   test "should get ads.txt" do
-    get well_known_ads_url
+    get ads_url
     assert_response :success
   end
 
@@ -27,17 +27,12 @@ class WellKnownControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get humans.txt" do
-    get well_known_humans_url
+    get humans_url
     assert_response :success
   end
 
   test "should get well-known robots.txt" do
-    get well_known_robots_url
-    assert_response :success
-  end
-
-  test "should get root robots.txt" do
-    get root_robots_url
+    get robots_url
     assert_response :success
   end
 end
