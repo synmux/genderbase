@@ -1,18 +1,26 @@
 Rails.application.routes.draw do
-  get "/index", controller: :home, action: :index
-  get "/about", controller: :home, action: :about
-  get "/team", controller: :home, action: :team
-  get "/privacy", controller: :home, action: :privacy
-  get "/volunteer", controller: :home, action: :volunteer
-  get "/security", controller: :home, action: :security
-  get "/.well-known", controller: :well_known, action: :index, defaults: { format: "txt" }
-  get "/.well-known/ads.txt", controller: :well_known, action: :ads, defaults: { format: "txt" }
-  get "/.well-known/ai.txt", controller: :well_known, action: :ai, defaults: { format: "txt" }
-  get "/.well-known/humans.txt", controller: :well_known, action: :humans, defaults: { format: "txt" }
-  get "/.well-known/robots.txt", controller: :well_known, action: :robots, defaults: { format: "txt" }
-  get "/.well-known/security.txt", controller: :well_known, action: :security, defaults: { format: "txt" }
-  get "/.well-known/webfinger", controller: :well_known, action: :webfinger, defaults: { format: "txt" }
-  get "/robots.txt", controller: :well_known, action: :robots, defaults: { format: "txt" }
+  get "/index", controller: :home, action: :index, as: :home_index
+  get "/about", controller: :home, action: :about, as: :home_about
+  get "/team", controller: :home, action: :team, as: :home_team
+  get "/privacy", controller: :home, action: :privacy, as: :home_privacy
+  get "/volunteer", controller: :home, action: :volunteer, as: :home_volunteer
+  get "/security", controller: :home, action: :security, as: :home_security
+  get "/.well-known", controller: :well_known, action: :index,
+                      defaults: { format: "txt" }, as: :well_known_index
+  get "/.well-known/ads.txt", controller: :well_known, action: :ads,
+                              defaults: { format: "txt" }, as: :well_known_ads
+  get "/.well-known/ai.txt", controller: :well_known, action: :ai,
+                              defaults: { format: "txt" }, as: :well_known_ai
+  get "/.well-known/humans.txt", controller: :well_known, action: :humans,
+                                defaults: { format: "txt" }, as: :well_known_humans
+  get "/.well-known/robots.txt", controller: :well_known, action: :robots,
+                                defaults: { format: "txt" }, as: :well_known_robots
+  get "/.well-known/security.txt", controller: :well_known, action: :security,
+                                  defaults: { format: "txt" }, as: :well_known_security
+  get "/.well-known/webfinger", controller: :well_known, action: :webfinger,
+                                defaults: { format: "txt" }, as: :well_known_webfinger
+  get "/robots.txt",  controller: :well_known, action: :robots,
+                      defaults: { format: "txt" }, as: :root_robots
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "home#index"

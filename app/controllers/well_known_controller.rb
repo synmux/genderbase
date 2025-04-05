@@ -33,7 +33,7 @@ class WellKnownController < ApplicationController
     username, domain = identifier.split("@", 2)
 
     # Verify domain matches our domain
-    unless domain == request.host
+    unless domain == "genderbase.com"
       render  json: { error: "Domain does not match" },
               status: :not_found,
               content_type: "application/jrd+json",
@@ -55,7 +55,7 @@ class WellKnownController < ApplicationController
     response = {
       subject: resource,
       aliases: [
-        "https://#{request.host}",
+        "https://genderbase.com",
         "https://dave.io"
       ],
       properties: {
