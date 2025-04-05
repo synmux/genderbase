@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="<%= html_escape(cookies[:theme]) || 'light' %>">
+<html lang="en" class="<%= h(['dark', 'light'].include?(cookies[:theme]) ? cookies[:theme] : 'light') %>">
 
 <head>
   <meta charset="UTF-8">
