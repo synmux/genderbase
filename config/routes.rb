@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :responders
   get "/.well-known", controller: :well_known, action: :index, as: :well_known_index
   get "/.well-known/security", controller: :well_known, action: :security, as: :well_known_security
   get "/.well-known/webfinger", controller: :well_known, action: :webfinger, as: :well_known_webfinger

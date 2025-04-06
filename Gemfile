@@ -92,3 +92,5 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "devise-argon2", "~> 2.0"
