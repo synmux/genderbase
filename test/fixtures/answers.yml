@@ -2,10 +2,8 @@
 
 one:
   content: MyText
-  responder: one
   question: one
 
 two:
   content: MyText
-  responder: two
   question: two

@@ -25,6 +25,10 @@ This will be installed automatically by `bin/mise` which will bootstrap `mise` i
 
 Start the development server with `bin/mise dev`.
 
+## TODO
+
+- [ ] Fix the Answer model to refer to a Responder when we have a Responder model (ie a User)
+
 ## Notes
 
 ### Devise views
