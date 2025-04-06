@@ -32,22 +32,22 @@
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#000000">
-
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
   <%= yield :head %>
-
   <%= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
   <link rel="canonical" href="<%= canonical_url %>" />
   <link rel="icon" href="<%= image_url("genderbase-logo.png") %>" type="image/png" />
   <link rel="icon" href="<%= image_url("genderbase-logo.svg") %>" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="<%= image_url("genderbase-logo.png") %>" />
-
 </head>
 
 <body>
+  <%= render "shared/header" %>
+  <%= render "shared/nav" %>
+  <%= render "shared/flash" %>
   <%= yield %>
+  <%= render "shared/footer" %>
 </body>
 
 </html>

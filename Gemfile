@@ -81,3 +81,5 @@ group :test do
   # WebDriver for Capybara [https://github.com/SeleniumHQ/selenium]
   gem "selenium-webdriver"
 end
+
+gem "devise", "~> 4.9"

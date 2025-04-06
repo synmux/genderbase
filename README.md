@@ -25,6 +25,12 @@ This will be installed automatically by `bin/mise` which will bootstrap `mise` i
 
 Start the development server with `bin/mise dev`.
 
+## Notes
+
+### Devise views
+
+These can be generated for editing with `bin/rails g devise:views`.
+
 ## Tasks
 
 This section is interpreted by [**`joerdav/xc`**](https://github.com/joerdav/xc) as an alternative to [**`jdx/mise`**](https://github.com/jdx/mise).
