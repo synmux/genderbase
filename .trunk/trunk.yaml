@@ -33,7 +33,6 @@ lint:
       paths:
         - bin/mise
   enabled:
-    - rails-test
     - taplo@0.9.3
     - actionlint@1.7.7
     - brakeman@5.4.0
@@ -56,3 +55,13 @@ actions:
     - trunk-check-pre-push
     - trunk-fmt-pre-commit
     - trunk-upgrade-available
+    - trunk-cache-prune
+    - git-lfs
+    - rails-test
+  definitions:
+    - id: rails-test
+      display_name: Rails Test
+      run: bin/rails test
+      triggers:
+        - git_hooks:
+            - pre-commit

@@ -16,7 +16,6 @@ class AnswersTest < ApplicationSystemTestCase
 
     fill_in "Content", with: @answer.content
     fill_in "Question", with: @answer.question_id
-    fill_in "Responder", with: @answer.responder_id
     click_on "Create Answer"
 
     assert_text "Answer was successfully created"
@@ -29,7 +28,6 @@ class AnswersTest < ApplicationSystemTestCase
 
     fill_in "Content", with: @answer.content
     fill_in "Question", with: @answer.question_id
-    fill_in "Responder", with: @answer.responder_id
     click_on "Update Answer"
 
     assert_text "Answer was successfully updated"
