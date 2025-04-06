@@ -1,12 +1,4 @@
 Rails.application.routes.draw do
-  get "terminology/index"
-  get "knowledge/index"
-  get "knowledge/show"
-  resources :answers
-  resources :articles
-  resources :questions
-  resource :session
-  resources :passwords, param: :token
   get "/.well-known", controller: :well_known, action: :index, as: :well_known_index
   get "/.well-known/security", controller: :well_known, action: :security, as: :well_known_security
   get "/.well-known/webfinger", controller: :well_known, action: :webfinger, as: :well_known_webfinger
@@ -15,11 +7,17 @@ Rails.application.routes.draw do
   get "/ai", controller: :well_known, action: :ai, as: :ai
   get "/humans", controller: :well_known, action: :humans, as: :humans
   get "/index", controller: :home, action: :index, as: :home_index
+  get "/knowledge", controller: :knowledge, action: :index, as: :knowledge_index
+  get "/knowledge/show", controller: :knowledge, action: :show, as: :knowledge_show
   get "/privacy", controller: :home, action: :privacy, as: :home_privacy
   get "/robots", controller: :well_known, action: :robots, as: :robots
   get "/security", controller: :home, action: :security, as: :home_security
   get "/team", controller: :home, action: :team, as: :home_team
+  get "/terminology", controller: :terminology, action: :index, as: :terminology_index
   get "/volunteer", controller: :home, action: :volunteer, as: :home_volunteer
+  resources :answers
+  resources :articles
+  resources :questions
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "home#index", as: :root

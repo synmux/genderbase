@@ -30,20 +30,11 @@ class WellKnownController < ApplicationController
 
     # Parse username and domain from acct URI
     _, identifier = @resource.split(":", 2)
-    username, domain = identifier.split("@", 2)
+    domain = identifier.split("@", 2).last
 
     # Verify domain matches our domain
-    unless domain == "genderbase.com"
+    unless domain == "genderbase.com" || domain == "basilisk.gallery"
       render  json: { error: "Domain does not match" },
-              status: :not_found,
-              content_type: "application/jrd+json",
-              layout: false
-      return
-    end
-
-    # Static user because I'm lazy
-    unless username == "dave"
-      render  json: { error: "User not found" },
               status: :not_found,
               content_type: "application/jrd+json",
               layout: false
