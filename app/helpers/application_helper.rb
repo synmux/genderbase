@@ -7,4 +7,12 @@ module ApplicationHelper
       path
     end
   end
+
+  def hotwire_livereload_value
+    if Rails.env.production?
+      "reload"
+    else
+      ""
+    end
+  end
 end

@@ -67,11 +67,20 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
+
+  # Pry console [https://github.com/pry/pry]
+  gem "pry", require: false
+
+  # Pry themes [https://github.com/pry/pry-theme]
+  gem "pry-theme", require: false
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
+  # Livereload for Hotwire [https://github.com/hotwired/hotwire-livereload]
+  gem "hotwire-livereload"
 end
 
 group :test do
