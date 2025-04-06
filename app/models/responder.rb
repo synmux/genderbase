@@ -3,5 +3,9 @@ class Responder < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable,
-          :argon2
+          :zxcvbnable, :argon2
+
+  def weak_words
+    [ "genderbase", self.name, self.username ]
+  end
 end

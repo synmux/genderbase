@@ -118,6 +118,9 @@ GEM
     devise-argon2 (2.0.3)
       argon2 (~> 2.1)
       devise (~> 4.0)
+    devise_zxcvbn (6.0.0)
+      devise
+      zxcvbn (~> 0.1.7)
     diff-lcs (1.6.1)
     dotenv (3.1.7)
     drb (2.2.1)
@@ -440,6 +443,7 @@ GEM
     yard-solargraph (0.1.0)
       yard (~> 0.9)
     zeitwerk (2.7.2)
+    zxcvbn (0.1.13)
 
 PLATFORMS
   aarch64-linux
@@ -461,6 +465,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   devise-argon2 (~> 2.0)
+  devise_zxcvbn (~> 6.0)
   foreman
   hotwire-livereload
   image_processing
