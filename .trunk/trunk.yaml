@@ -18,12 +18,22 @@ runtimes:
     - ruby@3.1.4
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
+  definitions:
+    - name: rails-test
+      files:
+        - ALL
+      commands:
+        - name: rails-test
+          output: pass_fail
+          run: bin/rails test
+          success_codes: [0, 1]
   ignore:
     - linters:
         - shellcheck
       paths:
         - bin/mise
   enabled:
+    - rails-test
     - taplo@0.9.3
     - actionlint@1.7.7
     - brakeman@5.4.0
