@@ -17,10 +17,10 @@ class WellKnownController < ApplicationController
     end
 
     # Parse the resource parameter (acct:user@domain or other URI)
-    resource = params[:resource]
+    @resource = params[:resource]
 
     # Handle only acct: URIs for now
-    unless resource.start_with?("acct:")
+    unless @resource.start_with?("acct:")
       render  json: { error: "Only acct: URIs are supported" },
               status: :not_found,
               content_type: "application/jrd+json",
@@ -29,7 +29,7 @@ class WellKnownController < ApplicationController
     end
 
     # Parse username and domain from acct URI
-    _, identifier = resource.split(":", 2)
+    _, identifier = @resource.split(":", 2)
     username, domain = identifier.split("@", 2)
 
     # Verify domain matches our domain
@@ -41,8 +41,7 @@ class WellKnownController < ApplicationController
       return
     end
 
-    # Find the user (implement your user lookup logic here)
-    # For now, we'll just handle a demo user
+    # Static user because I'm lazy
     unless username == "dave"
       render  json: { error: "User not found" },
               status: :not_found,
@@ -51,34 +50,14 @@ class WellKnownController < ApplicationController
       return
     end
 
-    # Construct WebFinger response
-    response = {
-      subject: resource,
-      aliases: [
-        "https://genderbase.com",
-        "https://dave.io"
-      ],
-      properties: {
-        "http://schema.org/name": "Dave Williams",
-        "http://schema.org/url": "https://dave.io"
-      },
-      links: [
-        {
-          rel: "http://webfinger.net/rel/avatar",
-          type: "image/jpeg",
-          href: "https://dave.io/assets/self-2-DqTiiwBm.jpg"
-        },
-        {
-          rel: "http://webfinger.net/rel/profile-page",
-          type: "text/html",
-          href: "https://basilisk.gallery/@dave"
-        }
-      ]
-    }
-
-    render  json: response,
-            content_type: "application/jrd+json; charset=utf-8",
-            layout: false
+    # Render using Jbuilder template
+    respond_to do |format|
+      format.json do
+        render  formats: :json,
+                content_type: "application/jrd+json; charset=utf-8",
+                layout: false
+      end
+    end
   end
 
   def ai
