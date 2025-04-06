@@ -2,6 +2,7 @@
 
 one:
   title: MyString
+  question: one
   description: MyText
   content: MyText
   category: MyString
@@ -10,6 +11,7 @@ one:
 
 two:
   title: MyString
+  question: two
   description: MyText
   content: MyText
   category: MyString

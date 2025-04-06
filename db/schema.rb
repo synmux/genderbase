@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_05_225649) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_06_160454) do
   create_table "answers", force: :cascade do |t|
     t.text "content"
     t.integer "question_id", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_05_225649) do
 
   create_table "articles", force: :cascade do |t|
     t.string "title"
+    t.integer "question_id", null: false
     t.text "description"
     t.text "content"
     t.string "category"
@@ -28,6 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_05_225649) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index [ "question_id" ], name: "index_articles_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -40,4 +42,5 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_05_225649) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "articles", "questions"
 end

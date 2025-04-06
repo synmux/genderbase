@@ -18,6 +18,7 @@ class ArticlesTest < ApplicationSystemTestCase
     fill_in "Category", with: @article.category
     fill_in "Content", with: @article.content
     fill_in "Description", with: @article.description
+    fill_in "Question", with: @article.question_id
     fill_in "Slug", with: @article.slug
     fill_in "Title", with: @article.title
     click_on "Create Article"
@@ -34,6 +35,7 @@ class ArticlesTest < ApplicationSystemTestCase
     fill_in "Category", with: @article.category
     fill_in "Content", with: @article.content
     fill_in "Description", with: @article.description
+    fill_in "Question", with: @article.question_id
     fill_in "Slug", with: @article.slug
     fill_in "Title", with: @article.title
     click_on "Update Article"
