@@ -37,8 +37,10 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_06_212817) do
     t.text "content"
     t.string "status"
     t.boolean "anonymous"
+    t.integer "responder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index [ "responder_id" ], name: "index_questions_on_responder_id"
   end
 
   create_table "responders", force: :cascade do |t|
@@ -49,10 +51,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_06_212817) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "questions_id"
     t.index [ "email" ], name: "index_responders_on_email", unique: true
+    t.index [ "questions_id" ], name: "index_responders_on_questions_id"
     t.index [ "reset_password_token" ], name: "index_responders_on_reset_password_token", unique: true
   end
 
   add_foreign_key "answers", "questions"
   add_foreign_key "articles", "questions"
+  add_foreign_key "questions", "responders"
+  add_foreign_key "responders", "questions", column: "questions_id"
 end

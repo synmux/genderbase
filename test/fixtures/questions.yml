@@ -5,9 +5,10 @@ one:
   content: MyText
   status: MyString
   anonymous: false
-
+  responder: one
 two:
   title: MyString
   content: MyText
   status: MyString
   anonymous: false
+  responder: two
