@@ -6,6 +6,11 @@
   <title><%= content_for(:title) || "Genderbase" %></title>
   <%# Includes all stylesheet files in app/assets/stylesheets %>
   <%= stylesheet_link_tag :app, "data-turbo-track": hotwire_livereload_value %>
+  <%
+=begin
+  <link href="tailwind_theme/tailwind.css" rel="stylesheet" type="text/css">
+=end
+  %>
   <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
   <meta charset="utf-8" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -42,12 +47,10 @@
   <link rel="apple-touch-icon" href="<%= image_url("genderbase-logo.png") %>" />
 </head>
 
-<body>
-  <%= render "shared/header" %>
-  <%= render "shared/nav" %>
-  <%= render "shared/flash" %>
+<body class="font-sans bg-slate-50 text-slate-800">
+  <%= render 'shared/header' %>
   <%= yield %>
-  <%= render "shared/footer" %>
+  <%= render 'shared/footer' %>
 </body>
 
 </html>
