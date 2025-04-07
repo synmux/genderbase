@@ -463,9 +463,9 @@ DEPENDENCIES
   capybara
   cssbundling-rails
   debug
-  devise (~> 4.9)
-  devise-argon2 (~> 2.0)
-  devise_zxcvbn (~> 6.0)
+  devise
+  devise-argon2
+  devise_zxcvbn
   foreman
   hotwire-livereload
   image_processing
