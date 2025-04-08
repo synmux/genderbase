@@ -7,7 +7,9 @@
 @import url("https://fonts.googleapis.com/css?family=Sora:100,200,300,400,500,600,700,800&display=swap");
 
 @plugin "daisyui" {
-  themes: dracula --default;
+  themes:
+    light --default,
+    dark --prefersdark;
 }
 
 @layer base {
