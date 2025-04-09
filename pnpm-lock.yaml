@@ -28,8 +28,8 @@ importers:
         specifier: ^10.4.21
         version: 10.4.21(postcss@8.5.3)
       daisyui:
-        specifier: ^5.0.16
-        version: 5.0.16
+        specifier: ^5.0.17
+        version: 5.0.17
       esbuild:
         specifier: ^0.25.2
         version: 0.25.2
@@ -390,8 +390,8 @@ packages:
     engines: {node: '>=4'}
     hasBin: true
 
-  daisyui@5.0.16:
-    resolution: {integrity: sha512-MQiZQ21+r91zrKv3fxDOF56dzkfrr2FyXOaR/1T4f9AIeI/ilkc0i+UqOIE/VqjIfkWyq+wBPmBcyIf6iPJpYQ==}
+  daisyui@5.0.17:
+    resolution: {integrity: sha512-YV5PjYfIxvc6V35WEDn06y9KMpPXGSNgw5mckuV+RwKi0VCZlmGT3fY6gQFTcQDFCcPkJ8TOpEJHDBABI2C/dw==}
 
   detect-libc@1.0.3:
     resolution: {integrity: sha512-pGjwhsmsp4kL2RTz08wcOlGN83otlqHeD/Z5T8GXZB+/YcpQ/dgo+lbU8ZsGxV0HIvqqxo9l7mqYwyYMD9bKDg==}
@@ -827,7 +827,7 @@ snapshots:
 
   cssesc@3.0.0: {}
 
-  daisyui@5.0.16: {}
+  daisyui@5.0.17: {}
 
   detect-libc@1.0.3: {}
 
