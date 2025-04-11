@@ -60,11 +60,11 @@ class QuestionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
-      @question = Question.find(params.expect(:id))
+      @question = Question.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.expect(question: [ :title, :content, :status, :anonymous, :email ])
+      params.require(:question).permit(:title, :content, :status, :anonymous, :email)
     end
 end
