@@ -1,0 +1,90 @@
+<div class="container mx-auto px-4 py-12">
+  <h1 class="text-3xl font-bold mb-6">Support Genderbase with a Donation</h1>
+
+  <div class="prose lg:prose-xl max-w-4xl mb-10">
+    <p class="text-xl mb-8">Your financial support helps us maintain and grow our platform, ensuring gender information remains accessible to everyone who needs it.</p>
+
+    <p class="mb-4">Genderbase is a non-profit initiative that relies on the generosity of our community. We're committed to keeping our resources free and accessible while maintaining high-quality, accurate information.</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+    <div class="bg-base-200 rounded-xl p-8">
+      <h2 class="text-2xl font-bold mb-4">How Your Donation Helps</h2>
+      <ul class="list-disc pl-6 space-y-3">
+        <li>Maintains our servers and technical infrastructure</li>
+        <li>Supports our team of volunteer responders and content creators</li>
+        <li>Helps develop new features and resources</li>
+        <li>Enables outreach to underserved communities</li>
+        <li>Allows us to create educational materials</li>
+        <li>Keeps gender information free and accessible to all</li>
+      </ul>
+    </div>
+
+    <div class="bg-base-200 rounded-xl p-8">
+      <h2 class="text-2xl font-bold mb-4">Our Promise</h2>
+      <p class="mb-4">We're committed to transparency and responsible use of all donations. Here's our pledge to you:</p>
+      <ul class="list-disc pl-6 space-y-3">
+        <li>At least 85% of all donations go directly to program costs</li>
+        <li>Administrative costs are kept to a minimum</li>
+        <li>Regular financial reports are available to all donors</li>
+        <li>We will never sell or share donor information</li>
+        <li>Your privacy is respected - donate anonymously if you prefer</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="bg-primary/10 rounded-xl p-8 mb-12">
+    <h2 class="text-2xl font-bold mb-6 text-center">Donation Options</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="bg-base-100 rounded-lg p-6 text-center flex flex-col">
+        <h3 class="text-xl font-bold mb-3">One-time Donation</h3>
+        <p class="mb-6 flex-grow">Support our mission with a one-time contribution of any amount.</p>
+        <div class="flex justify-center space-x-2 mb-4">
+          <button class="btn btn-sm">$10</button>
+          <button class="btn btn-sm">$25</button>
+          <button class="btn btn-sm">$50</button>
+          <button class="btn btn-sm">$100</button>
+        </div>
+        <button class="btn btn-primary">Donate Now</button>
+      </div>
+
+      <div class="bg-base-100 rounded-lg p-6 text-center flex flex-col border-2 border-primary relative">
+        <span class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-1 rounded-full text-sm font-bold">Most Popular</span>
+        <h3 class="text-xl font-bold mb-3">Monthly Supporter</h3>
+        <p class="mb-6 flex-grow">Become a sustaining member with a monthly donation to help us plan for the future.</p>
+        <div class="flex justify-center space-x-2 mb-4">
+          <button class="btn btn-sm">$5</button>
+          <button class="btn btn-sm">$10</button>
+          <button class="btn btn-sm">$20</button>
+          <button class="btn btn-sm">$50</button>
+        </div>
+        <button class="btn btn-primary">Become a Supporter</button>
+      </div>
+
+      <div class="bg-base-100 rounded-lg p-6 text-center flex flex-col">
+        <h3 class="text-xl font-bold mb-3">Organizational Support</h3>
+        <p class="mb-6 flex-grow">Partner with us as an organization to help fund our educational initiatives.</p>
+        <p class="text-sm mb-4">For donations over $500 or to discuss partnership opportunities</p>
+        <button class="btn btn-outline">Contact Us</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mb-12">
+    <h2 class="text-2xl font-bold mb-4">Other Ways to Support</h2>
+    <p class="max-w-2xl mx-auto mb-6">Financial contributions aren't the only way to help Genderbase grow and thrive.</p>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      <%= link_to "Volunteer Your Time", home_volunteer_path, class: "btn btn-secondary" %>
+      <%= link_to "Contribute Content", new_article_path, class: "btn btn-secondary" %>
+      <%= link_to "Share Our Resources", "#", class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+  <div class="bg-base-200 rounded-xl p-8">
+    <h2 class="text-2xl font-bold mb-4 text-center">Tax Information</h2>
+    <p class="text-center mb-6">Genderbase is a registered 501(c)(3) non-profit organization. All donations are tax-deductible to the extent allowed by law.</p>
+    <p class="text-center text-sm">Tax ID: XX-XXXXXXX</p>
+  </div>
+</div>

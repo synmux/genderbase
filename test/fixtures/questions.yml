@@ -6,9 +6,11 @@ one:
   status: MyString
   anonymous: false
   responder: one
+  email: user1@example.com
 two:
   title: MyString
   content: MyText
   status: MyString
   anonymous: false
   responder: two
+  email:

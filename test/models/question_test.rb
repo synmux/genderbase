@@ -15,4 +15,14 @@ class QuestionTest < ActiveSupport::TestCase
     question = Question.new(title: "Test", content: "Test content", status: "open", anonymous: false)
     assert question.valid?
   end
+
+  test "question can have an optional email" do
+    question_with_email = Question.new(title: "Test", content: "Test content", status: "open", anonymous: false, email: "test@example.com")
+    question_without_email = Question.new(title: "Test", content: "Test content", status: "open", anonymous: false, email: nil)
+
+    assert question_with_email.valid?
+    assert question_without_email.valid?
+    assert_equal "test@example.com", question_with_email.email
+    assert_nil question_without_email.email
+  end
 end

@@ -3,14 +3,14 @@
     <div class="flex justify-between items-center py-4">
       <div class="flex items-center">
         <%= image_tag "genderbase-logo.png", class: "h-10 mr-3" %>
-        <a href="#" class="text-2xl font-bold text-base-content hover:text-accent transition">Genderbase</a>
+        <%= link_to "Genderbase", root_path, class: "text-2xl font-bold text-base-content hover:text-accent transition" %>
       </div>
       <div class="hidden md:flex items-center space-x-8">
-        <a href="#" class="text-base-content hover:text-accent transition">Home</a>
-        <a href="#" class="text-base-content hover:text-accent transition">Knowledge Base</a>
-        <a href="#" class="text-base-content hover:text-accent transition">How Do I Say...?</a>
-        <a href="#" class="text-base-content hover:text-accent transition">Ask a Question</a>
-        <a href="#" class="text-base-content hover:text-accent transition">About</a>
+        <%= link_to "Home", root_path, class: "text-base-content hover:text-accent transition" %>
+        <%= link_to "Knowledge Base", knowledge_index_path, class: "text-base-content hover:text-accent transition" %>
+        <%= link_to "How Do I Say...?", terminology_index_path, class: "text-base-content hover:text-accent transition" %>
+        <%= link_to "Ask a Question", new_question_path, class: "text-base-content hover:text-accent transition" %>
+        <%= link_to "About", home_about_path, class: "text-base-content hover:text-accent transition" %>
       </div>
       <div class="md:hidden">
         <button class="text-base-content hover:text-accent focus:outline-none">

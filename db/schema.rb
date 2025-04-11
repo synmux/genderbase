@@ -37,6 +37,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_07_180500) do
     t.text "content"
     t.string "status"
     t.boolean "anonymous"
+    t.string "email"
     t.integer "responder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

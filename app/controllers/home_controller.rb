@@ -16,4 +16,10 @@ class HomeController < ApplicationController
 
   def security
   end
+
+  def support
+  end
+
+  def donate
+  end
 end

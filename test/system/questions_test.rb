@@ -18,6 +18,7 @@ class QuestionsTest < ApplicationSystemTestCase
     fill_in "Content", with: @question.content
     fill_in "Status", with: @question.status
     fill_in "Title", with: @question.title
+    fill_in "Email", with: @question.email if @question.email.present?
     click_on "Create Question"
 
     assert_text "Question was successfully created"
@@ -32,6 +33,7 @@ class QuestionsTest < ApplicationSystemTestCase
     fill_in "Content", with: @question.content
     fill_in "Status", with: @question.status
     fill_in "Title", with: @question.title
+    fill_in "Email", with: @question.email if @question.email.present?
     click_on "Update Question"
 
     assert_text "Question was successfully updated"

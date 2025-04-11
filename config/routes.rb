@@ -3,19 +3,20 @@ Rails.application.routes.draw do
   get "/.well-known", controller: :well_known, action: :index, as: :well_known_index
   get "/.well-known/security", controller: :well_known, action: :security, as: :well_known_security
   get "/.well-known/webfinger", controller: :well_known, action: :webfinger, as: :well_known_webfinger
-  get "/about", controller: :home, action: :about, as: :home_about
   get "/ads", controller: :well_known, action: :ads, as: :ads
   get "/ai", controller: :well_known, action: :ai, as: :ai
   get "/humans", controller: :well_known, action: :humans, as: :humans
-  get "/index", controller: :home, action: :index, as: :home_index
+  get "/robots", controller: :well_known, action: :robots, as: :robots
+  get "/about", controller: :home, action: :about, as: :home_about
+  get "/privacy", controller: :home, action: :privacy, as: :home_privacy
+  get "/security", controller: :home, action: :security, as: :home_security
+  get "/support", controller: :home, action: :support, as: :home_support
+  get "/donate", controller: :home, action: :donate, as: :home_donate
+  get "/team", controller: :home, action: :team, as: :home_team
+  get "/volunteer", controller: :home, action: :volunteer, as: :home_volunteer
+  get "/terminology", controller: :terminology, action: :index, as: :terminology_index
   get "/knowledge", controller: :knowledge, action: :index, as: :knowledge_index
   get "/knowledge/show", controller: :knowledge, action: :show, as: :knowledge_show
-  get "/privacy", controller: :home, action: :privacy, as: :home_privacy
-  get "/robots", controller: :well_known, action: :robots, as: :robots
-  get "/security", controller: :home, action: :security, as: :home_security
-  get "/team", controller: :home, action: :team, as: :home_team
-  get "/terminology", controller: :terminology, action: :index, as: :terminology_index
-  get "/volunteer", controller: :home, action: :volunteer, as: :home_volunteer
   resources :answers
   resources :articles
   resources :questions

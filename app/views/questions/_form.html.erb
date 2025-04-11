@@ -1,37 +1,120 @@
-<%= form_with(model: question) do |form| %>
-  <% if question.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
+<%= form_with(model: question, class: "space-y-6") do |form| %>
+<% if question.errors.any? %>
+<div class="bg-error/10 text-error rounded-lg p-4 mb-6">
+  <h2 class="font-bold text-lg mb-2"><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
 
-      <ul>
-        <% question.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+  <ul class="list-disc ml-5">
+    <% question.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="form-control w-full">
+  <%= form.label :title, "Question Title", class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">Provide a brief title that summarizes your question</div>
+  <%= form.text_field :title, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "e.g., How can I support a transgender friend?" %>
+</div>
+
+<div class="form-control w-full">
+  <%= form.label :content, "Question Details", class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">Provide as much context and detail as possible</div>
+  <%= form.text_area :content, rows: 6, class: "textarea textarea-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "Please describe your question in detail. The more information you provide, the better our experts can answer your question." %>
+</div>
+
+<div class="form-control w-full mt-4" id="email_field_container">
+  <div class="flex justify-between items-center">
+    <%= form.label :email, "Email Address (Optional)", class: "label font-medium text-base-content" %>
+    <div class="form-control">
+      <label class="label cursor-pointer">
+        <span class="label-text mr-2">Submit Anonymously</span>
+        <%= form.check_box :anonymous, class: "checkbox checkbox-primary", id: "question_anonymous" %>
+      </label>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
   </div>
-
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.textarea :content %>
+  <div class="label-text-alt text-base-content/70">
+    If provided, we'll email you a link to your question and notify you when it receives a response.
+    If not provided, you'll need to check back manually to see responses.
   </div>
+  <%= form.email_field :email, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "your.email@example.com", id: "question_email" %>
+</div>
 
-  <div>
-    <%= form.label :status, style: "display: block" %>
-    <%= form.text_field :status %>
-  </div>
+<div class="form-control mt-6">
+  <%= form.hidden_field :status, value: "pending" %>
+  <%= form.submit "Submit Question", class: "btn btn-accent w-full sm:w-auto" %>
+</div>
 
-  <div>
-    <%= form.label :anonymous, style: "display: block" %>
-    <%= form.checkbox :anonymous %>
-  </div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const anonymousCheckbox = document.getElementById('question_anonymous');
+    const emailField = document.getElementById('question_email');
+    const emailContainer = document.getElementById('email_field_container');
 
-  <div>
-    <%= form.submit %>
-  </div>
+    function updateEmailField() {
+      if (anonymousCheckbox.checked) {
+        emailField.value = '';
+        emailField.disabled = true;
+        emailField.classList.add('bg-base-200');
+
+        // Hide the email field with animation, but keep the container and checkbox visible
+        emailField.style.transition = 'all 0.3s ease';
+        emailField.style.maxHeight = '0';
+        emailField.style.opacity = '0';
+        emailField.style.margin = '0';
+        emailField.style.padding = '0';
+        emailField.style.overflow = 'hidden';
+
+        // Hide the label-text-alt description when anonymous
+        const description = emailContainer.querySelector('.label-text-alt');
+        description.style.transition = 'all 0.3s ease';
+        description.style.maxHeight = '0';
+        description.style.opacity = '0';
+        description.style.margin = '0';
+        description.style.overflow = 'hidden';
+
+        // Hide the "Email Address (Optional)" label
+        const emailLabel = emailContainer.querySelector('label.font-medium');
+        emailLabel.style.transition = 'all 0.3s ease';
+        emailLabel.style.maxHeight = '0';
+        emailLabel.style.opacity = '0';
+        emailLabel.style.margin = '0';
+        emailLabel.style.overflow = 'hidden';
+      } else {
+        emailField.disabled = false;
+        emailField.classList.remove('bg-base-200');
+
+        // Show the email field with animation
+        emailField.style.transition = 'all 0.3s ease';
+        emailField.style.maxHeight = '50px';
+        emailField.style.opacity = '1';
+        emailField.style.margin = '';
+        emailField.style.padding = '';
+        emailField.style.overflow = '';
+
+        // Show the description when not anonymous
+        const description = emailContainer.querySelector('.label-text-alt');
+        description.style.transition = 'all 0.3s ease';
+        description.style.maxHeight = '100px';
+        description.style.opacity = '1';
+        description.style.margin = '';
+        description.style.overflow = '';
+
+        // Show the "Email Address (Optional)" label
+        const emailLabel = emailContainer.querySelector('label.font-medium');
+        emailLabel.style.transition = 'all 0.3s ease';
+        emailLabel.style.maxHeight = '50px';
+        emailLabel.style.opacity = '1';
+        emailLabel.style.margin = '';
+        emailLabel.style.overflow = '';
+      }
+    }
+
+    // Initial setup
+    updateEmailField();
+
+    // Add event listener for changes
+    anonymousCheckbox.addEventListener('change', updateEmailField);
+  });
+</script>
 <% end %>

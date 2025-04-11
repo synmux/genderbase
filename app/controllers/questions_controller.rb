@@ -65,6 +65,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.expect(question: [ :title, :content, :status, :anonymous ])
+      params.expect(question: [ :title, :content, :status, :anonymous, :email ])
     end
 end

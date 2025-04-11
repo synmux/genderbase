@@ -2,15 +2,165 @@
 
 <% content_for :title, "Questions" %>
 
-<h1>Questions</h1>
+<div class="container mx-auto px-4 py-8 mt-16">
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-bold text-base-content">Community Questions</h1>
+    <p class="text-base-content/75 mt-2">Browse questions submitted by our community</p>
+  </div>
 
-<div id="questions">
-  <% @questions.each do |question| %>
-    <%= render question %>
-    <p>
-      <%= link_to "Show this question", question %>
-    </p>
-  <% end %>
+  <div class="max-w-5xl mx-auto">
+    <div class="flex flex-col md:flex-row justify-between gap-4 mb-8">
+      <div class="md:w-2/3">
+        <div class="bg-base-200 rounded-lg shadow-md p-4">
+          <input type="text" placeholder="Search questions..." class="w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent">
+        </div>
+      </div>
+      <div class="md:w-1/3 flex gap-2">
+        <select class="flex-grow px-4 py-2 rounded-md bg-base-200 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent">
+          <option value="">All Statuses</option>
+          <option value="pending">Pending</option>
+          <option value="in_progress">In Progress</option>
+          <option value="answered">Answered</option>
+        </select>
+        <%= link_to "Ask a Question", new_question_path, class: "btn btn-accent" %>
+      </div>
+    </div>
+
+    <div class="space-y-6" id="questions">
+      <!-- Sample Question: Pending -->
+      <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div class="w-full">
+              <div class="flex justify-between items-center mb-2">
+                <h2 class="text-xl font-bold text-base-content">How to help my child explore gender identity?</h2>
+                <span class="px-3 py-1 bg-warning/20 text-warning rounded-full text-sm font-medium">Pending</span>
+              </div>
+              <p class="text-base-content/80 mt-2">My 11-year-old has recently started questioning their gender identity. I want to be supportive but I'm not sure how to navigate this conversation. What resources are available for parents in my situation?</p>
+              <div class="mt-4 flex flex-wrap items-center justify-between">
+                <div class="text-sm text-base-content/60">
+                  <span>Asked by: Jane D.</span>
+                  <span class="mx-2">•</span>
+                  <span>September 2, 2023</span>
+                </div>
+                <div class="mt-2 sm:mt-0">
+                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample Question: In Progress -->
+      <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div class="w-full">
+              <div class="flex justify-between items-center mb-2">
+                <h2 class="text-xl font-bold text-base-content">Gender-neutral language for professional emails</h2>
+                <span class="px-3 py-1 bg-info/20 text-info rounded-full text-sm font-medium">In Progress</span>
+              </div>
+              <p class="text-base-content/80 mt-2">I'm updating our company's email templates and communication guidelines. What are best practices for ensuring our language is gender-inclusive, especially when addressing groups or individuals whose gender we don't know?</p>
+              <div class="mt-4 flex flex-wrap items-center justify-between">
+                <div class="text-sm text-base-content/60">
+                  <span>Asked by: Alex M.</span>
+                  <span class="mx-2">•</span>
+                  <span>August 28, 2023</span>
+                </div>
+                <div class="mt-2 sm:mt-0">
+                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample Question: Anonymous -->
+      <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div class="w-full">
+              <div class="flex justify-between items-center mb-2">
+                <h2 class="text-xl font-bold text-base-content">Coming out as non-binary at work</h2>
+                <span class="px-3 py-1 bg-warning/20 text-warning rounded-full text-sm font-medium">Pending</span>
+              </div>
+              <p class="text-base-content/80 mt-2">I've recently come to understand that I identify as non-binary, and I'd like to come out at my workplace. My company is generally progressive, but there are no openly non-binary people that I know of. How should I approach this conversation with my manager and team?</p>
+              <div class="mt-4 flex flex-wrap items-center justify-between">
+                <div class="text-sm text-base-content/60">
+                  <span>Asked by: Anonymous</span>
+                  <span class="mx-2">•</span>
+                  <span>September 5, 2023</span>
+                </div>
+                <div class="mt-2 sm:mt-0">
+                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample Question: In Progress -->
+      <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div class="w-full">
+              <div class="flex justify-between items-center mb-2">
+                <h2 class="text-xl font-bold text-base-content">Resources for transgender healthcare in rural areas</h2>
+                <span class="px-3 py-1 bg-info/20 text-info rounded-full text-sm font-medium">In Progress</span>
+              </div>
+              <p class="text-base-content/80 mt-2">I live in a rural area with limited healthcare options. I'm a transgender man beginning my transition journey and finding it difficult to access gender-affirming care locally. Are there telemedicine options or other resources that could help me access the care I need?</p>
+              <div class="mt-4 flex flex-wrap items-center justify-between">
+                <div class="text-sm text-base-content/60">
+                  <span>Asked by: Ryan K.</span>
+                  <span class="mx-2">•</span>
+                  <span>August 15, 2023</span>
+                </div>
+                <div class="mt-2 sm:mt-0">
+                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sample Question: Pending -->
+      <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
+        <div class="p-6">
+          <div class="flex justify-between items-start">
+            <div class="w-full">
+              <div class="flex justify-between items-center mb-2">
+                <h2 class="text-xl font-bold text-base-content">Supporting a transgender friend through their transition</h2>
+                <span class="px-3 py-1 bg-warning/20 text-warning rounded-full text-sm font-medium">Pending</span>
+              </div>
+              <p class="text-base-content/80 mt-2">My close friend has recently come out as transgender and is beginning their transition. I want to be as supportive as possible but I'm worried about saying the wrong thing. What are some practical ways I can support them during this time?</p>
+              <div class="mt-4 flex flex-wrap items-center justify-between">
+                <div class="text-sm text-base-content/60">
+                  <span>Asked by: Mia T.</span>
+                  <span class="mx-2">•</span>
+                  <span>September 10, 2023</span>
+                </div>
+                <div class="mt-2 sm:mt-0">
+                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-8 flex justify-center">
+      <div class="join">
+        <button class="join-item btn btn-sm">«</button>
+        <button class="join-item btn btn-sm btn-active">1</button>
+        <button class="join-item btn btn-sm">2</button>
+        <button class="join-item btn btn-sm">3</button>
+        <button class="join-item btn btn-sm">»</button>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to "New question", new_question_path %>

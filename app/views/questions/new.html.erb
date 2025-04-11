@@ -1,11 +1,47 @@
-<% content_for :title, "New question" %>
+<% content_for :title, "Ask a Question" %>
 
-<h1>New question</h1>
+<div class="container mx-auto px-4 py-8 mt-16">
+  <div class="text-center mb-8">
+    <h1 class="text-3xl font-bold text-base-content">Ask a Question</h1>
+    <p class="text-base-content/75 mt-2">Submit your questions to be answered by gender experts</p>
+  </div>
 
-<%= render "form", question: @question %>
+  <div class="max-w-3xl mx-auto">
+    <div class="bg-base-100 rounded-lg shadow-md p-8">
+      <div class="mb-6">
+        <h2 class="text-xl font-semibold text-base-content">Submit Your Question</h2>
+        <p class="text-base-content/80 mt-2">Your question will be reviewed by our team of experts who specialize in gender topics. We aim to respond to all questions within 3-5 business days.</p>
+      </div>
 
-<br>
+      <%= render "form", question: @question %>
 
-<div>
-  <%= link_to "Back to questions", questions_path %>
+      <div class="mt-8 pt-6 border-t border-base-300">
+        <h3 class="text-lg font-medium text-base-content">Before You Submit</h3>
+        <ul class="mt-3 space-y-2 text-base-content/80">
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Check our <a href="<%= knowledge_index_path %>" class="text-accent hover:underline">Knowledge Base</a> and <a href="<%= answers_path %>" class="text-accent hover:underline">Answered Questions</a> to see if your question has already been addressed.</span>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Be specific and provide context. The more details you provide, the better our experts can answer your question.</span>
+          </li>
+          <li class="flex items-start">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Questions may be published publicly (with or without your name, depending on your selection). If you need private assistance, please indicate this in your question.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-6">
+      <%= link_to "← Back to questions", questions_path, class: "text-accent hover:underline" %>
+    </div>
+  </div>
 </div>
