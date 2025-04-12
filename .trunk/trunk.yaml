@@ -7,7 +7,7 @@ cli:
 plugins:
   sources:
     - id: trunk
-      ref: v1.6.8
+      ref: v1.6.7
       uri: https://github.com/trunk-io/plugins
 # Many linters and tools depend on runtimes - configure them here. (https://docs.trunk.io/runtimes)
 runtimes:
@@ -15,12 +15,28 @@ runtimes:
     - go@1.21.0
     - node@18.20.5
     - python@3.10.8
+    - ruby@3.1.4
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
+  definitions:
+    - name: rails-test
+      files:
+        - ALL
+      commands:
+        - name: rails-test
+          output: pass_fail
+          run: bin/rails test
+          success_codes: [0, 1]
+  ignore:
+    - linters:
+        - shellcheck
+      paths:
+        - bin/mise
   enabled:
+    - taplo@0.9.3
     - actionlint@1.7.7
     - brakeman@5.4.0
-    - checkov@3.2.403
+    - checkov@3.2.396
     - git-diff-check
     - hadolint@2.12.1-beta
     - markdownlint@0.44.0
@@ -31,8 +47,7 @@ lint:
     - shellcheck@0.10.0
     - shfmt@3.6.0
     - svgo@3.3.2
-    - taplo@0.9.3
-    - trufflehog@3.88.23
+    - trufflehog@3.88.22
     - yamllint@1.37.0
 actions:
   enabled:
@@ -40,3 +55,13 @@ actions:
     - trunk-check-pre-push
     - trunk-fmt-pre-commit
     - trunk-upgrade-available
+    - trunk-cache-prune
+    - git-lfs
+    - rails-test
+  definitions:
+    - id: rails-test
+      display_name: Rails Test
+      run: bin/rails test
+      triggers:
+        - git_hooks:
+            - pre-commit
