@@ -25,12 +25,21 @@ end
 # Module for integration tests that need authentication
 module AuthenticationHelper
   def sign_in_as(responder)
-    post responder_session_path, params: {
-      responder: {
-        email: responder.email,
-        password: "password123"
+    # For integration tests
+    if respond_to?(:post)
+      post responder_session_path, params: {
+        responder: {
+          email: responder.email,
+          password: "password123"
+        }
       }
-    }
+    # For system tests
+    else
+      visit new_responder_session_path
+      fill_in "Email", with: responder.email
+      fill_in "Password", with: "password123"
+      click_on "Log in"
+    end
   end
 end
 
