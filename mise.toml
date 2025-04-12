@@ -1,0 +1,22 @@
+[env]
+GENDERBASE_MISE_ACTIVE = 'true'
+
+[settings]
+env_file = '.env'
+
+[tools]
+envsubst = { version = '1.4.3' }
+node = { version = '23.11.0' }
+pnpm = { version = '10.8.0' }
+redis = { version = '7.4.2' }
+ruby = { version = '3.4.2' }
+
+[tasks]
+'dev' = { depends = 'dev:tailscale' }
+'dev:tailscale' = 'foreman start -f Procfile.tailscale'
+'dev:localhost' = 'foreman start -f Procfile.localhost'
+prepare-ci = 'gem install bundler; bundle install; bundle binstubs --all; pnpm install --verify-store-integrity'
+'ci:brakeman' = { run = 'bin/brakeman --no-pager' }
+'ci:rubocop' = { run = 'bin/rubocop -f github' }
+'ci:test' = { env = { RAILS_ENV = 'test' }, run = 'bin/rails db:test:prepare test test:system' }
+ci = { depends = 'ci:*' }

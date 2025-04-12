@@ -7,42 +7,46 @@ class QuestionsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit questions_url
-    assert_selector "h1", text: "Community Questions"
+    assert_selector "h1", text: "Questions"
   end
 
   test "should create question" do
     visit questions_url
-    click_on "Ask a Question", match: :first
+    click_on "New question"
 
-    check "Submit Anonymously" if @question.anonymous
-    fill_in "Question Details", with: @question.content
-    fill_in "Question Title", with: @question.title
-    fill_in "Email Address", with: @question.email if @question.email.present?
-    click_on "Submit Question"
+    fill_in "Body", with: @question.body
+    fill_in "Email", with: @question.email
+    fill_in "Pseudonym", with: @question.pseudonym
+    fill_in "Responder", with: @question.responder_id
+    fill_in "Status", with: @question.status
+    fill_in "Title", with: @question.title
+    fill_in "Token", with: @question.token
+    click_on "Create Question"
 
     assert_text "Question was successfully created"
-    click_on "Back to questions"
+    click_on "Back"
   end
 
   test "should update Question" do
     visit question_url(@question)
-    click_on "Edit"
+    click_on "Edit this question", match: :first
 
-    check "Submit Anonymously" if @question.anonymous
-    fill_in "Question Details", with: @question.content
-    fill_in "Question Title", with: @question.title
-    fill_in "Email Address", with: @question.email if @question.email.present?
-    click_on "Submit Question"
+    fill_in "Body", with: @question.body
+    fill_in "Email", with: @question.email
+    fill_in "Pseudonym", with: @question.pseudonym
+    fill_in "Responder", with: @question.responder_id
+    fill_in "Status", with: @question.status
+    fill_in "Title", with: @question.title
+    fill_in "Token", with: @question.token
+    click_on "Update Question"
 
     assert_text "Question was successfully updated"
-    click_on "Back to questions"
+    click_on "Back"
   end
 
   test "should destroy Question" do
     visit question_url(@question)
-    click_on "Delete"
-
-    page.driver.browser.switch_to.alert.accept if page.driver.browser.respond_to?(:switch_to)
+    click_on "Destroy this question", match: :first
 
     assert_text "Question was successfully destroyed"
   end

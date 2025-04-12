@@ -2,15 +2,18 @@
 
 one:
   title: MyString
-  content: MyText
-  status: MyString
-  anonymous: false
+  body: MyText
+  token: MyString
+  status: 1
+  email: MyString
+  pseudonym: MyString
   responder: one
-  email: user1@example.com
+
 two:
   title: MyString
-  content: MyText
-  status: MyString
-  anonymous: false
+  body: MyText
+  token: MyString
+  status: 1
+  email: MyString
+  pseudonym: MyString
   responder: two
-  email:

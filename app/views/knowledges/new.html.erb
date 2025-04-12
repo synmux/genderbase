@@ -1,0 +1,11 @@
+<% content_for :title, "New knowledge" %>
+
+<h1>New knowledge</h1>
+
+<%= render "form", knowledge: @knowledge %>
+
+<br>
+
+<div>
+  <%= link_to "Back to knowledges", knowledges_path %>
+</div>

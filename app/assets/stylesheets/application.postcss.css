@@ -1,0 +1,22 @@
+/* Tailwind 4 */
+@import "tailwindcss";
+
+@import url("https://fonts.googleapis.com/css?family=Sora:100,200,300,400,500,600,700,800&display=swap");
+
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark;
+}
+
+@layer base {
+  html {
+    font-family: "Sora", sans-serif;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply bg-primary text-white px-4 py-2 rounded-md;
+  }
+}

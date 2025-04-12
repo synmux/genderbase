@@ -7,15 +7,16 @@ class AnswersTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit answers_url
-    assert_selector "h1", text: "Answered Questions"
+    assert_selector "h1", text: "Answers"
   end
 
   test "should create answer" do
     visit answers_url
     click_on "New answer"
 
-    fill_in "Content", with: @answer.content
+    fill_in "Body", with: @answer.body
     fill_in "Question", with: @answer.question_id
+    fill_in "Responder", with: @answer.responder_id
     click_on "Create Answer"
 
     assert_text "Answer was successfully created"
@@ -26,8 +27,9 @@ class AnswersTest < ApplicationSystemTestCase
     visit answer_url(@answer)
     click_on "Edit this answer", match: :first
 
-    fill_in "Content", with: @answer.content
+    fill_in "Body", with: @answer.body
     fill_in "Question", with: @answer.question_id
+    fill_in "Responder", with: @answer.responder_id
     click_on "Update Answer"
 
     assert_text "Answer was successfully updated"

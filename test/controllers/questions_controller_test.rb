@@ -17,7 +17,7 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create question" do
     assert_difference("Question.count") do
-      post questions_url, params: { question: { anonymous: @question.anonymous, content: @question.content, status: @question.status, title: @question.title, email: @question.email } }
+      post questions_url, params: { question: { body: @question.body, email: @question.email, pseudonym: @question.pseudonym, responder_id: @question.responder_id, status: @question.status, title: @question.title, token: @question.token } }
     end
 
     assert_redirected_to question_url(Question.last)
@@ -34,7 +34,7 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update question" do
-    patch question_url(@question), params: { question: { anonymous: @question.anonymous, content: @question.content, status: @question.status, title: @question.title, email: @question.email } }
+    patch question_url(@question), params: { question: { body: @question.body, email: @question.email, pseudonym: @question.pseudonym, responder_id: @question.responder_id, status: @question.status, title: @question.title, token: @question.token } }
     assert_redirected_to question_url(@question)
   end
 
@@ -44,14 +44,5 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to questions_url
-  end
-
-  test "should create question without email" do
-    assert_difference("Question.count") do
-      post questions_url, params: { question: { anonymous: @question.anonymous, content: @question.content, status: @question.status, title: @question.title, email: nil } }
-    end
-
-    assert_redirected_to question_url(Question.last)
-    assert_nil Question.last.email
   end
 end

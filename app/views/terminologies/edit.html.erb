@@ -1,0 +1,12 @@
+<% content_for :title, "Editing terminology" %>
+
+<h1>Editing terminology</h1>
+
+<%= render "form", terminology: @terminology %>
+
+<br>
+
+<div>
+  <%= link_to "Show this terminology", @terminology %> |
+  <%= link_to "Back to terminologies", terminologies_path %>
+</div>

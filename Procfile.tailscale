@@ -1,0 +1,4 @@
+web: env RUBY_DEBUG_OPEN=true RAILS_ENV=development bin/rails server -b $TAILSCALE_IPV4 -p 3000
+js: pnpm run build:js --watch
+css: pnpm run build:css --watch
+redis: envsubst < redis.conf | redis-server -
