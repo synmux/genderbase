@@ -1,52 +1,67 @@
-<%= form_with(model: article) do |form| %>
-  <% if article.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+<%= form_with(model: article, class: "space-y-6") do |form| %>
+<% if article.errors.any? %>
+<div class="bg-error/20 border border-error text-error rounded-lg p-4 mb-6">
+  <h2 class="font-bold text-lg mb-2"><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+  <ul class="list-disc list-inside">
+    <% article.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :title, class: "block font-medium mb-1 text-base-content" %>
+    <%= form.text_field :title, class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent" %>
   </div>
 
   <div>
-    <%= form.label :question_id, style: "display: block" %>
-    <%= form.text_field :question_id %>
+    <%= form.label :question_id, class: "block font-medium mb-1 text-base-content" %>
+    <%= form.collection_select :question_id, Question.all, :id, :title,
+            { include_blank: "Select a question (optional)", selected: @question_id },
+            class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent" %>
+  </div>
+</div>
+
+<div>
+  <%= form.label :description, "Description (optional)", class: "block font-medium mb-1 text-base-content" %>
+  <%= form.text_area :description, rows: 3, class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent" %>
+  <p class="text-sm text-base-content/60 mt-1">A brief summary of the article that will appear in listings.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <div>
+    <%= form.label :category, class: "block font-medium mb-1 text-base-content" %>
+    <%= form.select :category,
+            ["Education", "Support", "Resources", "Healthcare", "Legal", "Community"],
+            { include_blank: "Select a category" },
+            class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
+    <%= form.label :author, class: "block font-medium mb-1 text-base-content" %>
+    <%= form.text_field :author, class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent" %>
   </div>
+</div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.textarea :content %>
-  </div>
+<div>
+  <%= form.label :slug, "URL Slug (optional)", class: "block font-medium mb-1 text-base-content" %>
+  <%= form.text_field :slug, class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent" %>
+  <p class="text-sm text-base-content/60 mt-1">Leave blank to generate automatically from title. Use only lowercase letters, numbers, and hyphens.</p>
+</div>
 
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.text_field :category %>
+<div>
+  <%= form.label :content, class: "block font-medium mb-1 text-base-content" %>
+  <div class="mb-2 text-base-content/70 text-sm">
+    This field supports Markdown formatting.
+    <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" class="text-accent">Markdown reference</a>
   </div>
+  <%= form.text_area :content, rows: 15, class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent font-mono" %>
+</div>
 
-  <div>
-    <%= form.label :author, style: "display: block" %>
-    <%= form.text_field :author %>
-  </div>
-
-  <div>
-    <%= form.label :slug, style: "display: block" %>
-    <%= form.text_field :slug %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+<div class="flex justify-end gap-3">
+  <%= link_to "Cancel", articles_path, class: "btn" %>
+  <%= form.submit class: "btn btn-accent" %>
+</div>
 <% end %>

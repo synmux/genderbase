@@ -1,27 +1,42 @@
-<%= form_with(model: answer) do |form| %>
-  <% if answer.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+<%= form_with(model: answer, class: "space-y-6") do |form| %>
+<% if answer.errors.any? %>
+<div class="bg-error/20 border border-error text-error rounded-lg p-4 mb-6">
+  <h2 class="font-bold text-lg mb-2"><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
+  <ul class="list-disc list-inside">
+    <% answer.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-      <ul>
-        <% answer.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<div>
+  <%= form.label :question_id, class: "block font-medium mb-1 text-base-content" %>
+  <% if @question %>
+  <div class="bg-base-200 p-4 rounded-md mb-3">
+    <h3 class="font-medium text-base-content mb-2"><%= @question.title %></h3>
+    <p class="text-base-content/80 text-sm"><%= truncate(@question.content, length: 200) %></p>
+    <%= link_to "View full question", @question, class: "text-accent text-sm" %>
+    <%= form.hidden_field :question_id, value: @question.id %>
+  </div>
+  <% else %>
+  <%= form.collection_select :question_id, Question.all, :id, :title,
+            { include_blank: "Select a question" },
+            class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent" %>
   <% end %>
+</div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.textarea :content %>
+<div>
+  <%= form.label :content, class: "block font-medium mb-1 text-base-content" %>
+  <div class="mb-2 text-base-content/70 text-sm">
+    This field supports Markdown formatting.
+    <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" class="text-accent">Markdown reference</a>
   </div>
+  <%= form.text_area :content, rows: 10, class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent font-mono" %>
+</div>
 
-  <div>
-    <%= form.label :question_id, style: "display: block" %>
-    <%= form.text_field :question_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
+<div class="flex justify-end gap-3">
+  <%= link_to "Cancel", answers_path, class: "btn" %>
+  <%= form.submit class: "btn btn-accent" %>
+</div>
 <% end %>

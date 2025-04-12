@@ -1,9 +1,10 @@
 class AnswersController < ApplicationController
   before_action :set_answer, only: %i[ show edit update destroy ]
+  before_action :authenticate_responder!, except: %i[ index show ]
 
   # GET /answers or /answers.json
   def index
-    @answers = Answer.all
+    @answers = Answer.all.includes(:question)
   end
 
   # GET /answers/1 or /answers/1.json
@@ -13,6 +14,8 @@ class AnswersController < ApplicationController
   # GET /answers/new
   def new
     @answer = Answer.new
+    @question_id = params[:question_id]
+    @question = Question.find(@question_id) if @question_id
   end
 
   # GET /answers/1/edit
@@ -60,11 +63,11 @@ class AnswersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
-      @answer = Answer.find(params.expect(:id))
+      @answer = Answer.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def answer_params
-      params.expect(answer: [ :content, :question_id ])
+      params.require(:answer).permit(:content, :question_id)
     end
 end

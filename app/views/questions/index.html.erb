@@ -27,130 +27,52 @@
     </div>
 
     <div class="space-y-6" id="questions">
-      <!-- Sample Question: Pending -->
+      <% @questions.each do |question| %>
       <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
         <div class="p-6">
           <div class="flex justify-between items-start">
             <div class="w-full">
               <div class="flex justify-between items-center mb-2">
-                <h2 class="text-xl font-bold text-base-content">How to help my child explore gender identity?</h2>
+                <h2 class="text-xl font-bold text-base-content"><%= question.title %></h2>
+                <% case question.status %>
+                <% when "pending" %>
                 <span class="px-3 py-1 bg-warning/20 text-warning rounded-full text-sm font-medium">Pending</span>
-              </div>
-              <p class="text-base-content/80 mt-2">My 11-year-old has recently started questioning their gender identity. I want to be supportive but I'm not sure how to navigate this conversation. What resources are available for parents in my situation?</p>
-              <div class="mt-4 flex flex-wrap items-center justify-between">
-                <div class="text-sm text-base-content/60">
-                  <span>Asked by: Jane D.</span>
-                  <span class="mx-2">•</span>
-                  <span>September 2, 2023</span>
-                </div>
-                <div class="mt-2 sm:mt-0">
-                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sample Question: In Progress -->
-      <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
-        <div class="p-6">
-          <div class="flex justify-between items-start">
-            <div class="w-full">
-              <div class="flex justify-between items-center mb-2">
-                <h2 class="text-xl font-bold text-base-content">Gender-neutral language for professional emails</h2>
+                <% when "in_progress" %>
                 <span class="px-3 py-1 bg-info/20 text-info rounded-full text-sm font-medium">In Progress</span>
+                <% when "answered" %>
+                <span class="px-3 py-1 bg-success/20 text-success rounded-full text-sm font-medium">Answered</span>
+                <% else %>
+                <span class="px-3 py-1 bg-base-200 text-base-content/80 rounded-full text-sm font-medium"><%= question.status.titleize %></span>
+                <% end %>
               </div>
-              <p class="text-base-content/80 mt-2">I'm updating our company's email templates and communication guidelines. What are best practices for ensuring our language is gender-inclusive, especially when addressing groups or individuals whose gender we don't know?</p>
+              <p class="text-base-content/80 mt-2"><%= truncate(question.content, length: 200) %></p>
               <div class="mt-4 flex flex-wrap items-center justify-between">
                 <div class="text-sm text-base-content/60">
-                  <span>Asked by: Alex M.</span>
-                  <span class="mx-2">•</span>
-                  <span>August 28, 2023</span>
-                </div>
-                <div class="mt-2 sm:mt-0">
-                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sample Question: Anonymous -->
-      <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
-        <div class="p-6">
-          <div class="flex justify-between items-start">
-            <div class="w-full">
-              <div class="flex justify-between items-center mb-2">
-                <h2 class="text-xl font-bold text-base-content">Coming out as non-binary at work</h2>
-                <span class="px-3 py-1 bg-warning/20 text-warning rounded-full text-sm font-medium">Pending</span>
-              </div>
-              <p class="text-base-content/80 mt-2">I've recently come to understand that I identify as non-binary, and I'd like to come out at my workplace. My company is generally progressive, but there are no openly non-binary people that I know of. How should I approach this conversation with my manager and team?</p>
-              <div class="mt-4 flex flex-wrap items-center justify-between">
-                <div class="text-sm text-base-content/60">
+                  <% if question.anonymous? %>
                   <span>Asked by: Anonymous</span>
+                  <% else %>
+                  <span>Asked by: <%= question.email.split('@').first %></span>
+                  <% end %>
                   <span class="mx-2">•</span>
-                  <span>September 5, 2023</span>
+                  <span><%= question.created_at.strftime("%B %d, %Y") %></span>
                 </div>
                 <div class="mt-2 sm:mt-0">
-                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
+                  <%= link_to "View question", question_path(question), class: "text-accent hover:text-accent-focus transition-colors" %>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
+      <% end %>
 
-      <!-- Sample Question: In Progress -->
-      <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
-        <div class="p-6">
-          <div class="flex justify-between items-start">
-            <div class="w-full">
-              <div class="flex justify-between items-center mb-2">
-                <h2 class="text-xl font-bold text-base-content">Resources for transgender healthcare in rural areas</h2>
-                <span class="px-3 py-1 bg-info/20 text-info rounded-full text-sm font-medium">In Progress</span>
-              </div>
-              <p class="text-base-content/80 mt-2">I live in a rural area with limited healthcare options. I'm a transgender man beginning my transition journey and finding it difficult to access gender-affirming care locally. Are there telemedicine options or other resources that could help me access the care I need?</p>
-              <div class="mt-4 flex flex-wrap items-center justify-between">
-                <div class="text-sm text-base-content/60">
-                  <span>Asked by: Ryan K.</span>
-                  <span class="mx-2">•</span>
-                  <span>August 15, 2023</span>
-                </div>
-                <div class="mt-2 sm:mt-0">
-                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <% if @questions.empty? %>
+      <div class="text-center py-12 bg-base-100 rounded-lg shadow-md">
+        <div class="text-4xl text-base-content/30 mb-4">❓</div>
+        <h3 class="text-xl text-base-content font-medium">No questions yet</h3>
+        <p class="text-base-content/70 mt-2">Be the first to ask a question</p>
       </div>
-
-      <!-- Sample Question: Pending -->
-      <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
-        <div class="p-6">
-          <div class="flex justify-between items-start">
-            <div class="w-full">
-              <div class="flex justify-between items-center mb-2">
-                <h2 class="text-xl font-bold text-base-content">Supporting a transgender friend through their transition</h2>
-                <span class="px-3 py-1 bg-warning/20 text-warning rounded-full text-sm font-medium">Pending</span>
-              </div>
-              <p class="text-base-content/80 mt-2">My close friend has recently come out as transgender and is beginning their transition. I want to be as supportive as possible but I'm worried about saying the wrong thing. What are some practical ways I can support them during this time?</p>
-              <div class="mt-4 flex flex-wrap items-center justify-between">
-                <div class="text-sm text-base-content/60">
-                  <span>Asked by: Mia T.</span>
-                  <span class="mx-2">•</span>
-                  <span>September 10, 2023</span>
-                </div>
-                <div class="mt-2 sm:mt-0">
-                  <%= link_to "View question", "#", class: "text-accent hover:text-accent-focus transition-colors" %>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
 
     <div class="mt-8 flex justify-center">

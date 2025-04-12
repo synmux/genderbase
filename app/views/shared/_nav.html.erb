@@ -5,9 +5,11 @@
         <%= image_tag "genderbase-logo.png", class: "h-10 mr-3" %>
         <%= link_to "Genderbase", root_path, class: "text-2xl font-bold text-base-content hover:text-accent transition" %>
       </div>
-      <div class="hidden md:flex items-center space-x-8">
+      <div class="hidden md:flex items-center space-x-6">
         <%= link_to "Home", root_path, class: "text-base-content hover:text-accent transition" %>
-        <%= link_to "Knowledge Base", knowledge_index_path, class: "text-base-content hover:text-accent transition" %>
+        <%= link_to "Knowledge", articles_path, class: "text-base-content hover:text-accent transition" %>
+        <%= link_to "Questions", questions_path, class: "text-base-content hover:text-accent transition" %>
+        <%= link_to "Answers", answers_path, class: "text-base-content hover:text-accent transition" %>
         <%= link_to "How Do I Say...?", terminology_index_path, class: "text-base-content hover:text-accent transition" %>
         <%= link_to "Ask a Question", new_question_path, class: "text-base-content hover:text-accent transition" %>
         <%= link_to "About", home_about_path, class: "text-base-content hover:text-accent transition" %>

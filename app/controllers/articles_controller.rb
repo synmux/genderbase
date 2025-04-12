@@ -1,9 +1,10 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: %i[ show edit update destroy ]
+  before_action :authenticate_responder!, except: %i[ index show ]
 
   # GET /articles or /articles.json
   def index
-    @articles = Article.all
+    @articles = Article.all.includes(:question, question: :responder)
   end
 
   # GET /articles/1 or /articles/1.json
@@ -13,6 +14,8 @@ class ArticlesController < ApplicationController
   # GET /articles/new
   def new
     @article = Article.new
+    @question_id = params[:question_id]
+    @question = Question.find(@question_id) if @question_id
   end
 
   # GET /articles/1/edit
@@ -25,7 +28,7 @@ class ArticlesController < ApplicationController
 
     respond_to do |format|
       if @article.save
-        format.html { redirect_to @article, notice: "Article was successfully created." }
+        format.html { redirect_to @article, notice: "Knowledge entry was successfully created." }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +41,7 @@ class ArticlesController < ApplicationController
   def update
     respond_to do |format|
       if @article.update(article_params)
-        format.html { redirect_to @article, notice: "Article was successfully updated." }
+        format.html { redirect_to @article, notice: "Knowledge entry was successfully updated." }
         format.json { render :show, status: :ok, location: @article }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,7 +55,7 @@ class ArticlesController < ApplicationController
     @article.destroy!
 
     respond_to do |format|
-      format.html { redirect_to articles_path, status: :see_other, notice: "Article was successfully destroyed." }
+      format.html { redirect_to articles_path, status: :see_other, notice: "Knowledge entry was successfully deleted." }
       format.json { head :no_content }
     end
   end
@@ -60,11 +63,11 @@ class ArticlesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params.expect(:id))
+      @article = Article.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def article_params
-      params.expect(article: [ :title, :question_id, :description, :content, :category, :author, :slug ])
+      params.require(:article).permit(:title, :question_id, :description, :content, :category, :author, :slug)
     end
 end

@@ -1,13 +1,16 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
+  before_action :authenticate_responder!, only: %i[ edit update destroy ]
 
   # GET /questions or /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.all.includes(:responder)
   end
 
   # GET /questions/1 or /questions/1.json
   def show
+    @answers = @question.answers
+    @article = @question.article
   end
 
   # GET /questions/new
@@ -22,6 +25,7 @@ class QuestionsController < ApplicationController
   # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
+    @question.status = "pending" unless @question.status.present?
 
     respond_to do |format|
       if @question.save
@@ -65,6 +69,6 @@ class QuestionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.require(:question).permit(:title, :content, :status, :anonymous, :email)
+      params.require(:question).permit(:title, :content, :status, :anonymous, :email, :responder_id)
     end
 end

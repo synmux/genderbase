@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_07_180500) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_12_173140) do
   create_table "answers", force: :cascade do |t|
     t.text "content"
     t.integer "question_id", null: false
@@ -54,6 +54,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_07_180500) do
     t.datetime "updated_at", null: false
     t.integer "questions_id"
     t.boolean "deleted"
+    t.string "name"
     t.index [ "email" ], name: "index_responders_on_email", unique: true
     t.index [ "questions_id" ], name: "index_responders_on_questions_id"
     t.index [ "reset_password_token" ], name: "index_responders_on_reset_password_token", unique: true

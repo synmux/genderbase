@@ -8,6 +8,8 @@ class Responder < ApplicationRecord
           :zxcvbnable, :argon2
 
   def weak_words
-    [ "genderbase", self.name, self.username ]
+    words = [ "genderbase" ]
+    words << self.name if self.name.present?
+    words
   end
 end

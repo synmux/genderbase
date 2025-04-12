@@ -1,11 +1,17 @@
-<% content_for :title, "New answer" %>
+<% content_for :title, "New Answer" %>
 
-<h1>New answer</h1>
+<div class="container mx-auto px-4 py-8 mt-16">
+  <div class="max-w-4xl mx-auto">
+    <nav class="text-sm mb-6 text-base-content/70">
+      <%= link_to "Answers", answers_path, class: "hover:text-accent" %> /
+      <span class="text-base-content">New Answer</span>
+    </nav>
 
-<%= render "form", answer: @answer %>
-
-<br>
-
-<div>
-  <%= link_to "Back to answers", answers_path %>
+    <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
+      <div class="p-6">
+        <h1 class="text-2xl font-bold text-base-content mb-6">Create New Answer</h1>
+        <%= render "form", answer: @answer %>
+      </div>
+    </div>
+  </div>
 </div>

@@ -47,6 +47,9 @@ gem "devise-argon2"
 # Password strength validation for Devise [https://github.com/bitzesty/devise_zxcvbn]
 gem "devise_zxcvbn"
 
+# Markdown parsing [https://github.com/gettalong/kramdown]
+gem "kramdown"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing"
 

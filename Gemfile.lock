@@ -472,6 +472,7 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kamal
+  kramdown
   propshaft
   pry
   pry-theme

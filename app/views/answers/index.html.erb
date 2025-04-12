@@ -14,116 +14,57 @@
     </div>
 
     <div class="space-y-6" id="answers">
-      <!-- Sample Answered Question 1 -->
+      <% @answers.each do |answer| %>
       <div class="bg-base-100 rounded-lg shadow-md p-6">
         <div class="mb-4 border-b border-base-300 pb-4">
-          <h2 class="text-xl font-bold text-base-content">How can I respectfully ask someone about their pronouns?</h2>
+          <h2 class="text-xl font-bold text-base-content">
+            <%= answer.question.title %>
+          </h2>
           <div class="mt-2 flex items-center text-sm text-base-content/60">
+            <% if answer.question.anonymous? %>
             <span>Asked by: Anonymous</span>
+            <% else %>
+            <span>Asked by: <%= answer.question.email.split('@').first %></span>
+            <% end %>
             <span class="mx-2">•</span>
-            <span>June 12, 2023</span>
+            <span><%= answer.question.created_at.strftime("%B %d, %Y") %></span>
           </div>
         </div>
         <div class="prose prose-sm max-w-none text-base-content/90">
-          <p>It's becoming increasingly common to share pronouns in many settings, but I'm still unsure about the most respectful way to ask someone about their pronouns if they haven't already shared them. When is it appropriate to ask, and how should I phrase the question?</p>
+          <p><%= truncate(answer.question.content, length: 150) %></p>
         </div>
         <div class="mt-6 bg-base-200 p-4 rounded-lg">
           <div class="flex items-center mb-3">
             <div class="avatar">
               <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-content font-bold">
-                DR
+                <%= answer.responder&.name&.split(' ')&.map { |n| n[0] }&.join || "GB" %>
               </div>
             </div>
             <div class="ml-3">
-              <h3 class="font-medium text-base-content">Dr. Robin Taylor</h3>
-              <p class="text-xs text-base-content/60">Gender Studies Professor</p>
+              <h3 class="font-medium text-base-content"><%= answer.responder&.name || "Genderbase Expert" %></h3>
+              <p class="text-xs text-base-content/60"><%= answer.created_at.strftime("%B %d, %Y") %></p>
             </div>
           </div>
           <div class="prose prose-sm max-w-none text-base-content/90">
-            <p>Great question! The most straightforward approach is to offer your own pronouns first, which often encourages reciprocation without directly asking. For example, "Hi, I'm Alex and I use they/them pronouns." If you do need to ask directly, you can say, "May I ask what pronouns you use?" or "What pronouns should I use when referring to you?"</p>
-            <p>It's best to ask in a private or one-on-one setting rather than in a group where someone might feel put on the spot. Remember that pronoun sharing should always be optional, not mandatory. If someone seems uncomfortable with the question, don't press the issue.</p>
-            <p>Normalizing pronoun sharing in your everyday interactions (like in email signatures or introductions) helps create an environment where everyone feels more comfortable discussing pronouns openly.</p>
+            <%= truncate(strip_tags(answer.to_html), length: 200) %>
+          </div>
+          <div class="mt-3 text-right">
+            <%= link_to "Read full answer", answer, class: "text-accent hover:underline" %>
           </div>
         </div>
       </div>
+      <% end %>
 
-      <!-- Sample Answered Question 2 -->
-      <div class="bg-base-100 rounded-lg shadow-md p-6">
-        <div class="mb-4 border-b border-base-300 pb-4">
-          <h2 class="text-xl font-bold text-base-content">What's the difference between gender identity and gender expression?</h2>
-          <div class="mt-2 flex items-center text-sm text-base-content/60">
-            <span>Asked by: Sam T.</span>
-            <span class="mx-2">•</span>
-            <span>May 3, 2023</span>
-          </div>
-        </div>
-        <div class="prose prose-sm max-w-none text-base-content/90">
-          <p>I'm trying to educate myself more about gender topics, but I often see the terms "gender identity" and "gender expression" used, and I'm not entirely clear on the distinction between them. Could someone explain the difference?</p>
-        </div>
-        <div class="mt-6 bg-base-200 p-4 rounded-lg">
-          <div class="flex items-center mb-3">
-            <div class="avatar">
-              <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-content font-bold">
-                JC
-              </div>
-            </div>
-            <div class="ml-3">
-              <h3 class="font-medium text-base-content">Jamie Chen</h3>
-              <p class="text-xs text-base-content/60">Gender Education Specialist</p>
-            </div>
-          </div>
-          <div class="prose prose-sm max-w-none text-base-content/90">
-            <p>Gender identity and gender expression are related but distinct aspects of gender:</p>
-            <p><strong>Gender identity</strong> refers to a person's internal, deeply felt sense of their own gender. This is something personal and internal that isn't visible to others. It's about who you know yourself to be, whether that's a man, woman, non-binary, or another gender identity.</p>
-            <p><strong>Gender expression</strong> refers to how a person presents their gender externally through clothing, hairstyle, mannerisms, name, pronouns, and other outward characteristics. This is what's visible to others and how we communicate our gender to the world.</p>
-            <p>A key distinction is that gender expression may or may not align with a person's gender identity. For example, a person might identify as non-binary (their gender identity) but present in ways that others perceive as typically feminine or masculine (their gender expression).</p>
-            <p>Both are important aspects of a person's experience of gender, but they function in different ways and shouldn't be conflated.</p>
-          </div>
-        </div>
+      <% if @answers.empty? %>
+      <div class="text-center py-12 bg-base-100 rounded-lg shadow-md">
+        <div class="text-4xl text-base-content/30 mb-4">💬</div>
+        <h3 class="text-xl text-base-content font-medium">No answers yet</h3>
+        <p class="text-base-content/70 mt-2">Check back soon for expert responses</p>
       </div>
-
-      <!-- Sample Answered Question 3 -->
-      <div class="bg-base-100 rounded-lg shadow-md p-6">
-        <div class="mb-4 border-b border-base-300 pb-4">
-          <h2 class="text-xl font-bold text-base-content">How can I make my classroom more gender-inclusive?</h2>
-          <div class="mt-2 flex items-center text-sm text-base-content/60">
-            <span>Asked by: Professor K.</span>
-            <span class="mx-2">•</span>
-            <span>August 22, 2023</span>
-          </div>
-        </div>
-        <div class="prose prose-sm max-w-none text-base-content/90">
-          <p>I'm a high school teacher looking to create a more inclusive environment for students of all gender identities. What are some practical steps I can take in my classroom to ensure all students feel respected and supported?</p>
-        </div>
-        <div class="mt-6 bg-base-200 p-4 rounded-lg">
-          <div class="flex items-center mb-3">
-            <div class="avatar">
-              <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-content font-bold">
-                MP
-              </div>
-            </div>
-            <div class="ml-3">
-              <h3 class="font-medium text-base-content">Dr. Morgan Patel</h3>
-              <p class="text-xs text-base-content/60">Education Consultant & Researcher</p>
-            </div>
-          </div>
-          <div class="prose prose-sm max-w-none text-base-content/90">
-            <p>Creating a gender-inclusive classroom involves several practical approaches:</p>
-            <ol>
-              <li><strong>Start with yourself:</strong> Model inclusive language by introducing yourself with your pronouns and avoiding gendered language like "ladies and gentlemen" in favor of "students," "scholars," or "everyone."</li>
-              <li><strong>Respect names and pronouns:</strong> Create opportunities for students to share their names and pronouns privately. Use a beginning-of-semester form or index card activity where students can indicate their name, pronouns, and whether it's OK to use those pronouns when speaking with parents/guardians.</li>
-              <li><strong>Update classroom materials:</strong> Review your curriculum and materials for gendered language and binary assumptions. Include diverse representations in your examples, reading materials, and discussions.</li>
-              <li><strong>Address misgendering:</strong> If a student is misgendered, briefly correct the pronoun and move on without making it a big moment. For example: "Sam shared his—sorry, their—idea about the project."</li>
-              <li><strong>Create inclusive spaces:</strong> Ensure access to gender-neutral restrooms if possible, and rethink gendered activities or groups.</li>
-              <li><strong>Have visual cues:</strong> Consider displaying a small pride flag or safe space sticker to signal that your classroom is inclusive.</li>
-            </ol>
-            <p>Remember that creating an inclusive environment is an ongoing process rather than a one-time change. Be open to feedback and willing to learn from your students.</p>
-          </div>
-        </div>
-      </div>
+      <% end %>
     </div>
 
-    <div class="mt-8 flex justify-center">
+    <div class="mt-8 flex justify-between items-center">
       <div class="join">
         <button class="join-item btn btn-sm">«</button>
         <button class="join-item btn btn-sm btn-active">1</button>
@@ -131,8 +72,10 @@
         <button class="join-item btn btn-sm">3</button>
         <button class="join-item btn btn-sm">»</button>
       </div>
+
+      <% if responder_signed_in? %>
+      <%= link_to "New Answer", new_answer_path, class: "btn btn-accent btn-sm" %>
+      <% end %>
     </div>
   </div>
 </div>
-
-<%= link_to "New answer", new_answer_path %>

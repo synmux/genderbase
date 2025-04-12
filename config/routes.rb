@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   get "/team", controller: :home, action: :team, as: :home_team
   get "/volunteer", controller: :home, action: :volunteer, as: :home_volunteer
   get "/terminology", controller: :terminology, action: :index, as: :terminology_index
-  get "/knowledge", controller: :knowledge, action: :index, as: :knowledge_index
-  get "/knowledge/show", controller: :knowledge, action: :show, as: :knowledge_show
   resources :answers
   resources :articles
   resources :questions

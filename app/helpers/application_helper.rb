@@ -1,11 +1,11 @@
 module ApplicationHelper
+  def markdown_to_html(text)
+    return "" if text.blank?
+    Kramdown::Document.new(text).to_html.html_safe
+  end
+
   def canonical_url
-    path = url_for(only_path: false, trailing_slash: false)
-    if path.include?("/index")
-      path.gsub("/index", "/")
-    else
-      path
-    end
+    request.original_url
   end
 
   def hotwire_livereload_value
