@@ -12,4 +12,12 @@ class Responder < ApplicationRecord
   def weak_words
     [ "genderbase" ]
   end
+
+  def name
+    pseudonym.presence || email.split("@").first
+  end
+
+  def username
+    name
+  end
 end

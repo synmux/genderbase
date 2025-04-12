@@ -2,22 +2,23 @@ Rails.application.routes.draw do
   # https://guides.rubyonrails.org/routing.html
 
   # WellKnownController
-  get "/.well-known", controller: :well_known, action: :index, as: :well_known
-  get "/.well-known/security", controller: :well_known, action: :security, as: :security
-  get "/.well-known/webfinger", controller: :well_known, action: :webfinger, as: :webfinger
-  get "/ads", controller: :well_known, action: :ads, as: :ads
-  get "/ai", controller: :well_known, action: :ai, as: :ai
-  get "/humans", controller: :well_known, action: :humans, as: :humans
-  get "/robots", controller: :well_known, action: :robots, as: :robots
+  get "/.well-known", controller: :well_known, action: :index, as: :well_known_index
+  get "/.well-known/security", controller: :well_known, action: :security, as: :well_known_security
+  get "/.well-known/webfinger", controller: :well_known, action: :webfinger, as: :well_known_webfinger
+  get "/ads", controller: :well_known, action: :ads, as: :well_known_ads
+  get "/ai", controller: :well_known, action: :ai, as: :well_known_ai
+  get "/humans", controller: :well_known, action: :humans, as: :well_known_humans
+  get "/robots", controller: :well_known, action: :robots, as: :well_known_robots
 
   # HomeController
-  get "/about", controller: :home, action: :about, as: :about
-  get "/privacy", controller: :home, action: :privacy, as: :privacy
-  get "/security", controller: :home, action: :security, as: :security
-  get "/support", controller: :home, action: :support, as: :support
-  get "/donate", controller: :home, action: :donate, as: :donate
-  get "/team", controller: :home, action: :team, as: :team
-  get "/volunteer", controller: :home, action: :volunteer, as: :volunteer
+  get "/home", controller: :home, action: :index, as: :home_index
+  get "/about", controller: :home, action: :about, as: :home_about
+  get "/privacy", controller: :home, action: :privacy, as: :home_privacy
+  get "/security", controller: :home, action: :security, as: :home_security
+  get "/support", controller: :home, action: :support, as: :home_support
+  get "/donate", controller: :home, action: :donate, as: :home_donate
+  get "/team", controller: :home, action: :team, as: :home_team
+  get "/volunteer", controller: :home, action: :volunteer, as: :home_volunteer
 
   # RESTful routes
   resources :terminologies

@@ -42,10 +42,10 @@
                 <% when "answered" %>
                 <span class="px-3 py-1 bg-success/20 text-success rounded-full text-sm font-medium">Answered</span>
                 <% else %>
-                <span class="px-3 py-1 bg-base-200 text-base-content/80 rounded-full text-sm font-medium"><%= question.status.titleize %></span>
+                <span class="px-3 py-1 bg-base-200 text-base-content/80 rounded-full text-sm font-medium">Unknown</span>
                 <% end %>
               </div>
-              <p class="text-base-content/80 mt-2"><%= truncate(question.content, length: 200) %></p>
+              <p class="text-base-content/80 mt-2"><%= truncate(question.body, length: 200) %></p>
               <div class="mt-4 flex flex-wrap items-center justify-between">
                 <div class="text-sm text-base-content/60">
                   <% if question.anonymous? %>

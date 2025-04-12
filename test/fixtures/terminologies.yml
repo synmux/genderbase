@@ -1,13 +1,12 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  word: MyString
+  term: MyString
   definition: MyText
   info: MyText
   responder: one
-
 two:
-  word: MyString
+  term: MyString
   definition: MyText
   info: MyText
   responder: two

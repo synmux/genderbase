@@ -1,37 +1,37 @@
 <%= form_with(model: terminology) do |form| %>
-  <% if terminology.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(terminology.errors.count, "error") %> prohibited this terminology from being saved:</h2>
+<% if terminology.errors.any? %>
+<div style="color: red">
+  <h2><%= pluralize(terminology.errors.count, "error") %> prohibited this terminology from being saved:</h2>
 
-      <ul>
-        <% terminology.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% terminology.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div>
-    <%= form.label :word, style: "display: block" %>
-    <%= form.text_field :word %>
-  </div>
+<div>
+  <%= form.label :term, style: "display: block" %>
+  <%= form.text_field :term %>
+</div>
 
-  <div>
-    <%= form.label :definition, style: "display: block" %>
-    <%= form.textarea :definition %>
-  </div>
+<div>
+  <%= form.label :definition, style: "display: block" %>
+  <%= form.text_area :definition %>
+</div>
 
-  <div>
-    <%= form.label :info, style: "display: block" %>
-    <%= form.textarea :info %>
-  </div>
+<div>
+  <%= form.label :info, style: "display: block" %>
+  <%= form.text_area :info %>
+</div>
 
-  <div>
-    <%= form.label :responder_id, style: "display: block" %>
-    <%= form.text_field :responder_id %>
-  </div>
+<div>
+  <%= form.label :responder_id, style: "display: block" %>
+  <%= form.text_field :responder_id %>
+</div>
 
-  <div>
-    <%= form.submit %>
-  </div>
+<div>
+  <%= form.submit %>
+</div>
 <% end %>

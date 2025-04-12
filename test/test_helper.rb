@@ -13,3 +13,27 @@ module ActiveSupport
     # Add more helper methods to be used by all tests here...
   end
 end
+
+# Module for controller tests that need authentication
+module Devise::Test::ControllerHelpers
+  def sign_in_responder
+    @request.env["devise.mapping"] = Devise.mappings[:responder]
+    sign_in responders(:one)
+  end
+end
+
+# Module for integration tests that need authentication
+module AuthenticationHelper
+  def sign_in_as(responder)
+    post responder_session_path, params: {
+      responder: {
+        email: responder.email,
+        password: "password123"
+      }
+    }
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  include AuthenticationHelper
+end

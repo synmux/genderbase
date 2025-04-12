@@ -7,7 +7,7 @@ class WellKnownControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get webfinger" do
-    get well_known_webfinger_url
+    get well_known_webfinger_url, params: { resource: "acct:dave@genderbase.com" }, as: :json
     assert_response :success
   end
 

@@ -6,7 +6,9 @@
 
   <div class="max-w-3xl mx-auto">
     <div class="bg-base-200 rounded-lg shadow-md p-4 mb-6">
+      <%= form_with(url: terminologies_path, method: :get, data: { controller: "search-form" }) do |form| %>
       <%= form.text_field :query, value: params[:query], placeholder: "Find terminology...", class: "w-full rounded-full border border-neutral-200 px-4 py-2 pl-10 text-sm focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent dark:border-neutral-600 dark:bg-neutral-800 dark:placeholder-neutral-400", data: { action: "input->search-form#submit" } %>
+      <% end %>
     </div>
 
     <div class="space-y-6">

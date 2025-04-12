@@ -1,8 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
   before_action :authenticate_responder!, except: %i[ index show ]
-  before_action :generate_token, only: %i[ create ]
-
 
   # GET /questions or /questions.json
   def index
@@ -27,6 +25,7 @@ class QuestionsController < ApplicationController
   # POST /questions or /questions.json
   def create
     @question = Question.new(question_params)
+    @question.token = SecureRandom.hex(16) if @question.token.blank?
 
     respond_to do |format|
       if @question.save
@@ -63,18 +62,13 @@ class QuestionsController < ApplicationController
   end
 
   private
-
-  def generate_token
-    @question.token = SecureRandom.hex(16)
-  end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_question
-      @question = Question.find(params.expect(:id))
+      @question = Question.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def question_params
-      params.expect(question: [ :title, :body, :token, :status, :email, :pseudonym, :responder_id ])
+      params.require(:question).permit(:title, :body, :status, :email, :pseudonym, :responder_id)
     end
 end

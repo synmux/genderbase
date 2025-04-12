@@ -15,7 +15,7 @@
         <div class="mb-6 border-b border-base-300 pb-4">
           <h2 class="text-xl font-bold text-base-content mb-2">Question: <%= @answer.question.title %></h2>
           <div class="prose max-w-none text-base-content/90">
-            <p><%= @answer.question.content %></p>
+            <p><%= @answer.question.body %></p>
           </div>
           <div class="mt-4 text-sm text-base-content/60">
             <% if @answer.question.anonymous? %>
@@ -64,13 +64,13 @@
       <% end %>
     </div>
 
-    <% if @answer.question && !@answer.question.article %>
+    <% if @answer.question && !@answer.question.knowledge %>
     <div class="mt-8 p-4 rounded-lg bg-base-200">
       <h3 class="font-medium mb-2">Create an article from this question and answer?</h3>
       <p class="text-base-content/80 mb-4 text-sm">
         Creating an article allows you to provide a more comprehensive resource based on this answer.
       </p>
-      <%= link_to "Create Article", new_article_path(question_id: @answer.question.id), class: "btn btn-sm btn-accent" %>
+      <%= link_to "Create Article", new_knowledge_path(question_id: @answer.question.id), class: "btn btn-sm btn-accent" %>
     </div>
     <% end %>
   </div>

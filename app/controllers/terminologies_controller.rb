@@ -60,11 +60,11 @@ class TerminologiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_terminology
-      @terminology = Terminology.find(params.expect(:id))
+      @terminology = Terminology.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def terminology_params
-      params.expect(terminology: [ :word, :definition, :info, :responder_id ])
+      params.require(:terminology).permit(:term, :definition, :info, :responder_id)
     end
 end

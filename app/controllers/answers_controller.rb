@@ -61,11 +61,11 @@ class AnswersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_answer
-      @answer = Answer.find(params.expect(:id))
+      @answer = Answer.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def answer_params
-      params.expect(answer: [ :body, :question_id, :responder_id ])
+      params.require(:answer).permit(:body, :question_id, :responder_id)
     end
 end

@@ -7,4 +7,8 @@ class Question < ApplicationRecord
   validates :token, presence: true
   validates :status, presence: true
   validates :email, presence: true
+
+  def anonymous?
+    email.blank?
+  end
 end
