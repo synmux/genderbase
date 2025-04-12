@@ -15,6 +15,7 @@
     }
   ],
   "dependencies": {
+    "@fontsource/sora": "^5.2.5",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.13",
     "@tailwindcss/cli": "^4.1.3",

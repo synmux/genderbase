@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@fontsource/sora':
+        specifier: ^5.2.5
+        version: 5.2.5
       '@hotwired/stimulus':
         specifier: ^3.2.2
         version: 3.2.2
@@ -188,6 +191,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/sora@5.2.5':
+    resolution: {integrity: sha512-tYBw4RHgNEhwOrsqSVlFKt4hdpf9/2taC+ygQJzw6wyPvQnnqJgYz+rGwuTOi3Wuv1qgoyyRpHkcKO7O8nSrEw==}
 
   '@hotwired/stimulus@3.2.2':
     resolution: {integrity: sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A==}
@@ -658,6 +664,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.25.2':
     optional: true
+
+  '@fontsource/sora@5.2.5': {}
 
   '@hotwired/stimulus@3.2.2': {}
 
