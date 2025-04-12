@@ -32,6 +32,7 @@ lint:
         - shellcheck
       paths:
         - bin/mise
+        - bin/docker-entrypoint
   enabled:
     - taplo@0.9.3
     - actionlint@1.7.7
