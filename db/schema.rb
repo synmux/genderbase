@@ -17,8 +17,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_200119) do
     t.integer "responder_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_answers_on_question_id"
-    t.index ["responder_id"], name: "index_answers_on_responder_id"
+    t.index [ "question_id" ], name: "index_answers_on_question_id"
+    t.index [ "responder_id" ], name: "index_answers_on_responder_id"
   end
 
   create_table "knowledges", force: :cascade do |t|
@@ -31,8 +31,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_200119) do
     t.integer "responder_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_knowledges_on_question_id"
-    t.index ["responder_id"], name: "index_knowledges_on_responder_id"
+    t.index [ "question_id" ], name: "index_knowledges_on_question_id"
+    t.index [ "responder_id" ], name: "index_knowledges_on_responder_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -45,7 +45,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_200119) do
     t.integer "responder_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["responder_id"], name: "index_questions_on_responder_id"
+    t.index [ "responder_id" ], name: "index_questions_on_responder_id"
   end
 
   create_table "responders", force: :cascade do |t|
@@ -57,8 +57,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_200119) do
     t.string "pseudonym"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_responders_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_responders_on_reset_password_token", unique: true
+    t.index [ "email" ], name: "index_responders_on_email", unique: true
+    t.index [ "reset_password_token" ], name: "index_responders_on_reset_password_token", unique: true
   end
 
   create_table "terminologies", force: :cascade do |t|
@@ -68,7 +68,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_200119) do
     t.integer "responder_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["responder_id"], name: "index_terminologies_on_responder_id"
+    t.index [ "responder_id" ], name: "index_terminologies_on_responder_id"
   end
 
   add_foreign_key "answers", "questions"
