@@ -16,7 +16,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_173140) do
     t.integer "question_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "question_id" ], name: "index_answers_on_question_id"
+    t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "articles", force: :cascade do |t|
@@ -29,7 +29,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_173140) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "question_id" ], name: "index_articles_on_question_id"
+    t.index ["question_id"], name: "index_articles_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -41,7 +41,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_173140) do
     t.integer "responder_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [ "responder_id" ], name: "index_questions_on_responder_id"
+    t.index ["responder_id"], name: "index_questions_on_responder_id"
   end
 
   create_table "responders", force: :cascade do |t|
@@ -55,9 +55,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_173140) do
     t.integer "questions_id"
     t.boolean "deleted"
     t.string "name"
-    t.index [ "email" ], name: "index_responders_on_email", unique: true
-    t.index [ "questions_id" ], name: "index_responders_on_questions_id"
-    t.index [ "reset_password_token" ], name: "index_responders_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_responders_on_email", unique: true
+    t.index ["questions_id"], name: "index_responders_on_questions_id"
+    t.index ["reset_password_token"], name: "index_responders_on_reset_password_token", unique: true
   end
 
   add_foreign_key "answers", "questions"
