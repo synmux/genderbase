@@ -2,24 +2,24 @@
   <div class="container mx-auto px-4 py-12">
     <div class="grid grid-cols-1 md:grid-cols-2 grid-rows-2 gap-8">
       <div class="bg-base-200 backdrop-blur-sm p-8 md:p-10 rounded-2xl border border-white/20">
-        <h2 class="text-2xl font-bold mb-4">Ask Questions About Gender</h2>
-        <p class="mb-6">Have questions about gender identity, expression, or terminology? Our community is here to provide supportive, factual information.</p>
-        <a href="/questions/new" class="btn btn-soft btn-primary mt-4">Ask a Question</a>
+        <h2 class="text-2xl font-bold mb-4">Get answers about gender</h2>
+        <p class="mb-6">Have questions about issues of gender? Our volunteer responders are here to answer them.</p>
+        <%= link_to "Ask a Question", new_question_path, class: "btn btn-soft btn-primary mt-4" %>
       </div>
       <div class="bg-base-200 backdrop-blur-sm p-8 md:p-10 rounded-2xl border border-white/20">
-        <h2 class="text-2xl font-bold mb-4">Explore Knowledge Base</h2>
-        <p class="mb-6">Browse our curated collection of articles, resources, and educational content related to gender diversity and inclusion.</p>
-        <a href="/articles" class="btn btn-soft btn-secondary mt-4">Browse Knowledge</a>
+        <h2 class="text-2xl font-bold mb-4">Explore the Knowledge Base</h2>
+        <p class="mb-6">Browse our curated collection of resources related to gender diversity and inclusion.</p>
+        <%= link_to "Browse Knowledge Base", knowledges_path, class: "btn btn-soft btn-secondary mt-4" %>
       </div>
       <div class="bg-base-200 backdrop-blur-sm p-8 md:p-10 rounded-2xl border border-white/20">
-        <h2 class="text-2xl font-bold mb-4">Browse Community Questions</h2>
-        <p class="mb-6">Discover questions and answers from our community, with insights from experts on gender-related topics.</p>
-        <a href="/questions" class="btn btn-soft btn-accent mt-4">View Questions</a>
+        <h2 class="text-2xl font-bold mb-4">Vounteer your knowledge</h2>
+        <p class="mb-6">Contribute your knowledge by answering questions for others seeking information.</p>
+        <%= link_to "Get Involved", home_volunteer_path, class: "btn btn-soft btn-accent mt-4" %>
       </div>
       <div class="bg-base-200 backdrop-blur-sm p-8 md:p-10 rounded-2xl border border-white/20">
-        <h2 class="text-2xl font-bold mb-4">Join Our Community</h2>
-        <p class="mb-6">Become a volunteer, contribute your knowledge, or help answer questions for others seeking information.</p>
-        <a href="/volunteer" class="btn btn-soft mt-4">Get Involved</a>
+        <h2 class="text-2xl font-bold mb-4">Help keep us going</h2>
+        <p class="mb-6">Genderbase relies on donations to keep running. If you'd like to help, please consider donating.</p>
+        <%= link_to "Make a Donation", home_donate_path, class: "btn btn-soft mt-4" %>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ show edit update destroy ]
-  before_action :authenticate_responder!, except: %i[ index show ]
+  before_action :authenticate_responder!, except: %i[ new create ]
 
   # GET /questions or /questions.json
   def index

@@ -1,7 +1,7 @@
 /* Tailwind 4 */
 @import "tailwindcss";
 
-@import url("https://fonts.googleapis.com/css?family=Sora:100,200,300,400,500,600,700,800&display=swap");
+@import "@fontsource-variable/sora";
 
 @plugin "daisyui" {
   themes:
@@ -11,7 +11,7 @@
 
 @layer base {
   html {
-    font-family: "Sora", sans-serif;
+    font-family: "Sora Variable", sans-serif;
   }
 }
 

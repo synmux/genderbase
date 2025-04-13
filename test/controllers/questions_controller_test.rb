@@ -7,6 +7,7 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
+    sign_in_as(@responder)
     get questions_url
     assert_response :success
   end
@@ -27,6 +28,7 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show question" do
+    sign_in_as(@responder)
     get question_url(@question)
     assert_response :success
   end
