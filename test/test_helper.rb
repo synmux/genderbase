@@ -36,9 +36,22 @@ module AuthenticationHelper
     # For system tests
     else
       visit new_responder_session_path
+
+      # The login page should have "Log in" text somewhere
+      assert page.has_text?("Log in"), "Login page should have 'Log in' text"
+
+      # Fill in the form
       fill_in "Email", with: responder.email
       fill_in "Password", with: "password123"
+
+      # Click the login button
       click_on "Log in"
+
+      # Give some time for the login process to complete
+      sleep 1
+
+      # Verify we're logged in by checking for the absence of login form
+      assert_no_text "You need to sign in or sign up before continuing."
     end
   end
 end

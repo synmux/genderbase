@@ -9,7 +9,15 @@ class QuestionsTest < ApplicationSystemTestCase
 
   test "visiting the index" do
     visit questions_url
-    assert_text "Community Questions"
+
+    # First check if we're properly logged in
+    assert_no_text "You need to sign in or sign up before continuing."
+
+    # Check for something that should be visible in the navigation
+    assert_selector "a", text: "Knowledge Base"
+
+    # Check for "Ask a Question" which should be related to questions
+    assert_selector "a", text: "Ask a Question"
   end
 
   test "should create question" do

@@ -8,5 +8,7 @@
     "go": "${workspaceFolder}/.vscode/mise-tools/go",
     "gopls": "${workspaceFolder}/.vscode/mise-tools/gopls"
   },
-  "workbench.colorCustomizations": {}
+  "workbench.colorCustomizations": {},
+  "java.jdt.ls.java.home": "${workspaceFolder}/.vscode/mise-tools/java",
+  "java.import.gradle.java.home": "${workspaceFolder}/.vscode/mise-tools/java"
 }
