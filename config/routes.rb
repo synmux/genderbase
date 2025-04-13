@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get "/donate", controller: :home, action: :donate, as: :home_donate
   get "/team", controller: :home, action: :team, as: :home_team
   get "/volunteer", controller: :home, action: :volunteer, as: :home_volunteer
+  get "/good-faith", controller: :home, action: :good_faith, as: :home_good_faith
 
   # RESTful routes
   resources :terminologies

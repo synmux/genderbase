@@ -22,4 +22,7 @@ class HomeController < ApplicationController
 
   def donate
   end
+
+  def good_faith
+  end
 end

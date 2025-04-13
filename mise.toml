@@ -13,8 +13,9 @@ ruby = { version = '3.4.2' }
 
 [tasks]
 'dev' = { depends = 'dev:tailscale' }
-'dev:tailscale' = 'foreman start -f Procfile.tailscale'
-'dev:localhost' = 'foreman start -f Procfile.localhost'
+'dev:tailscale' = { env = { 'RAILS_ENV' = 'development', 'RUBY_DEBUG_OPEN' = 'true' }, run = 'foreman start -f Procfile.tailscale' }
+'dev:localhost' = { env = { 'RAILS_ENV' = 'development', 'RUBY_DEBUG_OPEN' = 'true' }, run = 'foreman start -f Procfile.localhost' }
+'kill-redis' = 'pkill -9 redis-server'
 prepare-ci = 'gem install bundler; bundle install; bundle binstubs --all; pnpm install --verify-store-integrity'
 'ci:brakeman' = { run = 'bin/brakeman --no-pager' }
 'ci:rubocop' = { run = 'bin/rubocop -f github' }

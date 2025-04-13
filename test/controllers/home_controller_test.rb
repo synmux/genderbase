@@ -40,4 +40,9 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     get home_donate_url
     assert_response :success
   end
+
+  test "should get good_faith" do
+    get home_good_faith_url
+    assert_response :success
+  end
 end

@@ -15,7 +15,6 @@ See `mise.toml` for recommended versions. Install them all with `bin/mise instal
 ### Recommended
 
 - [**`jdx/mise`**](https://github.com/jdx/mise): Dependency manager and task runner; `asdf`, but better
-- [**`joerdav/xc`**](https://github.com/joerdav/xc): Task runner; alternative to `mise`
 
 This will be installed automatically by `bin/mise` which will bootstrap `mise` if needed, and run it if it's already installed.
 
@@ -36,58 +35,3 @@ Start the development server with `bin/mise dev`.
 ### Devise views
 
 These can be generated for editing with `bin/rails g devise:views`.
-
-## Tasks
-
-This section is interpreted by [**`joerdav/xc`**](https://github.com/joerdav/xc) as an alternative to [**`jdx/mise`**](https://github.com/jdx/mise).
-
-### `dev`
-
-Start the development servers using foreman.
-
-```sh
-foreman start -f Procfile.dev
-```
-
-### `prepare-ci`
-
-Install dependencies for CI environment.
-
-```sh
-gem install bundler
-bundle install
-bundle binstubs --all
-pnpm install --verify-store-integrity
-```
-
-### `ci:brakeman`
-
-Run Brakeman security scanner.
-
-```sh
-bin/brakeman --no-pager
-```
-
-### `ci:rubocop`
-
-Run RuboCop with GitHub-formatted output.
-
-```sh
-bin/rubocop -f github
-```
-
-### `ci:test`
-
-Run Rails tests including system tests.
-
-```sh
-RAILS_ENV=test bin/rails db:test:prepare test test:system
-```
-
-### `ci`
-
-Run all CI tasks.
-
-```sh
-xc ci:brakeman && xc ci:rubocop && xc ci:test
-```
