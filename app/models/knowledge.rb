@@ -6,6 +6,8 @@ class Knowledge < ApplicationRecord
   validates :slug, uniqueness: true
   validates :category, presence: true
 
+  # enum category: { general: 0, pronouns: 1, identity: 2, other: 3 }
+
   private
 
   def generate_slug

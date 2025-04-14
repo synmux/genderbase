@@ -8,6 +8,8 @@ class Question < ApplicationRecord
   validates :status, presence: true
   validates :email, presence: true
 
+  # enum status: { draft: 0, published: 1, archived: 2 }
+
   def anonymous?
     email.blank?
   end

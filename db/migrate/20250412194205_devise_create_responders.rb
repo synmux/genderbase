@@ -39,6 +39,7 @@ class DeviseCreateResponders < ActiveRecord::Migration[8.0]
 
     add_index :responders, :email,                unique: true
     add_index :responders, :reset_password_token, unique: true
+    add_index :responders, :pseudonym,            unique: true
     # add_index :responders, :confirmation_token,   unique: true
     # add_index :responders, :unlock_token,         unique: true
   end

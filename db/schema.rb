@@ -63,6 +63,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_12_200119) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index [ "email" ], name: "index_responders_on_email", unique: true
+    t.index [ "pseudonym" ], name: "index_responders_on_pseudonym", unique: true
     t.index [ "reset_password_token" ], name: "index_responders_on_reset_password_token", unique: true
   end
 
