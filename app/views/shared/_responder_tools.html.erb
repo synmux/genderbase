@@ -1,0 +1,12 @@
+<nav class="fixed top-16 left-0 w-full bg-base-200 border-b border-accent/20 py-2 shadow-sm z-40">
+  <div class="container mx-auto px-4 flex items-center space-x-4">
+    <span class="font-semibold text-accent mr-4">Responder Tools</span>
+    <%= link_to "Questions", questions_path, class: "btn btn-xs btn-ghost" %>
+    <%= link_to "Answers", answers_path, class: "btn btn-xs btn-ghost" %>
+    <%= link_to "Knowledge Base", knowledges_path, class: "btn btn-xs btn-ghost" %>
+    <%= link_to "New Answer", new_answer_path, class: "btn btn-xs btn-accent" %>
+    <%= link_to "New Article", new_knowledge_path, class: "btn btn-xs btn-accent" %>
+    <span class="ml-auto text-xs text-base-content/60">Signed in as <%= current_responder.email %></span>
+    <%= link_to "Sign out", destroy_responder_session_path, method: :delete, class: "btn btn-xs btn-error ml-2" %>
+  </div>
+</nav>

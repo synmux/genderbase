@@ -7,14 +7,14 @@ class Responder < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise  :database_authenticatable, :registerable,
           :recoverable, :rememberable, :validatable,
-          :zxcvbnable, :argon2
+          :zxcvbnable, :argon2, :trackable
 
   def weak_words
     [ "genderbase" ]
   end
 
   def name
-    pseudonym.presence || email.split("@").first
+    pseudonym.presence || email
   end
 
   def username
