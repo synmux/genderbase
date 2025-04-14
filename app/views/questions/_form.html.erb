@@ -23,113 +23,26 @@
   <%= form.text_area :content, rows: 6, class: "textarea textarea-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "Please describe your question in detail. The more information you provide, the better our experts can answer your question." %>
 </div>
 
-<div class="form-control w-full mt-4" id="email_field_container">
-  <div class="flex justify-between items-center">
+<div class="form-control w-full mt-4" id="email_field_container" data-controller="question-form">
+  <div class="email-details-group transition-all duration-300 ease-in-out overflow-hidden max-h-[300px] opacity-100" data-question-form-target="emailDetailsGroup">
     <%= form.label :email, "Email Address (Optional, but recommended)", class: "label font-medium text-base-content" %>
-    <div class="form-control">
-      <label class="label cursor-pointer">
-        <span class="label-text mr-2">Submit Anonymously</span>
-        <%= form.check_box :anonymous, class: "checkbox checkbox-primary", id: "question_anonymous" %>
-      </label>
+    <div class="label-text-alt text-base-content/70">
+      If provided, we'll email you a link to your question and notify you when it receives a response.
+      If not provided, you'll need to check back manually to see responses.<br />
+      <span class="text-error">Responders never see your email address, and we don't collect your name.</span>
     </div>
+    <%= form.email_field :email, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "your.email@example.com", id: "question_email", 'data-question-form-target': 'emailField' %>
   </div>
-  <div class="label-text-alt text-base-content/70">
-    If provided, we'll email you a link to your question and notify you when it receives a response.
-    If not provided, you'll need to check back manually to see responses.<br />
-    <span class="text-error">Responders never see your email address, and we don't collect your name.</span>
+  <div class="form-control mb-6 mt-4">
+    <label class="label cursor-pointer">
+      <%= form.check_box :anonymous, class: "checkbox checkbox-primary mr-2", id: "question_anonymous", 'data-action': 'change->question-form#toggleAnonymous' %>
+      <span class="label-text">Submit Anonymously</span>
+    </label>
   </div>
-  <%= form.email_field :email, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "your.email@example.com", id: "question_email" %>
 </div>
 
 <div class="form-control mt-6">
   <%= form.hidden_field :status, value: "pending" %>
   <%= form.submit "Submit Question", class: "btn btn-accent w-full sm:w-auto" %>
 </div>
-
-<script>
-  function setupAnonymousCheckbox() {
-    const anonymousCheckbox = document.getElementById('question_anonymous');
-    const emailField = document.getElementById('question_email');
-    const emailContainer = document.getElementById('email_field_container');
-
-    if (!anonymousCheckbox || !emailField || !emailContainer) return;
-
-    function updateEmailField() {
-      if (anonymousCheckbox.checked) {
-        emailField.value = '';
-        emailField.disabled = true;
-        emailField.classList.add('bg-base-200');
-
-        // Hide the email field with animation, but keep the container and checkbox visible
-        emailField.style.transition = 'all 0.3s ease';
-        emailField.style.maxHeight = '0';
-        emailField.style.opacity = '0';
-        emailField.style.margin = '0';
-        emailField.style.padding = '0';
-        emailField.style.overflow = 'hidden';
-
-        // Hide the label-text-alt description when anonymous
-        const description = emailContainer.querySelector('.label-text-alt');
-        description.style.transition = 'all 0.3s ease';
-        description.style.maxHeight = '0';
-        description.style.opacity = '0';
-        description.style.margin = '0';
-        description.style.overflow = 'hidden';
-
-        // Hide the "Email Address (Optional)" label
-        const emailLabel = emailContainer.querySelector('label.font-medium');
-        emailLabel.style.transition = 'all 0.3s ease';
-        emailLabel.style.maxHeight = '0';
-        emailLabel.style.opacity = '0';
-        emailLabel.style.margin = '0';
-        emailLabel.style.overflow = 'hidden';
-      } else {
-        emailField.disabled = false;
-        emailField.classList.remove('bg-base-200');
-
-        // Show the email field with animation
-        emailField.style.transition = 'all 0.3s ease';
-        emailField.style.maxHeight = '50px';
-        emailField.style.opacity = '1';
-        emailField.style.margin = '';
-        emailField.style.padding = '';
-        emailField.style.overflow = '';
-
-        // Show the description when not anonymous
-        const description = emailContainer.querySelector('.label-text-alt');
-        description.style.transition = 'all 0.3s ease';
-        description.style.maxHeight = '100px';
-        description.style.opacity = '1';
-        description.style.margin = '';
-        description.style.overflow = '';
-
-        // Show the "Email Address (Optional)" label
-        const emailLabel = emailContainer.querySelector('label.font-medium');
-        emailLabel.style.transition = 'all 0.3s ease';
-        emailLabel.style.maxHeight = '50px';
-        emailLabel.style.opacity = '1';
-        emailLabel.style.margin = '';
-        emailLabel.style.overflow = '';
-      }
-    }
-
-    // Initial setup
-    updateEmailField();
-
-    // Add event listener for changes
-    anonymousCheckbox.addEventListener('change', updateEmailField);
-  }
-
-  // Run on initial page load
-  document.addEventListener('DOMContentLoaded', setupAnonymousCheckbox);
-
-  // Run when Turbo navigates to a new page
-  document.addEventListener('turbo:load', setupAnonymousCheckbox);
-
-  // Run when Turbo renders a frame
-  document.addEventListener('turbo:frame-render', setupAnonymousCheckbox);
-
-  // Also run immediately in case the DOM is already loaded
-  setupAnonymousCheckbox();
-</script>
 <% end %>

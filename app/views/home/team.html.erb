@@ -1,44 +1,55 @@
-<div class="container mx-auto px-4 py-12">
-  <h1 class="text-3xl font-bold mb-8">Our Team</h1>
-
-  <p class="text-xl mb-10 max-w-4xl">Genderbase is brought to you by a dedicated team of individuals who are passionate about gender education, inclusion, and supporting our community.</p>
-
-  <!-- Core Team Section -->
-  <div class="mb-16">
-    <h2 class="text-2xl font-bold mb-6 border-b pb-2">Core Team</h2>
-    <p class="mb-8">Our core team members handle the day-to-day operations of Genderbase and also operate as responders.</p>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      <!-- Team Member 1 -->
-      <div class="bg-base-200 rounded-xl p-6 flex flex-col items-center text-center">
-        <div class="w-32 h-32 rounded-full bg-primary/20 mb-4 flex items-center justify-center">
-          <%= image_tag "team/dave-williams.jpg", class: "w-32 h-32 rounded-full" %>
-        </div>
-        <h3 class="text-xl font-bold mb-2"><a href="https://dave.io">Dave Williams</a></h3>
-        <p class="text-sm text-base-content/70 mb-2">Founder (they/them)</p>
-        <p class="mb-4">DevOps engineer, general-purpose nerd, and great big queer monstrosity.</p>
-        <div class="mt-auto">
-          <a href="mailto:dave@genderbase.com" class="">dave@genderbase.com</a>
-        </div>
+<section class="hero min-h-[40vh] bg-gradient-to-br from-primary/10 to-base-200 rounded-xl mb-10 flex items-center justify-center shadow-lg">
+  <div class="text-center">
+    <div class="flex justify-center mb-4">
+      <div class="bg-primary/20 rounded-full p-4 inline-block">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a4 4 0 00-3-3.87M9 20H4v-2a4 4 0 013-3.87m9-4a4 4 0 11-8 0 4 4 0 018 0zm6 4v2a2 2 0 01-2 2h-1.5M3 16v2a2 2 0 002 2h1.5" />
+        </svg>
       </div>
     </div>
+    <h1 class="text-4xl font-extrabold text-primary mb-2">Our Team</h1>
+    <p class="text-lg text-base-content/70 max-w-2xl mx-auto">Genderbase is brought to you by a dedicated team passionate about gender education, inclusion, and supporting our community.</p>
+  </div>
+</section>
 
-    <!-- Volunteer Responders Section -->
-    <div class="pt-6 ermb-16">
-      <h2 class="text-2xl font-bold mb-6 border-b pb-2">Volunteer Responders</h2>
-      <p class="mb-8">Our volunteer responders provide answers to user questions and manage the knowledge base.</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-6">
-        <!-- Team Member 5 -->
-        <div class="bg-base-200 rounded-xl p-6 flex flex-col items-center text-center">
-          <div class="w-32 h-32 rounded-full bg-secondary/20 mb-4 flex items-center justify-center">
-            <span class="text-4xl">??</span>
-          </div>
-          <h3 class="text-xl font-bold mb-2">Maybe You</h3>
-          <p class="text-sm text-base-content/70 mb-2">Responder (they/them)</p>
-          <p class="mb-4">Could you be a responder? We're always looking for more people to join our team.</p>
-          <div class="mt-auto">
-            <%= link_to "Learn About Volunteering", "/volunteer", class: "btn btn-primary" %>
-          </div>
-        </div>
+<div class="container mx-auto px-4 py-8 max-w-5xl">
+  <div class="prose lg:prose-xl max-w-none">
+    <div class="divider my-8 before:bg-primary/20 after:bg-primary/20">Core Team</div>
+    <p class="mb-8">Our core team members handle the day-to-day operations of Genderbase and also operate as responders.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+    <!-- Team Member 1 -->
+    <div class="bg-base-200 rounded-xl p-6 flex flex-col items-center text-center shadow">
+      <div class="w-32 h-32 rounded-full bg-primary/20 mb-4 flex items-center justify-center overflow-hidden">
+        <%= image_tag "team/dave-williams.jpg", class: "w-32 h-32 rounded-full object-cover" %>
       </div>
+      <h3 class="text-xl font-bold mb-1"><a href="https://dave.io" class="link link-primary">Dave Williams</a></h3>
+      <span class="badge badge-primary badge-outline mb-1 whitespace-nowrap text-sm">Founder</span>
+      <span class="badge badge-ghost mb-2 whitespace-nowrap text-xs">they/them</span>
+      <p class="mb-4 text-base-content/70">DevOps engineer, general-purpose nerd, and great big queer monstrosity.</p>
+      <div class="mt-auto">
+        <a href="mailto:dave@genderbase.com" class="link link-primary">dave@genderbase.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="prose lg:prose-xl max-w-none">
+    <div class="divider my-8 before:bg-secondary/20 after:bg-secondary/20">Volunteer Responders</div>
+    <p class="mb-8">Our volunteer responders provide answers to user questions and manage the knowledge base.</p>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-6">
+    <!-- Team Member 5 -->
+    <div class="bg-base-200 rounded-xl p-6 flex flex-col items-center text-center shadow">
+      <div class="w-32 h-32 rounded-full bg-secondary/20 mb-4 flex items-center justify-center">
+        <span class="text-4xl">??</span>
+      </div>
+      <h3 class="text-xl font-bold mb-1">Maybe You</h3>
+      <span class="badge badge-secondary badge-outline mb-1 whitespace-nowrap text-sm">Responder</span>
+      <span class="badge badge-ghost mb-2 whitespace-nowrap text-xs">they/them</span>
+      <p class="mb-4 text-base-content/70">Could you be a responder? We're always looking for more people to join our team.</p>
+      <div class="mt-auto pt-4 pb-2 w-full flex justify-center">
+        <%= link_to "Learn About Volunteering", "/volunteer", class: "btn btn-primary btn-lg shadow w-full py-4" %>
+      </div>
+    </div>
+  </div>
+</div>
