@@ -18,35 +18,35 @@
       <div class="bg-base-100 rounded-lg shadow-md p-6">
         <div class="mb-4 border-b border-base-300 pb-4">
           <h2 class="text-xl font-bold text-base-content">
-            <%= answer.question.title %>
+            <%= h(answer.question.title) %>
           </h2>
           <div class="mt-2 flex items-center text-sm text-base-content/60">
             <% if answer.question.anonymous? %>
             <span>Asked by: Anonymous</span>
             <% else %>
-            <span>Asked by: <%= answer.question.email.split('@').first %></span>
+            <span>Asked by: <%= h(answer.question.email.split('@').first) %></span>
             <% end %>
             <span class="mx-2">•</span>
-            <span><%= answer.question.created_at.strftime("%B %d, %Y") %></span>
+            <span><%= h(answer.question.created_at.strftime("%B %d, %Y")) %></span>
           </div>
         </div>
         <div class="prose prose-sm max-w-none text-base-content/90">
-          <p><%= truncate(answer.question.body, length: 150) %></p>
+          <p><%= h(truncate(answer.question.body, length: 150)) %></p>
         </div>
         <div class="mt-6 bg-base-200 p-4 rounded-lg">
           <div class="flex items-center mb-3">
             <div class="avatar">
               <div class="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-accent-content font-bold">
-                <%= answer.responder&.name&.split(' ')&.map { |n| n[0] }&.join || "GB" %>
+                <%= h(answer.responder&.name&.split(' ')&.map { |n| n[0] }&.join || "GB") %>
               </div>
             </div>
             <div class="ml-3">
-              <h3 class="font-medium text-base-content"><%= answer.responder&.name || "Genderbase Expert" %></h3>
-              <p class="text-xs text-base-content/60"><%= answer.created_at.strftime("%B %d, %Y") %></p>
+              <h3 class="font-medium text-base-content"><%= h(answer.responder&.name || "Genderbase Expert") %></h3>
+              <p class="text-xs text-base-content/60"><%= h(answer.created_at.strftime("%B %d, %Y")) %></p>
             </div>
           </div>
           <div class="prose prose-sm max-w-none text-base-content/90">
-            <%= truncate(strip_tags(answer.to_html), length: 200) %>
+            <%= h(truncate(strip_tags(answer.to_html), length: 200)) %>
           </div>
           <div class="mt-3 text-right">
             <%= link_to "Read full answer", answer %>
