@@ -103,4 +103,7 @@ group :test do
 
   # WebDriver for Capybara [https://github.com/SeleniumHQ/selenium]
   gem "selenium-webdriver"
+
+  # Code coverage reporting [https://github.com/simplecov-ruby/simplecov]
+  gem "simplecov", require: false
 end
