@@ -41,3 +41,9 @@
 
 # SimpleCov coverage reports
 /coverage
+
+# Goose
+/.goose
+
+# VS Code History
+/.history
