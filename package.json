@@ -12,7 +12,7 @@
     "@tailwindcss/postcss": "^4.1.4",
     "@tailwindcss/typography": "^0.5.16",
     "autoprefixer": "^10.4.21",
-    "daisyui": "^5.0.19",
+    "daisyui": "^5.0.22",
     "postcss": "^8.5.3",
     "postcss-cli": "^11.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
