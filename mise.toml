@@ -8,7 +8,7 @@ env_file = '.env'
 envsubst = { version = '1.4.3' }
 node = { version = '23.11.0' }
 pnpm = { version = '10.8.1' }
-ruby = { version = '3.4.2' }
+ruby = { version = '3.4.3' }
 
 [tasks]
 'dev' = { depends = 'dev:tailscale' }
