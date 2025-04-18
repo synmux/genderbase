@@ -60,6 +60,7 @@ jie1OSh0ek6aith3
 - Ask the user whether their question can be turned into a knowledge article when the question is closed
   - Default to yes, giving them 7 days to opt out
   - Allow the responder to flag the question as not eligible for the knowledge base
+- Use ActionCable to update questions in real time as they are edited or answered
 
 ## Notes
 
