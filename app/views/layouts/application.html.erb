@@ -43,7 +43,7 @@
 
 <body>
   <%= render 'shared/header' %>
-  <div class="pt-6">
+  <div class="<%= responder_signed_in? ? "pt-16" : "pt-6" %>">
     <%= yield %>
   </div>
   <%= render 'shared/footer' %>

@@ -1,31 +1,29 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["emailDetailsGroup", "emailField"];
+  static targets = ["emailField", "emailContainer", "markdownHelp", "anonymousWarning"];
 
   connect() {
-    this.toggleAnonymous();
+    // Check initial state on connection
+    this.toggleEmail();
   }
 
-  toggleAnonymous(event) {
-    // If called from event, get checked from event.target; otherwise, from DOM
-    const checked = event ? event.target.checked : this._findCheckbox().checked;
-    if (checked) {
+  toggleEmail() {
+    const checkbox = this.element.querySelector("#anonymous_checkbox");
+    if (checkbox.checked) {
       this.emailFieldTarget.value = "";
-      this.emailFieldTarget.disabled = true;
-      this.emailFieldTarget.classList.add("bg-base-200");
-      this.emailDetailsGroupTarget.classList.add("max-h-0", "opacity-0");
-      this.emailDetailsGroupTarget.classList.remove("max-h-[300px]", "opacity-100");
+      this.emailFieldTarget.setAttribute("disabled", "disabled");
+      this.emailFieldTarget.classList.add("bg-base-200", "opacity-50");
+      this.anonymousWarningTarget.classList.remove("hidden");
     } else {
-      this.emailFieldTarget.disabled = false;
-      this.emailFieldTarget.classList.remove("bg-base-200");
-      this.emailDetailsGroupTarget.classList.remove("max-h-0", "opacity-0");
-      this.emailDetailsGroupTarget.classList.add("max-h-[300px]", "opacity-100");
+      this.emailFieldTarget.removeAttribute("disabled");
+      this.emailFieldTarget.classList.remove("bg-base-200", "opacity-50");
+      this.anonymousWarningTarget.classList.add("hidden");
     }
   }
 
-  _findCheckbox() {
-    // Find the checkbox within this.element
-    return this.element.querySelector("#question_anonymous");
+  toggleMarkdownHelp(event) {
+    event.preventDefault();
+    this.markdownHelpTarget.classList.toggle("hidden");
   }
 }

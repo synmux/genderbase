@@ -39,10 +39,10 @@ _ = Question.find_or_create_by(title: "How to respectfully ask about pronouns?")
   q.token = SecureRandom.hex(16)
 end
 
-# In progress question with conversation (multiple answers)
+# Active question with conversation (multiple answers)
 question2 = Question.find_or_create_by(title: "Supporting a transgender friend through their transition") do |q|
   q.body = "My close friend has recently come out as transgender and is beginning their transition. I want to be as supportive as possible but I'm worried about saying the wrong thing. What are some practical ways I can support them during this time?"
-  q.status = :in_progress
+  q.status = :active
   q.email = "user2@example.com"
   q.pseudonym = "Supportive Friend"
   q.responder = responder2

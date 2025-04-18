@@ -1,4 +1,4 @@
-<%= form_with(model: question, class: "space-y-6") do |form| %>
+<%= form_with(model: question, class: "space-y-6", data: { controller: "question-form" }) do |form| %>
 <% if question.errors.any? %>
 <div class="bg-error/10 text-error rounded-lg p-4 mb-6">
   <h2 class="font-bold text-lg mb-2"><%= pluralize(question.errors.count, "error") %> prohibited this question from being saved:</h2>
@@ -20,12 +20,12 @@
 <div class="form-control w-full">
   <%= form.label :body, "Question Details", class: "label font-medium text-base-content" %>
   <div class="label-text-alt text-base-content/70">
-    Provide as much context and detail as possible. You can use Markdown for formatting.
-    <a href="#" class="text-primary" onclick="document.getElementById('markdown-help').classList.toggle('hidden'); return false;">Show formatting help</a>
+    Provide as much context and detail as possible. You can use Markdown for formatting, but it's not required.
+    <a href="#" class="text-primary" data-action="click->question-form#toggleMarkdownHelp">Show Markdown help</a>
   </div>
   <%= form.text_area :body, rows: 8, class: "textarea textarea-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "Please describe your question in detail. The more information you provide, the better our experts can answer your question." %>
 
-  <div id="markdown-help" class="hidden mt-2 p-3 bg-base-200 rounded-md text-sm">
+  <div id="markdown-help" class="hidden mt-2 p-3 bg-base-200 rounded-md text-sm" data-question-form-target="markdownHelp">
     <p class="font-semibold mb-1">Markdown Formatting Guide:</p>
     <ul class="list-disc ml-5 text-xs space-y-1">
       <li><code>**bold text**</code> for <strong>bold text</strong></li>
@@ -38,59 +38,39 @@
   </div>
 </div>
 
-<div class="form-control w-full">
+<div class="form-control w-full" data-question-form-target="emailContainer">
   <%= form.label :email, "Your Email", class: "label font-medium text-base-content" %>
   <div class="label-text-alt text-base-content/70">Used to contact you about your question (never publicly displayed)</div>
-  <%= form.email_field :email, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "email@example.com" %>
+  <%= form.email_field :email, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "email@example.com", data: { question_form_target: "emailField" } %>
 
   <div class="mt-2">
     <label class="cursor-pointer flex items-center gap-2">
-      <%= form.check_box :anonymous_submission, class: "checkbox checkbox-sm", id: "anonymous_checkbox", data: { action: "change->anonymous-form#toggleEmail" } %>
-      <span class="label-text">Submit anonymously (no email required)</span>
+      <%= form.check_box :anonymous_submission, class: "checkbox checkbox-sm", id: "anonymous_checkbox", data: { action: "change->question-form#toggleEmail" } %>
+      <span class="label-text">Submit without an email address</span>
     </label>
-  </div>
-</div>
 
-<div class="form-control w-full">
-  <%= form.label :pseudonym, "Display Name (Optional)", class: "label font-medium text-base-content" %>
-  <div class="label-text-alt text-base-content/70">How you would like to be identified if your question is used for knowledge base content</div>
-  <%= form.text_field :pseudonym, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "e.g., Supportive Parent, Curious Ally, etc." %>
+    <div class="mt-2 px-3 py-2 bg-error/10 text-error rounded-md hidden" data-question-form-target="anonymousWarning">
+      <p class="text-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+        </svg>
+        You <strong>MUST</strong> save the URL you'll receive after submitting. Without it, you won't be able to access any responses. You are responsible for keeping this URL safe.
+      </p>
+    </div>
+  </div>
 </div>
 
 <div class="mt-6">
   <div class="text-sm mb-4 text-base-content/70">
     <p>After submitting your question:</p>
     <ul class="list-disc ml-5">
-      <li>You'll receive a unique URL to access your question - please bookmark this page!</li>
-      <li>A responder will review and answer your question</li>
-      <li>You'll be able to continue the conversation through your bookmarked link</li>
+      <li>You'll receive a unique URL to access your question.</li>
+      <li>A responder will review and answer your question.</li>
+      <li>We'll email you when your question gets a response if we have your email.</li>
+      <li>You'll be able to continue the conversation through your bookmarked link, or the link in the email.</li>
     </ul>
   </div>
 
   <%= form.submit class: "btn btn-primary w-full md:w-auto" %>
 </div>
 <% end %>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const anonymousCheckbox = document.getElementById('anonymous_checkbox');
-    const emailField = document.querySelector('input[name="question[email]"]');
-    const emailContainer = emailField.closest('.form-control');
-
-    function toggleEmailVisibility() {
-      if (anonymousCheckbox.checked) {
-        emailField.value = '';
-        emailField.setAttribute('disabled', 'disabled');
-        emailField.classList.add('bg-base-200', 'opacity-50');
-      } else {
-        emailField.removeAttribute('disabled');
-        emailField.classList.remove('bg-base-200', 'opacity-50');
-      }
-    }
-
-    anonymousCheckbox.addEventListener('change', toggleEmailVisibility);
-
-    // Initial state check
-    toggleEmailVisibility();
-  });
-</script>
