@@ -24,6 +24,36 @@ This will be installed automatically by `bin/mise` which will bootstrap `mise` i
 
 Start the development server with `bin/mise dev`.
 
+### Tailscale
+
+When using Tailscale, ensure `$TAILSCALE_IPV4` is set to your local Tailscale IP address.
+
+### Tasks
+
+| Command                | Description                                  |
+| ---------------------- | -------------------------------------------- |
+| bin/mise db:reset      | Reset the database and apply seeds           |
+| bin/mise dev           | Start the development server using Tailscale |
+| bin/mise dev:localhost | Start the development server on localhost    |
+
+CI-related Mise tasks are not listed. See `mise.toml` for details.
+
+## Authentication
+
+In development, you can browse the app as the demo responder. `bin/mise db:reset` will set the database up for you and create this user.Use `bin/rails db:seed` if you only want to apply the seeds for any reason.
+
+### Email
+
+```plaintext
+demo_responder@genderbase.com
+```
+
+### Password
+
+```plaintext
+jie1OSH0ek6aith3
+```
+
 ## TODO
 
 - Reimplement system tests

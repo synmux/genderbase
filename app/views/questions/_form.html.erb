@@ -18,31 +18,79 @@
 </div>
 
 <div class="form-control w-full">
-  <%= form.label :content, "Question Details", class: "label font-medium text-base-content" %>
-  <div class="label-text-alt text-base-content/70">Provide as much context and detail as possible</div>
-  <%= form.text_area :content, rows: 6, class: "textarea textarea-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "Please describe your question in detail. The more information you provide, the better our experts can answer your question." %>
+  <%= form.label :body, "Question Details", class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">
+    Provide as much context and detail as possible. You can use Markdown for formatting.
+    <a href="#" class="text-primary" onclick="document.getElementById('markdown-help').classList.toggle('hidden'); return false;">Show formatting help</a>
+  </div>
+  <%= form.text_area :body, rows: 8, class: "textarea textarea-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "Please describe your question in detail. The more information you provide, the better our experts can answer your question." %>
+
+  <div id="markdown-help" class="hidden mt-2 p-3 bg-base-200 rounded-md text-sm">
+    <p class="font-semibold mb-1">Markdown Formatting Guide:</p>
+    <ul class="list-disc ml-5 text-xs space-y-1">
+      <li><code>**bold text**</code> for <strong>bold text</strong></li>
+      <li><code>*italic text*</code> for <em>italic text</em></li>
+      <li><code>## Heading</code> for section headings</li>
+      <li><code>- item</code> for bullet lists</li>
+      <li><code>1. item</code> for numbered lists</li>
+      <li><code>[link text](https://example.com)</code> for links</li>
+    </ul>
+  </div>
 </div>
 
-<div class="form-control w-full mt-4" id="email_field_container" data-controller="question-form">
-  <div class="email-details-group transition-all duration-300 ease-in-out overflow-hidden max-h-[300px] opacity-100" data-question-form-target="emailDetailsGroup">
-    <%= form.label :email, "Email Address (Optional, but recommended)", class: "label font-medium text-base-content" %>
-    <div class="label-text-alt text-base-content/70">
-      If provided, we'll email you a link to your question and notify you when it receives a response.
-      If not provided, you'll need to check back manually to see responses.<br />
-      <span class="text-error">Responders never see your email address, and we don't collect your name.</span>
-    </div>
-    <%= form.email_field :email, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "your.email@example.com", id: "question_email", 'data-question-form-target': 'emailField' %>
-  </div>
-  <div class="form-control mb-6 mt-4">
-    <label class="label cursor-pointer">
-      <%= form.check_box :anonymous, class: "checkbox checkbox-primary mr-2", id: "question_anonymous", 'data-action': 'change->question-form#toggleAnonymous' %>
-      <span class="label-text">Submit without email</span>
+<div class="form-control w-full">
+  <%= form.label :email, "Your Email", class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">Used to contact you about your question (never publicly displayed)</div>
+  <%= form.email_field :email, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "email@example.com" %>
+
+  <div class="mt-2">
+    <label class="cursor-pointer flex items-center gap-2">
+      <%= form.check_box :anonymous_submission, class: "checkbox checkbox-sm", id: "anonymous_checkbox", data: { action: "change->anonymous-form#toggleEmail" } %>
+      <span class="label-text">Submit anonymously (no email required)</span>
     </label>
   </div>
 </div>
 
-<div class="form-control mt-6">
-  <%= form.hidden_field :status, value: "pending" %>
-  <%= form.submit "Submit Question", class: "btn btn-accent w-full sm:w-auto" %>
+<div class="form-control w-full">
+  <%= form.label :pseudonym, "Display Name (Optional)", class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">How you would like to be identified if your question is used for knowledge base content</div>
+  <%= form.text_field :pseudonym, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "e.g., Supportive Parent, Curious Ally, etc." %>
+</div>
+
+<div class="mt-6">
+  <div class="text-sm mb-4 text-base-content/70">
+    <p>After submitting your question:</p>
+    <ul class="list-disc ml-5">
+      <li>You'll receive a unique URL to access your question - please bookmark this page!</li>
+      <li>A responder will review and answer your question</li>
+      <li>You'll be able to continue the conversation through your bookmarked link</li>
+    </ul>
+  </div>
+
+  <%= form.submit class: "btn btn-primary w-full md:w-auto" %>
 </div>
 <% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const anonymousCheckbox = document.getElementById('anonymous_checkbox');
+    const emailField = document.querySelector('input[name="question[email]"]');
+    const emailContainer = emailField.closest('.form-control');
+
+    function toggleEmailVisibility() {
+      if (anonymousCheckbox.checked) {
+        emailField.value = '';
+        emailField.setAttribute('disabled', 'disabled');
+        emailField.classList.add('bg-base-200', 'opacity-50');
+      } else {
+        emailField.removeAttribute('disabled');
+        emailField.classList.remove('bg-base-200', 'opacity-50');
+      }
+    }
+
+    anonymousCheckbox.addEventListener('change', toggleEmailVisibility);
+
+    // Initial state check
+    toggleEmailVisibility();
+  });
+</script>

@@ -1,16 +1,183 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Knowledges" %>
+<% content_for :title, "Knowledge Base" %>
 
-<h1>Knowledges</h1>
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-2xl font-bold">Knowledge Base</h1>
+    <% if responder_signed_in? %>
+    <%= link_to "New Entry", new_knowledge_path, class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
-<div id="knowledges">
-  <% @knowledges.each do |knowledge| %>
-    <%= render knowledge %>
-    <p>
-      <%= link_to "Show this knowledge", knowledge %>
+  <div class="mb-6">
+    <p class="text-base-content/70 max-w-2xl">
+      Browse our curated collection of gender-related information. These resources are created by our expert responders
+      based on questions from the community.
     </p>
+  </div>
+
+  <div class="mb-8">
+    <%= form_with url: knowledges_path, method: :get, class: "flex flex-col md:flex-row gap-3 bg-base-200 p-4 rounded-lg" do |form| %>
+    <div class="flex-grow">
+      <%= form.text_field :search, value: params[:search], placeholder: "Search the knowledge base...", class: "input input-bordered w-full" %>
+    </div>
+    <div>
+      <%= form.select :category,
+                      options_for_select([["All Categories", ""]] + Knowledge.categories.keys.map { |c| [c.titleize, c] }, params[:category]),
+                      {},
+                      { class: "select select-bordered" } %>
+    </div>
+    <div class="flex gap-2">
+      <%= form.submit "Search", class: "btn btn-primary" %>
+      <% if params[:search].present? || params[:category].present? %>
+      <%= link_to "Clear", knowledges_path, class: "btn btn-outline" %>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+
+  <% if @knowledges.any? %>
+  <div class="mb-8">
+    <% if params[:search].present? || params[:category].present? %>
+    <div class="mb-6">
+      <h2 class="text-xl font-bold">
+        <% if params[:search].present? %>
+        Search Results for "<%= params[:search] %>"
+        <% elsif params[:category].present? %>
+        Category: <%= params[:category].titleize %>
+        <% end %>
+        <span class="text-base font-normal text-base-content/70 ml-2">(<%= @knowledges.count %> <%= 'entry'.pluralize(@knowledges.count) %>)</span>
+      </h2>
+    </div>
+    <% else %>
+    <div class="tabs tabs-boxed inline-flex mb-6">
+      <a class="tab tab-active" data-category="all">All Categories</a>
+      <% Knowledge.categories.keys.each do |category| %>
+      <a class="tab" data-category="<%= category %>"><%= category.titleize %></a>
+      <% end %>
+    </div>
+    <% end %>
+
+    <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <% @knowledges.each do |knowledge| %>
+      <div class="bg-base-100 shadow-md rounded-lg border border-base-300 overflow-hidden hover:shadow-lg transition-shadow duration-300 category-item" data-category="<%= knowledge.category %>">
+        <div class="p-6">
+          <div class="flex justify-between items-start mb-3">
+            <h2 class="text-lg font-semibold"><%= link_to knowledge.title, knowledge_path(knowledge), class: "hover:text-primary" %></h2>
+            <span class="badge badge-<%= knowledge.category == 'general' ? 'neutral' : 'primary' %> ml-2"><%= knowledge.category.titleize %></span>
+          </div>
+
+          <div class="text-base-content/80 text-sm mb-4 line-clamp-3">
+            <%= knowledge.description %>
+          </div>
+
+          <div class="flex justify-between items-center text-xs text-base-content/60">
+            <span>By <%= knowledge.responder.pseudonym %></span>
+            <span><%= time_ago_in_words(knowledge.created_at) %> ago</span>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <% else %>
+  <div class="bg-base-200 rounded-lg p-8 text-center mb-8">
+    <div class="max-w-md mx-auto">
+      <div class="mb-6 flex justify-center">
+        <div class="w-32 h-32 bg-primary/10 rounded-full flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-primary/70" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+        </div>
+      </div>
+
+      <% if params[:search].present? %>
+      <h3 class="text-xl font-semibold mb-2">No results found for "<%= params[:search] %>"</h3>
+      <p class="text-base-content/70 mb-6">Try using different keywords or browse our categories.</p>
+      <%= link_to "Clear Search", knowledges_path, class: "btn btn-primary" %>
+      <% elsif params[:category].present? %>
+      <h3 class="text-xl font-semibold mb-2">No entries in this category yet</h3>
+      <p class="text-base-content/70 mb-6">Try another category or check back soon as our experts add more information.</p>
+      <%= link_to "View All Categories", knowledges_path, class: "btn btn-primary" %>
+      <% else %>
+      <h3 class="text-xl font-semibold mb-2">No knowledge base entries yet</h3>
+      <p class="text-base-content/70 mb-6">Check back soon as our experts add information to the knowledge base.</p>
+      <% if responder_signed_in? %>
+      <%= link_to "Create the first entry", new_knowledge_path, class: "btn btn-primary" %>
+      <% else %>
+      <%= link_to "Ask a Question", new_question_path, class: "btn btn-primary" %>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
   <% end %>
+
+  <% if !params[:search].present? && !params[:category].present? %>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 mb-12">
+    <div class="bg-base-200 p-6 rounded-lg flex flex-col items-center text-center">
+      <div class="w-12 h-12 bg-primary/20 text-primary rounded-full flex items-center justify-center mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+      </div>
+      <h3 class="font-semibold text-lg mb-2">Search by Keyword</h3>
+      <p class="text-base-content/70">Use the search bar to find specific topics or questions you're interested in.</p>
+    </div>
+
+    <div class="bg-base-200 p-6 rounded-lg flex flex-col items-center text-center">
+      <div class="w-12 h-12 bg-secondary/20 text-secondary rounded-full flex items-center justify-center mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+        </svg>
+      </div>
+      <h3 class="font-semibold text-lg mb-2">Browse by Category</h3>
+      <p class="text-base-content/70">Filter entries by category to find information relevant to specific topics.</p>
+    </div>
+
+    <div class="bg-base-200 p-6 rounded-lg flex flex-col items-center text-center">
+      <div class="w-12 h-12 bg-accent/20 text-accent rounded-full flex items-center justify-center mb-4">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </div>
+      <h3 class="font-semibold text-lg mb-2">Ask a Question</h3>
+      <p class="text-base-content/70">Can't find what you're looking for? Submit a question to our expert responders.</p>
+    </div>
+  </div>
+  <% end %>
+
+  <div class="bg-base-200 rounded-lg p-6 mt-8">
+    <h2 class="text-lg font-semibold mb-3">Have a question not covered in our knowledge base?</h2>
+    <p class="mb-4">Our expert responders are ready to help you with your gender-related questions.</p>
+    <%= link_to "Ask a Question", new_question_path, class: "btn btn-primary" %>
+  </div>
 </div>
 
-<%= link_to "New knowledge", new_knowledge_path %>
+<% if @knowledges.any? %>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const tabs = document.querySelectorAll('.tab');
+    const items = document.querySelectorAll('.category-item');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', function() {
+        // Update active tab
+        tabs.forEach(t => t.classList.remove('tab-active'));
+        this.classList.add('tab-active');
+
+        const category = this.dataset.category;
+
+        // Show/hide items based on category
+        items.forEach(item => {
+          if (category === 'all' || item.dataset.category === category) {
+            item.style.display = 'block';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+<% end %>

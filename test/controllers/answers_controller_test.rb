@@ -24,7 +24,7 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
       post answers_url, params: { answer: { body: @answer.body, question_id: @answer.question_id, responder_id: @answer.responder_id } }
     end
 
-    assert_redirected_to answer_url(Answer.last)
+    assert_redirected_to question_url(Answer.last.question)
   end
 
   test "should show answer" do
@@ -42,7 +42,7 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
   test "should update answer" do
     sign_in_as(@responder)
     patch answer_url(@answer), params: { answer: { body: @answer.body, question_id: @answer.question_id, responder_id: @answer.responder_id } }
-    assert_redirected_to answer_url(@answer)
+    assert_redirected_to question_url(@answer.question)
   end
 
   test "should destroy answer" do
@@ -51,6 +51,6 @@ class AnswersControllerTest < ActionDispatch::IntegrationTest
       delete answer_url(@answer)
     end
 
-    assert_redirected_to answers_url
+    assert_redirected_to question_url(@answer.question)
   end
 end

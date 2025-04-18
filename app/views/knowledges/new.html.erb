@@ -1,11 +1,27 @@
-<% content_for :title, "New knowledge" %>
+<% content_for :title, "New Knowledge Base Entry" %>
 
-<h1>New knowledge</h1>
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+  <div class="mb-6">
+    <nav class="text-sm breadcrumbs">
+      <ul>
+        <li><%= link_to "Knowledge Base", knowledges_path %></li>
+        <li>New Entry</li>
+      </ul>
+    </nav>
+  </div>
 
-<%= render "form", knowledge: @knowledge %>
+  <div class="bg-base-100 shadow-lg rounded-lg border border-base-300 p-6">
+    <h1 class="text-2xl font-bold mb-6 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      <%= @knowledge.persisted? ? "Edit Knowledge Entry" : "Create Knowledge Base Entry" %>
+    </h1>
 
-<br>
+    <%= render "knowledges/form", knowledge: @knowledge %>
+  </div>
 
-<div>
-  <%= link_to "Back to knowledges", knowledges_path %>
+  <div class="mt-6">
+    <%= link_to "← Back to Knowledge Base", knowledges_path, class: "text-primary hover:text-primary-focus" %>
+  </div>
 </div>

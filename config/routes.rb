@@ -23,9 +23,20 @@ Rails.application.routes.draw do
 
   # RESTful routes
   resources :terminologies
+
+  # Knowledge base routes
   resources :knowledges
+
+  # Answer routes - includes conversion to knowledge base
   resources :answers
-  resources :questions
+
+  # Question routes - includes token-based access and closing
+  resources :questions do
+    post "close", on: :member
+    get "convert_to_knowledge", on: :member
+  end
+  get "/questions/token/:token", to: "questions#show_by_token", as: :question_token
+  post "/questions/token/:token/answers", to: "answers#create", as: :question_token_answer
 
   # Devise routes
   devise_for :responders

@@ -1,52 +1,95 @@
-<%= form_with(model: knowledge) do |form| %>
-  <% if knowledge.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(knowledge.errors.count, "error") %> prohibited this knowledge from being saved:</h2>
+<%= form_with(model: knowledge, class: "space-y-6") do |form| %>
+<% if knowledge.errors.any? %>
+<div class="bg-error/10 text-error rounded-lg p-4 mb-6">
+  <h2 class="font-bold text-lg mb-2"><%= pluralize(knowledge.errors.count, "error") %> prohibited this knowledge base entry from being saved:</h2>
 
-      <ul>
-        <% knowledge.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul class="list-disc ml-5">
+    <% knowledge.errors.each do |error| %>
+    <li><%= error.full_message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+<% if knowledge.question %>
+<div class="bg-base-200 p-4 rounded-lg mb-6">
+  <h3 class="font-medium text-base-content mb-2">Creating knowledge base entry from question:</h3>
+  <div class="flex justify-between items-start">
+    <h4 class="text-base-content font-semibold"><%= knowledge.question.title %></h4>
+    <span class="badge badge-neutral badge-sm">Closed</span>
   </div>
-
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.textarea :body %>
+  <div class="prose prose-sm max-w-none text-base-content/80 mt-2">
+    <%= truncate(knowledge.question.body, length: 200) %>
   </div>
+  <%= link_to "View full question", question_path(knowledge.question), class: "text-primary text-sm mt-2 inline-block" %>
+  <%= form.hidden_field :question_id, value: knowledge.question.id %>
+</div>
+<% else %>
+<div class="form-control w-full">
+  <%= form.label :question_id, "Source Question (Optional)", class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">Select a closed question to use as the basis for this knowledge entry</div>
+  <%= form.collection_select :question_id, Question.closed.order(created_at: :desc), :id, :title,
+                    { include_blank: "Select a closed question" },
+                    class: "select select-bordered w-full" %>
+</div>
+<% end %>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
-  </div>
+<div class="form-control w-full">
+  <%= form.label :title, class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">A clear, concise title for this knowledge base entry</div>
+  <%= form.text_field :title, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md" %>
+</div>
 
-  <div>
-    <%= form.label :category, style: "display: block" %>
-    <%= form.number_field :category %>
-  </div>
+<div class="form-control w-full">
+  <%= form.label :description, class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">A brief summary that explains what this entry covers (used in listings and previews)</div>
+  <%= form.text_area :description, rows: 2, class: "textarea textarea-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md" %>
+</div>
 
-  <div>
-    <%= form.label :slug, style: "display: block" %>
-    <%= form.text_field :slug %>
-  </div>
+<div class="form-control w-full">
+  <%= form.label :category, class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">Select the most relevant category for this entry</div>
+  <%= form.select :category, Knowledge.categories.keys.map { |k| [k.humanize, k] }, {}, class: "select select-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md" %>
+</div>
 
-  <div>
-    <%= form.label :question_id, style: "display: block" %>
-    <%= form.text_field :question_id %>
+<div class="form-control w-full">
+  <%= form.label :body, "Content", class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">
+    Write the full content using Markdown formatting for headings, lists, emphasis, etc.
+    <a href="#" class="text-primary" onclick="document.getElementById('markdown-help').classList.toggle('hidden'); return false;">Show formatting help</a>
   </div>
+  <%= form.text_area :body, rows: 15, class: "textarea textarea-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md font-mono" %>
 
-  <div>
-    <%= form.label :responder_id, style: "display: block" %>
-    <%= form.text_field :responder_id %>
+  <div id="markdown-help" class="hidden mt-2 p-3 bg-base-200 rounded-md text-sm">
+    <p class="font-semibold mb-1">Markdown Formatting Guide:</p>
+    <ul class="list-disc ml-5 text-xs space-y-1">
+      <li><code># Main Title</code> - Top level heading</li>
+      <li><code>## Section Heading</code> - Section heading</li>
+      <li><code>### Subsection</code> - Subsection heading</li>
+      <li><code>**bold text**</code> for <strong>bold text</strong></li>
+      <li><code>*italic text*</code> for <em>italic text</em></li>
+      <li><code>- item</code> for bullet lists</li>
+      <li><code>1. item</code> for numbered lists</li>
+      <li><code>[link text](https://example.com)</code> for links</li>
+      <li><code>![Image alt text](image-url.jpg)</code> for images</li>
+      <li>Use <code>```code```</code> for code blocks</li>
+      <li>Use <code>&gt;</code> for blockquotes</li>
+      <li>Use <code>---</code> for horizontal rules</li>
+      <li>Create tables with <code>|Column|Column|</code> and <code>|---|---|</code></li>
+    </ul>
   </div>
+</div>
 
-  <div>
-    <%= form.submit %>
+<div class="form-control w-full">
+  <%= form.label :slug, class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">URL-friendly identifier (leave blank to generate automatically from title)</div>
+  <%= form.text_field :slug, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md" %>
+</div>
+
+<div class="mt-6">
+  <div class="flex gap-3">
+    <%= link_to "Cancel", knowledges_path, class: "btn btn-ghost" %>
+    <%= form.submit "Save Knowledge Base Entry", class: "btn btn-primary" %>
   </div>
+</div>
 <% end %>

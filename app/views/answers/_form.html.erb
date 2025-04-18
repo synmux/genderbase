@@ -1,8 +1,8 @@
 <%= form_with(model: answer, class: "space-y-6") do |form| %>
 <% if answer.errors.any? %>
-<div class="bg-error/20 border border-error text-error rounded-lg p-4 mb-6">
+<div class="bg-error/10 text-error rounded-lg p-4 mb-6">
   <h2 class="font-bold text-lg mb-2"><%= pluralize(answer.errors.count, "error") %> prohibited this answer from being saved:</h2>
-  <ul class="list-disc list-inside">
+  <ul class="list-disc ml-5">
     <% answer.errors.each do |error| %>
     <li><%= error.full_message %></li>
     <% end %>
@@ -10,33 +10,95 @@
 </div>
 <% end %>
 
-<div>
-  <%= form.label :question_id, class: "block font-medium mb-1 text-base-content" %>
-  <% if @question %>
-  <div class="bg-base-200 p-4 rounded-md mb-3">
-    <h3 class="font-medium text-base-content mb-2"><%= @question.title %></h3>
-    <p class="text-base-content/80 text-sm"><%= truncate(@question.content, length: 200) %></p>
-    <%= link_to "View full question", @question, class: "text-accent text-sm" %>
-    <%= form.hidden_field :question_id, value: @question.id %>
+<div class="form-control w-full">
+  <%= form.label :question_id, "Question", class: "label font-medium text-base-content" %>
+  <% if params[:question_id] || (defined?(@question) && @question) %>
+  <% question = params[:question_id] ? Question.find(params[:question_id]) : @question %>
+  <div class="bg-base-200 p-4 rounded-lg mb-4">
+    <div class="flex justify-between items-start">
+      <h3 class="font-medium text-base-content mb-2"><%= question.title %></h3>
+      <% case question.status.to_sym %>
+      <% when :open %>
+      <span class="badge badge-warning badge-sm">Open</span>
+      <% when :in_progress %>
+      <span class="badge badge-info badge-sm">In Progress</span>
+      <% when :closed %>
+      <span class="badge badge-neutral badge-sm">Closed</span>
+      <% end %>
+    </div>
+    <div class="prose prose-sm max-w-none text-base-content/80 mb-2">
+      <%= truncate(question.body, length: 300) %>
+    </div>
+    <%= link_to "View full question", question_path(question), class: "text-primary text-sm" %>
+    <%= form.hidden_field :question_id, value: question.id %>
   </div>
   <% else %>
-  <%= form.collection_select :question_id, Question.all, :id, :title,
-            { include_blank: "Select a question" },
-            class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent" %>
+  <%= form.collection_select :question_id, Question.all.order(created_at: :desc), :id, :title,
+                { include_blank: "Select a question" },
+                class: "select select-bordered w-full" %>
   <% end %>
 </div>
 
-<div>
-  <%= form.label :content, class: "block font-medium mb-1 text-base-content" %>
-  <div class="mb-2 text-base-content/70 text-sm">
-    This field supports Markdown formatting.
-    <a href="https://www.markdownguide.org/cheat-sheet/" target="_blank" class="text-accent">Markdown reference</a>
+<div class="form-control w-full">
+  <%= form.label :body, "Your Response", class: "label font-medium text-base-content" %>
+  <div class="label-text-alt text-base-content/70">
+    You can use Markdown for formatting your response.
+    <a href="#" class="text-primary" onclick="document.getElementById('markdown-help').classList.toggle('hidden'); return false;">Show formatting help</a>
   </div>
-  <%= form.text_area :content, rows: 10, class: "w-full px-4 py-2 rounded-md bg-base-100 text-base-content border border-base-300 focus:outline-none focus:ring-2 focus:ring-accent font-mono" %>
+  <%= form.text_area :body, rows: 8, class: "textarea textarea-bordered w-full bg-base-100 text-base-content border border-base-300 rounded-md", placeholder: "Write your response here..." %>
+
+  <div id="markdown-help" class="hidden mt-2 p-3 bg-base-200 rounded-md text-sm">
+    <p class="font-semibold mb-1">Markdown Formatting Guide:</p>
+    <ul class="list-disc ml-5 text-xs space-y-1">
+      <li><code>**bold text**</code> for <strong>bold text</strong></li>
+      <li><code>*italic text*</code> for <em>italic text</em></li>
+      <li><code>## Heading</code> for section headings</li>
+      <li><code>- item</code> for bullet lists</li>
+      <li><code>1. item</code> for numbered lists</li>
+      <li><code>[link text](https://example.com)</code> for links</li>
+    </ul>
+  </div>
 </div>
 
-<div class="flex justify-end gap-3">
-  <%= link_to "Cancel", answers_path, class: "btn" %>
-  <%= form.submit class: "btn btn-accent" %>
+<div class="bg-accent/10 p-4 rounded-lg mt-4">
+  <h3 class="font-medium text-accent mb-2">Tips for Crafting Knowledge-Ready Responses</h3>
+  <ul class="space-y-2 text-sm text-base-content/80">
+    <li class="flex items-start">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>Use clear, accessible language that avoids unnecessarily complex terminology</span>
+    </li>
+    <li class="flex items-start">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>Structure your answer with logical sections to make it easy to follow</span>
+    </li>
+    <li class="flex items-start">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>Anticipate related questions the reader might have</span>
+    </li>
+    <li class="flex items-start">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent mr-2 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      <span>Include reliable information sources where appropriate</span>
+    </li>
+  </ul>
+</div>
+
+<%= form.hidden_field :responder_id, value: current_responder.id if form.object.new_record? %>
+
+<div class="flex justify-between items-center mt-6 pt-6 border-t border-base-300">
+  <div class="text-sm text-base-content/70">
+    Your answer will be attributed to <%= current_responder.name %>.
+  </div>
+  <div class="flex gap-3">
+    <%= link_to "Cancel", answers_path, class: "btn btn-ghost" %>
+    <%= form.submit "Submit Response", class: "btn btn-primary" %>
+  </div>
 </div>
 <% end %>

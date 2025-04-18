@@ -5,9 +5,8 @@ class CreateQuestions < ActiveRecord::Migration[8.0]
       t.text :body
       t.string :token
       t.integer :status
-      t.string :email
+      t.string :email, null: true
       t.string :pseudonym
-      t.references :responder, null: false, foreign_key: true
 
       t.timestamps
     end

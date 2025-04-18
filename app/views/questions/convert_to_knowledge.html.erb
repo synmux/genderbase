@@ -1,0 +1,107 @@
+<% content_for :title, "Convert to Knowledge Base Entry" %>
+
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+  <div class="mb-6">
+    <nav class="text-sm breadcrumbs">
+      <ul>
+        <li><%= link_to "Questions", questions_path %></li>
+        <li><%= link_to "Question ##{@question.id}", question_path(@question) %></li>
+        <li>Convert to KB</li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="bg-base-100 shadow-lg rounded-lg border border-base-300 p-6">
+    <h1 class="text-2xl font-bold mb-6 flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+      </svg>
+      Convert to Knowledge Base Entry
+    </h1>
+
+    <%= form_with(model: @knowledge, class: "space-y-6") do |form| %>
+    <% if @knowledge.errors.any? %>
+    <div class="bg-error/10 text-error rounded-lg p-4 mb-6">
+      <h2 class="font-bold text-lg mb-2"><%= pluralize(@knowledge.errors.count, "error") %> prohibited this knowledge base entry from being saved:</h2>
+
+      <ul class="list-disc ml-5">
+        <% @knowledge.errors.each do |error| %>
+        <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="bg-base-200 p-4 rounded-lg mb-6">
+      <h3 class="font-medium text-base-content mb-2">Creating knowledge base entry from question:</h3>
+      <div class="flex justify-between items-start">
+        <h4 class="text-base-content font-semibold"><%= @question.title %></h4>
+        <span class="badge badge-neutral badge-sm">Closed</span>
+      </div>
+      <div class="prose prose-sm max-w-none text-base-content/80 mt-2">
+        <%= truncate(@question.body, length: 200) %>
+      </div>
+      <%= form.hidden_field :question_id, value: @question.id %>
+    </div>
+
+    <div class="form-control w-full">
+      <%= form.label :title, class: "label font-medium text-base-content" %>
+      <div class="label-text-alt text-base-content/70">A clear, concise title for this knowledge base entry</div>
+      <%= form.text_field :title, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md" %>
+    </div>
+
+    <div class="form-control w-full">
+      <%= form.label :description, class: "label font-medium text-base-content" %>
+      <div class="label-text-alt text-base-content/70">A brief summary that explains what this entry covers (used in listings and previews)</div>
+      <%= form.text_area :description, rows: 2, class: "textarea textarea-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md" %>
+    </div>
+
+    <div class="form-control w-full">
+      <%= form.label :category, class: "label font-medium text-base-content" %>
+      <div class="label-text-alt text-base-content/70">Select the most relevant category for this entry</div>
+      <%= form.select :category, Knowledge.categories.keys.map { |k| [k.humanize, k] }, {}, class: "select select-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md" %>
+    </div>
+
+    <div class="form-control w-full">
+      <%= form.label :body, "Content", class: "label font-medium text-base-content" %>
+      <div class="label-text-alt text-base-content/70">
+        Write the full content using Markdown formatting for headings, lists, emphasis, etc.
+        <a href="#" class="text-primary" onclick="document.getElementById('markdown-help').classList.toggle('hidden'); return false;">Show formatting help</a>
+      </div>
+      <%= form.text_area :body, rows: 15, class: "textarea textarea-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md font-mono" %>
+
+      <div id="markdown-help" class="hidden mt-2 p-3 bg-base-200 rounded-md text-sm">
+        <p class="font-semibold mb-1">Markdown Formatting Guide:</p>
+        <ul class="list-disc ml-5 text-xs space-y-1">
+          <li><code># Main Title</code> - Top level heading</li>
+          <li><code>## Section Heading</code> - Section heading</li>
+          <li><code>### Subsection</code> - Subsection heading</li>
+          <li><code>**bold text**</code> for <strong>bold text</strong></li>
+          <li><code>*italic text*</code> for <em>italic text</em></li>
+          <li><code>- item</code> for bullet lists</li>
+          <li><code>1. item</code> for numbered lists</li>
+          <li><code>[link text](https://example.com)</code> for links</li>
+          <li><code>![Image alt text](image-url.jpg)</code> for images</li>
+          <li>Use <code>```code```</code> for code blocks</li>
+          <li>Use <code>&gt;</code> for blockquotes</li>
+          <li>Use <code>---</code> for horizontal rules</li>
+          <li>Create tables with <code>|Column|Column|</code> and <code>|---|---|</code></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-control w-full">
+      <%= form.label :slug, class: "label font-medium text-base-content" %>
+      <div class="label-text-alt text-base-content/70">URL-friendly identifier (leave blank to generate automatically from title)</div>
+      <%= form.text_field :slug, class: "input input-bordered w-full mt-1 bg-base-100 text-base-content border border-base-300 rounded-md" %>
+    </div>
+
+    <div class="mt-6">
+      <div class="flex gap-3">
+        <%= link_to "Cancel", question_path(@question), class: "btn btn-ghost" %>
+        <%= form.submit "Create Knowledge Base Entry", class: "btn btn-success" %>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

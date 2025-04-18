@@ -1,22 +1,26 @@
-<div id="<%= dom_id question %>">
-  <p>
-    <strong>Title:</strong>
-    <%= question.title %>
-  </p>
-
-  <p>
-    <strong>Content:</strong>
-    <%= question.content %>
-  </p>
-
-  <p>
-    <strong>Status:</strong>
-    <%= question.status %>
-  </p>
-
-  <p>
-    <strong>Anonymous:</strong>
-    <%= question.anonymous %>
-  </p>
-
+<div id="<%= dom_id question %>" class="bg-base-100 shadow-sm rounded-lg border border-base-300 p-4 mb-4">
+  <div class="flex justify-between items-start">
+    <div>
+      <h3 class="font-semibold text-base-content"><%= link_to question.title, question_path(question), class: "hover:text-primary" %></h3>
+      <div class="text-xs text-base-content/60 mt-1">
+        Asked by: <%= question.pseudonym.presence || "Anonymous" %> • <%= time_ago_in_words(question.created_at) %> ago •
+        <% case question.status %>
+        <% when 0 %>
+        <span class="text-warning">Pending</span>
+        <% when 1 %>
+        <span class="text-success">Answered</span>
+        <% when 2 %>
+        <span class="text-neutral">Archived</span>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex items-center space-x-2">
+      <span class="text-xs badge badge-sm"><%= pluralize(question.answers.count, "answer") %></span>
+      <%= link_to question_path(question), class: "btn btn-xs btn-ghost btn-square" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+      <% end %>
+    </div>
+  </div>
 </div>

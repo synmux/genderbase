@@ -1,17 +1,31 @@
-<% content_for :title, "New Answer" %>
+<% content_for :title, "Create New Answer" %>
 
-<div class="container mx-auto px-4 py-8 mt-16">
-  <div class="max-w-4xl mx-auto">
-    <nav class="text-sm mb-6 text-base-content/70">
-      <%= link_to "Answers", answers_path, class: "hover:text-accent" %> /
-      <span class="text-base-content">New Answer</span>
+<div class="container mx-auto px-4 py-8 max-w-4xl">
+  <div class="mb-6">
+    <nav class="text-sm breadcrumbs">
+      <ul>
+        <li><%= link_to "Answers", answers_path %></li>
+        <li>New Answer</li>
+      </ul>
     </nav>
+  </div>
 
-    <div class="bg-base-100 rounded-lg shadow-md overflow-hidden">
-      <div class="p-6">
-        <h1 class="text-2xl font-bold text-base-content mb-6">Create New Answer</h1>
-        <%= render "form", answer: @answer %>
+  <div class="bg-base-100 shadow-lg rounded-lg border border-base-300 overflow-hidden">
+    <div class="p-6">
+      <h1 class="text-2xl font-bold mb-6">Create Knowledge-Ready Response</h1>
+
+      <div class="bg-info/10 text-info p-4 rounded-lg mb-6">
+        <div class="flex items-start">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <p class="ml-3 text-sm">
+            Your answer should be comprehensive and educational. After a question is marked as answered, you'll be able to convert it into a Knowledge Base article.
+          </p>
+        </div>
       </div>
+
+      <%= render "form", answer: @answer %>
     </div>
   </div>
 </div>

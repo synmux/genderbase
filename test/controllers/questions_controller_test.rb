@@ -24,7 +24,7 @@ class QuestionsControllerTest < ActionDispatch::IntegrationTest
       post questions_url, params: { question: { body: @question.body, email: @question.email, responder_id: @question.responder_id, status: @question.status, title: @question.title, token: @question.token } }
     end
 
-    assert_redirected_to question_url(Question.last)
+    assert_redirected_to question_token_url(token: Question.last.token)
   end
 
   test "should show question" do
