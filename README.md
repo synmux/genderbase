@@ -45,13 +45,13 @@ In development, you can browse the app as the demo responder. `bin/mise db:reset
 ### Email
 
 ```plaintext
-demo_responder@genderbase.com
+demo@genderbase.com
 ```
 
 ### Password
 
 ```plaintext
-jie1OSH0ek6aith3
+jie1OSh0ek6aith3
 ```
 
 ## TODO

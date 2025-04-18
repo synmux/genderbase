@@ -21,7 +21,7 @@ responder2 = Responder.find_or_create_by(email: "responder2@genderbase.com") do 
   r.pseudonym = "Support Specialist"
 end
 
-_ = Responder.find_or_create_by(email: "demo_responder@genderbase.com") do |r|
+_ = Responder.find_or_create_by(email: "demo@genderbase.com") do |r|
   r.password = "jie1OSh0ek6aith3"
   r.pseudonym = "Demo Responder"
 end
