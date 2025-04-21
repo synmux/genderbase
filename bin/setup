@@ -21,7 +21,7 @@ FileUtils.chdir APP_ROOT do
   # end
 
   puts "\n== Preparing database =="
-  system! "bundle exec rails db:prepare"
+  system! "mise db:reset"
 
   puts "\n== Removing old logs and tempfiles =="
   system! "bundle exec rails log:clear tmp:clear"
