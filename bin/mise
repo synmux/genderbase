@@ -2,11 +2,13 @@
 set -eu
 
 __mise_bootstrap() {
-  local script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-  local project_dir=$(cd -- "$(dirname -- "$script_dir")" &>/dev/null && pwd)
-  export MISE_BOOTSTRAP_PROJECT_DIR="$project_dir"
+  local script_dir
+  script_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+  local project_dir
+  project_dir=$(cd -- "$(dirname -- "$script_dir")" &>/dev/null && pwd)
   local cache_home="${XDG_CACHE_HOME:-$HOME/.cache}/mise"
-  export MISE_INSTALL_PATH="$cache_home/mise-2025.4.4"
+  export MISE_BOOTSTRAP_PROJECT_DIR="$project_dir"
+  export MISE_INSTALL_PATH="$cache_home/mise-2025.4.5"
   install() {
     #!/bin/sh
     set -eu
@@ -115,23 +117,23 @@ __mise_bootstrap() {
 
       # For current version use static checksum otherwise
       # use checksum from releases
-      if [ "$version" = "v2025.4.4" ]; then
-        checksum_linux_x86_64="8ac5fa39c839ebdd34dde597a452fbde8dfa2bb0ea049ff7d205b03d7d926475  ./mise-v2025.4.4-linux-x64.tar.gz"
-        checksum_linux_x86_64_musl="0b2e9a35deaa14de03965c7b7ab2b34a897acc3bf5e45e9bc3c59392c6e2ca76  ./mise-v2025.4.4-linux-x64-musl.tar.gz"
-        checksum_linux_arm64="84cad1154293daca3add70ba0c6330573cc2ea0c531fc341d13109ad7cf6c382  ./mise-v2025.4.4-linux-arm64.tar.gz"
-        checksum_linux_arm64_musl="81b79ad26e259027824a15367524014d26938496290b6cb49ff75ab199b15001  ./mise-v2025.4.4-linux-arm64-musl.tar.gz"
-        checksum_linux_armv7="5ca922587e1cacc1a2ccac9317e1a848a92b014370be90595b5579f6c0598972  ./mise-v2025.4.4-linux-armv7.tar.gz"
-        checksum_linux_armv7_musl="8f9cf9cbcab15de43d34648f63e5dc2c66281e07056fffcc5cba476fb3443f74  ./mise-v2025.4.4-linux-armv7-musl.tar.gz"
-        checksum_macos_x86_64="2d5b3f48dcc5a47242df3b6b7e02ebddd972356de5250fdc33c8ec3524138b81  ./mise-v2025.4.4-macos-x64.tar.gz"
-        checksum_macos_arm64="a237fcbf264039b9b1d1acc27c236b0aacbd696f345f7445fd1b79002e5164df  ./mise-v2025.4.4-macos-arm64.tar.gz"
-        checksum_linux_x86_64_zstd="15c9d8fb286bb13b78f724463399d82ab3c7d6f08a44ef9c59ec2a486a8acfa3  ./mise-v2025.4.4-linux-x64.tar.zst"
-        checksum_linux_x86_64_musl_zstd="6fb0a3700ceccc5e6d076f4eaa47fc239869675423c6e0e78b410c6fa5c70917  ./mise-v2025.4.4-linux-x64-musl.tar.zst"
-        checksum_linux_arm64_zstd="8d7848408149bb0b9c9592128c08e25aff6d3cb9612ecba02724a046c496f470  ./mise-v2025.4.4-linux-arm64.tar.zst"
-        checksum_linux_arm64_musl_zstd="366953a105bec1bfe5900c15583a10b2d0d715ff8d0f4d3407c3f3397dcaf7c2  ./mise-v2025.4.4-linux-arm64-musl.tar.zst"
-        checksum_linux_armv7_zstd="80ce157e6f83316e43b1505a8fa03138bbcf52576f79a17e71512d5b65de5c10  ./mise-v2025.4.4-linux-armv7.tar.zst"
-        checksum_linux_armv7_musl_zstd="291ff31cb88a761d926e4c3cb33ff2f752387ab4fffda2c8f34b2aeeab7c5a27  ./mise-v2025.4.4-linux-armv7-musl.tar.zst"
-        checksum_macos_x86_64_zstd="924cb80ed81fe8a4fe0e5b0461d3f270472e3f45e2392d4bd28c3a75eef9b8ef  ./mise-v2025.4.4-macos-x64.tar.zst"
-        checksum_macos_arm64_zstd="a1677ed054fb1addc06cc0b99f75fb4124b9d294a4b6272eda56b7fbde8c76a6  ./mise-v2025.4.4-macos-arm64.tar.zst"
+      if [ "$version" = "v2025.4.5" ]; then
+        checksum_linux_x86_64="01c24aa2bacf7f7d6c7e0178776c14059c56a163a15aecff95468378aee1afae  ./mise-v2025.4.5-linux-x64.tar.gz"
+        checksum_linux_x86_64_musl="75147923b4330582f7561452ba61045fab9deaf9f7c77591d4a171fba17575ee  ./mise-v2025.4.5-linux-x64-musl.tar.gz"
+        checksum_linux_arm64="db0ddd9265eefc638f8a064460e917c1113e30c9027dbbbf120ceeff2936e9c4  ./mise-v2025.4.5-linux-arm64.tar.gz"
+        checksum_linux_arm64_musl="d4727fa997f02055979e9113214dccbc635d9dfb120fc69ae9fa35e33a1e8b85  ./mise-v2025.4.5-linux-arm64-musl.tar.gz"
+        checksum_linux_armv7="27b55b104dc8fbe9bb7462d2695534e72c7220a5a5f3c51a22e41a2b5f8e41b7  ./mise-v2025.4.5-linux-armv7.tar.gz"
+        checksum_linux_armv7_musl="4ddffe6f2a296489b06527211ab9552102540bf2dc3a6d7f8727616220455956  ./mise-v2025.4.5-linux-armv7-musl.tar.gz"
+        checksum_macos_x86_64="842af2e878acf61bf92e43981f7c61e4bea350c66fd50770f840024461f5d740  ./mise-v2025.4.5-macos-x64.tar.gz"
+        checksum_macos_arm64="6c2d98b0b23db51db6f7a10721c6aeb82366dbaa6ebb9c0a93dda312e1fe2dbe  ./mise-v2025.4.5-macos-arm64.tar.gz"
+        checksum_linux_x86_64_zstd="5c65a2e3ee06c6af1924b22303f72291bb08d117d1eea794d0877a7f6d1218d8  ./mise-v2025.4.5-linux-x64.tar.zst"
+        checksum_linux_x86_64_musl_zstd="6604f0c6a326078db532a04f5986bf8e07b1e9625abc5fc0fe25a0ee174424b7  ./mise-v2025.4.5-linux-x64-musl.tar.zst"
+        checksum_linux_arm64_zstd="fe5774e16e16d6dbb28d6e08687459f7d7d3aec0a9ad6e414d49628b317e8d92  ./mise-v2025.4.5-linux-arm64.tar.zst"
+        checksum_linux_arm64_musl_zstd="88425ddbe7587272826c248172ff25ec84747ccaa467174e16059b436768d0c1  ./mise-v2025.4.5-linux-arm64-musl.tar.zst"
+        checksum_linux_armv7_zstd="3e3954a6888dc5af985703218a0be7f5b4abbaf5961752ac936b866877af8b9a  ./mise-v2025.4.5-linux-armv7.tar.zst"
+        checksum_linux_armv7_musl_zstd="daa727fce7247071cf9529f7429e36773a16558c4d6614c0ea6623b08fd14885  ./mise-v2025.4.5-linux-armv7-musl.tar.zst"
+        checksum_macos_x86_64_zstd="069f955f2626f368cdde5f25c770f79011fb3e52e9f6b05cef5523a4428246f8  ./mise-v2025.4.5-macos-x64.tar.zst"
+        checksum_macos_arm64_zstd="f6d862b43826d581da45641b1e40377ef5df01268153a969960e38879d1befe2  ./mise-v2025.4.5-macos-arm64.tar.zst"
 
         # TODO: refactor this, it's a bit messy
         if [ "$(get_ext)" = "tar.zst" ]; then
@@ -242,7 +244,7 @@ __mise_bootstrap() {
     }
 
     install_mise() {
-      version="${MISE_VERSION:-v2025.4.4}"
+      version="${MISE_VERSION:-v2025.4.5}"
       version="${version#v}"
       os="$(get_os)"
       arch="$(get_arch)"
@@ -276,18 +278,21 @@ __mise_bootstrap() {
         info "mise: run the following to activate mise in your shell:"
         info "echo \"eval \\\"\\\$($install_path activate zsh)\\\"\" >> \"${ZDOTDIR-$HOME}/.zshrc\""
         info ""
+        # shellcheck disable=SC2016
         info 'mise: run `mise doctor` to verify this is setup correctly'
         ;;
       */bash)
         info "mise: run the following to activate mise in your shell:"
         info "echo \"eval \\\"\\\$($install_path activate bash)\\\"\" >> ~/.bashrc"
         info ""
+        # shellcheck disable=SC2016
         info 'mise: run `mise doctor` to verify this is setup correctly'
         ;;
       */fish)
         info "mise: run the following to activate mise in your shell:"
         info "echo \"$install_path activate fish | source\" >> ~/.config/fish/config.fish"
         info ""
+        # shellcheck disable=SC2016
         info 'mise: run `mise doctor` to verify this is setup correctly'
         ;;
       *)

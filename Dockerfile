@@ -59,7 +59,7 @@ RUN bundle install && \
 COPY . .
 
 RUN bundle exec bootsnap precompile app/ lib/ && \
-    SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile && \
+    SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile && \
     rm -rf node_modules
 
 # Final stage for app image
@@ -82,4 +82,4 @@ ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 EXPOSE 80
 # Add health check for the Rails server
 HEALTHCHECK --interval=30s --timeout=5s --start-period=60s --retries=3 CMD curl -f http://localhost:80/up || exit 1
-CMD ["./bin/thrust", "./bin/rails", "server"]
+CMD ["./bin/thrust", "bundle", "exec", "rails", "server"]

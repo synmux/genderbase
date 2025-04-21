@@ -30,17 +30,17 @@ When using Tailscale, ensure `$TAILSCALE_IPV4` is set to your local Tailscale IP
 
 ### Tasks
 
-| Command                  | Description                                  |
-| ------------------------ | -------------------------------------------- |
-| `bin/mise db:reset`      | Reset the database and apply seeds           |
-| `bin/mise dev`           | Start the development server using Tailscale |
-| `bin/mise dev:localhost` | Start the development server on localhost    |
+| Command              | Description                                  |
+| -------------------- | -------------------------------------------- |
+| `mise db:reset`      | Reset the database and apply seeds           |
+| `mise dev`           | Start the development server using Tailscale |
+| `mise dev:localhost` | Start the development server on localhost    |
 
 CI-related Mise tasks are present but not listed. See `mise.toml` for details.
 
 ## Authentication
 
-In development, you can browse the app as the demo responder. `bin/mise db:reset` will set the database up for you and create this user. Use `bin/rails db:seed` if you only want to apply the seeds for any reason.
+In development, you can browse the app as the demo responder. `mise db:reset` will set the database up for you and create this user. Use `bundle exec rails db:seed` if you only want to apply the seeds for any reason.
 
 ### Email
 
@@ -66,4 +66,4 @@ jie1OSh0ek6aith3
 
 ### Devise views
 
-These can be generated for editing with `bin/rails g devise:views`.
+These can be generated for editing with `bundle exec rails g devise:views`.
