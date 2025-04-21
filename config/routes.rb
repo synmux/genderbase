@@ -22,10 +22,10 @@ Rails.application.routes.draw do
   get "/good-faith", controller: :home, action: :good_faith, as: :home_good_faith
 
   # RESTful routes
-  resources :terminologies
+  resources :terminologies, path: "language"
 
   # Knowledge base routes
-  resources :knowledges
+  resources :knowledges, path: "knowledge"
 
   # Answer routes - includes conversion to knowledge base
   resources :answers
@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     post "close", on: :member
     get "convert_to_knowledge", on: :member
   end
+
   get "/questions/token/:token", to: "questions#show_by_token", as: :question_token
   post "/questions/token/:token/answers", to: "answers#create", as: :question_token_answer
 
