@@ -33,6 +33,10 @@ lint:
       paths:
         - bin/mise
         - bin/docker-entrypoint
+    - linters:
+        - ALL
+      paths:
+        - _tickets/**
   enabled:
     - taplo@0.9.3
     - actionlint@1.7.7
