@@ -1,80 +1,216 @@
-Title,Description,Status,Priority,Labels,,
-Set up continuous integration pipeline for automated testing,Configure CI tools to automatically run tests on code changes to ensure code quality and prevent regressions,Todo,Medium,Setup & Infrastructure,,
-Create development environment setup script for new contributors,Develop a script that automates the setup process for new developers to ensure consistent environments and reduce onboarding time,Todo,Medium,Setup & Infrastructure,,
-Configure Docker Compose for local development environment,Set up containerized development environment to ensure consistency across different developer machines and simplify dependency management,Todo,Medium,Setup & Infrastructure,,
-Set up staging environment for testing features before production,Create a pre-production environment that mirrors production settings to validate features before deployment to live systems,Todo,Medium,Setup & Infrastructure,,
-Implement role-based permissions for responders,Create a system that assigns different access levels to users based on their roles to control what actions they can perform within the application,Todo,Medium,Authentication & Users,,
-Add user profile management functionality,Build interface for users to view and edit their profile information including personal details and preferences,Todo,Medium,Authentication & Users,,
-Implement password reset functionality,Create a secure way for users to reset their passwords when forgotten through email verification,Todo,Medium,Authentication & Users,,
-Create user onboarding workflow for new responders,Design a step-by-step process to guide new responders through initial setup and introduce them to key features of the platform,Todo,Medium,Authentication & Users,,
-Add email verification for new accounts,Implement a system to verify user email addresses during registration to ensure account security and reduce spam accounts,Todo,Medium,Authentication & Users,,
-Implement question state machine (open → active → closed),Create a workflow system that tracks the status of questions as they move through different stages of the response process,Todo,Medium,Questions Module,,
-Add ability to assign questions to specific responders,Develop functionality to route questions to appropriate team members based on expertise or workload distribution,Todo,Medium,Questions Module,,
-Implement question tagging system for categorization,Build a tagging system that allows organizing questions by topic to improve searchability and workflow management,Todo,Medium,Questions Module,,
-Create notification system for new questions,Implement alerts to inform responders about new questions requiring attention to improve response time,Todo,Medium,Questions Module,,
-Add file/image attachment capabilities to questions,Enable users to upload images and files with their questions to provide better context and improve the quality of responses,Todo,Medium,Questions Module,,
-Implement user-friendly rich text editor for questions,Add a formatting editor that allows users to structure their questions with headings and emphasis to improve clarity,Todo,Medium,Questions Module,,
-Add question search functionality with filters,Create advanced search capabilities for questions with multiple filtering options to help users find relevant content quickly,Todo,Medium,Questions Module,,
-Create dashboard for responders to manage their assigned questions,Build a centralized interface where responders can view and manage all questions assigned to them to increase productivity,Todo,Medium,Questions Module,,
-Implement rich text editor for answers with formatting options,Add a formatting toolbar that enables responders to create well-structured answers with headings and emphasis for better readability,Todo,Medium,Answers Module,,
-Add ability to include images and attachments in answers,Enable responders to include visual aids and supplementary files in their answers to provide comprehensive information,Todo,Medium,Answers Module,,
-Implement answer drafts to save work in progress,Create functionality to save incomplete answers as drafts to prevent work loss and allow for review before submission,Todo,Medium,Answers Module,,
-Create notification system for new answers,Implement alerts to inform users when their questions receive new responses to improve user engagement and satisfaction,Todo,Medium,Answers Module,,
-Implement answer templates for common responses,Create reusable answer templates for frequently asked questions to improve response consistency and efficiency,Todo,Medium,Answers Module,,
-Add ability to mark answers as helpful/solved,Implement a feedback mechanism for users to indicate whether an answer resolved their question to track effectiveness,Todo,Medium,Answers Module,,
-Implement knowledge base search with advanced filtering,Create a powerful search system for the knowledge base with multiple filters to help users quickly find relevant information,Todo,Medium,Knowledge Base,,
-Create categories and tags for knowledge base entries,Implement a hierarchical categorization system with tags to organize knowledge base content and improve navigation,Todo,Medium,Knowledge Base,,
-Add related articles feature to knowledge base entries,Implement a system that suggests related content to users viewing a knowledge base article to encourage deeper exploration of topics,Todo,Medium,Knowledge Base,,
-Implement automated workflow to convert closed questions to knowledge entries,Create a process that helps transform resolved questions into knowledge base articles to expand the knowledge repository efficiently,Todo,Medium,Knowledge Base,,
-Add version history for knowledge base articles,Implement tracking of changes made to knowledge base articles over time to maintain accountability and enable reverting to previous versions,Todo,Medium,Knowledge Base,,
-Create public API for accessing knowledge base,Develop endpoints that allow external applications to query and retrieve knowledge base content to extend platform utility,Todo,Medium,Knowledge Base,,
-Implement SEO optimizations for knowledge base entries,Enhance knowledge base articles with metadata and structured content to improve search engine visibility and ranking,Todo,Medium,Knowledge Base,,
-Add ability to feature important knowledge base articles,Create functionality to highlight critical or frequently accessed articles to improve user experience and information discovery,Todo,Medium,Knowledge Base,,
-Implement terminology search functionality,Build a search system specifically for terminology entries to help users quickly find definitions of gender-related terms,Todo,Medium,Terminology Database,,
-Add categorization for terminology entries,Create a system to organize terminology entries by categories to improve browsing and related term discovery,Todo,Medium,Terminology Database,,
-Create import/export functionality for terminology,Implement tools to bulk import or export terminology entries to facilitate data migration and backup,Todo,Medium,Terminology Database,,
-Add version history for terminology definitions,Track changes to terminology definitions over time to maintain accuracy and provide context for evolving language,Todo,Medium,Terminology Database,,
-Implement automatic linking of terminology in other content,Create a system that detects terminology mentions in questions and answers and automatically links them to their definitions,Todo,Medium,Terminology Database,,
-Create public API for accessing terminology database,Develop endpoints for external applications to query and retrieve terminology definitions to extend platform utility,Todo,Medium,Terminology Database,,
-Create data model for storing multiple social media accounts per user,Design database structure to associate multiple social media profiles with a single user account for comprehensive identity management,Todo,Medium,Social Integration & Pronoun Sharing,,
-Implement social media account linking and ownership validation,Build secure methods to connect and verify user ownership of social media accounts to prevent impersonation,Todo,Medium,Social Integration & Pronoun Sharing,,
-Add email address verification and association with user accounts,Implement secure email verification process to associate email addresses with user accounts for identification purposes,Todo,Medium,Social Integration & Pronoun Sharing,,
-Create public profile page showing user's pronouns and chosen information,Build customizable public profiles that display user pronouns and other self-selected information for sharing purposes,Todo,Medium,Social Integration & Pronoun Sharing,,
-Implement lookup functionality to find users by social media handles or email,Create search functionality that allows finding user profiles via connected social media handles or email addresses to facilitate pronoun discovery,Todo,Medium,Social Integration & Pronoun Sharing,,
-Build RESTful API for pronoun lookups from external applications,Create standardized endpoints that allow third-party applications to query user pronouns programmatically to extend platform reach,Todo,Medium,Social Integration & Pronoun Sharing,,
-Create OAuth-based authentication for API access,Implement secure authentication protocol for API consumers to protect user data while enabling authorized external integrations,Todo,Medium,Social Integration & Pronoun Sharing,,
-Implement privacy controls to disable API and/or website lookups,Build granular privacy settings that allow users to control how and where their pronoun information can be accessed,Todo,Medium,Social Integration & Pronoun Sharing,,
-Add functionality for users to review and authorize individual lookup requests,Create a system where users can approve specific requests for their pronoun information to enhance privacy control,Todo,Medium,Social Integration & Pronoun Sharing,,
-Create admin dashboard for monitoring API usage and abuse prevention,Build administrative tools to track API usage patterns and detect potential misuse to maintain platform integrity,Todo,Medium,Social Integration & Pronoun Sharing,,
-Implement rate limiting for API requests,Add controls to restrict the frequency of API calls from individual consumers to prevent system overload and abuse,Todo,Medium,Social Integration & Pronoun Sharing,,
-Add developer documentation for API integration,Create comprehensive guides and reference materials for developers integrating with the API to facilitate adoption,Todo,Medium,Social Integration & Pronoun Sharing,,
-Implement ActionCable for real-time question updates,Set up WebSocket connections to deliver instant updates about question status changes without requiring page refreshes,Todo,Medium,Real-time Features,,
-Add real-time notifications for responders,Create immediate alerts for responders about new assignments and activity to improve response times,Todo,Medium,Real-time Features,,
-Create live chat option for immediate assistance,Implement direct messaging functionality for users requiring urgent help to provide faster support than the standard question flow,Todo,Medium,Real-time Features,,
-Implement typing indicators in answer interface,Add visual cues that show when someone is composing a response to improve the conversational experience,Todo,Medium,Real-time Features,,
-Create responsive design for mobile users,Optimize interface layouts for various screen sizes to ensure a consistent experience across devices,Todo,Medium,UI/UX Improvements,,
-Implement dark mode theme option,Add alternative color scheme for reduced eye strain in low-light environments and to accommodate user preferences,Todo,Medium,UI/UX Improvements,,
-Add accessibility improvements (ARIA keyboard navigation),Enhance the platform with ARIA attributes and keyboard shortcuts to improve usability for people with disabilities,Todo,Medium,UI/UX Improvements,,
-Create guided tour for new users,Implement an interactive walkthrough of key features to help new users understand how to use the platform effectively,Todo,Medium,UI/UX Improvements,,
-Improve loading states and transitions,Add visual feedback during processing operations to enhance perceived performance and user confidence,Todo,Medium,UI/UX Improvements,,
-Implement progressive web app (PWA) features,Add offline capabilities and home screen installation to improve accessibility and user retention,Todo,Medium,UI/UX Improvements,,
-Create dashboard for question/answer metrics,Build visual representations of key performance indicators related to question volume and answer quality,Todo,Medium,Analytics & Reporting,,
-Implement response time analytics,Create tracking and reporting tools to measure how quickly questions receive responses to improve service levels,Todo,Medium,Analytics & Reporting,,
-Add user satisfaction tracking,Implement feedback collection and analysis tools to measure how well the platform meets user needs,Todo,Medium,Analytics & Reporting,,
-Create knowledge base usage analytics,Build reporting tools that track which knowledge base articles are most viewed to inform content prioritization,Todo,Medium,Analytics & Reporting,,
-Implement terminology usage tracking,Create systems to monitor which terminology entries are most frequently accessed to guide content development,Todo,Medium,Analytics & Reporting,,
-Reimplement system tests as mentioned in TODO,Update and expand the existing test suite to ensure comprehensive coverage of system functionality,Todo,Medium,Testing & Quality Assurance,,
-Add comprehensive unit tests for models,Create tests that verify the correctness of individual model components to catch issues early in development,Todo,Medium,Testing & Quality Assurance,,
-Implement integration tests for controllers,Build tests that verify controllers correctly interact with models and views to ensure system cohesion,Todo,Medium,Testing & Quality Assurance,,
-Create end-to-end tests for critical user flows,Implement tests that simulate real user interactions to verify complete workflows function correctly,Todo,Medium,Testing & Quality Assurance,,
-Set up automated accessibility testing,Implement tools to regularly check for compliance with accessibility standards to ensure inclusive design,Todo,Medium,Testing & Quality Assurance,,
-Implement caching strategy for knowledge base,Add server-side caching for frequently accessed knowledge base content to reduce database load and improve response times,Todo,Medium,Performance Optimization,,
-Optimize database queries for question listing,Refine database operations to reduce load times when displaying question lists with large result sets,Todo,Medium,Performance Optimization,,
-Add pagination for large result sets,Implement loading data in smaller chunks to improve page load times and reduce server resource usage,Todo,Medium,Performance Optimization,,
-Implement background jobs for non-critical operations,Move time-consuming tasks to asynchronous processing to improve responsiveness of the user interface,Todo,Medium,Performance Optimization,,
-Set up performance monitoring,Implement tools to track system performance metrics to identify bottlenecks and guide optimization efforts,Todo,Medium,Performance Optimization,,
-Implement natural language processing for question categorization,Add AI capabilities to automatically classify incoming questions to streamline routing and response,Todo,Medium,Future Enhancements,,
-Add multilingual support,Implement internationalization features to make the platform accessible to non-English speakers,Todo,Medium,Future Enhancements,,
-Create a community forum for peer support,Build discussion spaces where users can help each other with common questions to supplement formal support channels,Todo,Medium,Future Enhancements,,
-Implement AI-assisted answer suggestions,Add machine learning capabilities to propose potential responses based on knowledge base content to accelerate answering process,Todo,Medium,Future Enhancements,,
-Add integration with external knowledge bases,Create connections to third-party information sources to expand available information without duplicating content,Todo,Medium,Future Enhancements,,
+ID,Parent_ID,Title,Description,Type,Priority,Status,Tags
+ANQ-001,,Anonymous question submission,Allow users to submit questions without providing an email address,Epic,High,Todo,anonymous,questions,core
+ANQ-101,ANQ-001,Implement anonymous mode for question submission,Add UI option for users to submit without providing email,Feature,High,Todo,anonymous,questions,ui
+ANQ-102,ANQ-001,Create anonymous question backend logic,Implement server-side handling for anonymous submissions,Feature,High,Todo,anonymous,questions,backend
+NOT-001,,Question notification system,Create a system to notify users by email when their question receives a response,Epic,High,Todo,notifications,email,questions
+NOT-101,NOT-001,Set up question notification database,Create notification model and database schema,Feature,High,Todo,notifications,database,questions
+NOT-102,NOT-001,Implement notification delivery system,Build email sending functionality for question responses,Feature,High,Todo,notifications,email,questions
+NOT-103,NOT-001,Create notification preferences UI,Build interface for users to manage notification preferences,Feature,Medium,Todo,notifications,ui
+PSE-001,,Responder pseudonyms,Implement system to generate and assign random pseudonyms to responders for anonymity,Epic,High,Todo,pseudonyms,responders,anonymity
+PSE-101,PSE-001,Create pseudonym generator for responders,Implement algorithm to generate unique responder pseudonyms,Feature,High,Todo,pseudonyms,responders,algorithm
+PSE-102,PSE-001,Add responder pseudonym UI,Create interface for responders to view/set their pseudonym,Feature,Medium,Todo,pseudonyms,responders,ui
+CON-001,,Question conversation UI,Build UI for back-and-forth conversation between askers and responders,Epic,High,Todo,ui,questions,conversation
+CON-101,CON-001,Implement question conversation thread UI,Design and build threaded conversation view for questions,Feature,High,Todo,ui,questions,conversation
+CON-102,CON-001,Create question response form,Implement form for responders to reply to questions,Feature,High,Todo,ui,questions,conversation
+CON-103,CON-001,Add asker follow-up UI,Build interface for original asker to follow up on questions,Feature,High,Todo,ui,questions,conversation
+CLS-001,,Conversation closing functionality,Implement ability for either party to close a conversation,Epic,Medium,Todo,questions,conversation,workflow
+CLS-101,CLS-001,Implement conversation closing button,Add UI element for closing conversations,Feature,Medium,Todo,questions,conversation,ui
+CLS-102,CLS-001,Create conversation close backend logic,Implement server-side handling of conversation closing,Feature,Medium,Todo,questions,conversation,backend
+CLS-103,CLS-001,Add responder final response capability,Allow responders to send one final message after closure,Feature,Medium,Todo,questions,conversation,workflow
+KNW-001,,Knowledge base contribution workflow,Build system to convert closed questions into knowledge base articles with responder editing,Epic,High,Todo,knowledge-base,workflow
+KNW-101,KNW-001,Design knowledge conversion UI,Create interface for converting questions to knowledge articles,Feature,High,Todo,knowledge-base,ui,workflow
+KNW-102,KNW-001,Implement knowledge conversion backend,Build server-side logic for question-to-knowledge conversion,Feature,High,Todo,knowledge-base,backend,workflow
+KNW-103,KNW-001,Add knowledge editing capabilities,Create rich editor for knowledge article content,Feature,High,Todo,knowledge-base,ui,editor
+APR-001,,Knowledge approval system,Create system requiring multiple responder approvals before publishing knowledge articles,Epic,Medium,Todo,knowledge-base,moderation
+APR-101,APR-001,Create knowledge approval request UI,Build interface for responders to request article approval,Feature,Medium,Todo,knowledge-base,ui,moderation
+APR-102,APR-001,Implement approval voting system,Create backend system for responders to vote on articles,Feature,Medium,Todo,knowledge-base,backend,moderation
+APR-103,APR-001,Add approval threshold configuration,Create configurable threshold for required approvals,Feature,Low,Todo,knowledge-base,config,moderation
+APR-104,APR-001,Design approval workflow UI,Create interface for knowledge approval workflow,Design,Medium,Todo,knowledge-base,moderation,ui
+APR-105,APR-001,Implement approval request system,Build system for submitting approval requests,Feature,Medium,Todo,knowledge-base,moderation,backend
+APR-106,APR-001,Create approval voting mechanism,Implement voting system for approvals,Feature,Medium,Todo,knowledge-base,moderation,voting
+APR-107,APR-001,Add approval status tracking,Create tracking for article approval status,Feature,Medium,Todo,knowledge-base,moderation,tracking
+TER-001,,Terminology management system,Create UI for managing "How Do I Say...?" terminology entries,Epic,Medium,Todo,terminology,ui
+TER-101,TER-001,Create terminology entry form,Build form for adding terminology definitions,Feature,Medium,Todo,terminology,ui
+TER-102,TER-001,Implement terminology list view,Create paginated list of terminology entries,Feature,Medium,Todo,terminology,ui
+TER-103,TER-001,Add terminology detail view,Build detailed view of individual terminology entries,Feature,Medium,Todo,terminology,ui
+SCH-001,,Search functionality,Implement robust search across questions and knowledge base,Epic,Medium,Todo,search,ux
+SCH-101,SCH-001,Create search indexing for content,Set up database indexes and search engine integration,Feature,Medium,Todo,search,backend
+SCH-102,SCH-001,Implement search UI components,Build search box and results display components,Feature,Medium,Todo,search,ui
+SCH-103,SCH-001,Add search filtering capabilities,Implement filtering options for search results,Feature,Low,Todo,search,ui,filtering
+MBL-001,,Mobile responsive design,Ensure site works well on mobile devices with appropriate layouts,Epic,High,Todo,ui,mobile,responsive
+MBL-101,MBL-001,Design mobile responsive layouts,Create responsive designs for mobile screens,Design,High,Todo,ui,mobile,responsive
+MBL-102,MBL-001,Implement mobile navigation menu,Build collapsible navigation for mobile devices,Feature,High,Todo,ui,mobile,navigation
+MBL-103,MBL-001,Optimize forms for mobile input,Adjust form layouts and inputs for mobile usability,Feature,Medium,Todo,ui,mobile,forms
+AUT-001,,User authentication,Set up secure authentication for responders with appropriate roles and permissions,Epic,High,Todo,authentication,security
+AUT-101,AUT-001,Set up Devise authentication,Configure Devise gem for responder authentication,Feature,High,Todo,authentication,backend
+AUT-102,AUT-001,Create responder registration workflow,Build registration process for new responders,Feature,High,Todo,authentication,registration
+AUT-103,AUT-001,Implement password strength requirements,Add password requirements and validation,Feature,High,Todo,authentication,security
+AUT-104,AUT-001,Create responder login/logout UI,Build login and logout interface components,Feature,High,Todo,authentication,ui
+DSH-001,,Responder dashboard,Build dashboard for responders to view pending questions and their conversations,Epic,High,Todo,dashboard,responders,ui
+DSH-101,DSH-001,Design responder dashboard layout,Create layout for responder dashboard,Design,High,Todo,dashboard,responders,ui
+DSH-102,DSH-001,Implement pending questions widget,Build dashboard widget showing pending questions,Feature,High,Todo,dashboard,responders,ui
+DSH-103,DSH-001,Add active conversations widget,Create dashboard display of active conversations,Feature,High,Todo,dashboard,responders,ui
+DSH-104,DSH-001,Create responder metrics display,Build widget showing responder activity metrics,Feature,Medium,Todo,dashboard,responders,metrics
+TAX-001,,Category and tag system,Create system for categorizing and tagging knowledge articles and questions,Epic,Medium,Todo,taxonomy,organization
+TAX-101,TAX-001,Implement category data model,Create database models for categories,Feature,Medium,Todo,taxonomy,database
+TAX-102,TAX-001,Create tagging system backend,Build tag data model and relationships,Feature,Medium,Todo,taxonomy,database,tags
+TAX-103,TAX-001,Implement category selector UI,Create UI for selecting categories,Feature,Medium,Todo,taxonomy,ui
+TAX-104,TAX-001,Add tag input interface,Build UI for adding and managing tags,Feature,Medium,Todo,taxonomy,ui,tags
+AIS-001,,AI-assisted summary generation,Implement AI assistance for summarizing conversations into knowledge articles,Epic,Low,Todo,ai,knowledge-base
+AIS-101,AIS-001,Research AI summary generation options,Evaluate AI services for summary generation,Research,Low,Todo,ai,knowledge-base,research
+AIS-102,AIS-001,Create AI integration service,Build service to connect with chosen AI provider,Feature,Low,Todo,ai,knowledge-base,integration
+AIS-103,AIS-001,Implement summary generation UI,Create interface for generating and editing AI summaries,Feature,Low,Todo,ai,knowledge-base,ui
+ONB-001,,Responder onboarding process,Create process for vetting and onboarding new responders,Epic,Medium,Todo,responders,onboarding
+ONB-101,ONB-001,Design responder application form,Create application form for prospective responders,Feature,Medium,Todo,responders,onboarding,ui
+ONB-102,ONB-001,Implement responder approval workflow,Build process for reviewing responder applications,Feature,Medium,Todo,responders,onboarding,workflow
+ONB-103,ONB-001,Create responder training materials,Develop training content for new responders,Documentation,Medium,Todo,responders,onboarding,documentation
+ANL-001,,Basic analytics,Add analytics to track usage patterns and popular topics,Epic,Low,Todo,analytics,metrics
+ANL-101,ANL-001,Set up analytics tracking,Implement event tracking for key user actions,Feature,Low,Todo,analytics,metrics,tracking
+ANL-102,ANL-001,Create analytics dashboard,Build dashboard for viewing analytics data,Feature,Low,Todo,analytics,metrics,ui
+ANL-103,ANL-001,Implement topic tracking system,Create system to track common question topics,Feature,Low,Todo,analytics,topics
+FBK-001,,User feedback mechanism,Implement way for users to provide feedback on answers and knowledge articles,Epic,Medium,Todo,feedback,ux
+FBK-101,FBK-001,Design feedback UI components,Create interface elements for user feedback,Design,Medium,Todo,feedback,ui
+FBK-102,FBK-001,Implement feedback submission backend,Build server-side handling of user feedback,Feature,Medium,Todo,feedback,backend
+FBK-103,FBK-001,Create feedback reporting system,Build system to aggregate and report on feedback,Feature,Low,Todo,feedback,reporting
+ADM-001,,Administrative tools,Create tools for site administrators to manage content and users,Epic,Medium,Todo,admin,moderation
+ADM-101,ADM-001,Design admin interface layout,Create layout for administrative tools,Design,Medium,Todo,admin,ui
+ADM-102,ADM-001,Implement user management tools,Build interfaces for managing users and permissions,Feature,Medium,Todo,admin,users,ui
+ADM-103,ADM-001,Create content management dashboard,Build dashboard for content management,Feature,Medium,Todo,admin,content,ui
+MOD-001,,Content moderation tools,Build tools for responders to flag and moderate problematic content,Epic,Medium,Todo,moderation,safety
+MOD-101,MOD-001,Design content moderation interface,Create interface for moderating content,Design,Medium,Todo,moderation,ui
+MOD-102,MOD-001,Implement content flagging system,Build system for flagging problematic content,Feature,Medium,Todo,moderation,flagging
+MOD-103,MOD-001,Create moderation queue,Implement queue for reviewing flagged content,Feature,Medium,Todo,moderation,queue
+HOM-001,,Home page design and implementation,Create welcoming home page explaining the site's purpose and features,Epic,High,Todo,ui,home-page
+HOM-101,HOM-001,Design home page layout,Create welcoming and informative home page design,Design,High,Todo,ui,home-page
+HOM-102,HOM-001,Implement home page features,Build home page components and content,Feature,High,Todo,ui,home-page
+HOM-103,HOM-001,Create site introduction content,Develop clear explanations of site purpose and features,Content,High,Todo,ui,home-page,content
+TST-001,,Automated testing,Implement comprehensive automated testing for all core features,Epic,Medium,Todo,testing,quality
+TST-101,TST-001,Set up test framework,Configure testing framework and initial setup,DevOps,Medium,Todo,testing,setup
+TST-102,TST-001,Create model unit tests,Write tests for model validations and methods,DevOps,Medium,Todo,testing,unit
+TST-103,TST-001,Implement controller tests,Write tests for controller actions,DevOps,Medium,Todo,testing,controllers
+TST-104,TST-001,Create system/integration tests,Implement end-to-end testing of key workflows,DevOps,Medium,Todo,testing,integration
+DOC-001,,Documentation for responders,Write comprehensive documentation for responders on using the system,Epic,Medium,Todo,documentation,responders
+DOC-101,DOC-001,Write responder guide introduction,Create overview of the responder role,Documentation,Medium,Todo,documentation,responders
+DOC-102,DOC-001,Develop question handling guidelines,Write guidelines for appropriately answering questions,Documentation,Medium,Todo,documentation,responders
+DOC-103,DOC-001,Create knowledge base contribution guide,Write guide for creating knowledge articles,Documentation,Medium,Todo,documentation,responders
+ACC-001,,Accessibility improvements,Ensure site meets WCAG accessibility standards,Epic,Medium,Todo,accessibility,ux
+ACC-101,ACC-001,Audit site for accessibility issues,Review site against WCAG standards,Audit,Medium,Todo,accessibility,audit
+ACC-102,ACC-001,Implement keyboard navigation improvements,Enhance keyboard navigation throughout the site,Improvement,Medium,Todo,accessibility,keyboard
+ACC-103,ACC-001,Add ARIA attributes to components,Improve screen reader compatibility with ARIA,Improvement,Medium,Todo,accessibility,aria
+ACC-104,ACC-001,Create text alternatives for visual elements,Add alt text and descriptions for images and icons,Improvement,Medium,Todo,accessibility,alt-text
+DEP-001,,Production deployment,Configure production deployment process with proper security and scaling,Epic,High,Todo,deployment,infrastructure
+DEP-101,DEP-001,Configure Kamal deployment setup,Set up Kamal for Docker-based deployment,DevOps,High,Todo,deployment,kamal
+DEP-102,DEP-001,Create production environment configuration,Configure environment for production deployment,DevOps,High,Todo,deployment,configuration
+DEP-103,DEP-001,Set up SSL certificates,Implement SSL for secure connections,DevOps,High,Todo,deployment,ssl
+DEP-104,DEP-001,Create deployment documentation,Write documentation for deployment process,Documentation,Medium,Todo,deployment,documentation
+BCK-001,,Backup and disaster recovery plan,Design and implement backup strategy and disaster recovery procedures,Epic,Medium,Todo,backups,security
+BCK-101,BCK-001,Design backup strategy,Define approach for regular data backups,DevOps,Medium,Todo,backups,strategy
+BCK-102,BCK-001,Implement automated backup system,Create scheduled backup automation,DevOps,Medium,Todo,backups,automation
+BCK-103,BCK-001,Create disaster recovery procedures,Document steps for recovering from failures,Documentation,Medium,Todo,backups,disaster-recovery
+BCK-104,BCK-001,Test backup restoration process,Verify backup restoration procedures,DevOps,Medium,Todo,backups,testing
+PRI-001,,Data privacy controls,Ensure all personal data is properly protected with appropriate controls,Epic,High,Todo,privacy,security,gdpr
+PRI-101,PRI-001,Implement data encryption,Add encryption for sensitive data,Security,High,Todo,privacy,encryption
+PRI-102,PRI-001,Create data retention policies,Define and implement data retention rules,Security,High,Todo,privacy,retention
+PRI-103,PRI-001,Implement user data export,Create functionality for users to export their data,Feature,High,Todo,privacy,export
+PRI-104,PRI-001,Add data deletion capabilities,Build functionality to delete user data on request,Feature,High,Todo,privacy,deletion
+API-001,,API documentation,Document any public APIs for developers to integrate with the platform,Epic,Low,Todo,api,documentation
+API-101,API-001,Create API documentation framework,Set up documentation system for APIs,Documentation,Low,Todo,api,documentation
+API-102,API-001,Document pronoun API endpoints,Create documentation for pronoun API,Documentation,Low,Todo,api,documentation,pronouns
+API-103,API-001,Create API authentication guide,Document API authentication methods,Documentation,Low,Todo,api,documentation,authentication
+MON-001,,Monitoring and alerting,Implement monitoring and alerting for system health and performance,Epic,Medium,Todo,monitoring,reliability
+MON-101,MON-001,Set up server monitoring tools,Configure tools to monitor server health,DevOps,Medium,Todo,monitoring,servers
+MON-102,MON-001,Implement application performance monitoring,Add monitoring for application performance,DevOps,Medium,Todo,monitoring,application
+MON-103,MON-001,Create alerting rules,Configure alerts for critical issues,DevOps,Medium,Todo,monitoring,alerts
+MON-104,MON-001,Set up logging infrastructure,Configure centralized logging system,DevOps,Medium,Todo,monitoring,logging
+SEO-001,,SEO optimizations,Optimize site for search engines to improve discovery,Epic,Medium,Todo,seo,discoverability
+SEO-101,SEO-001,Implement SEO metadata,Add appropriate metadata for SEO,Improvement,Medium,Todo,seo,metadata
+SEO-102,SEO-001,Create XML sitemap,Generate XML sitemap for search engines,Improvement,Medium,Todo,seo,sitemap
+SEO-103,SEO-001,Optimize page load performance,Improve page loading speed for better SEO,Improvement,Medium,Todo,seo,performance
+SEO-104,SEO-001,Implement structured data markup,Add schema.org markup for better search results,Improvement,Medium,Todo,seo,structured-data
+STY-001,,Content style guide,Develop style guide for consistent tone and terminology in knowledge articles,Epic,Medium,Todo,content,consistency
+STY-101,STY-001,Create writing style guidelines,Define tone and style for content,Documentation,Medium,Todo,content,style-guide
+STY-102,STY-001,Develop terminology consistency guide,Create guidelines for consistent terminology usage,Documentation,Medium,Todo,content,terminology
+STY-103,STY-001,Create content formatting standards,Define standard formatting for articles,Documentation,Medium,Todo,content,formatting
+RTC-001,,Real-time chat with ActionCable,Use ActionCable to update questions in real-time as they're edited or answered,Epic,Medium,Todo,realtime,websockets
+RTC-101,RTC-001,Set up ActionCable channels,Configure ActionCable channels for real-time communication,Feature,Medium,Todo,realtime,websockets,setup
+RTC-102,RTC-001,Create client-side ActionCable connections,Implement JavaScript to connect to ActionCable channels,Feature,Medium,Todo,realtime,websockets,frontend
+RTC-103,RTC-001,Implement broadcasting for question updates,Add server-side broadcasting of question changes,Feature,Medium,Todo,realtime,websockets,backend
+RTC-104,RTC-001,Create real-time UI updates,Build UI that updates in real-time when data changes,Feature,Medium,Todo,realtime,websockets,ui
+RTC-105,RTC-001,Add typing indicators,Implement indicators showing when someone is typing,Feature,Low,Todo,realtime,websockets,ui
+RTC-106,RTC-001,Create online presence indicators,Show when users/responders are actively online,Feature,Low,Todo,realtime,websockets,presence
+RTC-107,RTC-001,Test WebSocket performance,Test and optimize WebSocket connections,DevOps,Medium,Todo,realtime,websockets,performance
+PRO-001,,Pronouns sharing feature,Implement system for users to share their pronouns via lookup from social accounts,Epic,Low,Todo,pronouns,sharing
+PRO-101,PRO-001,Design pronoun sharing interface,Create UI for users to share and manage pronouns,Design,Low,Todo,pronouns,sharing,ui
+PRO-102,PRO-001,Implement social account linking,Build functionality to link social media accounts,Feature,Low,Todo,pronouns,sharing,integration
+PRO-103,PRO-001,Create pronoun storage system,Implement database model for storing user pronouns,Feature,Low,Todo,pronouns,sharing,database
+PRO-104,PRO-001,Build pronoun display components,Create components to display user pronouns,Feature,Low,Todo,pronouns,sharing,ui
+PAP-001,,Pronoun API for third-party integration,Build API to allow other services to look up users' pronouns,Epic,Low,Todo,api,pronouns
+PAP-101,PAP-001,Design pronoun API endpoints,Define API structure for pronoun lookup,Design,Low,Todo,api,pronouns,design
+PAP-102,PAP-001,Implement pronoun lookup API,Build API endpoints for pronoun retrieval,Feature,Low,Todo,api,pronouns,backend
+PAP-103,PAP-001,Create API documentation for pronouns,Document the pronoun API for developers,Documentation,Low,Todo,api,pronouns,documentation
+PAP-104,PAP-001,Implement API authentication,Add authentication for API access,Feature,Low,Todo,api,pronouns,authentication
+SOC-001,,Social account validation,Create system to validate ownership of social accounts for pronoun sharing,Epic,Low,Todo,social,validation
+SOC-101,SOC-001,Design social validation flow,Create workflow for validating social accounts,Design,Low,Todo,social,validation,design
+SOC-102,SOC-001,Implement OAuth integration,Add OAuth for major social platforms,Feature,Low,Todo,social,validation,oauth
+SOC-103,SOC-001,Create validation verification system,Build system to verify ownership of accounts,Feature,Low,Todo,social,validation,verification
+SOC-104,SOC-001,Add validation status tracking,Implement tracking of validation status,Feature,Low,Todo,social,validation,tracking
+PWA-001,,Progressive web app support,Implement PWA features for better mobile experience,Epic,Low,Todo,pwa,mobile
+PWA-101,PWA-001,Create PWA manifest file,Add web app manifest for PWA support,Improvement,Low,Todo,pwa,manifest
+PWA-102,PWA-001,Implement service workers,Add service workers for offline capability,Improvement,Low,Todo,pwa,service-worker
+PWA-103,PWA-001,Create offline content caching,Implement caching for offline access,Improvement,Low,Todo,pwa,offline
+PWA-104,PWA-001,Add install prompts for PWA,Implement prompts for installing the PWA,Improvement,Low,Todo,pwa,install
+DBP-001,,Database performance optimization,Review and optimize database queries and indexes for performance,Epic,Medium,Todo,performance,database
+DBP-101,DBP-001,Analyze database query performance,Review and identify slow database queries,Improvement,Medium,Todo,performance,database,analysis
+DBP-102,DBP-001,Create database indexes,Add appropriate indexes for performance,Improvement,Medium,Todo,performance,database,indexes
+DBP-103,DBP-001,Optimize N+1 queries,Fix N+1 query issues for better performance,Improvement,Medium,Todo,performance,database,n+1
+DBP-104,DBP-001,Implement query caching,Add caching for expensive database queries,Improvement,Medium,Todo,performance,database,caching
+CAC-001,,Caching strategy,Develop and implement appropriate caching for improved performance,Epic,Medium,Todo,performance,caching
+CAC-101,CAC-001,Design caching strategy,Define approach for application caching,Improvement,Medium,Todo,performance,caching,strategy
+CAC-102,CAC-001,Implement page caching,Add caching for static pages,Improvement,Medium,Todo,performance,caching,pages
+CAC-103,CAC-001,Create fragment caching,Implement fragment caching for dynamic content,Improvement,Medium,Todo,performance,caching,fragments
+CAC-104,CAC-001,Add Russian doll caching,Implement nested fragment caching,Improvement,Medium,Todo,performance,caching,russian-doll
+HLP-001,,User tutorials and help content,Develop tutorials and help content for new users,Epic,Medium,Todo,documentation,onboarding
+HLP-101,HLP-001,Create getting started guide,Develop introduction guide for new users,Documentation,Medium,Todo,documentation,onboarding
+HLP-102,HLP-001,Implement interactive tutorials,Build step-by-step guides for key features,Feature,Medium,Todo,documentation,tutorials
+HLP-103,HLP-001,Create contextual help system,Add contextual help throughout the application,Feature,Medium,Todo,documentation,contextual
+HLP-104,HLP-001,Develop FAQ content,Create frequently asked questions content,Documentation,Medium,Todo,documentation,faq
+BRD-001,,Site branding,Create consistent visual branding across the site,Epic,High,Todo,branding,design
+BRD-101,BRD-001,Create brand style guide,Define brand colors, typography, and elements,Design,High,Todo,branding,style-guide
+BRD-102,BRD-001,Design logo and iconography,Create logo and consistent icon set,Design,High,Todo,branding,logo
+BRD-103,BRD-001,Implement brand elements in UI,Apply branding consistently across the site,Design,High,Todo,branding,implementation
+BRD-104,BRD-001,Create brand voice guidelines,Define tone and language for communications,Documentation,Medium,Todo,branding,voice
+CIC-001,,Continuous integration,Configure CI pipeline for automated testing and deployment,Epic,Medium,Todo,ci,automation
+CIC-101,CIC-001,Set up GitHub Actions workflow,Configure CI pipeline with GitHub Actions,DevOps,Medium,Todo,ci,github-actions
+CIC-102,CIC-001,Create automated test job,Configure automated testing in CI pipeline,DevOps,Medium,Todo,ci,testing
+CIC-103,CIC-001,Implement linting checks,Add code quality checks to CI pipeline,DevOps,Medium,Todo,ci,linting
+CIC-104,CIC-001,Create deployment job,Add automated deployment to CI pipeline,DevOps,Medium,Todo,ci,deployment
+I18-001,,Internationalization framework,Set up i18n support for future multi-language support,Epic,Low,Todo,i18n,localization
+I18-101,I18-001,Set up i18n framework,Configure Rails internationalization framework,Feature,Low,Todo,i18n,setup
+I18-102,I18-001,Create translation files,Add translation files for supported languages,Feature,Low,Todo,i18n,translations
+I18-103,I18-001,Implement language switcher,Add UI for changing language preference,Feature,Low,Todo,i18n,ui
+I18-104,I18-001,Add translation management tool,Implement tool for managing translations,Feature,Low,Todo,i18n,management
+TOK-001,,Question token validation,Create secure token system for anonymous users to access their questions,Epic,High,Todo,security,tokens,questions
+TOK-101,TOK-001,Implement secure token generation,Create cryptographically secure token generation,Security,High,Todo,security,tokens,generation
+TOK-102,TOK-001,Create token validation system,Build system to validate question access tokens,Security,High,Todo,security,tokens,validation
+TOK-103,TOK-001,Implement token expiration handling,Add handling for expired tokens,Security,High,Todo,security,tokens,expiration
+TOK-104,TOK-001,Add token reset functionality,Create mechanism to reset lost tokens,Feature,Medium,Todo,security,tokens,reset
+EMV-001,,Question email verification,Implement email verification for non-anonymous question submission,Epic,Medium,Todo,email,verification,questions
+EMV-101,EMV-001,Design email verification flow,Create workflow for email verification,Design,Medium,Todo,email,verification,design
+EMV-102,EMV-001,Implement verification email sending,Build system to send verification emails,Feature,Medium,Todo,email,verification,sending
+EMV-103,EMV-001,Create email verification page,Build page for verifying email addresses,Feature,Medium,Todo,email,verification,ui
+EMV-104,EMV-001,Add verification status tracking,Implement tracking of verification status,Feature,Medium,Todo,email,verification,tracking
+SPA-001,,Spam prevention measures,Implement captcha or other anti-spam measures for question submission,Epic,High,Todo,security,spam,questions
+SPA-101,SPA-001,Research captcha solutions,Evaluate captcha options for spam prevention,Research,High,Todo,security,spam,research
+SPA-102,SPA-001,Implement captcha integration,Add chosen captcha solution to forms,Security,High,Todo,security,spam,captcha
+SPA-103,SPA-001,Create rate limiting for submissions,Implement limits on form submissions,Security,High,Todo,security,spam,rate-limiting
+SPA-104,SPA-001,Add IP-based blocking,Implement blocking of suspicious IP addresses,Security,High,Todo,security,spam,ip-blocking
+QAS-001,,Question assignment system,Build system to fairly distribute questions among responders,Epic,High,Todo,workflow,responders,questions
+QAS-101,QAS-001,Design question assignment algorithm,Create algorithm for fair question distribution,Design,High,Todo,workflow,responders,algorithm
+QAS-102,QAS-001,Implement question assignment backend,Build system to assign questions to responders,Feature,High,Todo,workflow,responders,backend
+QAS-103,QAS-001,Create manual assignment override,Add ability for admins to manually assign questions,Feature,Medium,Todo,workflow,responders,manual
+QAS-104,QAS-001,Add assignment notification system,Implement notifications for new question assignments,Feature,High,Todo,workflow,responders,notifications
+AVL-001,,Responder availability settings,Allow responders to mark themselves as available or unavailable,Epic,Medium,Todo,responders,availability
+AVL-101,AVL-001,Design responder availability UI,Create interface for setting availability status,Design,Medium,Todo,responders,availability,ui
+AVL-102,AVL-001,Implement availability status backend,Build system to track responder availability,Feature,Medium,Todo,responders,availability,backend
+AVL-103,AVL-001,Create automated availability detection,Add detection of inactivity for availability,Feature,Low,Todo,responders,availability,automation
+AVL-104,AVL-001,Add availability scheduling,Implement scheduling of availability periods,Feature,Low,Todo,responders,availability,scheduling
