@@ -1,216 +1,246 @@
-ID,Parent_ID,Title,Description,Type,Priority,Status,Tags
-ANQ-001,,Anonymous question submission,Allow users to submit questions without providing an email address,Epic,High,Todo,anonymous,questions,core
-ANQ-101,ANQ-001,Implement anonymous mode for question submission,Add UI option for users to submit without providing email,Feature,High,Todo,anonymous,questions,ui
-ANQ-102,ANQ-001,Create anonymous question backend logic,Implement server-side handling for anonymous submissions,Feature,High,Todo,anonymous,questions,backend
-NOT-001,,Question notification system,Create a system to notify users by email when their question receives a response,Epic,High,Todo,notifications,email,questions
-NOT-101,NOT-001,Set up question notification database,Create notification model and database schema,Feature,High,Todo,notifications,database,questions
-NOT-102,NOT-001,Implement notification delivery system,Build email sending functionality for question responses,Feature,High,Todo,notifications,email,questions
-NOT-103,NOT-001,Create notification preferences UI,Build interface for users to manage notification preferences,Feature,Medium,Todo,notifications,ui
-PSE-001,,Responder pseudonyms,Implement system to generate and assign random pseudonyms to responders for anonymity,Epic,High,Todo,pseudonyms,responders,anonymity
-PSE-101,PSE-001,Create pseudonym generator for responders,Implement algorithm to generate unique responder pseudonyms,Feature,High,Todo,pseudonyms,responders,algorithm
-PSE-102,PSE-001,Add responder pseudonym UI,Create interface for responders to view/set their pseudonym,Feature,Medium,Todo,pseudonyms,responders,ui
-CON-001,,Question conversation UI,Build UI for back-and-forth conversation between askers and responders,Epic,High,Todo,ui,questions,conversation
-CON-101,CON-001,Implement question conversation thread UI,Design and build threaded conversation view for questions,Feature,High,Todo,ui,questions,conversation
-CON-102,CON-001,Create question response form,Implement form for responders to reply to questions,Feature,High,Todo,ui,questions,conversation
-CON-103,CON-001,Add asker follow-up UI,Build interface for original asker to follow up on questions,Feature,High,Todo,ui,questions,conversation
-CLS-001,,Conversation closing functionality,Implement ability for either party to close a conversation,Epic,Medium,Todo,questions,conversation,workflow
-CLS-101,CLS-001,Implement conversation closing button,Add UI element for closing conversations,Feature,Medium,Todo,questions,conversation,ui
-CLS-102,CLS-001,Create conversation close backend logic,Implement server-side handling of conversation closing,Feature,Medium,Todo,questions,conversation,backend
-CLS-103,CLS-001,Add responder final response capability,Allow responders to send one final message after closure,Feature,Medium,Todo,questions,conversation,workflow
-KNW-001,,Knowledge base contribution workflow,Build system to convert closed questions into knowledge base articles with responder editing,Epic,High,Todo,knowledge-base,workflow
-KNW-101,KNW-001,Design knowledge conversion UI,Create interface for converting questions to knowledge articles,Feature,High,Todo,knowledge-base,ui,workflow
-KNW-102,KNW-001,Implement knowledge conversion backend,Build server-side logic for question-to-knowledge conversion,Feature,High,Todo,knowledge-base,backend,workflow
-KNW-103,KNW-001,Add knowledge editing capabilities,Create rich editor for knowledge article content,Feature,High,Todo,knowledge-base,ui,editor
-APR-001,,Knowledge approval system,Create system requiring multiple responder approvals before publishing knowledge articles,Epic,Medium,Todo,knowledge-base,moderation
-APR-101,APR-001,Create knowledge approval request UI,Build interface for responders to request article approval,Feature,Medium,Todo,knowledge-base,ui,moderation
-APR-102,APR-001,Implement approval voting system,Create backend system for responders to vote on articles,Feature,Medium,Todo,knowledge-base,backend,moderation
-APR-103,APR-001,Add approval threshold configuration,Create configurable threshold for required approvals,Feature,Low,Todo,knowledge-base,config,moderation
-APR-104,APR-001,Design approval workflow UI,Create interface for knowledge approval workflow,Design,Medium,Todo,knowledge-base,moderation,ui
-APR-105,APR-001,Implement approval request system,Build system for submitting approval requests,Feature,Medium,Todo,knowledge-base,moderation,backend
-APR-106,APR-001,Create approval voting mechanism,Implement voting system for approvals,Feature,Medium,Todo,knowledge-base,moderation,voting
-APR-107,APR-001,Add approval status tracking,Create tracking for article approval status,Feature,Medium,Todo,knowledge-base,moderation,tracking
-TER-001,,Terminology management system,Create UI for managing "How Do I Say...?" terminology entries,Epic,Medium,Todo,terminology,ui
-TER-101,TER-001,Create terminology entry form,Build form for adding terminology definitions,Feature,Medium,Todo,terminology,ui
-TER-102,TER-001,Implement terminology list view,Create paginated list of terminology entries,Feature,Medium,Todo,terminology,ui
-TER-103,TER-001,Add terminology detail view,Build detailed view of individual terminology entries,Feature,Medium,Todo,terminology,ui
-SCH-001,,Search functionality,Implement robust search across questions and knowledge base,Epic,Medium,Todo,search,ux
-SCH-101,SCH-001,Create search indexing for content,Set up database indexes and search engine integration,Feature,Medium,Todo,search,backend
-SCH-102,SCH-001,Implement search UI components,Build search box and results display components,Feature,Medium,Todo,search,ui
-SCH-103,SCH-001,Add search filtering capabilities,Implement filtering options for search results,Feature,Low,Todo,search,ui,filtering
-MBL-001,,Mobile responsive design,Ensure site works well on mobile devices with appropriate layouts,Epic,High,Todo,ui,mobile,responsive
-MBL-101,MBL-001,Design mobile responsive layouts,Create responsive designs for mobile screens,Design,High,Todo,ui,mobile,responsive
-MBL-102,MBL-001,Implement mobile navigation menu,Build collapsible navigation for mobile devices,Feature,High,Todo,ui,mobile,navigation
-MBL-103,MBL-001,Optimize forms for mobile input,Adjust form layouts and inputs for mobile usability,Feature,Medium,Todo,ui,mobile,forms
-AUT-001,,User authentication,Set up secure authentication for responders with appropriate roles and permissions,Epic,High,Todo,authentication,security
-AUT-101,AUT-001,Set up Devise authentication,Configure Devise gem for responder authentication,Feature,High,Todo,authentication,backend
-AUT-102,AUT-001,Create responder registration workflow,Build registration process for new responders,Feature,High,Todo,authentication,registration
-AUT-103,AUT-001,Implement password strength requirements,Add password requirements and validation,Feature,High,Todo,authentication,security
-AUT-104,AUT-001,Create responder login/logout UI,Build login and logout interface components,Feature,High,Todo,authentication,ui
-DSH-001,,Responder dashboard,Build dashboard for responders to view pending questions and their conversations,Epic,High,Todo,dashboard,responders,ui
-DSH-101,DSH-001,Design responder dashboard layout,Create layout for responder dashboard,Design,High,Todo,dashboard,responders,ui
-DSH-102,DSH-001,Implement pending questions widget,Build dashboard widget showing pending questions,Feature,High,Todo,dashboard,responders,ui
-DSH-103,DSH-001,Add active conversations widget,Create dashboard display of active conversations,Feature,High,Todo,dashboard,responders,ui
-DSH-104,DSH-001,Create responder metrics display,Build widget showing responder activity metrics,Feature,Medium,Todo,dashboard,responders,metrics
-TAX-001,,Category and tag system,Create system for categorizing and tagging knowledge articles and questions,Epic,Medium,Todo,taxonomy,organization
-TAX-101,TAX-001,Implement category data model,Create database models for categories,Feature,Medium,Todo,taxonomy,database
-TAX-102,TAX-001,Create tagging system backend,Build tag data model and relationships,Feature,Medium,Todo,taxonomy,database,tags
-TAX-103,TAX-001,Implement category selector UI,Create UI for selecting categories,Feature,Medium,Todo,taxonomy,ui
-TAX-104,TAX-001,Add tag input interface,Build UI for adding and managing tags,Feature,Medium,Todo,taxonomy,ui,tags
-AIS-001,,AI-assisted summary generation,Implement AI assistance for summarizing conversations into knowledge articles,Epic,Low,Todo,ai,knowledge-base
-AIS-101,AIS-001,Research AI summary generation options,Evaluate AI services for summary generation,Research,Low,Todo,ai,knowledge-base,research
-AIS-102,AIS-001,Create AI integration service,Build service to connect with chosen AI provider,Feature,Low,Todo,ai,knowledge-base,integration
-AIS-103,AIS-001,Implement summary generation UI,Create interface for generating and editing AI summaries,Feature,Low,Todo,ai,knowledge-base,ui
-ONB-001,,Responder onboarding process,Create process for vetting and onboarding new responders,Epic,Medium,Todo,responders,onboarding
-ONB-101,ONB-001,Design responder application form,Create application form for prospective responders,Feature,Medium,Todo,responders,onboarding,ui
-ONB-102,ONB-001,Implement responder approval workflow,Build process for reviewing responder applications,Feature,Medium,Todo,responders,onboarding,workflow
-ONB-103,ONB-001,Create responder training materials,Develop training content for new responders,Documentation,Medium,Todo,responders,onboarding,documentation
-ANL-001,,Basic analytics,Add analytics to track usage patterns and popular topics,Epic,Low,Todo,analytics,metrics
-ANL-101,ANL-001,Set up analytics tracking,Implement event tracking for key user actions,Feature,Low,Todo,analytics,metrics,tracking
-ANL-102,ANL-001,Create analytics dashboard,Build dashboard for viewing analytics data,Feature,Low,Todo,analytics,metrics,ui
-ANL-103,ANL-001,Implement topic tracking system,Create system to track common question topics,Feature,Low,Todo,analytics,topics
-FBK-001,,User feedback mechanism,Implement way for users to provide feedback on answers and knowledge articles,Epic,Medium,Todo,feedback,ux
-FBK-101,FBK-001,Design feedback UI components,Create interface elements for user feedback,Design,Medium,Todo,feedback,ui
-FBK-102,FBK-001,Implement feedback submission backend,Build server-side handling of user feedback,Feature,Medium,Todo,feedback,backend
-FBK-103,FBK-001,Create feedback reporting system,Build system to aggregate and report on feedback,Feature,Low,Todo,feedback,reporting
-ADM-001,,Administrative tools,Create tools for site administrators to manage content and users,Epic,Medium,Todo,admin,moderation
-ADM-101,ADM-001,Design admin interface layout,Create layout for administrative tools,Design,Medium,Todo,admin,ui
-ADM-102,ADM-001,Implement user management tools,Build interfaces for managing users and permissions,Feature,Medium,Todo,admin,users,ui
-ADM-103,ADM-001,Create content management dashboard,Build dashboard for content management,Feature,Medium,Todo,admin,content,ui
-MOD-001,,Content moderation tools,Build tools for responders to flag and moderate problematic content,Epic,Medium,Todo,moderation,safety
-MOD-101,MOD-001,Design content moderation interface,Create interface for moderating content,Design,Medium,Todo,moderation,ui
-MOD-102,MOD-001,Implement content flagging system,Build system for flagging problematic content,Feature,Medium,Todo,moderation,flagging
-MOD-103,MOD-001,Create moderation queue,Implement queue for reviewing flagged content,Feature,Medium,Todo,moderation,queue
-HOM-001,,Home page design and implementation,Create welcoming home page explaining the site's purpose and features,Epic,High,Todo,ui,home-page
-HOM-101,HOM-001,Design home page layout,Create welcoming and informative home page design,Design,High,Todo,ui,home-page
-HOM-102,HOM-001,Implement home page features,Build home page components and content,Feature,High,Todo,ui,home-page
-HOM-103,HOM-001,Create site introduction content,Develop clear explanations of site purpose and features,Content,High,Todo,ui,home-page,content
-TST-001,,Automated testing,Implement comprehensive automated testing for all core features,Epic,Medium,Todo,testing,quality
-TST-101,TST-001,Set up test framework,Configure testing framework and initial setup,DevOps,Medium,Todo,testing,setup
-TST-102,TST-001,Create model unit tests,Write tests for model validations and methods,DevOps,Medium,Todo,testing,unit
-TST-103,TST-001,Implement controller tests,Write tests for controller actions,DevOps,Medium,Todo,testing,controllers
-TST-104,TST-001,Create system/integration tests,Implement end-to-end testing of key workflows,DevOps,Medium,Todo,testing,integration
-DOC-001,,Documentation for responders,Write comprehensive documentation for responders on using the system,Epic,Medium,Todo,documentation,responders
-DOC-101,DOC-001,Write responder guide introduction,Create overview of the responder role,Documentation,Medium,Todo,documentation,responders
-DOC-102,DOC-001,Develop question handling guidelines,Write guidelines for appropriately answering questions,Documentation,Medium,Todo,documentation,responders
-DOC-103,DOC-001,Create knowledge base contribution guide,Write guide for creating knowledge articles,Documentation,Medium,Todo,documentation,responders
-ACC-001,,Accessibility improvements,Ensure site meets WCAG accessibility standards,Epic,Medium,Todo,accessibility,ux
-ACC-101,ACC-001,Audit site for accessibility issues,Review site against WCAG standards,Audit,Medium,Todo,accessibility,audit
-ACC-102,ACC-001,Implement keyboard navigation improvements,Enhance keyboard navigation throughout the site,Improvement,Medium,Todo,accessibility,keyboard
-ACC-103,ACC-001,Add ARIA attributes to components,Improve screen reader compatibility with ARIA,Improvement,Medium,Todo,accessibility,aria
-ACC-104,ACC-001,Create text alternatives for visual elements,Add alt text and descriptions for images and icons,Improvement,Medium,Todo,accessibility,alt-text
-DEP-001,,Production deployment,Configure production deployment process with proper security and scaling,Epic,High,Todo,deployment,infrastructure
-DEP-101,DEP-001,Configure Kamal deployment setup,Set up Kamal for Docker-based deployment,DevOps,High,Todo,deployment,kamal
-DEP-102,DEP-001,Create production environment configuration,Configure environment for production deployment,DevOps,High,Todo,deployment,configuration
-DEP-103,DEP-001,Set up SSL certificates,Implement SSL for secure connections,DevOps,High,Todo,deployment,ssl
-DEP-104,DEP-001,Create deployment documentation,Write documentation for deployment process,Documentation,Medium,Todo,deployment,documentation
-BCK-001,,Backup and disaster recovery plan,Design and implement backup strategy and disaster recovery procedures,Epic,Medium,Todo,backups,security
-BCK-101,BCK-001,Design backup strategy,Define approach for regular data backups,DevOps,Medium,Todo,backups,strategy
-BCK-102,BCK-001,Implement automated backup system,Create scheduled backup automation,DevOps,Medium,Todo,backups,automation
-BCK-103,BCK-001,Create disaster recovery procedures,Document steps for recovering from failures,Documentation,Medium,Todo,backups,disaster-recovery
-BCK-104,BCK-001,Test backup restoration process,Verify backup restoration procedures,DevOps,Medium,Todo,backups,testing
-PRI-001,,Data privacy controls,Ensure all personal data is properly protected with appropriate controls,Epic,High,Todo,privacy,security,gdpr
-PRI-101,PRI-001,Implement data encryption,Add encryption for sensitive data,Security,High,Todo,privacy,encryption
-PRI-102,PRI-001,Create data retention policies,Define and implement data retention rules,Security,High,Todo,privacy,retention
-PRI-103,PRI-001,Implement user data export,Create functionality for users to export their data,Feature,High,Todo,privacy,export
-PRI-104,PRI-001,Add data deletion capabilities,Build functionality to delete user data on request,Feature,High,Todo,privacy,deletion
-API-001,,API documentation,Document any public APIs for developers to integrate with the platform,Epic,Low,Todo,api,documentation
-API-101,API-001,Create API documentation framework,Set up documentation system for APIs,Documentation,Low,Todo,api,documentation
-API-102,API-001,Document pronoun API endpoints,Create documentation for pronoun API,Documentation,Low,Todo,api,documentation,pronouns
-API-103,API-001,Create API authentication guide,Document API authentication methods,Documentation,Low,Todo,api,documentation,authentication
-MON-001,,Monitoring and alerting,Implement monitoring and alerting for system health and performance,Epic,Medium,Todo,monitoring,reliability
-MON-101,MON-001,Set up server monitoring tools,Configure tools to monitor server health,DevOps,Medium,Todo,monitoring,servers
-MON-102,MON-001,Implement application performance monitoring,Add monitoring for application performance,DevOps,Medium,Todo,monitoring,application
-MON-103,MON-001,Create alerting rules,Configure alerts for critical issues,DevOps,Medium,Todo,monitoring,alerts
-MON-104,MON-001,Set up logging infrastructure,Configure centralized logging system,DevOps,Medium,Todo,monitoring,logging
-SEO-001,,SEO optimizations,Optimize site for search engines to improve discovery,Epic,Medium,Todo,seo,discoverability
-SEO-101,SEO-001,Implement SEO metadata,Add appropriate metadata for SEO,Improvement,Medium,Todo,seo,metadata
-SEO-102,SEO-001,Create XML sitemap,Generate XML sitemap for search engines,Improvement,Medium,Todo,seo,sitemap
-SEO-103,SEO-001,Optimize page load performance,Improve page loading speed for better SEO,Improvement,Medium,Todo,seo,performance
-SEO-104,SEO-001,Implement structured data markup,Add schema.org markup for better search results,Improvement,Medium,Todo,seo,structured-data
-STY-001,,Content style guide,Develop style guide for consistent tone and terminology in knowledge articles,Epic,Medium,Todo,content,consistency
-STY-101,STY-001,Create writing style guidelines,Define tone and style for content,Documentation,Medium,Todo,content,style-guide
-STY-102,STY-001,Develop terminology consistency guide,Create guidelines for consistent terminology usage,Documentation,Medium,Todo,content,terminology
-STY-103,STY-001,Create content formatting standards,Define standard formatting for articles,Documentation,Medium,Todo,content,formatting
-RTC-001,,Real-time chat with ActionCable,Use ActionCable to update questions in real-time as they're edited or answered,Epic,Medium,Todo,realtime,websockets
-RTC-101,RTC-001,Set up ActionCable channels,Configure ActionCable channels for real-time communication,Feature,Medium,Todo,realtime,websockets,setup
-RTC-102,RTC-001,Create client-side ActionCable connections,Implement JavaScript to connect to ActionCable channels,Feature,Medium,Todo,realtime,websockets,frontend
-RTC-103,RTC-001,Implement broadcasting for question updates,Add server-side broadcasting of question changes,Feature,Medium,Todo,realtime,websockets,backend
-RTC-104,RTC-001,Create real-time UI updates,Build UI that updates in real-time when data changes,Feature,Medium,Todo,realtime,websockets,ui
-RTC-105,RTC-001,Add typing indicators,Implement indicators showing when someone is typing,Feature,Low,Todo,realtime,websockets,ui
-RTC-106,RTC-001,Create online presence indicators,Show when users/responders are actively online,Feature,Low,Todo,realtime,websockets,presence
-RTC-107,RTC-001,Test WebSocket performance,Test and optimize WebSocket connections,DevOps,Medium,Todo,realtime,websockets,performance
-PRO-001,,Pronouns sharing feature,Implement system for users to share their pronouns via lookup from social accounts,Epic,Low,Todo,pronouns,sharing
-PRO-101,PRO-001,Design pronoun sharing interface,Create UI for users to share and manage pronouns,Design,Low,Todo,pronouns,sharing,ui
-PRO-102,PRO-001,Implement social account linking,Build functionality to link social media accounts,Feature,Low,Todo,pronouns,sharing,integration
-PRO-103,PRO-001,Create pronoun storage system,Implement database model for storing user pronouns,Feature,Low,Todo,pronouns,sharing,database
-PRO-104,PRO-001,Build pronoun display components,Create components to display user pronouns,Feature,Low,Todo,pronouns,sharing,ui
-PAP-001,,Pronoun API for third-party integration,Build API to allow other services to look up users' pronouns,Epic,Low,Todo,api,pronouns
-PAP-101,PAP-001,Design pronoun API endpoints,Define API structure for pronoun lookup,Design,Low,Todo,api,pronouns,design
-PAP-102,PAP-001,Implement pronoun lookup API,Build API endpoints for pronoun retrieval,Feature,Low,Todo,api,pronouns,backend
-PAP-103,PAP-001,Create API documentation for pronouns,Document the pronoun API for developers,Documentation,Low,Todo,api,pronouns,documentation
-PAP-104,PAP-001,Implement API authentication,Add authentication for API access,Feature,Low,Todo,api,pronouns,authentication
-SOC-001,,Social account validation,Create system to validate ownership of social accounts for pronoun sharing,Epic,Low,Todo,social,validation
-SOC-101,SOC-001,Design social validation flow,Create workflow for validating social accounts,Design,Low,Todo,social,validation,design
-SOC-102,SOC-001,Implement OAuth integration,Add OAuth for major social platforms,Feature,Low,Todo,social,validation,oauth
-SOC-103,SOC-001,Create validation verification system,Build system to verify ownership of accounts,Feature,Low,Todo,social,validation,verification
-SOC-104,SOC-001,Add validation status tracking,Implement tracking of validation status,Feature,Low,Todo,social,validation,tracking
-PWA-001,,Progressive web app support,Implement PWA features for better mobile experience,Epic,Low,Todo,pwa,mobile
-PWA-101,PWA-001,Create PWA manifest file,Add web app manifest for PWA support,Improvement,Low,Todo,pwa,manifest
-PWA-102,PWA-001,Implement service workers,Add service workers for offline capability,Improvement,Low,Todo,pwa,service-worker
-PWA-103,PWA-001,Create offline content caching,Implement caching for offline access,Improvement,Low,Todo,pwa,offline
-PWA-104,PWA-001,Add install prompts for PWA,Implement prompts for installing the PWA,Improvement,Low,Todo,pwa,install
-DBP-001,,Database performance optimization,Review and optimize database queries and indexes for performance,Epic,Medium,Todo,performance,database
-DBP-101,DBP-001,Analyze database query performance,Review and identify slow database queries,Improvement,Medium,Todo,performance,database,analysis
-DBP-102,DBP-001,Create database indexes,Add appropriate indexes for performance,Improvement,Medium,Todo,performance,database,indexes
-DBP-103,DBP-001,Optimize N+1 queries,Fix N+1 query issues for better performance,Improvement,Medium,Todo,performance,database,n+1
-DBP-104,DBP-001,Implement query caching,Add caching for expensive database queries,Improvement,Medium,Todo,performance,database,caching
-CAC-001,,Caching strategy,Develop and implement appropriate caching for improved performance,Epic,Medium,Todo,performance,caching
-CAC-101,CAC-001,Design caching strategy,Define approach for application caching,Improvement,Medium,Todo,performance,caching,strategy
-CAC-102,CAC-001,Implement page caching,Add caching for static pages,Improvement,Medium,Todo,performance,caching,pages
-CAC-103,CAC-001,Create fragment caching,Implement fragment caching for dynamic content,Improvement,Medium,Todo,performance,caching,fragments
-CAC-104,CAC-001,Add Russian doll caching,Implement nested fragment caching,Improvement,Medium,Todo,performance,caching,russian-doll
-HLP-001,,User tutorials and help content,Develop tutorials and help content for new users,Epic,Medium,Todo,documentation,onboarding
-HLP-101,HLP-001,Create getting started guide,Develop introduction guide for new users,Documentation,Medium,Todo,documentation,onboarding
-HLP-102,HLP-001,Implement interactive tutorials,Build step-by-step guides for key features,Feature,Medium,Todo,documentation,tutorials
-HLP-103,HLP-001,Create contextual help system,Add contextual help throughout the application,Feature,Medium,Todo,documentation,contextual
-HLP-104,HLP-001,Develop FAQ content,Create frequently asked questions content,Documentation,Medium,Todo,documentation,faq
-BRD-001,,Site branding,Create consistent visual branding across the site,Epic,High,Todo,branding,design
-BRD-101,BRD-001,Create brand style guide,Define brand colors, typography, and elements,Design,High,Todo,branding,style-guide
-BRD-102,BRD-001,Design logo and iconography,Create logo and consistent icon set,Design,High,Todo,branding,logo
-BRD-103,BRD-001,Implement brand elements in UI,Apply branding consistently across the site,Design,High,Todo,branding,implementation
-BRD-104,BRD-001,Create brand voice guidelines,Define tone and language for communications,Documentation,Medium,Todo,branding,voice
-CIC-001,,Continuous integration,Configure CI pipeline for automated testing and deployment,Epic,Medium,Todo,ci,automation
-CIC-101,CIC-001,Set up GitHub Actions workflow,Configure CI pipeline with GitHub Actions,DevOps,Medium,Todo,ci,github-actions
-CIC-102,CIC-001,Create automated test job,Configure automated testing in CI pipeline,DevOps,Medium,Todo,ci,testing
-CIC-103,CIC-001,Implement linting checks,Add code quality checks to CI pipeline,DevOps,Medium,Todo,ci,linting
-CIC-104,CIC-001,Create deployment job,Add automated deployment to CI pipeline,DevOps,Medium,Todo,ci,deployment
-I18-001,,Internationalization framework,Set up i18n support for future multi-language support,Epic,Low,Todo,i18n,localization
-I18-101,I18-001,Set up i18n framework,Configure Rails internationalization framework,Feature,Low,Todo,i18n,setup
-I18-102,I18-001,Create translation files,Add translation files for supported languages,Feature,Low,Todo,i18n,translations
-I18-103,I18-001,Implement language switcher,Add UI for changing language preference,Feature,Low,Todo,i18n,ui
-I18-104,I18-001,Add translation management tool,Implement tool for managing translations,Feature,Low,Todo,i18n,management
-TOK-001,,Question token validation,Create secure token system for anonymous users to access their questions,Epic,High,Todo,security,tokens,questions
-TOK-101,TOK-001,Implement secure token generation,Create cryptographically secure token generation,Security,High,Todo,security,tokens,generation
-TOK-102,TOK-001,Create token validation system,Build system to validate question access tokens,Security,High,Todo,security,tokens,validation
-TOK-103,TOK-001,Implement token expiration handling,Add handling for expired tokens,Security,High,Todo,security,tokens,expiration
-TOK-104,TOK-001,Add token reset functionality,Create mechanism to reset lost tokens,Feature,Medium,Todo,security,tokens,reset
-EMV-001,,Question email verification,Implement email verification for non-anonymous question submission,Epic,Medium,Todo,email,verification,questions
-EMV-101,EMV-001,Design email verification flow,Create workflow for email verification,Design,Medium,Todo,email,verification,design
-EMV-102,EMV-001,Implement verification email sending,Build system to send verification emails,Feature,Medium,Todo,email,verification,sending
-EMV-103,EMV-001,Create email verification page,Build page for verifying email addresses,Feature,Medium,Todo,email,verification,ui
-EMV-104,EMV-001,Add verification status tracking,Implement tracking of verification status,Feature,Medium,Todo,email,verification,tracking
-SPA-001,,Spam prevention measures,Implement captcha or other anti-spam measures for question submission,Epic,High,Todo,security,spam,questions
-SPA-101,SPA-001,Research captcha solutions,Evaluate captcha options for spam prevention,Research,High,Todo,security,spam,research
-SPA-102,SPA-001,Implement captcha integration,Add chosen captcha solution to forms,Security,High,Todo,security,spam,captcha
-SPA-103,SPA-001,Create rate limiting for submissions,Implement limits on form submissions,Security,High,Todo,security,spam,rate-limiting
-SPA-104,SPA-001,Add IP-based blocking,Implement blocking of suspicious IP addresses,Security,High,Todo,security,spam,ip-blocking
-QAS-001,,Question assignment system,Build system to fairly distribute questions among responders,Epic,High,Todo,workflow,responders,questions
-QAS-101,QAS-001,Design question assignment algorithm,Create algorithm for fair question distribution,Design,High,Todo,workflow,responders,algorithm
-QAS-102,QAS-001,Implement question assignment backend,Build system to assign questions to responders,Feature,High,Todo,workflow,responders,backend
-QAS-103,QAS-001,Create manual assignment override,Add ability for admins to manually assign questions,Feature,Medium,Todo,workflow,responders,manual
-QAS-104,QAS-001,Add assignment notification system,Implement notifications for new question assignments,Feature,High,Todo,workflow,responders,notifications
-AVL-001,,Responder availability settings,Allow responders to mark themselves as available or unavailable,Epic,Medium,Todo,responders,availability
-AVL-101,AVL-001,Design responder availability UI,Create interface for setting availability status,Design,Medium,Todo,responders,availability,ui
-AVL-102,AVL-001,Implement availability status backend,Build system to track responder availability,Feature,Medium,Todo,responders,availability,backend
-AVL-103,AVL-001,Create automated availability detection,Add detection of inactivity for availability,Feature,Low,Todo,responders,availability,automation
-AVL-104,AVL-001,Add availability scheduling,Implement scheduling of availability periods,Feature,Low,Todo,responders,availability,scheduling
+id,parent,title,description,type,priority,status,project,labels
+GDB-001,,Anonymous question submission,Allow users to submit questions without providing an email address,Epic,High,Todo,Genderbase Web App,"anonymous,questions,core"
+GDB-002,GDB-001,Implement anonymous mode for question submission,Add UI option for users to submit without providing email,Feature,High,Todo,Genderbase Web App,"anonymous,questions,ui"
+GDB-003,GDB-001,Create anonymous question backend logic,Implement server-side handling for anonymous submissions,Feature,High,Todo,Genderbase Web App,"anonymous,questions,backend"
+GDB-004,,Question notification system,Create a system to notify users by email when their question receives a response,Epic,High,Todo,Genderbase Web App,"notifications,email,questions"
+GDB-005,GDB-004,Set up question notification database,Create notification model and database schema,Feature,High,Todo,Genderbase Web App,"notifications,database,questions"
+GDB-006,GDB-004,Implement notification delivery system,Build email sending functionality for question responses,Feature,High,Todo,Genderbase Web App,"notifications,email,questions"
+GDB-007,GDB-004,Create notification preferences UI,Build interface for users to manage notification preferences,Feature,Medium,Todo,Genderbase Web App,"notifications,ui"
+GDB-008,,Responder pseudonyms,Implement system to generate and assign random pseudonyms to responders for anonymity,Epic,High,Todo,Genderbase Web App,"pseudonyms,responders,anonymity"
+GDB-009,GDB-008,Create pseudonym generator for responders,Implement algorithm to generate unique responder pseudonyms,Feature,High,Todo,Genderbase Web App,"pseudonyms,responders,algorithm"
+GDB-010,GDB-008,Add responder pseudonym UI,Create interface for responders to view/set their pseudonym,Feature,Medium,Todo,Genderbase Web App,"pseudonyms,responders,ui"
+GDB-011,,Question conversation UI,Build UI for back-and-forth conversation between askers and responders,Epic,High,Todo,Genderbase Web App,"ui,questions,conversation"
+GDB-012,GDB-011,Implement question conversation thread UI,Design and build threaded conversation view for questions,Feature,High,Todo,Genderbase Web App,"ui,questions,conversation"
+GDB-013,GDB-011,Create question response form,Implement form for responders to reply to questions,Feature,High,Todo,Genderbase Web App,"ui,questions,conversation"
+GDB-014,GDB-011,Add asker follow-up UI,Build interface for original asker to follow up on questions,Feature,High,Todo,Genderbase Web App,"ui,questions,conversation"
+GDB-015,,Conversation closing functionality,Implement ability for either party to close a conversation,Epic,Medium,Todo,Genderbase Web App,"questions,conversation,workflow"
+GDB-016,GDB-015,Implement conversation closing button,Add UI element for closing conversations,Feature,Medium,Todo,Genderbase Web App,"questions,conversation,ui"
+GDB-017,GDB-015,Create conversation close backend logic,Implement server-side handling of conversation closing,Feature,Medium,Todo,Genderbase Web App,"questions,conversation,backend"
+GDB-018,GDB-015,Add responder final response capability,Allow responders to send one final message after closure,Feature,Medium,Todo,Genderbase Web App,"questions,conversation,workflow"
+GDB-019,,Knowledge base contribution workflow,Build system to convert closed questions into knowledge base articles with responder editing,Epic,High,Todo,Genderbase Content,"knowledge-base,workflow"
+GDB-020,GDB-019,Design knowledge conversion UI,Create interface for converting questions to knowledge articles,Feature,High,Todo,Genderbase Content,"knowledge-base,ui,workflow"
+GDB-021,GDB-019,Implement knowledge conversion backend,Build server-side logic for question-to-knowledge conversion,Feature,High,Todo,Genderbase Content,"knowledge-base,backend,workflow"
+GDB-022,GDB-019,Add knowledge editing capabilities,Create rich editor for knowledge article content,Feature,High,Todo,Genderbase Content,"knowledge-base,ui,editor"
+GDB-023,,Knowledge approval system,Create system requiring multiple responder approvals before publishing knowledge articles,Epic,Medium,Todo,Genderbase Content,"knowledge-base,moderation"
+GDB-024,GDB-023,Create knowledge approval request UI,Build interface for responders to request article approval,Feature,Medium,Todo,Genderbase Content,"knowledge-base,ui,moderation"
+GDB-025,GDB-023,Implement approval voting system,Create backend system for responders to vote on articles,Feature,Medium,Todo,Genderbase Content,"knowledge-base,backend,moderation"
+GDB-026,GDB-023,Add approval threshold configuration,Create configurable threshold for required approvals,Feature,Low,Todo,Genderbase Content,"knowledge-base,config,moderation"
+GDB-027,GDB-023,Design approval workflow UI,Create interface for knowledge approval workflow,Design,Medium,Todo,Genderbase Content,"knowledge-base,moderation,ui"
+GDB-028,GDB-023,Implement approval request system,Build system for submitting approval requests,Feature,Medium,Todo,Genderbase Content,"knowledge-base,moderation,backend"
+GDB-029,GDB-023,Create approval voting mechanism,Implement voting system for approvals,Feature,Medium,Todo,Genderbase Content,"knowledge-base,moderation,voting"
+GDB-030,GDB-023,Add approval status tracking,Create tracking for article approval status,Feature,Medium,Todo,Genderbase Content,"knowledge-base,moderation,tracking"
+GDB-031,,Terminology management system,Create UI for managing "How Do I Say...?" terminology entries,Epic,Medium,Todo,Genderbase Content,"terminology,ui"
+GDB-032,GDB-031,Create terminology entry form,Build form for adding terminology definitions,Feature,Medium,Todo,Genderbase Content,"terminology,ui"
+GDB-033,GDB-031,Implement terminology list view,Create paginated list of terminology entries,Feature,Medium,Todo,Genderbase Content,"terminology,ui"
+GDB-034,GDB-031,Add terminology detail view,Build detailed view of individual terminology entries,Feature,Medium,Todo,Genderbase Content,"terminology,ui"
+GDB-035,,Search functionality,Implement robust search across questions and knowledge base,Epic,Medium,Todo,Genderbase Web App,"search,ux"
+GDB-036,GDB-035,Create search indexing for content,Set up database indexes and search engine integration,Feature,Medium,Todo,Genderbase Web App,"search,backend"
+GDB-037,GDB-035,Implement search UI components,Build search box and results display components,Feature,Medium,Todo,Genderbase Web App,"search,ui"
+GDB-038,GDB-035,Add search filtering capabilities,Implement filtering options for search results,Feature,Low,Todo,Genderbase Web App,"search,ui,filtering"
+GDB-039,,Mobile responsive design,Ensure site works well on mobile devices with appropriate layouts,Epic,High,Todo,Genderbase Web App,"ui,mobile,responsive"
+GDB-040,GDB-039,Design mobile responsive layouts,Create responsive designs for mobile screens,Design,High,Todo,Genderbase Web App,"ui,mobile,responsive"
+GDB-041,GDB-039,Implement mobile navigation menu,Build collapsible navigation for mobile devices,Feature,High,Todo,Genderbase Web App,"ui,mobile,navigation"
+GDB-042,GDB-039,Optimize forms for mobile input,Adjust form layouts and inputs for mobile usability,Feature,Medium,Todo,Genderbase Web App,"ui,mobile,forms"
+GDB-043,,User authentication,Set up secure authentication for responders with appropriate roles and permissions,Epic,High,Todo,Genderbase Security,"authentication,security"
+GDB-044,GDB-043,Set up Devise authentication,Configure Devise gem for responder authentication,Feature,High,Todo,Genderbase Security,"authentication,backend"
+GDB-045,GDB-043,Create responder registration workflow,Build registration process for new responders,Feature,High,Todo,Genderbase Security,"authentication,registration"
+GDB-046,GDB-043,Implement password strength requirements,Add password requirements and validation,Feature,High,Todo,Genderbase Security,"authentication,security"
+GDB-047,GDB-043,Create responder login/logout UI,Build login and logout interface components,Feature,High,Todo,Genderbase Security,"authentication,ui"
+GDB-048,,Responder dashboard,Build dashboard for responders to view pending questions and their conversations,Epic,High,Todo,Genderbase Web App,"dashboard,responders,ui"
+GDB-049,GDB-048,Design responder dashboard layout,Create layout for responder dashboard,Design,High,Todo,Genderbase Web App,"dashboard,responders,ui"
+GDB-050,GDB-048,Implement pending questions widget,Build dashboard widget showing pending questions,Feature,High,Todo,Genderbase Web App,"dashboard,responders,ui"
+GDB-051,GDB-048,Add active conversations widget,Create dashboard display of active conversations,Feature,High,Todo,Genderbase Web App,"dashboard,responders,ui"
+GDB-052,GDB-048,Create responder metrics display,Build widget showing responder activity metrics,Feature,Medium,Todo,Genderbase Web App,"dashboard,responders,metrics"
+GDB-053,,Category and tag system,Create system for categorizing and tagging knowledge articles and questions,Epic,Medium,Todo,Genderbase Content,"taxonomy,organization"
+GDB-054,GDB-053,Implement category data model,Create database models for categories,Feature,Medium,Todo,Genderbase Content,"taxonomy,database"
+GDB-055,GDB-053,Create tagging system backend,Build tag data model and relationships,Feature,Medium,Todo,Genderbase Content,"taxonomy,database,tags"
+GDB-056,GDB-053,Implement category selector UI,Create UI for selecting categories,Feature,Medium,Todo,Genderbase Content,"taxonomy,ui"
+GDB-057,GDB-053,Add tag input interface,Build UI for adding and managing tags,Feature,Medium,Todo,Genderbase Content,"taxonomy,ui,tags"
+GDB-058,,AI-assisted summary generation,Implement AI assistance for summarizing conversations into knowledge articles,Epic,Low,Todo,Genderbase Content,"ai,knowledge-base"
+GDB-059,GDB-058,Research AI summary generation options,Evaluate AI services for summary generation,Research,Low,Todo,Genderbase Content,"ai,knowledge-base,research"
+GDB-060,GDB-058,Create AI integration service,Build service to connect with chosen AI provider,Feature,Low,Todo,Genderbase Content,"ai,knowledge-base,integration"
+GDB-061,GDB-058,Implement summary generation UI,Create interface for generating and editing AI summaries,Feature,Low,Todo,Genderbase Content,"ai,knowledge-base,ui"
+GDB-062,,Responder onboarding process,Create process for vetting and onboarding new responders,Epic,Medium,Todo,Genderbase Community,"responders,onboarding"
+GDB-063,GDB-062,Design responder application form,Create application form for prospective responders,Feature,Medium,Todo,Genderbase Community,"responders,onboarding,ui"
+GDB-064,GDB-062,Implement responder approval workflow,Build process for reviewing responder applications,Feature,Medium,Todo,Genderbase Community,"responders,onboarding,workflow"
+GDB-065,GDB-062,Create responder training materials,Develop training content for new responders,Documentation,Medium,Todo,Genderbase Documentation,"responders,onboarding,documentation"
+GDB-066,,Basic analytics,Add analytics to track usage patterns and popular topics,Epic,Low,Todo,Genderbase Web App,"analytics,metrics"
+GDB-067,GDB-066,Set up analytics tracking,Implement event tracking for key user actions,Feature,Low,Todo,Genderbase Web App,"analytics,metrics,tracking"
+GDB-068,GDB-066,Create analytics dashboard,Build dashboard for viewing analytics data,Feature,Low,Todo,Genderbase Web App,"analytics,metrics,ui"
+GDB-069,GDB-066,Implement topic tracking system,Create system to track common question topics,Feature,Low,Todo,Genderbase Web App,"analytics,topics"
+GDB-070,,User feedback mechanism,Implement way for users to provide feedback on answers and knowledge articles,Epic,Medium,Todo,Genderbase Community,"feedback,ux"
+GDB-071,GDB-070,Design feedback UI components,Create interface elements for user feedback,Design,Medium,Todo,Genderbase Community,"feedback,ui"
+GDB-072,GDB-070,Implement feedback submission backend,Build server-side handling of user feedback,Feature,Medium,Todo,Genderbase Community,"feedback,backend"
+GDB-073,GDB-070,Create feedback reporting system,Build system to aggregate and report on feedback,Feature,Low,Todo,Genderbase Community,"feedback,reporting"
+GDB-074,,Administrative tools,Create tools for site administrators to manage content and users,Epic,Medium,Todo,Genderbase Web App,"admin,moderation"
+GDB-075,GDB-074,Design admin interface layout,Create layout for administrative tools,Design,Medium,Todo,Genderbase Web App,"admin,ui"
+GDB-076,GDB-074,Implement user management tools,Build interfaces for managing users and permissions,Feature,Medium,Todo,Genderbase Web App,"admin,users,ui"
+GDB-077,GDB-074,Create content management dashboard,Build dashboard for content management,Feature,Medium,Todo,Genderbase Web App,"admin,content,ui"
+GDB-078,,Content moderation tools,Build tools for responders to flag and moderate problematic content,Epic,Medium,Todo,Genderbase Community,"moderation,safety"
+GDB-079,GDB-078,Design content moderation interface,Create interface for moderating content,Design,Medium,Todo,Genderbase Community,"moderation,ui"
+GDB-080,GDB-078,Implement content flagging system,Build system for flagging problematic content,Feature,Medium,Todo,Genderbase Community,"moderation,flagging"
+GDB-081,GDB-078,Create moderation queue,Implement queue for reviewing flagged content,Feature,Medium,Todo,Genderbase Community,"moderation,queue"
+GDB-082,,Home page design and implementation,Create welcoming home page explaining the site's purpose and features,Epic,High,Todo,Genderbase Promotion,"ui,home-page"
+GDB-083,GDB-082,Design home page layout,Create welcoming and informative home page design,Design,High,Todo,Genderbase Promotion,"ui,home-page"
+GDB-084,GDB-082,Implement home page features,Build home page components and content,Feature,High,Todo,Genderbase Promotion,"ui,home-page"
+GDB-085,GDB-082,Create site introduction content,Develop clear explanations of site purpose and features,Content,High,Todo,Genderbase Promotion,"ui,home-page,content"
+GDB-086,,Automated testing,Implement comprehensive automated testing for all core features,Epic,Medium,Todo,Genderbase DevOps,"testing,quality"
+GDB-087,GDB-086,Set up test framework,Configure testing framework and initial setup,DevOps,Medium,Todo,Genderbase DevOps,"testing,setup"
+GDB-088,GDB-086,Create model unit tests,Write tests for model validations and methods,DevOps,Medium,Todo,Genderbase DevOps,"testing,unit"
+GDB-089,GDB-086,Implement controller tests,Write tests for controller actions,DevOps,Medium,Todo,Genderbase DevOps,"testing,controllers"
+GDB-090,GDB-086,Create system/integration tests,Implement end-to-end testing of key workflows,DevOps,Medium,Todo,Genderbase DevOps,"testing,integration"
+GDB-091,,Documentation for responders,Write comprehensive documentation for responders on using the system,Epic,Medium,Todo,Genderbase Documentation,"documentation,responders"
+GDB-092,GDB-091,Write responder guide introduction,Create overview of the responder role,Documentation,Medium,Todo,Genderbase Documentation,"documentation,responders"
+GDB-093,GDB-091,Develop question handling guidelines,Write guidelines for appropriately answering questions,Documentation,Medium,Todo,Genderbase Documentation,"documentation,responders"
+GDB-094,GDB-091,Create knowledge base contribution guide,Write guide for creating knowledge articles,Documentation,Medium,Todo,Genderbase Documentation,"documentation,responders"
+GDB-095,,Accessibility improvements,Ensure site meets WCAG accessibility standards,Epic,Medium,Todo,Genderbase Web App,"accessibility,ux"
+GDB-096,GDB-095,Audit site for accessibility issues,Review site against WCAG standards,Audit,Medium,Todo,Genderbase Web App,"accessibility,audit"
+GDB-097,GDB-095,Implement keyboard navigation improvements,Enhance keyboard navigation throughout the site,Improvement,Medium,Todo,Genderbase Web App,"accessibility,keyboard"
+GDB-098,GDB-095,Add ARIA attributes to components,Improve screen reader compatibility with ARIA,Improvement,Medium,Todo,Genderbase Web App,"accessibility,aria"
+GDB-099,GDB-095,Create text alternatives for visual elements,Add alt text and descriptions for images and icons,Improvement,Medium,Todo,Genderbase Web App,"accessibility,alt-text"
+GDB-100,,Production deployment,Configure production deployment process with proper security and scaling,Epic,High,Todo,Genderbase DevOps,"deployment,infrastructure"
+GDB-101,GDB-100,Configure Kamal deployment setup,Set up Kamal for Docker-based deployment,DevOps,High,Todo,Genderbase DevOps,"deployment,kamal"
+GDB-102,GDB-100,Create production environment configuration,Configure environment for production deployment,DevOps,High,Todo,Genderbase DevOps,"deployment,configuration"
+GDB-103,GDB-100,Set up SSL certificates,Implement SSL for secure connections,DevOps,High,Todo,Genderbase DevOps,"deployment,ssl"
+GDB-104,GDB-100,Create deployment documentation,Write documentation for deployment process,Documentation,Medium,Todo,Genderbase Documentation,"deployment,documentation"
+GDB-105,,Backup and disaster recovery plan,Design and implement backup strategy and disaster recovery procedures,Epic,Medium,Todo,Genderbase DevOps,"backups,security"
+GDB-106,GDB-105,Design backup strategy,Define approach for regular data backups,DevOps,Medium,Todo,Genderbase DevOps,"backups,strategy"
+GDB-107,GDB-105,Implement automated backup system,Create scheduled backup automation,DevOps,Medium,Todo,Genderbase DevOps,"backups,automation"
+GDB-108,GDB-105,Create disaster recovery procedures,Document steps for recovering from failures,Documentation,Medium,Todo,Genderbase Documentation,"backups,disaster-recovery"
+GDB-109,GDB-105,Test backup restoration process,Verify backup restoration procedures,DevOps,Medium,Todo,Genderbase DevOps,"backups,testing"
+GDB-110,,Data privacy controls,Ensure all personal data is properly protected with appropriate controls,Epic,High,Todo,Genderbase Security,"privacy,security,gdpr"
+GDB-111,GDB-110,Implement data encryption,Add encryption for sensitive data,Security,High,Todo,Genderbase Security,"privacy,encryption"
+GDB-112,GDB-110,Create data retention policies,Define and implement data retention rules,Security,High,Todo,Genderbase Security,"privacy,retention"
+GDB-113,GDB-110,Implement user data export,Create functionality for users to export their data,Feature,High,Todo,Genderbase Security,"privacy,export"
+GDB-114,GDB-110,Add data deletion capabilities,Build functionality to delete user data on request,Feature,High,Todo,Genderbase Security,"privacy,deletion"
+GDB-115,,API documentation,Document any public APIs for developers to integrate with the platform,Epic,Low,Todo,Genderbase Documentation,"api,documentation"
+GDB-116,GDB-115,Create API documentation framework,Set up documentation system for APIs,Documentation,Low,Todo,Genderbase Documentation,"api,documentation"
+GDB-117,GDB-115,Document pronoun API endpoints,Create documentation for pronoun API,Documentation,Low,Todo,Genderbase Documentation,"api,documentation,pronouns"
+GDB-118,GDB-115,Create API authentication guide,Document API authentication methods,Documentation,Low,Todo,Genderbase Documentation,"api,documentation,authentication"
+GDB-119,,Monitoring and alerting,Implement monitoring and alerting for system health and performance,Epic,Medium,Todo,Genderbase DevOps,"monitoring,reliability"
+GDB-120,GDB-119,Set up server monitoring tools,Configure tools to monitor server health,DevOps,Medium,Todo,Genderbase DevOps,"monitoring,servers"
+GDB-121,GDB-119,Implement application performance monitoring,Add monitoring for application performance,DevOps,Medium,Todo,Genderbase DevOps,"monitoring,application"
+GDB-122,GDB-119,Create alerting rules,Configure alerts for critical issues,DevOps,Medium,Todo,Genderbase DevOps,"monitoring,alerts"
+GDB-123,GDB-119,Set up logging infrastructure,Configure centralized logging system,DevOps,Medium,Todo,Genderbase DevOps,"monitoring,logging"
+GDB-124,,SEO optimizations,Optimize site for search engines to improve discovery,Epic,Medium,Todo,Genderbase Promotion,"seo,discoverability"
+GDB-125,GDB-124,Implement SEO metadata,Add appropriate metadata for SEO,Improvement,Medium,Todo,Genderbase Promotion,"seo,metadata"
+GDB-126,GDB-124,Create XML sitemap,Generate XML sitemap for search engines,Improvement,Medium,Todo,Genderbase Promotion,"seo,sitemap"
+GDB-127,GDB-124,Optimize page load performance,Improve page loading speed for better SEO,Improvement,Medium,Todo,Genderbase Promotion,"seo,performance"
+GDB-128,GDB-124,Implement structured data markup,Add schema.org markup for better search results,Improvement,Medium,Todo,Genderbase Promotion,"seo,structured-data"
+GDB-129,,Content style guide,Develop style guide for consistent tone and terminology in knowledge articles,Epic,Medium,Todo,Genderbase Documentation,"content,consistency"
+GDB-130,GDB-129,Create writing style guidelines,Define tone and style for content,Documentation,Medium,Todo,Genderbase Documentation,"content,style-guide"
+GDB-131,GDB-129,Develop terminology consistency guide,Create guidelines for consistent terminology usage,Documentation,Medium,Todo,Genderbase Documentation,"content,terminology"
+GDB-132,GDB-129,Create content formatting standards,Define standard formatting for articles,Documentation,Medium,Todo,Genderbase Documentation,"content,formatting"
+GDB-133,,Real-time chat with ActionCable,Use ActionCable to update questions in real-time as they're edited or answered,Epic,Medium,Todo,Genderbase Web App,"realtime,websockets"
+GDB-134,GDB-133,Set up ActionCable channels,Configure ActionCable channels for real-time communication,Feature,Medium,Todo,Genderbase Web App,"realtime,websockets,setup"
+GDB-135,GDB-133,Create client-side ActionCable connections,Implement JavaScript to connect to ActionCable channels,Feature,Medium,Todo,Genderbase Web App,"realtime,websockets,frontend"
+GDB-136,GDB-133,Implement broadcasting for question updates,Add server-side broadcasting of question changes,Feature,Medium,Todo,Genderbase Web App,"realtime,websockets,backend"
+GDB-137,GDB-133,Create real-time UI updates,Build UI that updates in real-time when data changes,Feature,Medium,Todo,Genderbase Web App,"realtime,websockets,ui"
+GDB-138,GDB-133,Add typing indicators,Implement indicators showing when someone is typing,Feature,Low,Todo,Genderbase Web App,"realtime,websockets,ui"
+GDB-139,GDB-133,Create online presence indicators,Show when users/responders are actively online,Feature,Low,Todo,Genderbase Web App,"realtime,websockets,presence"
+GDB-140,GDB-133,Test WebSocket performance,Test and optimize WebSocket connections,DevOps,Medium,Todo,Genderbase Web App,"realtime,websockets,performance"
+GDB-141,,Pronouns sharing feature,Implement system for users to share their pronouns via lookup from social accounts,Epic,Low,Todo,Genderbase API,"pronouns,sharing"
+GDB-142,GDB-141,Design pronoun sharing interface,Create UI for users to share and manage pronouns,Design,Low,Todo,Genderbase API,"pronouns,sharing,ui"
+GDB-143,GDB-141,Implement social account linking,Build functionality to link social media accounts,Feature,Low,Todo,Genderbase API,"pronouns,sharing,integration"
+GDB-144,GDB-141,Create pronoun storage system,Implement database model for storing user pronouns,Feature,Low,Todo,Genderbase API,"pronouns,sharing,database"
+GDB-145,GDB-141,Build pronoun display components,Create components to display user pronouns,Feature,Low,Todo,Genderbase API,"pronouns,sharing,ui"
+GDB-146,,Pronoun API for third-party integration,Build API to allow other services to look up users' pronouns,Epic,Low,Todo,Genderbase API,"api,pronouns"
+GDB-147,GDB-146,Design pronoun API endpoints,Define API structure for pronoun lookup,Design,Low,Todo,Genderbase API,"api,pronouns,design"
+GDB-148,GDB-146,Implement pronoun lookup API,Build API endpoints for pronoun retrieval,Feature,Low,Todo,Genderbase API,"api,pronouns,backend"
+GDB-149,GDB-146,Create API documentation for pronouns,Document the pronoun API for developers,Documentation,Low,Todo,Genderbase Documentation,"api,pronouns,documentation"
+GDB-150,GDB-146,Implement API authentication,Add authentication for API access,Feature,Low,Todo,Genderbase API,"api,pronouns,authentication"
+GDB-151,,Social account validation,Create system to validate ownership of social accounts for pronoun sharing,Epic,Low,Todo,Genderbase API,"social,validation"
+GDB-152,GDB-151,Design social validation flow,Create workflow for validating social accounts,Design,Low,Todo,Genderbase API,"social,validation,design"
+GDB-153,GDB-151,Implement OAuth integration,Add OAuth for major social platforms,Feature,Low,Todo,Genderbase API,"social,validation,oauth"
+GDB-154,GDB-151,Create validation verification system,Build system to verify ownership of accounts,Feature,Low,Todo,Genderbase API,"social,validation,verification"
+GDB-155,GDB-151,Add validation status tracking,Implement tracking of validation status,Feature,Low,Todo,Genderbase API,"social,validation,tracking"
+GDB-156,,Progressive web app support,Implement PWA features for better mobile experience,Epic,Low,Todo,Genderbase Web App,"pwa,mobile"
+GDB-157,GDB-156,Create PWA manifest file,Add web app manifest for PWA support,Improvement,Low,Todo,Genderbase Web App,"pwa,manifest"
+GDB-158,GDB-156,Implement service workers,Add service workers for offline capability,Improvement,Low,Todo,Genderbase Web App,"pwa,service-worker"
+GDB-159,GDB-156,Create offline content caching,Implement caching for offline access,Improvement,Low,Todo,Genderbase Web App,"pwa,offline"
+GDB-160,GDB-156,Add install prompts for PWA,Implement prompts for installing the PWA,Improvement,Low,Todo,Genderbase Web App,"pwa,install"
+GDB-161,,Database performance optimization,Review and optimize database queries and indexes for performance,Epic,Medium,Todo,Genderbase DevOps,"performance,database"
+GDB-162,GDB-161,Analyze database query performance,Review and identify slow database queries,Improvement,Medium,Todo,Genderbase DevOps,"performance,database,analysis"
+GDB-163,GDB-161,Create database indexes,Add appropriate indexes for performance,Improvement,Medium,Todo,Genderbase DevOps,"performance,database,indexes"
+GDB-164,GDB-161,Optimize N+1 queries,Fix N+1 query issues for better performance,Improvement,Medium,Todo,Genderbase DevOps,"performance,database,n+1"
+GDB-165,GDB-161,Implement query caching,Add caching for expensive database queries,Improvement,Medium,Todo,Genderbase DevOps,"performance,database,caching"
+GDB-166,,Caching strategy,Develop and implement appropriate caching for improved performance,Epic,Medium,Todo,Genderbase DevOps,"performance,caching"
+GDB-167,GDB-166,Design caching strategy,Define approach for application caching,Improvement,Medium,Todo,Genderbase DevOps,"performance,caching,strategy"
+GDB-168,GDB-166,Implement page caching,Add caching for static pages,Improvement,Medium,Todo,Genderbase DevOps,"performance,caching,pages"
+GDB-169,GDB-166,Create fragment caching,Implement fragment caching for dynamic content,Improvement,Medium,Todo,Genderbase DevOps,"performance,caching,fragments"
+GDB-170,GDB-166,Add Russian doll caching,Implement nested fragment caching,Improvement,Medium,Todo,Genderbase DevOps,"performance,caching,russian-doll"
+GDB-171,,User tutorials and help content,Develop tutorials and help content for new users,Epic,Medium,Todo,Genderbase Documentation,"documentation,onboarding"
+GDB-172,GDB-171,Create getting started guide,Develop introduction guide for new users,Documentation,Medium,Todo,Genderbase Documentation,"documentation,onboarding"
+GDB-173,GDB-171,Implement interactive tutorials,Build step-by-step guides for key features,Feature,Medium,Todo,Genderbase Documentation,"documentation,tutorials"
+GDB-174,GDB-171,Create contextual help system,Add contextual help throughout the application,Feature,Medium,Todo,Genderbase Documentation,"documentation,contextual"
+GDB-175,GDB-171,Develop FAQ content,Create frequently asked questions content,Documentation,Medium,Todo,Genderbase Documentation,"documentation,faq"
+GDB-176,,Site branding,Create consistent visual branding across the site,Epic,High,Todo,Genderbase Promotion,"branding,design"
+GDB-177,GDB-176,Create brand style guide,Define brand colors, typography, and elements,Design,High,Todo,Genderbase Promotion,"branding,style-guide"
+GDB-178,GDB-176,Design logo and iconography,Create logo and consistent icon set,Design,High,Todo,Genderbase Promotion,"branding,logo"
+GDB-179,GDB-176,Implement brand elements in UI,Apply branding consistently across the site,Design,High,Todo,Genderbase Promotion,"branding,implementation"
+GDB-180,GDB-176,Create brand voice guidelines,Define tone and language for communications,Documentation,Medium,Todo,Genderbase Documentation,"branding,voice"
+GDB-181,,Continuous integration,Configure CI pipeline for automated testing and deployment,Epic,Medium,Todo,Genderbase DevOps,"ci,automation"
+GDB-182,GDB-181,Set up GitHub Actions workflow,Configure CI pipeline with GitHub Actions,DevOps,Medium,Todo,Genderbase DevOps,"ci,github-actions"
+GDB-183,GDB-181,Create automated test job,Configure automated testing in CI pipeline,DevOps,Medium,Todo,Genderbase DevOps,"ci,testing"
+GDB-184,GDB-181,Implement linting checks,Add code quality checks to CI pipeline,DevOps,Medium,Todo,Genderbase DevOps,"ci,linting"
+GDB-185,GDB-181,Create deployment job,Add automated deployment to CI pipeline,DevOps,Medium,Todo,Genderbase DevOps,"ci,deployment"
+GDB-186,,Internationalization framework,Set up i18n support for future multi-language support,Epic,Low,Todo,Genderbase Web App,"i18n,localization"
+GDB-187,GDB-186,Set up i18n framework,Configure Rails internationalization framework,Feature,Low,Todo,Genderbase Web App,"i18n,setup"
+GDB-188,GDB-186,Create translation files,Add translation files for supported languages,Feature,Low,Todo,Genderbase Web App,"i18n,translations"
+GDB-189,GDB-186,Implement language switcher,Add UI for changing language preference,Feature,Low,Todo,Genderbase Web App,"i18n,ui"
+GDB-190,GDB-186,Add translation management tool,Implement tool for managing translations,Feature,Low,Todo,Genderbase Web App,"i18n,management"
+GDB-191,,Question token validation,Create secure token system for anonymous users to access their questions,Epic,High,Todo,Genderbase Security,"security,tokens,questions"
+GDB-192,GDB-191,Implement secure token generation,Create cryptographically secure token generation,Security,High,Todo,Genderbase Security,"security,tokens,generation"
+GDB-193,GDB-191,Create token validation system,Build system to validate question access tokens,Security,High,Todo,Genderbase Security,"security,tokens,validation"
+GDB-194,GDB-191,Implement token expiration handling,Add handling for expired tokens,Security,High,Todo,Genderbase Security,"security,tokens,expiration"
+GDB-195,GDB-191,Add token reset functionality,Create mechanism to reset lost tokens,Feature,Medium,Todo,Genderbase Security,"security,tokens,reset"
+GDB-196,,Question email verification,Implement email verification for non-anonymous question submission,Epic,Medium,Todo,Genderbase Security,"email,verification,questions"
+GDB-197,GDB-196,Design email verification flow,Create workflow for email verification,Design,Medium,Todo,Genderbase Security,"email,verification,design"
+GDB-198,GDB-196,Implement verification email sending,Build system to send verification emails,Feature,Medium,Todo,Genderbase Security,"email,verification,sending"
+GDB-199,GDB-196,Create email verification page,Build page for verifying email addresses,Feature,Medium,Todo,Genderbase Security,"email,verification,ui"
+GDB-200,GDB-196,Add verification status tracking,Implement tracking of verification status,Feature,Medium,Todo,Genderbase Security,"email,verification,tracking"
+GDB-201,,Spam prevention measures,Implement captcha or other anti-spam measures for question submission,Epic,High,Todo,Genderbase Security,"security,spam,questions"
+GDB-202,GDB-201,Research captcha solutions,Evaluate captcha options for spam prevention,Research,High,Todo,Genderbase Security,"security,spam,research"
+GDB-203,GDB-201,Implement captcha integration,Add chosen captcha solution to forms,Security,High,Todo,Genderbase Security,"security,spam,captcha"
+GDB-204,GDB-201,Create rate limiting for submissions,Implement limits on form submissions,Security,High,Todo,Genderbase Security,"security,spam,rate-limiting"
+GDB-205,GDB-201,Add IP-based blocking,Implement blocking of suspicious IP addresses,Security,High,Todo,Genderbase Security,"security,spam,ip-blocking"
+GDB-206,,Question assignment system,Build system to fairly distribute questions among responders,Epic,High,Todo,Genderbase Web App,"workflow,responders,questions"
+GDB-207,GDB-206,Design question assignment algorithm,Create algorithm for fair question distribution,Design,High,Todo,Genderbase Web App,"workflow,responders,algorithm"
+GDB-208,GDB-206,Implement question assignment backend,Build system to assign questions to responders,Feature,High,Todo,Genderbase Web App,"workflow,responders,backend"
+GDB-209,GDB-206,Create manual assignment override,Add ability for admins to manually assign questions,Feature,Medium,Todo,Genderbase Web App,"workflow,responders,manual"
+GDB-210,GDB-206,Add assignment notification system,Implement notifications for new question assignments,Feature,High,Todo,Genderbase Web App,"workflow,responders,notifications"
+GDB-211,,Responder availability settings,Allow responders to mark themselves as available or unavailable,Epic,Medium,Todo,Genderbase Web App,"responders,availability"
+GDB-212,GDB-211,Design responder availability UI,Create interface for setting availability status,Design,Medium,Todo,Genderbase Web App,"responders,availability,ui"
+GDB-213,GDB-211,Implement availability status backend,Build system to track responder availability,Feature,Medium,Todo,Genderbase Web App,"responders,availability,backend"
+GDB-214,GDB-211,Create automated availability detection,Add detection of inactivity for availability,Feature,Low,Todo,Genderbase Web App,"responders,availability,automation"
+GDB-215,GDB-211,Add availability scheduling,Implement scheduling of availability periods,Feature,Low,Todo,Genderbase Web App,"responders,availability,scheduling"
+GDB-216,,Markdown editor implementation,Build rich markdown editor with live preview for content editing,Epic,Medium,Todo,Genderbase Web App,"ui,editor,ux"
+GDB-217,GDB-216,Build markdown editor with preview,Implement rich markdown editor with live preview,Feature,Medium,Todo,Genderbase Web App,"ui,editor,ux"
+GDB-218,GDB-216,Create syntax highlighting,Add syntax highlighting for code blocks in markdown,Feature,Low,Todo,Genderbase Web App,"ui,editor,code"
+GDB-219,GDB-216,Add markdown formatting toolbar,Build toolbar with common formatting options,Feature,Medium,Todo,Genderbase Web App,"ui,editor,toolbar"
+GDB-220,GDB-216,Implement paste handling,Add proper handling for pasted content,Feature,Medium,Todo,Genderbase Web App,"ui,editor,paste"
+GDB-221,,Secure messaging system,Create secure messaging between users and responders,Epic,High,Todo,Genderbase Security,"security,messaging"
+GDB-222,GDB-221,Design secure messaging system,Create secure messaging between users and responders,Design,High,Todo,Genderbase Security,"security,messaging,design"
+GDB-223,GDB-221,Implement end-to-end encryption,Add encryption for secure communications,Security,High,Todo,Genderbase Security,"security,messaging,encryption"
+GDB-224,GDB-221,Create secure file sharing,Add ability to securely share files in conversations,Feature,Medium,Todo,Genderbase Security,"security,messaging,files"
+GDB-225,GDB-221,Build message expiration,Implement automatic expiration of messages,Feature,Medium,Todo,Genderbase Security,"security,messaging,expiration"
+GDB-226,,Terminology glossary,Create comprehensive glossary of gender-related terminology,Epic,High,Todo,Genderbase Content,"terminology,content"
+GDB-227,GDB-226,Design glossary of terms,Create comprehensive glossary structure,Design,High,Todo,Genderbase Content,"terminology,content,design"
+GDB-228,GDB-226,Implement glossary backend,Build database models for glossary entries,Feature,High,Todo,Genderbase Content,"terminology,content,backend"
+GDB-229,GDB-226,Create glossary UI,Build user interface for browsing the glossary,Feature,High,Todo,Genderbase Content,"terminology,content,ui"
+GDB-230,GDB-226,Add glossary cross-references,Implement cross-references between related terms,Feature,Medium,Todo,Genderbase Content,"terminology,content,references"
+GDB-231,,End-user documentation,Create comprehensive guides for users of the platform,Epic,Medium,Todo,Genderbase Documentation,"documentation,users"
+GDB-232,GDB-231,Develop question submission guide,Create guide explaining how to submit questions effectively,Documentation,Medium,Todo,Genderbase Documentation,"documentation,users,questions"
+GDB-233,GDB-231,Write knowledge base usage guide,Create documentation on navigating and using the knowledge base,Documentation,Medium,Todo,Genderbase Documentation,"documentation,knowledge-base,users"
+GDB-234,GDB-231,Create terminology reference guide,Write user-friendly guide to terminology section,Documentation,Medium,Todo,Genderbase Documentation,"documentation,terminology,users"
+GDB-235,GDB-231,Develop privacy and anonymity guide,Create clear explanations of privacy features for users,Documentation,High,Todo,Genderbase Documentation,"documentation,privacy,users"
+GDB-236,,Technical documentation,Create comprehensive documentation for developers,Epic,Medium,Todo,Genderbase Documentation,"documentation,technical"
+GDB-237,GDB-236,Create system architecture documentation,Document overall system design and architecture,Documentation,Medium,Todo,Genderbase Documentation,"documentation,technical,architecture"
+GDB-238,GDB-236,Document database schema,Create comprehensive documentation of database structure,Documentation,Medium,Todo,Genderbase Documentation,"documentation,technical,database"
+GDB-239,GDB-236,Write codebase style guide,Document coding standards and practices for the project,Documentation,Medium,Todo,Genderbase Documentation,"documentation,technical,standards"
+GDB-240,GDB-236,Create local development setup guide,Document step-by-step process for setting up development environment,Documentation,High,Todo,Genderbase Documentation,"documentation,technical,setup"
+GDB-241,,Security documentation,Document security practices and features,Epic,High,Todo,Genderbase Documentation,"documentation,security"
+GDB-242,GDB-241,Create security policy documentation,Document security policies and procedures,Documentation,High,Todo,Genderbase Documentation,"documentation,security,policy"
+GDB-243,GDB-241,Develop privacy documentation,Create comprehensive privacy documentation,Documentation,High,Todo,Genderbase Documentation,"documentation,privacy,policy"
+GDB-244,GDB-241,Write data handling guidelines,Document proper data handling procedures,Documentation,High,Todo,Genderbase Documentation,"documentation,security,data"
+GDB-245,GDB-241,Document security features,Create documentation explaining security features for users and admins,Documentation,High,Todo,Genderbase Documentation,"documentation,security,features"
