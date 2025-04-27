@@ -1,11 +1,12 @@
 use_angular: true
-require_scope: null
+require_scope: true
 types:
-  - custom_type
+  - experiment
 scopes:
-  - src
-  - actions
-  - manpages
-  - readme
-  - e2e
-  - unit
+  - backend
+  - bothends
+  - ci
+  - docs
+  - frontend
+  - ops
+  - tests
