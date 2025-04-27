@@ -1,0 +1,80 @@
+Title,Description,Status,Priority,Labels,ID
+Set up continuous integration pipeline for automated testing,,Todo,Medium,Setup & Infrastructure,SETUP-1
+Create development environment setup script for new contributors,,Todo,Medium,Setup & Infrastructure,SETUP-2
+Configure Docker Compose for local development environment,,Todo,Medium,Setup & Infrastructure,SETUP-3
+Set up staging environment for testing features before production,,Todo,Medium,Setup & Infrastructure,SETUP-4
+Implement role-based permissions for responders,,Todo,Medium,Authentication & Users,AUTH-1
+Add user profile management functionality,,Todo,Medium,Authentication & Users,AUTH-2
+Implement password reset functionality,,Todo,Medium,Authentication & Users,AUTH-3
+Create user onboarding workflow for new responders,,Todo,Medium,Authentication & Users,AUTH-4
+Add email verification for new accounts,,Todo,Medium,Authentication & Users,AUTH-5
+Implement question state machine (open → active → closed),,Todo,Medium,Questions Module,Q-1
+Add ability to assign questions to specific responders,,Todo,Medium,Questions Module,Q-2
+Implement question tagging system for categorization,,Todo,Medium,Questions Module,Q-3
+Create notification system for new questions,,Todo,Medium,Questions Module,Q-4
+Add file/image attachment capabilities to questions,,Todo,Medium,Questions Module,Q-5
+Implement user-friendly rich text editor for questions,,Todo,Medium,Questions Module,Q-6
+Add question search functionality with filters,,Todo,Medium,Questions Module,Q-7
+Create dashboard for responders to manage their assigned questions,,Todo,Medium,Questions Module,Q-8
+Implement rich text editor for answers with formatting options,,Todo,Medium,Answers Module,A-1
+Add ability to include images and attachments in answers,,Todo,Medium,Answers Module,A-2
+Implement answer drafts to save work in progress,,Todo,Medium,Answers Module,A-3
+Create notification system for new answers,,Todo,Medium,Answers Module,A-4
+Implement answer templates for common responses,,Todo,Medium,Answers Module,A-5
+Add ability to mark answers as helpful/solved,,Todo,Medium,Answers Module,A-6
+Implement knowledge base search with advanced filtering,,Todo,Medium,Knowledge Base,KB-1
+Create categories and tags for knowledge base entries,,Todo,Medium,Knowledge Base,KB-2
+Add related articles feature to knowledge base entries,,Todo,Medium,Knowledge Base,KB-3
+Implement automated workflow to convert closed questions to knowledge entries,,Todo,Medium,Knowledge Base,KB-4
+Add version history for knowledge base articles,,Todo,Medium,Knowledge Base,KB-5
+Create public API for accessing knowledge base,,Todo,Medium,Knowledge Base,KB-6
+Implement SEO optimizations for knowledge base entries,,Todo,Medium,Knowledge Base,KB-7
+Add ability to feature important knowledge base articles,,Todo,Medium,Knowledge Base,KB-8
+Implement terminology search functionality,,Todo,Medium,Terminology Database,TERM-1
+Add categorization for terminology entries,,Todo,Medium,Terminology Database,TERM-2
+Create import/export functionality for terminology,,Todo,Medium,Terminology Database,TERM-3
+Add version history for terminology definitions,,Todo,Medium,Terminology Database,TERM-4
+Implement automatic linking of terminology in other content,,Todo,Medium,Terminology Database,TERM-5
+Create public API for accessing terminology database,,Todo,Medium,Terminology Database,TERM-6
+Create data model for storing multiple social media accounts per user,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-1
+Implement social media account linking and ownership validation,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-2
+Add email address verification and association with user accounts,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-3
+Create public profile page showing user's pronouns and chosen information,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-4
+Implement lookup functionality to find users by social media handles or email,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-5
+Build RESTful API for pronoun lookups from external applications,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-6
+Create OAuth-based authentication for API access,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-7
+Implement privacy controls to disable API and/or website lookups,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-8
+Add functionality for users to review and authorize individual lookup requests,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-9
+Create admin dashboard for monitoring API usage and abuse prevention,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-10
+Implement rate limiting for API requests,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-11
+Add developer documentation for API integration,,Todo,Medium,Social Integration & Pronoun Sharing,SOC-12
+Implement ActionCable for real-time question updates,,Todo,Medium,Real-time Features,RT-1
+Add real-time notifications for responders,,Todo,Medium,Real-time Features,RT-2
+Create live chat option for immediate assistance,,Todo,Medium,Real-time Features,RT-3
+Implement typing indicators in answer interface,,Todo,Medium,Real-time Features,RT-4
+Create responsive design for mobile users,,Todo,Medium,UI/UX Improvements,UI-1
+Implement dark mode theme option,,Todo,Medium,UI/UX Improvements,UI-2
+Add accessibility improvements (ARIA, keyboard navigation),,Todo,Medium,UI/UX Improvements,UI-3
+Create guided tour for new users,,Todo,Medium,UI/UX Improvements,UI-4
+Improve loading states and transitions,,Todo,Medium,UI/UX Improvements,UI-5
+Implement progressive web app (PWA) features,,Todo,Medium,UI/UX Improvements,UI-6
+Create dashboard for question/answer metrics,,Todo,Medium,Analytics & Reporting,REPORT-1
+Implement response time analytics,,Todo,Medium,Analytics & Reporting,REPORT-2
+Add user satisfaction tracking,,Todo,Medium,Analytics & Reporting,REPORT-3
+Create knowledge base usage analytics,,Todo,Medium,Analytics & Reporting,REPORT-4
+Implement terminology usage tracking,,Todo,Medium,Analytics & Reporting,REPORT-5
+Reimplement system tests as mentioned in TODO,,Todo,Medium,Testing & Quality Assurance,TEST-1
+Add comprehensive unit tests for models,,Todo,Medium,Testing & Quality Assurance,TEST-2
+Implement integration tests for controllers,,Todo,Medium,Testing & Quality Assurance,TEST-3
+Create end-to-end tests for critical user flows,,Todo,Medium,Testing & Quality Assurance,TEST-4
+Set up automated accessibility testing,,Todo,Medium,Testing & Quality Assurance,TEST-5
+Implement caching strategy for knowledge base,,Todo,Medium,Performance Optimization,PERF-1
+Optimize database queries for question listing,,Todo,Medium,Performance Optimization,PERF-2
+Add pagination for large result sets,,Todo,Medium,Performance Optimization,PERF-3
+Implement background jobs for non-critical operations,,Todo,Medium,Performance Optimization,PERF-4
+Set up performance monitoring,,Todo,Medium,Performance Optimization,PERF-5
+Implement natural language processing for question categorization,,Todo,Medium,Future Enhancements,FUT-1
+Add multilingual support,,Todo,Medium,Future Enhancements,FUT-2
+Create a community forum for peer support,,Todo,Medium,Future Enhancements,FUT-3
+Implement AI-assisted answer suggestions,,Todo,Medium,Future Enhancements,FUT-4
+Add integration with external knowledge bases,,Todo,Medium,Future Enhancements,FUT-5
