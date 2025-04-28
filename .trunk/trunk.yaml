@@ -57,7 +57,6 @@ lint:
     - eslint@9.25.1
     - gitleaks@8.24.3
     - markdown-link-check@3.13.7
-    - rails-test
     - semgrep@1.116.0
     - sort-package-json@3.0.0
     - stylelint@16.19.0

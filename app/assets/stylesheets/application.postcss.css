@@ -1,25 +1,24 @@
 /* Tailwind 4 */
-@import "tailwindcss";
+@import url("tailwindcss");
 
-@import "@fontsource-variable/sora";
+@import url("@fontsource-variable/sora");
 
 @plugin "daisyui" {
-  themes:
-    light --default,
-    dark --prefersdark;
+	themes: light --default, dark --prefersdark;
 }
 
 @layer base {
-  html {
-    font-family: "Sora Variable", sans-serif;
-  }
+	html {
+		font-family: "Sora Variable", sans-serif;
+	}
 }
 
 @layer components {
-  .btn {
-    @apply bg-primary text-white px-4 py-2 rounded-md;
-  }
-  a {
-    @apply text-accent hover:text-secondary transition;
-  }
+	.btn {
+		@apply bg-primary text-white px-4 py-2 rounded-md;
+	}
+
+	a {
+		@apply text-accent hover:text-secondary transition;
+	}
 }
