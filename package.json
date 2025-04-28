@@ -1,53 +1,55 @@
 {
-	"name": "genderbase",
-	"private": true,
-	"license": "MIT",
-	"author": {
-		"name": "Dave Williams",
-		"email": "dave@dave.io",
-		"url": "https://github.com/daveio"
-	},
-	"scripts": {
-		"build": "pnpm run build:js && pnpm run build:css",
-		"build:css": "pnpm dlx postcss-cli ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
-		"build:js": "pnpm dlx esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
-	},
-	"dependencies": {
-		"@fontsource-variable/sora": "^5.2.5",
-		"@hotwired/stimulus": "^3.2.2",
-		"@hotwired/turbo-rails": "^8.0.13",
-		"@tailwindcss/forms": "^0.5.10",
-		"@tailwindcss/postcss": "^4.1.4",
-		"@tailwindcss/typography": "^0.5.16",
-		"autoprefixer": "^10.4.21",
-		"daisyui": "^5.0.28",
-		"postcss": "^8.5.3",
-		"postcss-cli": "^11.0.1",
-		"postcss-flexbugs-fixes": "^5.0.2",
-		"postcss-import": "^16.1.0",
-		"postcss-nesting": "^13.0.1",
-		"stylelint": "^16.19.1",
-		"stylelint-config-prettier": "^9.0.5",
-		"stylelint-config-standard": "^38.0.0",
-		"tailwindcss": "^4.1.4"
-	},
-	"devDependencies": {
-		"@eslint/css": "^0.7.0",
-		"@eslint/js": "^9.25.1",
-		"@eslint/json": "^0.12.0",
-		"@eslint/markdown": "^6.4.0",
-		"esbuild": "^0.25.3",
-		"eslint": "^9.25.1",
-		"globals": "^16.0.0"
-	},
-	"packageManager": "pnpm@10.9.0",
-	"engines": {
-		"node": "~23.11.0"
-	},
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "https://github.com/daveio/genderbase/blob/main/LICENSE"
-		}
-	]
+  "name": "genderbase",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Dave Williams",
+    "email": "dave@dave.io",
+    "url": "https://github.com/daveio"
+  },
+  "scripts": {
+    "build": "pnpm run build:js && pnpm run build:css",
+    "build:css": "pnpm dlx postcss-cli ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
+    "build:js": "pnpm dlx esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
+  },
+  "dependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@fontsource-variable/sora": "^5.2.5",
+    "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/turbo-rails": "^8.0.13",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "^4.1.4",
+    "@tailwindcss/typography": "^0.5.16",
+    "autoprefixer": "^10.4.21",
+    "daisyui": "^5.0.28",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^16.1.0",
+    "postcss-nesting": "^13.0.1",
+    "stylelint": "^16.19.1",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-config-tailwindcss": "^1.0.0",
+    "tailwindcss": "^4.1.4"
+  },
+  "devDependencies": {
+    "@eslint/css": "^0.7.0",
+    "@eslint/js": "^9.25.1",
+    "@eslint/json": "^0.12.0",
+    "@eslint/markdown": "^6.4.0",
+    "esbuild": "^0.25.3",
+    "eslint": "^9.25.1",
+    "globals": "^16.0.0"
+  },
+  "packageManager": "pnpm@10.9.0",
+  "engines": {
+    "node": "~23.11.0"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/daveio/genderbase/blob/main/LICENSE"
+    }
+  ]
 }

@@ -1,15 +1,15 @@
 {
-	"debug.javascript.defaultRuntimeExecutable": {
-		"pwa-node": "${workspaceFolder}/.vscode/mise-tools/node"
-	},
-	"go.goroot": "${workspaceFolder}/.vscode/mise-tools/goRoot",
-	"python.defaultInterpreterPath": "${workspaceFolder}/.vscode/mise-tools/python",
-	"go.alternateTools": {
-		"go": "${workspaceFolder}/.vscode/mise-tools/go",
-		"gopls": "${workspaceFolder}/.vscode/mise-tools/gopls"
-	},
-	"workbench.colorCustomizations": {},
-	"java.jdt.ls.java.home": "${workspaceFolder}/.vscode/mise-tools/java",
-	"java.import.gradle.java.home": "${workspaceFolder}/.vscode/mise-tools/java",
-	"pieces.cloudCapabilities": "Blended"
+  "debug.javascript.defaultRuntimeExecutable": {
+    "pwa-node": "${workspaceFolder}/.vscode/mise-tools/node"
+  },
+  "go.goroot": "${workspaceFolder}/.vscode/mise-tools/goRoot",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.vscode/mise-tools/python",
+  "go.alternateTools": {
+    "go": "${workspaceFolder}/.vscode/mise-tools/go",
+    "gopls": "${workspaceFolder}/.vscode/mise-tools/gopls"
+  },
+  "workbench.colorCustomizations": {},
+  "java.jdt.ls.java.home": "${workspaceFolder}/.vscode/mise-tools/java",
+  "java.import.gradle.java.home": "${workspaceFolder}/.vscode/mise-tools/java",
+  "pieces.cloudCapabilities": "Blended"
 }

@@ -2,3 +2,4 @@ cache: true
 extends:
   - stylelint-config-standard
   - stylelint-config-prettier
+  - stylelint-config-tailwindcss
