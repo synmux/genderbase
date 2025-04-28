@@ -34,7 +34,7 @@ jobs:
           gh-code-scanning-compat: true
           max-allowed-issues: 2147483647
       - name: clean
-        run: jq '.runs |= unique_by({tool, invocations, results})' < results.sarif > codacy.sarif
+        run: jq '.runs |= unique_by({tool, invocations, results}) | .runs |= .[0:20]' < results.sarif > codacy.sarif
       - name: upload
         uses: github/codeql-action/upload-sarif@28deaeda66b76a05916b6923827895f2b14ab387
         with:
