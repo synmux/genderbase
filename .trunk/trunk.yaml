@@ -19,6 +19,7 @@ runtimes:
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
   disabled:
+    - terrascan
     - eslint
     - vale
     - djlint
@@ -52,6 +53,7 @@ lint:
       paths:
         - _tickets/**
   enabled:
+    - trunk-toolbox@0.5.4
     - stylelint@16.19.0
     - markdownlint-cli2@0.17.2
     - biome@1.9.4
@@ -60,7 +62,6 @@ lint:
     - markdown-link-check@3.13.7
     - semgrep@1.116.0
     - sort-package-json@3.0.0
-    - terrascan@1.19.1
     - taplo@0.9.3
     - actionlint@1.7.7
     - brakeman
