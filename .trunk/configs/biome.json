@@ -1,22 +1,38 @@
 {
   "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+  "css": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
+  },
   "formatter": {
+    "attributePosition": "auto",
+    "bracketSpacing": true,
     "enabled": true,
+    "indentSize": 2,
     "indentStyle": "space",
-    "lineWidth": 120
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 120,
+    "useEditorconfig": true
+  },
+  "graphql": {
+    "formatter": {
+      "quoteStyle": "single"
+    }
   },
   "javascript": {
     "formatter": {
       "quoteStyle": "single",
+      "semicolons": "asNeeded",
+      "trailingComma": "none",
       "trailingCommas": "none"
     }
   },
-  "css": {
-    "formatter": {
-      "enabled": false
-    },
-    "linter": {
-      "enabled": false
+  "json": {
+    "parser": {
+      "allowComments": false,
+      "allowTrailingCommas": false
     }
   },
   "linter": {
@@ -24,5 +40,11 @@
   },
   "organizeImports": {
     "enabled": true
+  },
+  "vcs": {
+    "clientKind": "git",
+    "defaultBranch": "main",
+    "root": "../..",
+    "useIgnoreFile": true
   }
 }

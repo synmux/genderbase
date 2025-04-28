@@ -8,8 +8,8 @@ enabled = true # default: true
 enabled = true # default: false
 
 [neveredit]
-enabled = true # default: false
-paths = []     # default: []
+enabled = false # default: false
+paths = []      # default: []
 
 [nocurlyquotes]
 enabled = true # default: false

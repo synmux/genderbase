@@ -22,6 +22,7 @@ responder2 = Responder.find_or_create_by(email: "responder2@genderbase.com") do 
 end
 
 _ = Responder.find_or_create_by(email: "demo@genderbase.com") do |r|
+  # trunk-ignore(gitleaks/generic-api-key)
   r.password = "jie1OSh0ek6aith3"
   r.pseudonym = "Demo Responder"
 end

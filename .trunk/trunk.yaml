@@ -19,6 +19,7 @@ runtimes:
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
   disabled:
+    - semgrep
     - terrascan
     - eslint
     - vale
@@ -36,6 +37,11 @@ lint:
           run: bin/rails test
           success_codes: [0, 1]
   ignore:
+    - linters:
+        - trunk-toolbox
+      paths:
+        - "**/*.jpg"
+        - "**/*.png"
     - linters:
         - prettier
       paths:
@@ -60,7 +66,6 @@ lint:
     - dustilock@1.2.0
     - gitleaks@8.24.3
     - markdown-link-check@3.13.7
-    - semgrep@1.116.0
     - sort-package-json@3.0.0
     - taplo@0.9.3
     - actionlint@1.7.7

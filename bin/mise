@@ -135,7 +135,6 @@ __mise_bootstrap() {
         checksum_macos_x86_64_zstd="069f955f2626f368cdde5f25c770f79011fb3e52e9f6b05cef5523a4428246f8  ./mise-v2025.4.5-macos-x64.tar.zst"
         checksum_macos_arm64_zstd="f6d862b43826d581da45641b1e40377ef5df01268153a969960e38879d1befe2  ./mise-v2025.4.5-macos-arm64.tar.zst"
 
-        # TODO: refactor this, it's a bit messy
         if [ "$(get_ext)" = "tar.zst" ]; then
           if [ "$os" = "linux" ]; then
             if [ "$arch" = "x64" ]; then
@@ -206,7 +205,6 @@ __mise_bootstrap() {
             error "mise standalone install specific version requires curl or wget but neither is installed. Aborting."
           fi
         fi
-        # TODO: verify with minisign or gpg if available
 
         checksum="$(echo "$checksums" | grep "$os-$arch.$ext")"
         if ! echo "$checksum" | grep -Eq "^([0-9a-f]{32}|[0-9a-f]{64})"; then

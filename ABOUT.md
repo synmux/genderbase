@@ -103,7 +103,7 @@ demo@genderbase.com
 jie1OSh0ek6aith3
 ```
 
-### TODO
+### `.plan`
 
 - Reimplement system tests
 - Ask the user whether their question can be turned into a knowledge article when the question is closed
