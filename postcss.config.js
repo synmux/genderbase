@@ -6,4 +6,4 @@ module.exports = {
     require('postcss-nesting'),
     require('postcss-flexbugs-fixes')
   ]
-};
+}

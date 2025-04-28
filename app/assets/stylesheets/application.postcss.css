@@ -1,15 +1,11 @@
 /* Tailwind 4 */
-@import url("tailwindcss");
+@import url('tailwindcss');
 
-@import url("@fontsource-variable/sora");
-
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
-}
+@import url('@fontsource-variable/sora');
 
 @layer base {
   html {
-    font-family: "Sora Variable", sans-serif;
+    font-family: 'Sora Variable', sans-serif;
   }
 }
 

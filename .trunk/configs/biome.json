@@ -9,7 +9,6 @@
     "attributePosition": "auto",
     "bracketSpacing": true,
     "enabled": true,
-    "indentSize": 2,
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf",
@@ -25,7 +24,6 @@
     "formatter": {
       "quoteStyle": "single",
       "semicolons": "asNeeded",
-      "trailingComma": "none",
       "trailingCommas": "none"
     }
   },

@@ -1,9 +1,9 @@
-import css from '@eslint/css';
-import js from '@eslint/js';
-import json from '@eslint/json';
-import markdown from '@eslint/markdown';
-import { defineConfig } from 'eslint/config';
-import globals from 'globals';
+import css from '@eslint/css'
+import js from '@eslint/js'
+import json from '@eslint/json'
+import markdown from '@eslint/markdown'
+import { defineConfig } from 'eslint/config'
+import globals from 'globals'
 
 export default defineConfig([
   {
@@ -39,4 +39,4 @@ export default defineConfig([
     language: 'css/css',
     extends: ['css/recommended']
   }
-]);
+])
