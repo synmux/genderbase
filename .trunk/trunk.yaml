@@ -19,6 +19,7 @@ runtimes:
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
   disabled:
+    - stylelint
     - djlint
     - markdown-table-prettify
     - markdownlint
@@ -59,7 +60,6 @@ lint:
     - markdown-link-check@3.13.7
     - semgrep@1.116.0
     - sort-package-json@3.0.0
-    - stylelint@16.19.0
     - terrascan@1.19.1
     - vale@3.11.2
     - taplo@0.9.3
