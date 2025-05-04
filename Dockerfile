@@ -57,16 +57,12 @@ ENV RAILS_ENV="production" \
     BUNDLE_PATH="/rails/_bundle" \
     BUNDLE_WITHOUT="development test"
 
-# Use mise for Ruby, Node.js and Bun installation
-RUN curl -fsSL https://mise.jdx.dev/install.sh | sh
-ENV PATH="/rails/.local/bin:$PATH"
-
 # Install Ruby, Node.js and Bun using mise
-RUN mise trust && \
+RUN bin/mise trust && \
     echo "🏗️ Installing Ruby, Node.js and Bun with mise..." && \
-    mise install > /dev/null 2>&1 && \
+    bin/mise install > /dev/null 2>&1 && \
     echo "🎢 Activating mise..." && \
-    eval "$(mise activate bash)" > /dev/null 2>&1 && \
+    eval "$(bin/mise activate bash)" > /dev/null 2>&1 && \
     echo -n "🔺 Updating Ruby and Bundler... [system]" && \
     gem update --system --no-document > /dev/null 2>&1 && \
     echo " [gems]" && \
