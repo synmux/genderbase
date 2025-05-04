@@ -32,12 +32,9 @@ RUN apk add --no-cache \
         gcompat=1.1.0-r4 \
         tzdata=2025b-r0
 
-# Set shell options
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-
 # Set up a non-root user for security
-RUN addgroup -S -g 1000 rails && \
-    adduser -S -u 1000 -G rails -h /rails rails
+RUN addgroup -S -g 1000 rails > /dev/null && \
+    adduser -S -u 1000 -G rails -h /rails -s /bin/bash rails
 
 # Rails app lives here
 WORKDIR /rails
@@ -51,32 +48,41 @@ RUN chown -R 1000:1000 /rails
 # Switch to the non-root user
 USER 1000:1000
 
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_DEPLOYMENT="1" \
-    BUNDLE_PATH="/rails/_bundle" \
-    BUNDLE_WITHOUT="development test"
+# Set shell options
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Install Ruby, Node.js and Bun using mise
-RUN bin/mise trust && \
-    echo "🏗️ Installing Ruby, Node.js and Bun with mise..." && \
-    bin/mise install > /dev/null 2>&1 && \
+# Set production environment
+ENV RAILS_ENV="production"
+ENV BUNDLE_DEPLOYMENT="1"
+ENV BUNDLE_PATH="/rails/_bundle"
+
+# Dependencies and precompilation
+RUN echo "🛀🏻‍ Cleaning up..." && \
+    rm -rf node_modules && \
+    echo "🏃🏻‍♀️ Installing mise..." && \
+    curl https://mise.run | sh && \
+    echo "eval \"\$(/rails/.local/bin/mise activate bash)\"" > ~/.bashrc && \
     echo "🎢 Activating mise..." && \
-    eval "$(bin/mise activate bash)" > /dev/null 2>&1 && \
-    echo -n "🔺 Updating Ruby and Bundler... [system]" && \
-    gem update --system --no-document > /dev/null 2>&1 && \
-    echo " [gems]" && \
-    gem update --no-document > /dev/null 2>&1 && \
+    source ~/.bashrc && \
+    mise trust && \
+    echo "🏗️ Installing Ruby, Node.js and Bun with mise..." && \
+    mise install && \
+    source ~/.bashrc && \
+    echo "🔺 Updating Ruby and Bundler... [system]" && \
+    gem update --system && \
+    echo "🔺 Updating Ruby and Bundler... [gems]" && \
+    gem update && \
     echo "📦 Installing Bundler dependencies..." && \
-    bundle install > /dev/null 2>&1 && \
+    bundle install && \
     echo "📦 Installing Bun dependencies..." && \
-    bun install > /dev/null 2>&1 && \
-    echo -n "👷🏻‍♀️ Precompiling assets... [gemfile]" && \
-    bundle exec bootsnap precompile --gemfile > /dev/null 2>&1 && \
-    echo -n " [app, lib] " && \
-    bundle exec bootsnap precompile app/ lib/ > /dev/null 2>&1 && \
-    echo " [precompile]" && \
-    SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile > /dev/null 2>&1
+    bun install && \
+    echo "🚛 Precompiling assets... [gemfile]" && \
+    bundle exec bootsnap precompile --gemfile && \
+    echo "🚛 Precompiling assets... [app, lib]" && \
+    bundle exec bootsnap precompile app/ lib/ && \
+    echo "🚛 Precompiling assets... [precompile]" && \
+    SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile  && \
+    echo "🎉 Complete!"
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
