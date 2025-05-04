@@ -55,7 +55,7 @@ See `mise.toml` for recommended versions. Install them all with `bin/mise instal
 
 - [**`ddollar/foreman`**](https://github.com/ddollar/foreman): Process manager
 - [**`nodejs/node`**](https://github.com/nodejs/node): JavaScript runtime
-- [**`pnpm/pnpm`**](https://github.com/pnpm/pnpm): JavaScript package manager
+- [**`oven-sh/bun`**](https://github.com/oven-sh/bun): JavaScript runtime, package manager, and bundler
 - [**`redis/redis`**](https://github.com/redis/redis): Fast in-memory key-value store
 - [**`ruby/ruby`**](https://github.com/ruby/ruby): Ruby runtime
 

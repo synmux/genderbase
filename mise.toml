@@ -17,7 +17,7 @@ ruby = { version = '3.4.3' }
 ] }
 'dev' = { env = { 'RAILS_ENV' = 'development', 'RUBY_DEBUG_OPEN' = 'true' }, run = 'foreman start -f Procfile.tailscale' }
 'dev:localhost' = { env = { 'RAILS_ENV' = 'development', 'RUBY_DEBUG_OPEN' = 'true' }, run = 'foreman start -f Procfile.localhost' }
-prepare-ci = 'gem install bundler; bundle install; bundle binstubs --all; pnpm install --verify-store-integrity'
+prepare-ci = 'gem install bundler; bundle install; bundle binstubs --all; bun install'
 'ci:brakeman' = { run = 'bundle exec brakeman --no-pager' }
 'ci:rubocop' = { run = 'bundle exec rubocop -f github' }
 'ci:test' = { env = { RAILS_ENV = 'test' }, run = 'bundle exec rails db:test:prepare test test:system' }
