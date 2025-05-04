@@ -23,6 +23,7 @@ RUN apk add --no-cache \
         git=2.47.2-r0 \
         yaml-dev=0.2.5-r2 \
         pkgconf=2.3.0-r0 \
+        python3=3.12.10-r0 \
         openssl-dev=3.3.3-r0 \
         zlib-dev=1.3.1-r2 \
         libffi-dev=3.4.7-r0 \
@@ -63,7 +64,7 @@ RUN echo "🛀🏻‍ Cleaning up..." && \
     source ~/.bashrc && \
     mise trust && \
     echo "🏗️ Installing Ruby, Node.js and Bun with mise..." && \
-    mise install && \
+    mise install 2>&1 | grep -v "g++ -o" | grep -v "cc -o" && \
     source ~/.bashrc && \
     echo "🔺 Updating Ruby and Bundler... [system]" && \
     gem update --system && \
