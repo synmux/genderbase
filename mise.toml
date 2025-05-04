@@ -5,7 +5,6 @@ GENDERBASE_MISE_ACTIVE = 'true'
 env_file = '.env'
 idiomatic_version_file = false
 asdf_compat = false
-verbose = false
 
 [tools]
 node = { version = '23.11.0' }
