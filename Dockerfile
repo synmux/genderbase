@@ -33,7 +33,7 @@ RUN apt-get update -qq && \
 
 # Run and own only the runtime files as a non-root user for security
 RUN groupadd --system --gid 1000 rails && \
-    useradd rails --uid 1000 --gid 1000 --create-home && \
+    useradd rails --uid 1000 --gid 1000 --home-dir /rails --create-home && \
     chown -R rails:rails db log storage tmp
 USER 1000:1000
 
@@ -51,11 +51,11 @@ COPY . .
 
 # Use mise for Ruby, Node.js and Bun installation
 RUN curl -fsSL https://mise.jdx.dev/install.sh | sh
-ENV PATH="$HOME/.local/bin:$PATH"
+ENV PATH="/rails/.local/bin:$PATH"
 
 # Install Ruby, Node.js and Bun using mise
 RUN mise install
-ENV PATH="$HOME/.local/share/mise/shims:$PATH"
+ENV PATH="/rails/.local/share/mise/shims:$PATH"
 
 RUN gem update --system && \
     gem update && \
