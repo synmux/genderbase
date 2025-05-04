@@ -12,25 +12,25 @@ FROM docker.io/library/alpine:3.21.3
 
 # Install packages
 RUN apk add --no-cache \
-        bash=5.2.21-r0 \
+        bash=5.2.37-r0 \
         curl=8.12.1-r1 \
         jemalloc=5.3.0-r6 \
-        vips=8.15.1-r0 \
-        sqlite=3.45.2-r0 \
-        ca-certificates=20240517-r0 \
-        gnupg=2.4.4-r0 \
+        vips=8.15.3-r5 \
+        sqlite=3.48.0-r1 \
+        ca-certificates=20241121-r1 \
+        gnupg=2.4.7-r0 \
         build-base=0.5-r3 \
-        git=2.45.1-r0 \
-        yaml-dev=0.2.5-r1 \
-        nodejs=22.11.0-r0 \
-        npm=10.7.0-r0 \
-        pkgconf=2.1.0-r0 \
-        python3=3.12.3-r0 \
-        openssl-dev=3.3.1-r0 \
-        zlib-dev=1.3.1-r0 \
-        libffi-dev=3.4.4-r3 \
-        gcompat=1.1.0-r2 \
-        tzdata=2025a-r0
+        git=2.47.2-r0 \
+        yaml-dev=0.2.5-r2 \
+        nodejs=22.13.1-r0 \
+        npm=10.9.1-r0 \
+        pkgconf=2.3.0-r0 \
+        python3=3.12.10-r0 \
+        openssl-dev=3.3.3-r0 \
+        zlib-dev=1.3.1-r2 \
+        libffi-dev=3.4.7-r0 \
+        gcompat=1.1.0-r4 \
+        tzdata=2025b-r0
 
 # Set shell options
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
