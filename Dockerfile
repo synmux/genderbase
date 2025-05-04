@@ -63,12 +63,18 @@ ENV PATH="/rails/.local/bin:$PATH"
 
 # Install Ruby, Node.js and Bun using mise
 RUN mise trust && \
-    mise install 2>/dev/null | grep -v -E "(g\+\+ -o|cc -o)" && \
+    echo "🏗️ Installing Ruby, Node.js and Bun with mise..." && \
+    mise install 2>/dev/null && \
+    echo "🎢 Activating mise..." && \
     eval "$(mise activate bash)" && \
+    echo "🔺 Updating Ruby and Bundler..." && \
     gem update --system --no-document && \
     gem update --no-document && \
+    echo "📦 Installing Bundler dependencies..." && \
     bundle install && \
+    echo "📦 Installing Bun dependencies..." && \
     bun install && \
+    echo "👷🏻‍♀️ Precompiling assets..." && \
     bundle exec bootsnap precompile --gemfile && \
     bundle exec bootsnap precompile app/ lib/ && \
     SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
