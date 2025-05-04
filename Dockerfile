@@ -62,9 +62,8 @@ RUN curl -fsSL https://mise.jdx.dev/install.sh | sh
 ENV PATH="/rails/.local/bin:$PATH"
 
 # Install Ruby, Node.js and Bun using mise
-# trunk-ignore(hadolint/SC2210)
 RUN mise trust && \
-    mise install 2>&1 | grep -v "g++ -o" | grep -v "cc -o" && \
+    mise install 2>/dev/null | grep -v -E "(g\+\+ -o|cc -o)" && \
     eval "$(mise activate bash)" && \
     gem update --system --no-document && \
     gem update --no-document && \
