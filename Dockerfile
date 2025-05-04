@@ -66,7 +66,7 @@ RUN echo "🛀🏻‍ Cleaning up..." && \
     source ~/.bashrc && \
     mise trust && \
     echo "🏗️ Installing Ruby and Bun with mise..." && \
-    mise install 2>&1 | grep -v "g++ -o" | grep -v "cc -o" && \
+    mise install && \
     source ~/.bashrc && \
     echo "🔺 Updating Ruby and Bundler... [system]" && \
     gem update --system && \
