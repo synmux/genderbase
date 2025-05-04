@@ -22,6 +22,8 @@ RUN apk add --no-cache \
         build-base=0.5-r3 \
         git=2.47.2-r0 \
         yaml-dev=0.2.5-r2 \
+        nodejs=22.13.1-r0 \
+        npm=10.9.1-r0 \
         pkgconf=2.3.0-r0 \
         python3=3.12.10-r0 \
         openssl-dev=3.3.3-r0 \
