@@ -64,20 +64,23 @@ ENV PATH="/rails/.local/bin:$PATH"
 # Install Ruby, Node.js and Bun using mise
 RUN mise trust && \
     echo "🏗️ Installing Ruby, Node.js and Bun with mise..." && \
-    mise install 2>/dev/null && \
+    mise install > /dev/null 2>&1 && \
     echo "🎢 Activating mise..." && \
-    eval "$(mise activate bash)" && \
-    echo "🔺 Updating Ruby and Bundler..." && \
-    gem update --system --no-document && \
-    gem update --no-document && \
+    eval "$(mise activate bash)" > /dev/null 2>&1 && \
+    echo -n "🔺 Updating Ruby and Bundler... [system]" && \
+    gem update --system --no-document > /dev/null 2>&1 && \
+    echo " [gems]" && \
+    gem update --no-document > /dev/null 2>&1 && \
     echo "📦 Installing Bundler dependencies..." && \
-    bundle install && \
+    bundle install > /dev/null 2>&1 && \
     echo "📦 Installing Bun dependencies..." && \
-    bun install && \
-    echo "👷🏻‍♀️ Precompiling assets..." && \
-    bundle exec bootsnap precompile --gemfile && \
-    bundle exec bootsnap precompile app/ lib/ && \
-    SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
+    bun install > /dev/null 2>&1 && \
+    echo -n "👷🏻‍♀️ Precompiling assets... [gemfile]" && \
+    bundle exec bootsnap precompile --gemfile > /dev/null 2>&1 && \
+    echo -n " [app, lib] " && \
+    bundle exec bootsnap precompile app/ lib/ > /dev/null 2>&1 && \
+    echo " [precompile]" && \
+    SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile > /dev/null 2>&1
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
