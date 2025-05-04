@@ -63,7 +63,7 @@ ENV PATH="/rails/.local/bin:$PATH"
 
 # Install Ruby, Node.js and Bun using mise
 RUN mise trust && \
-    mise install | grep -v "g++" && \
+    mise install | grep -v "g++ -o" | grep -v "cc -o" && \
     eval "$(mise activate bash)" && \
     gem update --system --no-document && \
     gem update --no-document && \
