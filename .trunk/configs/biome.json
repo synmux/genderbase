@@ -1,5 +1,8 @@
 {
-  "$schema": "../../node_modules/@biomejs/biome/configuration_schema.json",
+  "$schema": "./biome_schema.json",
+  "files": {
+    "ignore": ["../../.trunk"]
+  },
   "css": {
     "formatter": {
       "quoteStyle": "single"

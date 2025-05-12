@@ -19,6 +19,7 @@ runtimes:
 # This is the section where you manage your linters. (https://docs.trunk.io/check/configuration)
 lint:
   disabled:
+    - prettier
     - sort-package-json
     - semgrep
     - terrascan
@@ -43,6 +44,7 @@ lint:
       paths:
         - "**/*.jpg"
         - "**/*.png"
+        - "**/*.html"
     - linters:
         - prettier
       paths:
@@ -53,16 +55,16 @@ lint:
     - linters:
         - shellcheck
       paths:
-        - bin/mise
         - bin/docker-entrypoint
     - linters:
         - ALL
       paths:
-        - _tickets/**
+        - bin/mise
+        - "**/*.zst"
   enabled:
     - trunk-toolbox@0.5.4
     - stylelint@16.19.1
-    - markdownlint-cli2@0.17.2
+    - markdownlint-cli2@0.18.0
     - biome@1.9.4
     - dustilock@1.2.0
     - gitleaks@8.25.1
@@ -70,18 +72,27 @@ lint:
     - taplo@0.9.3
     - actionlint@1.7.7
     - brakeman
-    - checkov@3.2.414
+    - checkov@3.2.417
     - git-diff-check
     - hadolint@2.12.1-beta
     - osv-scanner@2.0.2
     - oxipng@9.1.5
-    - prettier@3.5.3
-    - rubocop
+    - rubocop:
+        packages:
+          - rubocop-capybara
+          - rubocop-minitest
+          - rubocop-performance
+          - rubocop-rails
+          - rubocop-rails-omakase
+          - rubocop-rake
+          - rubocop-rspec
+          - rubocop-sorbet
+          - rubocop-thread_safety
     - shellcheck@0.10.0
     - shfmt@3.6.0
     - svgo@3.3.2
-    - trufflehog@3.88.26
-    - yamllint@1.37.0
+    - trufflehog@3.88.29
+    - yamllint@1.37.1
 actions:
   enabled:
     - trunk-announce

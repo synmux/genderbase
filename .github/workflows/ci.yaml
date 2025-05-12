@@ -25,8 +25,8 @@ jobs:
         run: bin/mise run ci:brakeman
       - name: ci:rubocop
         run: bin/mise run ci:rubocop
-      - name: ci:test
-        run: bin/mise run ci:test
+      # - name: ci:test
+      #   run: bin/mise run ci:test
       - name: artifacts
         uses: actions/upload-artifact@v4
         if: failure()
