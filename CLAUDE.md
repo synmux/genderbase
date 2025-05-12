@@ -38,8 +38,11 @@ mise db:reset
 ```
 
 This will create a demo responder account:
+
+<!-- trunk-ignore-begin(markdownlint-cli2/MD034/no-bare-urls,gitleaks/generic-api-key) -->
 - Email: demo@genderbase.com
 - Password: jie1OSh0ek6aith3
+<!-- trunk-ignore-end(markdownlint-cli2/MD034/no-bare-urls,gitleaks/generic-api-key) -->
 
 ### Starting the Development Server
 
@@ -109,7 +112,7 @@ mise ci
 
 ### Key Features
 
-1. **Anonymous Questions and Answers**: 
+1. **Anonymous Questions and Answers**:
    - Users can submit questions with or without email
    - Both users and responders are given pseudonyms
    - Questions accessed via secure tokens
