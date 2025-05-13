@@ -41,7 +41,7 @@
     "@eslint/markdown": "^6.4.0",
     "esbuild": "^0.25.4",
     "eslint": "^9.26.0",
-    "globals": "^16.0.0"
+    "globals": "^16.1.0"
   },
   "packageManager": "bun@1.2.12",
   "engines": {
