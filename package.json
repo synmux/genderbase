@@ -46,7 +46,7 @@
   "packageManager": "bun@1.2.13",
   "engines": {
     "bun": "~1.2.13",
-    "node": "~23.11.0"
+    "node": "~lts"
   },
   "licenses": [
     {
@@ -54,5 +54,9 @@
       "url": "https://github.com/daveio/genderbase/blob/main/LICENSE"
     }
   ],
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "@tailwindcss/oxide",
+    "esbuild"
+  ]
 }
