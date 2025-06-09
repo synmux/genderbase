@@ -5,7 +5,7 @@
       "name": "genderbase",
       "dependencies": {
         "@biomejs/biome": "^1.9.4",
-        "@fontsource-variable/sora": "^5.2.5",
+        "@fontsource-variable/sora": "^5.2.6",
         "@hotwired/stimulus": "^3.2.2",
         "@hotwired/turbo-rails": "^8.0.16",
         "@tailwindcss/forms": "^0.5.10",
@@ -156,7 +156,7 @@
 
     "@eslint/plugin-kit": ["@eslint/plugin-kit@0.3.1", "", { "dependencies": { "@eslint/core": "^0.14.0", "levn": "^0.4.1" } }, "sha512-0J+zgWxHN+xXONWIyPWKFMgVuJoZuGiIFu8yxk7RJjxkzpGmyja5wRFqZIVtjDVOQpV+Rw0iOAjYPE2eQyjr0w=="],
 
-    "@fontsource-variable/sora": ["@fontsource-variable/sora@5.2.5", "", {}, "sha512-SNS88JcSleEcqN5j1S0WWltrC9VtIckaSYNm1cpL+LjI5UgGTOwMRcOw7O9It3TOrKlpHFliY7u2Cni5BvxR0w=="],
+    "@fontsource-variable/sora": ["@fontsource-variable/sora@5.2.6", "", {}, "sha512-9cVxKZXAdZIsPfCV+/dIn5zbvmAhXiqNXZdh2454n7Dk7U7nQ9ZfQuh2Q/De/qgzSUwQldTLlHMzgJ3OtOt67w=="],
 
     "@hotwired/stimulus": ["@hotwired/stimulus@3.2.2", "", {}, "sha512-eGeIqNOQpXoPAIP7tC1+1Yc1yl1xnwYqg+3mzqxyrbE5pg5YFBZcA6YoTiByJB6DKAEsiWtl6tjTJS4IYtbB7A=="],
 
