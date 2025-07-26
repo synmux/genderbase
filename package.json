@@ -54,9 +54,5 @@
       "url": "https://github.com/daveio/genderbase/blob/main/LICENSE"
     }
   ],
-  "trustedDependencies": [
-    "@biomejs/biome",
-    "@tailwindcss/oxide",
-    "esbuild"
-  ]
+  "trustedDependencies": ["@biomejs/biome", "@tailwindcss/oxide", "esbuild"]
 }
