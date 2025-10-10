@@ -2,7 +2,7 @@
 
 source "https://rubygems.org" # https://github.com/rubygems/rubygems
 
-ruby "3.4.5"
+ruby "3.4.7"
 
 gem "rails"                  # https://github.com/rails/rails
 gem "fileutils"              # https://github.com/ruby/fileutils
@@ -15,7 +15,7 @@ gem "turbo-rails"            # https://turbo.hotwired.dev
 gem "stimulus-rails"         # https://stimulus.hotwired.dev
 gem "jbuilder"               # https://github.com/rails/jbuilder
 gem "bcrypt"                 # https://github.com/bcrypt-ruby/bcrypt-ruby
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ] # https://github.com/tzinfo/tzinfo-data
+gem "tzinfo-data", platforms: %i[ windows jruby ] # https://github.com/tzinfo/tzinfo-data
 gem "solid_cache"            # https://github.com/rails/solid_cache
 gem "solid_queue"            # https://github.com/rails/solid_queue
 gem "solid_cable"            # https://github.com/rails/solid_cable
@@ -30,7 +30,7 @@ gem "thruster", require: false # https://github.com/basecamp/thruster
 gem "foreman", require: false # https://github.com/ddollar/foreman
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri mingw mswin x64_mingw ], require: "debug/prelude" # https://github.com/ruby/debug
+  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude" # https://github.com/ruby/debug
   gem "brakeman", require: false # https://brakemanscanner.org
   gem "rubocop", require: false # https://github.com/rubocop/rubocop
   gem "solargraph", require: false # https://github.com/castwide/solargraph
