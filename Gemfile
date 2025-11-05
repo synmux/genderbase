@@ -32,6 +32,7 @@ gem "foreman", require: false # https://github.com/ddollar/foreman
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude" # https://github.com/ruby/debug
   gem "brakeman", require: false # https://brakemanscanner.org
+  gem "log_bench" # https://github.com/silva96/log_bench
   gem "rubocop", require: false # https://github.com/rubocop/rubocop
   gem "solargraph", require: false # https://github.com/castwide/solargraph
   gem "rubocop-rails-omakase", require: false # https://github.com/rails/rubocop-rails-omakase
