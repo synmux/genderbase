@@ -2,7 +2,7 @@
 
 source "https://rubygems.org" # https://github.com/rubygems/rubygems
 
-ruby "3.4.7"
+ruby "4.0.1"
 
 gem "rails"                  # https://github.com/rails/rails
 gem "fileutils"              # https://github.com/ruby/fileutils
