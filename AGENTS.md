@@ -3,7 +3,9 @@
 This document contains essential information for AI agents working on the Genderbase repository.
 
 ## Project Context
+
 **Genderbase** is a Rails application providing a knowledge base and anonymous Q&A system for gender issues.
+
 - **Stack**: Ruby 3.4+, Rails 7+, PostgreSQL, Redis
 - **Frontend**: Hotwire (Turbo/Stimulus), Tailwind CSS, DaisyUI, esbuild
 - **Environment**: Managed via `mise`
@@ -11,26 +13,32 @@ This document contains essential information for AI agents working on the Gender
 ## Essential Commands
 
 ### Setup & Environment
+
 The project uses `mise` for tool versioning and task management.
+
 - **Install dependencies**: `bin/mise install`
 - **Reset Database**: `mise run db:reset` (drops, creates, migrates, seeds)
 
 ### Development
+
 - **Start Server (Local)**: `mise run dev:localhost` (starts Rails + JS/CSS watchers)
 - **Start Server (Tailscale)**: `mise run dev` (requires `TAILSCALE_IPV4`)
 
 ### Testing
+
 - **Run All Tests**: `mise run ci:test` or `bundle exec rails test test:system`
 - **Run Unit Tests**: `bundle exec rails test`
 - **Run System Tests**: `bundle exec rails test:system`
 - **Prepare Test DB**: `bundle exec rails db:test:prepare`
 
 ### Building Assets
+
 - **Build All**: `bun run build`
 - **Build JS**: `bun run build:js`
 - **Build CSS**: `bun run build:css`
 
 ### Linting & Security
+
 - **Ruby Lint**: `mise run ci:rubocop`
 - **Security Scan**: `mise run ci:brakeman`
 - **Full CI Check**: `mise run ci`
@@ -39,6 +47,7 @@ The project uses `mise` for tool versioning and task management.
 ## Architecture & Patterns
 
 ### Core Models
+
 - **Responder**: Vetted users who answer questions.
 - **Question**: Anonymous/public submissions.
 - **Answer**: Responses from Responders.
@@ -46,21 +55,25 @@ The project uses `mise` for tool versioning and task management.
 - **Terminology**: Glossary of terms.
 
 ### Frontend
+
 - **CSS**: Tailwind CSS with DaisyUI. Configured in `tailwind.config.js` and `app/assets/stylesheets/`.
 - **JS**: Stimulus controllers in `app/javascript/controllers/`. Bundled via `esbuild`.
 - **Views**: ERB templates. JSON APIs via JBuilder.
 
 ### Authentication
+
 - Uses **Devise** with Argon2 password hashing.
 - **Responders** are the primary authenticated user type.
 
 ## Testing Guidelines
+
 - **Framework**: Minitest (standard Rails).
 - **System Tests**: Driven by Capybara/Selenium.
 - **Fixtures**: YAML fixtures in `test/fixtures/`.
 - **Coverage**: tracked via SimpleCov.
 
 ## Gotchas & Notes
+
 - **"Multipost" References**: You may see references to "Multipost" in `CONTRIBUTING.md` or other docs. This appears to be legacy/template text; the project is **Genderbase**.
 - **Mise wrapper**: Prefer `mise run <task>` for complex workflows (CI, dev server) to ensure environment variables are loaded correctly.
 - **Bin Wrappers**: Use `bin/rails` or `bundle exec rails` to ensure correct gem versions.
