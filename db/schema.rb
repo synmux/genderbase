@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_04_12_200119) do
+ActiveRecord::Schema[8.1].define(version: 2026_02_14_172732) do
   create_table "answers", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -40,10 +40,12 @@ ActiveRecord::Schema[8.1].define(version: 2025_04_12_200119) do
     t.datetime "created_at", null: false
     t.string "email"
     t.string "pseudonym"
+    t.integer "responder_id", null: false
     t.integer "status"
     t.string "title"
     t.string "token"
     t.datetime "updated_at", null: false
+    t.index [ "responder_id" ], name: "index_questions_on_responder_id"
   end
 
   create_table "responders", force: :cascade do |t|
@@ -79,5 +81,6 @@ ActiveRecord::Schema[8.1].define(version: 2025_04_12_200119) do
   add_foreign_key "answers", "responders"
   add_foreign_key "knowledges", "questions"
   add_foreign_key "knowledges", "responders"
+  add_foreign_key "questions", "responders"
   add_foreign_key "terminologies", "responders"
 end
