@@ -16,9 +16,9 @@ jobs:
       - name: apt
         run: sudo apt-get update && sudo apt-get install --no-install-recommends -y build-essential git libyaml-dev node-gyp pkg-config python-is-python3 google-chrome-stable
       - name: checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
       - name: mise
-        uses: jdx/mise-action@1648a7812b9aeae629881980618f079932869151
+        uses: jdx/mise-action@dba19683ed58901619b14f395a24841710cb4925
       - name: prepare-ci
         run: bin/mise run prepare-ci
       - name: ci:brakeman
