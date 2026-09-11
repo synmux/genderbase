@@ -16,7 +16,7 @@
     "autoprefixer": "^10.5.4",
     "daisyui": "^5.7.22",
     "postcss": "^8.5.26",
-    "postcss-cli": "^11.0.1",
+    "postcss-cli": "^12.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^17.0.0",
     "postcss-nesting": "^14.0.1",
@@ -29,7 +29,7 @@
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@eslint/css": "^1.4.0",
+    "@eslint/css": "^2.0.0",
     "@eslint/js": "^10.0.1",
     "@eslint/json": "^2.0.1",
     "@eslint/markdown": "^8.0.3",
