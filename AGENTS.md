@@ -79,6 +79,5 @@ The project uses `mise` for tool versioning and task management.
 
 ## Gotchas & Notes
 
-- **"Multipost" References**: You may see references to "Multipost" in `CONTRIBUTING.md` or other docs. This appears to be legacy/template text; the project is **Genderbase**.
 - **Mise wrapper**: Prefer `mise run <task>` for complex workflows (CI, dev server) to ensure environment variables are loaded correctly.
 - **Bin Wrappers**: Use `bin/rails` or `bundle exec rails` to ensure correct gem versions.

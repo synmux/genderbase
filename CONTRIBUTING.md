@@ -1,6 +1,6 @@
-# Contributing to Multipost
+# Contributing to Genderbase
 
-Thank you for considering contributing to Multipost! This document outlines some guidelines for contributing to the project, particularly focusing on our testing practices.
+Thank you for considering contributing to Genderbase! This document outlines some guidelines for contributing to the project, particularly focusing on our testing practices.
 
 ## Code of Conduct
 
@@ -9,7 +9,7 @@ Please be respectful and constructive in all interactions related to this projec
 ## Getting Started
 
 1. Fork the repository
-2. Clone your fork: `git clone https://github.com/YOUR-USERNAME/multipost-rails.git`
+2. Clone your fork: `git clone https://github.com/YOUR-USERNAME/genderbase.git`
 3. Set up the application: `bin/setup`
 4. Create a branch for your changes: `git checkout -b your-feature-branch`
 
@@ -24,7 +24,7 @@ Please be respectful and constructive in all interactions related to this projec
 
 ## Testing Guidelines
 
-We highly value test coverage in Multipost. Please follow these guidelines when writing or modifying tests.
+We highly value test coverage in Genderbase. Please follow these guidelines when writing or modifying tests.
 
 ### Test Structure
 
@@ -334,4 +334,4 @@ All pull requests will be automatically tested with our CI pipeline. Make sure a
 
 If you have any questions about contributing or testing, please open an issue or reach out to the maintainers.
 
-Thank you for contributing to Multipost!
+Thank you for contributing to Genderbase!
