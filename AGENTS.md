@@ -33,9 +33,9 @@ The project uses `mise` for tool versioning and task management.
 
 ### Building Assets
 
-- **Build All**: `bun run build`
-- **Build JS**: `bun run build:js`
-- **Build CSS**: `bun run build:css`
+- **Build All**: `pnpm run build`
+- **Build JS**: `pnpm run build:js`
+- **Build CSS**: `pnpm run build:css`
 
 ### Linting & Security
 

@@ -38,21 +38,33 @@ FROM base AS build
 # Set shell options for all RUN commands
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Install packages needed to build gems and setup Bun
+# Install packages needed to build gems
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
     build-essential=12.9 \
     git=1:2.39.5-0+deb12u2 \
     libyaml-dev=0.2.5-1 \
     pkg-config=1.8.1-1 \
-    unzip=6.0-28 \
-    && rm -rf /var/lib/apt/lists /var/cache/apt/archives && \
-    curl -fsSL https://bun.sh/install | bash -s -- "bun-v1.2.13" && \
-    echo "export BUN_INSTALL=/usr/local/bun" >> /etc/profile && \
-    echo "export PATH=/usr/local/bun/bin:\$PATH" >> /etc/profile
+    xz-utils=5.4.1-1 \
+    && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-ENV BUN_INSTALL=/usr/local/bun
-ENV PATH=/usr/local/bun/bin:$PATH
+# Install Node.js and pnpm for the JavaScript and CSS builds.
+# NODE_VERSION must match mise.toml; PNPM_VERSION must match packageManager in package.json.
+ARG NODE_VERSION=24.20.0
+ARG PNPM_VERSION=12.4.1
+ENV PNPM_HOME=/usr/local/pnpm
+ENV PATH=$PNPM_HOME/bin:/usr/local/node/bin:$PATH
+RUN case "$(dpkg --print-architecture)" in \
+      amd64) NODE_ARCH=x64 ;; \
+      arm64) NODE_ARCH=arm64 ;; \
+      *) echo "Unsupported architecture: $(dpkg --print-architecture)" >&2; exit 1 ;; \
+    esac && \
+    mkdir -p /usr/local/node && \
+    curl -fsSL "https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-${NODE_ARCH}.tar.xz" \
+      | tar -xJ -C /usr/local/node --strip-components=1 && \
+    curl -fsSL https://get.pnpm.io/install.sh \
+      | env PNPM_VERSION="${PNPM_VERSION}" ENV=/root/.bashrc SHELL=/bin/bash bash - && \
+    node --version && pnpm --version
 
 # Install application gems
 COPY Gemfile Gemfile.lock ./
@@ -61,8 +73,8 @@ RUN bundle install && \
     bundle exec bootsnap precompile --gemfile
 
 # Install node modules
-COPY package.json bun.lockb ./
-RUN bun install --frozen-lockfile
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
 
 # Copy application code
 COPY . .
