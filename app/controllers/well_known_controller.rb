@@ -73,7 +73,7 @@ class WellKnownController < ApplicationController
       # Security information
       Acknowledgments: https://genderbase.com/security
       Canonical: https://genderbase.com/security.txt
-      Contact: mailto:dave+genderbase-security@dave.io
+      Contact: mailto:syn+genderbase-security@syn.as
       Encryption: https://keys.openpgp.org/vks/v1/by-fingerprint/D8DC6603D9C3515382A1C63C385FD3CEF5E5C6EC
       Expires: 2035-01-01T00:00:00.000Z
       Policy: https://genderbase.com/security

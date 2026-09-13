@@ -2,13 +2,13 @@ json.subject @resource
 
 json.aliases [
   "https://genderbase.com",
-  "https://basilisk.gallery/@dave",
-  "https://basilisk.gallery/users/dave"
+  "https://basilisk.gallery/@syn",
+  "https://basilisk.gallery/users/syn"
 ]
 
 json.properties do
-  json.set! "http://schema.org/name", "Dave Williams"
-  json.set! "http://schema.org/url", "https://dave.io"
+  json.set! "http://schema.org/name", "syn"
+  json.set! "http://schema.org/url", "https://syn.horse"
 end
 
 json.links do
@@ -21,7 +21,7 @@ json.links do
     {
       rel: "self",
       type: "application/activity+json",
-      href: "https://basilisk.gallery/users/dave"
+      href: "https://basilisk.gallery/users/syn"
     },
     {
       rel: "http://ostatus.org/schema/1.0/subscribe",
@@ -30,7 +30,7 @@ json.links do
     {
       rel: "http://webfinger.net/rel/profile-page",
       type: "text/html",
-      href: "https://basilisk.gallery/@dave"
+      href: "https://basilisk.gallery/@syn"
     }
   ]
 end
