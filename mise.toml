@@ -5,7 +5,6 @@ GENDERBASE_MISE_ACTIVE = 'true'
 env_file = '.env'
 
 [tools]
-bun = { version = '1.4.0' }
 node = { version = '24.20.0' }
 ruby = { version = '4.0.6' }
 
@@ -18,7 +17,7 @@ ruby = { version = '4.0.6' }
 ] }
 'dev' = { env = { 'RAILS_ENV' = 'development', 'RUBY_DEBUG_OPEN' = 'true' }, run = 'foreman start -f Procfile.tailscale' }
 'dev:localhost' = { env = { 'RAILS_ENV' = 'development', 'RUBY_DEBUG_OPEN' = 'true' }, run = 'foreman start -f Procfile.localhost' }
-prepare-ci = 'gem install bundler; bundle install; bundle binstubs --all; bun install'
+prepare-ci = 'gem install bundler; bundle install; bundle binstubs --all; pnpm install'
 'ci:brakeman' = { run = 'bundle exec brakeman --no-pager' }
 'ci:rubocop' = { run = 'bundle exec rubocop -f github' }
 'ci:test' = { env = { RAILS_ENV = 'test' }, run = 'bundle exec rails db:test:prepare test test:system' }

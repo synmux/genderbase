@@ -1,7 +1,7 @@
 /*
   Genderbase stylesheet: Tailwind 4 + DaisyUI 5.
 
-  Build with `bun run build:css`. Plugin order lives in postcss.config.js:
+  Build with `pnpm run build:css`. Plugin order lives in postcss.config.js:
   postcss-import inlines the @fontsource files, postcss-url copies their woff2
   files into app/assets/builds/fonts (so Propshaft can serve them), then
   Tailwind processes the @plugin / @theme blocks and generates utilities.

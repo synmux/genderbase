@@ -85,23 +85,21 @@ class WellKnownController < ApplicationController
   def humans
     txt = <<~END
       /* TEAM */
-      Maintainer: Dave Williams
-      Site: https://dave.io
-      Twitter (deprecated): @syn
-      Mastodon: @dave@basilisk.gallery
-      Bluesky: @dave.io
-      Threads: @daveio
-      Nostr: npub1nfywvmkx4qfs2re3jyw4jh266akm2y45tvhda347uuaflw754jnsjj8fzu
+      Maintainer: syn
+      Site: https://syn.horse
+      Mastodon: @syn@basilisk.gallery
+      Bluesky: @syn.horse
+      Threads: @synmux
       Location: London, UK
 
       /* THANKS */
       Just me, for now. Volunteers will be listed here if they choose to.
 
       /* SITE */
-      Last update: 2025-03-05
+      Last update: 2026-09-13
       Standards: HTML5, CSS3, JavaScript ES6+
       Components: Stimulus, Tailwind
-      Software: Ruby on Rails, PostgreSQL, Docker, Kubernetes, Cursor
+      Software: Ruby on Rails, PostgreSQL, Docker, Kubernetes, PNPM
     END
     render plain: txt, content_type: "text/plain", layout: false
   end

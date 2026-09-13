@@ -1,8 +1,8 @@
 {
   "author": {
-    "email": "dave@dave.io",
-    "name": "Dave Williams",
-    "url": "https://github.com/daveio"
+    "email": "syn@syn.as",
+    "name": "syn",
+    "url": "https://github.com/synmux"
   },
   "dependencies": {
     "@biomejs/biome": "^2.5.11",
@@ -36,30 +36,25 @@
     "@trunkio/launcher": "^1.3.4",
     "esbuild": "^0.28.2",
     "eslint": "^10.9.1",
-    "globals": "^17.11.0"
+    "globals": "^17.11.0",
+    "npm-run-all2": "^9.0.3"
   },
   "engines": {
-    "bun": "^1.3.14",
-    "node": "^24.19.0"
+    "node": "^24.20.0"
   },
   "license": "MIT",
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/daveio/genderbase/blob/main/LICENSE"
+      "url": "https://github.com/synmux/genderbase/blob/main/LICENSE"
     }
   ],
   "name": "genderbase",
-  "packageManager": "bun@1.3.11",
   "private": true,
   "scripts": {
-    "build": "bun run build:js && bun run build:css",
-    "build:css": "bun run postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
-    "build:js": "bun run esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
+    "build": "pnpm run-p build:js build:css",
+    "build:css": "pnpm postcss ./app/assets/stylesheets/application.postcss.css -o ./app/assets/builds/application.css",
+    "build:js": "pnpm esbuild app/javascript/*.* --bundle --sourcemap --format=esm --outdir=app/assets/builds --public-path=/assets"
   },
-  "trustedDependencies": [
-    "@biomejs/biome",
-    "@tailwindcss/oxide",
-    "esbuild"
-  ]
+  "packageManager": "pnpm@12.4.1+sha512.2e81e399d73fe8390dab25e06aa788ab7a5908248d2f5a370f82b481147a6a7a367bf8048f9a6fdb6460f21a66f0542dedb8b94ca2c8723596741920b1656d4c"
 }
