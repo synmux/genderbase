@@ -5,8 +5,8 @@ GENDERBASE_MISE_ACTIVE = 'true'
 env_file = '.env'
 
 [tools]
-node = { version = '24.20.0' }
-ruby = { version = '4.0.6' }
+node = { version = '26.10.0' }
+ruby = { version = '4.0.7' }
 
 [tasks]
 'db:reset' = { run = [
