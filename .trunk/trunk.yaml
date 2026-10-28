@@ -77,7 +77,7 @@ lint:
     - taplo@0.10.0
     - actionlint@1.7.12
     - brakeman
-    - checkov@3.3.30
+    - checkov@3.4.0
     - git-diff-check
     - hadolint@2.15.1
     - oxipng@10.2.1

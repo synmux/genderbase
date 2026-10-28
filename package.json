@@ -5,7 +5,7 @@
     "url": "https://github.com/synmux"
   },
   "dependencies": {
-    "@biomejs/biome": "^2.5.15",
+    "@biomejs/biome": "^2.6.2",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/sora": "^5.3.0",
     "@hotwired/stimulus": "^3.2.2",
@@ -37,7 +37,7 @@
     "esbuild": "^0.28.2",
     "eslint": "^10.13.0",
     "globals": "^17.13.0",
-    "npm-run-all2": "^9.0.3"
+    "npm-run-all2": "^9.0.4"
   },
   "engines": {
     "node": "^24.20.0"
