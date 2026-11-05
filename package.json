@@ -5,7 +5,7 @@
     "url": "https://github.com/synmux"
   },
   "dependencies": {
-    "@biomejs/biome": "^2.6.3",
+    "@biomejs/biome": "^2.6.4",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/sora": "^5.3.0",
     "@hotwired/stimulus": "^3.2.2",
