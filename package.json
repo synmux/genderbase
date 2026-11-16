@@ -5,13 +5,13 @@
     "url": "https://github.com/synmux"
   },
   "dependencies": {
-    "@biomejs/biome": "^2.6.4",
+    "@biomejs/biome": "^2.6.5",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/sora": "^5.3.0",
     "@hotwired/stimulus": "^3.2.2",
     "@hotwired/turbo-rails": "^8.0.23",
     "@tailwindcss/forms": "^0.5.11",
-    "@tailwindcss/postcss": "^4.3.3",
+    "@tailwindcss/postcss": "^4.3.4",
     "@tailwindcss/typography": "^0.5.20",
     "autoprefixer": "^10.6.2",
     "daisyui": "^5.7.50",
@@ -21,12 +21,12 @@
     "postcss-import": "^17.0.1",
     "postcss-nesting": "^14.0.3",
     "postcss-url": "^10.1.4",
-    "stylelint": "^17.16.0",
+    "stylelint": "^18.0.0",
     "stylelint-config-prettier": "^9.0.5",
-    "stylelint-config-recommended": "^18.0.0",
-    "stylelint-config-standard": "^40.0.0",
+    "stylelint-config-recommended": "^19.0.0",
+    "stylelint-config-standard": "^41.0.0",
     "stylelint-config-tailwindcss": "^1.0.1",
-    "tailwindcss": "^4.3.3"
+    "tailwindcss": "^4.3.4"
   },
   "devDependencies": {
     "@eslint/css": "^2.0.1",
