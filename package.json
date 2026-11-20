@@ -5,7 +5,7 @@
     "url": "https://github.com/synmux"
   },
   "dependencies": {
-    "@biomejs/biome": "^2.6.6",
+    "@biomejs/biome": "^2.6.7",
     "@fontsource-variable/fraunces": "^5.3.0",
     "@fontsource-variable/sora": "^5.3.0",
     "@hotwired/stimulus": "^3.2.2",
@@ -14,7 +14,7 @@
     "@tailwindcss/postcss": "^4.3.5",
     "@tailwindcss/typography": "^0.5.20",
     "autoprefixer": "^10.6.2",
-    "daisyui": "^5.7.50",
+    "daisyui": "^5.8.0",
     "postcss": "^8.5.32",
     "postcss-cli": "^12.0.0",
     "postcss-flexbugs-fixes": "^5.0.2",
